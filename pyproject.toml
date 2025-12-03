@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+dynamic = ["version"]
+name = "dl-verifier"
+dependencies = []
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# -- RUFF 
+
+[tool.ruff]
+include = [
+    "pyproject.toml",
+    "src/**/*.py",
+    "scripts/**/*.py",
+    "**/*.ipynb",
+    "ab-crown/complete_verifier/heuristics/oval_gnn.py",
+    "ab-crown/complete_verifier/heuristics/generate_data.py",
+    "ab-crown/complete_verifier/heuristics/neural_heuristic.py",
+    "ab-crown/complete_verifier/heuristics/RL.py",
+]
+exclude = ["mn-bab"]
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = ["W505"]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 88
+max-line-length = 88
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = false
+docstring-code-line-length = 88
+skip-magic-trailing-comma = false
