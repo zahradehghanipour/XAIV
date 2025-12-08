@@ -2,7 +2,7 @@
 
 instance_id=$1
 
-BENCHMARK="tinyimagenet"
+BENCHMARK="tinyimagenet_segmented"
 CONFIG="tinyimagenet.yaml"
 
 experiment_path=results/$BENCHMARK
