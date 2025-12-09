@@ -2,8 +2,8 @@
 
 instance_id=$1
 
-BENCHMARK="tinyimagenet_segmented"
-CONFIG="tinyimagenet.yaml"
+BENCHMARK="vggnet16_benchmark2022_segmented"
+CONFIG="abcrown/vggnet16.yaml"
 
 experiment_path=results/$BENCHMARK
 
@@ -25,7 +25,7 @@ IFS=',' read -r onnx vnnlib timeout <<< "$line"
 # -- RUN αβ-CROWN
 python ab-crown/complete_verifier/abcrown.py \
     --instance_id $instance_id \
-    --config configs/$BENCHMARK/$CONFIG \
+    --config configs/$CONFIG \
     --onnx_path benchmarks/$BENCHMARK/$onnx \
     --vnnlib_path benchmarks/$BENCHMARK/$vnnlib \
     --timeout $timeout \

@@ -306,6 +306,42 @@ def bounds_for_segment(
     ub_flat = ub.transpose(2, 0, 1).reshape(-1)
     return lb_flat, ub_flat
 
+def report_changed_inputs(
+    lb_flat: np.ndarray,
+    ub_flat: np.ndarray,
+    tag: str = "",
+    extra: Optional[Dict] = None,
+) -> Dict:
+    """
+    Compute how many input dimensions are allowed to change (lb != ub)
+    vs how many are fixed (lb == ub). Also returns percentage.
+
+    Returns a dict that can be written to CSV.
+    """
+    assert lb_flat.shape == ub_flat.shape
+    total = lb_flat.size
+    changed_mask = np.abs(ub_flat - lb_flat) > 1e-9  # ignore tiny numerical noise
+    num_changed = int(changed_mask.sum())
+    num_fixed = total - num_changed
+    percent_changed = 100.0 * num_changed / total if total > 0 else 0.0
+
+    prefix = f"[VNNLIB][{tag}] " if tag else "[VNNLIB] "
+    print(
+        f"{prefix}Inputs changed: {num_changed}, "
+        f"fixed: {num_fixed}, total: {total}, "
+        f"percent_changed={percent_changed:.2f}%"
+    )
+
+    row = {
+        "tag": tag,
+        "num_changed": num_changed,
+        "num_fixed": num_fixed,
+        "total": total,
+        "percent_changed": percent_changed,
+    }
+    if extra:
+        row.update(extra)
+    return row
 
 def write_vnnlib_for_segment(
     lb_flat: np.ndarray,
@@ -360,6 +396,58 @@ def write_vnnlib_for_segment(
 # 5) Per-image pipeline
 # ============================================================
 
+from PIL import Image
+import numpy as np
+from pathlib import Path
+
+def visualize_segments(
+    image_np: np.ndarray,
+    segments: List[Dict],
+    out_dir: Path,
+    img_basename: str,
+    max_vis: int = 5,
+):
+    """
+    Save:
+      - original image
+      - image with top-k segments overlaid as red regions
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Save original image
+    image_uint8 = (np.clip(image_np, 0.0, 1.0) * 255).astype(np.uint8)
+    orig_path = out_dir / f"{img_basename}_original.png"
+    Image.fromarray(image_uint8).save(orig_path)
+    print(f"[VIS] Saved original image to: {orig_path}")
+
+    # Visualise each of the top-k segments
+    for i, seg in enumerate(segments[:max_vis]):
+        mask = seg["mask"]          # H x W bool
+        score = seg["score"]
+        bbox = seg["bbox"]
+        num_pixels = int(mask.sum())
+
+        print(
+            f"[VIS] Segment {i}: score={score:.3f}, "
+            f"bbox={bbox}, num_pixels={num_pixels}"
+        )
+
+        overlay = image_uint8.copy()
+        # Make a red overlay where mask is True
+        red = np.array([255, 0, 0], dtype=np.uint8)
+        alpha = 0.5  # how strong the red is
+
+        overlay[mask] = (
+            (1 - alpha) * overlay[mask].astype(np.float32)
+            + alpha * red.astype(np.float32)
+        ).astype(np.uint8)
+
+        seg_img = Image.fromarray(overlay)
+        seg_path = out_dir / f"{img_basename}_seg{i}_score_{score:.3f}.png"
+        seg_img.save(seg_path)
+        print(f"[VIS] Saved segment {i} overlay to: {seg_path}")
+
+
 from typing import Callable
 
 def process_single_image(
@@ -369,6 +457,8 @@ def process_single_image(
     get_label_fn: Callable[[Path], int],
     onnx_rel_path: str,
     vnnlib_dir: Path,
+    debug_dir: Optional[Path] = None,
+    stats_rows: Optional[List[Dict]] = None,
 ) -> List[Tuple[str, str, int]]:
     """
     Returns list of instances.csv rows for this image.
@@ -400,6 +490,16 @@ def process_single_image(
         max_segments=seg_cfg.get("max_segments", None),
     )
 
+    # Optional: visualise original image + segments
+    if debug_dir is not None:
+        img_basename = img_path.stem
+        visualize_segments(
+            image_np=image_np,
+            segments=segments,
+            out_dir=debug_dir,
+            img_basename=img_basename,
+        )
+
     img_basename = img_path.stem
     csv_rows: List[Tuple[str, str, int]] = []
 
@@ -408,6 +508,23 @@ def process_single_image(
     ub_global = np.clip(image_np + eps, 0.0, 1.0)
     lb_global_flat = lb_global.transpose(2, 0, 1).reshape(-1)
     ub_global_flat = ub_global.transpose(2, 0, 1).reshape(-1)
+
+    global_stats = report_changed_inputs(
+        lb_flat=lb_global_flat,
+        ub_flat=ub_global_flat,
+        tag=f"{img_basename}_global",
+        extra={
+            "image": img_basename,
+            "is_global": True,
+            "segment_index": -1,
+            "eps": eps,
+            "dilation_radius": dilation_radius,
+            "score": None,
+            "bbox": None,
+        },
+    )
+    if stats_rows is not None:
+        stats_rows.append(global_stats)
 
     global_vnnlib = vnnlib_dir / f"{img_basename}_global_eps_{eps:.4f}.vnnlib"
     write_vnnlib_for_segment(
@@ -434,6 +551,23 @@ def process_single_image(
             eps=eps,
             dilation_radius=dilation_radius,
         )
+
+        seg_stats = report_changed_inputs(
+            lb_flat=lb_flat,
+            ub_flat=ub_flat,
+            tag=f"{img_basename}_seg{seg_idx}",
+            extra={
+                "image": img_basename,
+                "is_global": False,
+                "segment_index": seg_idx,
+                "eps": eps,
+                "dilation_radius": dilation_radius,
+                "score": float(seg["score"]),
+                "bbox": seg["bbox"],
+            },
+        )
+        if stats_rows is not None:
+            stats_rows.append(seg_stats)
 
         seg_vnnlib = vnnlib_dir / f"{img_basename}_seg{seg_idx}_eps_{eps:.4f}.vnnlib"
         write_vnnlib_for_segment(
@@ -471,7 +605,6 @@ def main():
         required=True,
         help="Path to YAML config file",
     )
-    # Optionally override images from CLI
     parser.add_argument(
         "--indices",
         type=int,
@@ -501,6 +634,9 @@ def main():
     onnx_dir = ensure_dir(out_root / "onnx")
     vnnlib_dir = ensure_dir(out_root / "vnnlib")
     instances_csv_path = out_root / "instances.csv"
+    debug_vis_dir = ensure_dir(out_root / "debug_vis")
+    stats_csv_path = out_root / "input_change_stats.csv"
+    change_stats_rows: List[Dict] = []
 
     # -----------------------------
     # Handle ONNX model
@@ -586,6 +722,8 @@ def main():
             get_label_fn=get_label,
             onnx_rel_path=onnx_rel_path,
             vnnlib_dir=vnnlib_dir,
+            debug_dir=debug_vis_dir,
+            stats_rows=change_stats_rows,
         )
         all_rows.extend(rows)
 
@@ -598,6 +736,33 @@ def main():
         # no header – matches abCROWN style
         for row in all_rows:
             writer.writerow(row)
+
+    if change_stats_rows:
+        fieldnames = [
+            "image",
+            "tag",
+            "is_global",
+            "segment_index",
+            "eps",
+            "dilation_radius",
+            "score",
+            "bbox",
+            "num_changed",
+            "num_fixed",
+            "total",
+            "percent_changed",
+        ]
+        print(f"[CSV] Writing {len(change_stats_rows)} rows to {stats_csv_path}")
+        with stats_csv_path.open("w", newline="") as f_stats:
+            writer = csv.DictWriter(f_stats, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in change_stats_rows:
+                # ensure all keys exist
+                for key in fieldnames:
+                    row.setdefault(key, None)
+                writer.writerow(row)
+    else:
+        print("[CSV] No change-stats rows collected, not writing stats CSV.")
 
     print("\n[DONE] Pipeline finished.")
 

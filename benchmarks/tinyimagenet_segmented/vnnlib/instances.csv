@@ -1,4 +1,0 @@
-benchmarks/tinyimagenet_segmented/onnx/TinyImageNet_resnet_medium.onnx,benchmarks/tinyimagenet_segmented/vnnlib/val_8165_global_eps_0.0004.vnnlib,3600
-benchmarks/tinyimagenet_segmented/onnx/TinyImageNet_resnet_medium.onnx,benchmarks/tinyimagenet_segmented/vnnlib/val_8165_seg0_eps_0.0004.vnnlib,3600
-benchmarks/tinyimagenet_segmented/onnx/TinyImageNet_resnet_medium.onnx,benchmarks/tinyimagenet_segmented/vnnlib/val_8165_seg1_eps_0.0004.vnnlib,3600
-benchmarks/tinyimagenet_segmented/onnx/TinyImageNet_resnet_medium.onnx,benchmarks/tinyimagenet_segmented/vnnlib/val_8165_seg2_eps_0.0004.vnnlib,3600

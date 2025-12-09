@@ -1,4 +1,0 @@
-onnx/TinyImageNet_resnet_medium.onnx,vnnlib/val_8165_global_eps_0.0004.vnnlib,100
-onnx/TinyImageNet_resnet_medium.onnx,vnnlib/val_8165_seg0_eps_0.0004.vnnlib,100
-onnx/TinyImageNet_resnet_medium.onnx,vnnlib/val_8165_seg1_eps_0.0004.vnnlib,100
-onnx/TinyImageNet_resnet_medium.onnx,vnnlib/val_8165_seg2_eps_0.0004.vnnlib,100
