@@ -279,7 +279,7 @@ def main():
 
     # TODO: delete later
     import sys
-    sys.argv += ["--config", "/Users/zd3504phd/Desktop/XAIV/configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)

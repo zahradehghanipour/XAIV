@@ -1,2 +1,2 @@
 benchmarks/vggnet16_benchmark2022_segmented/onnx/
-benchmarks/vggnet16_benchmark2022_segmented/vnnlib/*.vnnlib # only if you want to ignore them too
+benchmarks/vggnet16_benchmark2022_segmented/vnnlib/*.vnnlib

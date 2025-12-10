@@ -1,0 +1,42 @@
+name: ab-crown
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+  - gurobi   # only if you actually use it + have license
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - mpmath
+  - sympy
+  - networkx
+  - psutil
+  - pytest
+  - jinja2
+  - rich
+  - tqdm
+  - pyyaml
+  - onnx
+  - ffmpeg
+  - pillow
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pip
+  - gurobi  # optional
+  - pip:
+      - coloredlogs==15.0.1
+      - flatbuffers==24.3.25
+      - fsspec==2024.6.0
+      - humanfriendly==10.0
+      - git+https://github.com/Verified-Intelligence/onnx2pytorch@325959ed128200459a9634668149a722a6a74797#egg=onnx2pytorch
+      - onnxconverter-common==1.14.0
+      - onnxoptimizer==0.3.13
+      - onnxruntime==1.18.0
+      - onnxsim==0.4.36
+      - protobuf==3.20.2
+      - graphviz==0.20.3
+      - skl2onnx==1.17.0
