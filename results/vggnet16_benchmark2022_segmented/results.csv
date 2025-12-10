@@ -1,0 +1,7 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
+1,onnx/vgg16-7.onnx,vnnlib/n01860187_black_swan_global_eps_0.0039.vnnlib,1200,error,,,,,,
