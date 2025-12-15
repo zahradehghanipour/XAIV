@@ -20,9 +20,32 @@ Outputs:
 
 from pathlib import Path
 from typing import Dict, Optional, Tuple
-
 import numpy as np
 from scipy.ndimage import binary_dilation
+from PIL import Image
+
+
+def to_224_rgb01(img: "Image.Image | np.ndarray") -> np.ndarray:
+    # img can be PIL or HWC numpy
+    if isinstance(img, np.ndarray):
+        if img.dtype != np.uint8:
+            img_u8 = np.clip(img * 255.0, 0, 255).astype(np.uint8)
+        else:
+            img_u8 = img
+        img_pil = Image.fromarray(img_u8).convert("RGB")
+    else:
+        img_pil = img.convert("RGB")
+
+    img_pil = img_pil.resize((224, 224), Image.BILINEAR)
+    arr = np.asarray(img_pil, dtype=np.float32) / 255.0
+    assert arr.shape == (224, 224, 3), f"Resized image wrong shape: {arr.shape}"
+    return arr
+
+def mask_to_224(mask_np: np.ndarray) -> np.ndarray:
+    # mask_np: HxW boolean or 0/1
+    m = Image.fromarray(mask_np.astype(np.uint8) * 255)
+    m = m.resize((224, 224), Image.NEAREST)  # IMPORTANT: keep mask crisp
+    return (np.asarray(m) > 127)
 
 def bounds_for_segment(
     image_np: np.ndarray,
@@ -30,18 +53,23 @@ def bounds_for_segment(
     eps: float,
     dilation_radius: int = 0,
     freeze_mask: bool = False,
+    expected_hw: tuple[int,int] | None = (224,224)
 ) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    image_np: H x W x C in [0,1]
-    mask: H x W boolean array (segment)
-    eps: epsilon
-    dilation_radius: mask dilation in pixels
-    freeze_mask:
-        - False -> allow eps INSIDE mask, fix OUTSIDE   (fix non-mask)
-        - True  -> fix INSIDE mask, allow eps OUTSIDE   (fix mask)
-    """
-    H, W, C = image_np.shape
 
+    # --- 1. Resize FIRST ---
+    image_np = to_224_rgb01(image_np)   # <-- FIXED
+    mask = mask_to_224(mask)            # <-- FIXED
+
+    # --- 2. Now check shape ---
+    assert image_np.ndim == 3, f"image_np must be HxWxC, got {image_np.shape}"
+    H, W, C = image_np.shape
+    assert C == 3, f"Expected 3 channels, got C={C}"
+
+    if expected_hw is not None:
+        eh, ew = expected_hw
+        assert (H, W) == (eh, ew), f"Expected {(eh, ew)}, got {(H, W)}"
+
+    # --- 3. Dilation on RESIZED mask ---
     if dilation_radius > 0:
         struct = np.ones(
             (2 * dilation_radius + 1, 2 * dilation_radius + 1),
@@ -54,10 +82,8 @@ def bounds_for_segment(
     ub = base.copy()
 
     if freeze_mask:
-        # allowed-to-change region is OUTSIDE the mask
         free_region = ~mask
     else:
-        # allowed-to-change region is INSIDE the mask
         free_region = mask
 
     ys, xs = np.where(free_region)
@@ -68,6 +94,10 @@ def bounds_for_segment(
 
     lb_flat = lb.transpose(2, 0, 1).reshape(-1)
     ub_flat = ub.transpose(2, 0, 1).reshape(-1)
+
+    # --- 4. Final sanity check ---
+    assert lb_flat.size == 3 * 224 * 224, f"Wrong input size: {lb_flat.size}"
+
     return lb_flat, ub_flat
 
 def report_changed_inputs(
@@ -105,7 +135,6 @@ def report_changed_inputs(
         row.update(extra)
     return row
 
-
 def write_vnnlib_for_segment(
     lb_flat: np.ndarray,
     ub_flat: np.ndarray,
@@ -120,6 +149,10 @@ def write_vnnlib_for_segment(
       - Constrains X_i between lb_flat[i] and ub_flat[i]
       - Property: ∃k != label : Y_k >= Y_label
     """
+
+    N = len(lb_flat)
+    print(f"[VNNLIB] Writing with N={N} inputs (expect 150528 for 3x224x224)")
+
     out_path = Path(out_path)
     N = len(lb_flat)
 

@@ -52,7 +52,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 from config_utils import load_config, ensure_dir
 from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
-from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
+from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment,to_224_rgb01, mask_to_224
 from vis_utils import visualize_segments
 
 
@@ -83,6 +83,15 @@ def process_single_image(
     image = Image.open(img_path).convert("RGB")
     image_np = np.array(image) / 255.0
 
+    image_pil = Image.open(img_path).convert("RGB")
+
+    # Keep original for SAM + visualization
+    image_np_orig = np.asarray(image_pil, dtype=np.float32) / 255.0
+
+    # Make model-sized version for VNNLIB
+    image_np_224 = to_224_rgb01(image_pil)  # -> (224,224,3) float32 [0,1]
+    print("[DEBUG] image_np_orig:", image_np_orig.shape, "image_np_224:", image_np_224.shape)
+
     seg_cfg = cfg["segmentation"]
     segments = run_segmentation_model(
         predictor=predictor,
@@ -106,10 +115,15 @@ def process_single_image(
     csv_rows: List[Tuple[str, str, int]] = []
 
     # 1) global epsilon VNNLIB
-    lb_global = np.clip(image_np - eps, 0.0, 1.0)
-    ub_global = np.clip(image_np + eps, 0.0, 1.0)
-    lb_global_flat = lb_global.transpose(2, 0, 1).reshape(-1)
-    ub_global_flat = ub_global.transpose(2, 0, 1).reshape(-1)
+    global_mask_224 = np.ones((224, 224), dtype=bool)
+
+    lb_global_flat, ub_global_flat = bounds_for_segment(
+        image_np=image_np_224,
+        mask=global_mask_224,
+        eps=eps,
+        dilation_radius=0,
+        freeze_mask=False,
+    )
 
     global_stats = report_changed_inputs(
         lb_flat=lb_global_flat,
@@ -144,23 +158,28 @@ def process_single_image(
         )
     )
 
-        # 2) segmented VNNLIBs:
+    # 2) segmented VNNLIBs:
     #    for each segment we now create TWO variants:
     #      - fix mask      -> object frozen, background can change
     #      - fix non-mask  -> background frozen, object can change
     for seg_idx, seg in enumerate(segments):
         mask = seg["mask"]
 
+        mask_orig = seg["mask"]          # original HxW (e.g. 525x496)
+        mask_224 = mask_to_224(mask_orig) # -> (224,224) boolean
+        print("[DEBUG] mask_orig:", mask_orig.shape, "mask_224:", mask_224.shape)
+
         # ------------------------------------------------
         # (A) FIX MASK: only NON-MASK region can move
         #     -> "freeze_mask=True" => eps outside mask
         # ------------------------------------------------
+
         lb_fix_mask, ub_fix_mask = bounds_for_segment(
-            image_np=image_np,
-            mask=mask,
+            image_np=image_np_224,
+            mask=mask_224,
             eps=eps,
             dilation_radius=dilation_radius,
-            freeze_mask=True,   # mask is fixed
+            freeze_mask=True,
         )
 
         seg_stats_fix_mask = report_changed_inputs(
@@ -204,12 +223,13 @@ def process_single_image(
         # (B) FIX NON-MASK: only MASK region can move
         #     -> "freeze_mask=False" => eps inside mask
         # ------------------------------------------------
+
         lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
-            image_np=image_np,
-            mask=mask,
+            image_np=image_np_224,
+            mask=mask_224,
             eps=eps,
             dilation_radius=dilation_radius,
-            freeze_mask=False,  # non-mask is fixed
+            freeze_mask=False,
         )
 
         seg_stats_fix_nonmask = report_changed_inputs(
@@ -311,28 +331,15 @@ def main():
     onnx_rel_path = str(Path("onnx") / onnx_target.name)
 
     # -----------------------------
-    # Dataset metadata
+    # Dataset
     # -----------------------------
-    dataset_type = cfg["dataset"].get("type", "tinyimagenet")
 
-    if dataset_type == "tinyimagenet":
-        all_images, img_to_wnid, wnid_to_idx, num_classes = load_tinyimagenet_metadata(
-            cfg["dataset"]
-        )
+    all_images, img_to_label, num_classes = load_imagenet_vggnet16_metadata(
+        cfg["dataset"]
+    )
 
-        def get_label(img_path: Path) -> int:
-            return get_true_label_for_image(img_path, img_to_wnid, wnid_to_idx)
-
-    elif dataset_type == "imagenet_vggnet16":
-        all_images, img_to_label, num_classes = load_imagenet_vggnet16_metadata(
-            cfg["dataset"]
-        )
-
-        def get_label(img_path: Path) -> int:
-            return get_imagenet_label_for_image(img_path, img_to_label)
-
-    else:
-        raise ValueError(f"Unknown dataset.type = {dataset_type}")
+    def get_label(img_path: Path) -> int:
+        return get_imagenet_label_for_image(img_path, img_to_label)
 
     print(f"[Dataset] Found {len(all_images)} images; num_classes = {num_classes}")
     cfg.setdefault("verification", {})
