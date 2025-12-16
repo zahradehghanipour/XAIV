@@ -1,8 +1,8 @@
-image,tag,is_global,segment_index,eps,dilation_radius,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
-n01860187_black_swan,n01860187_black_swan_global,True,-1,0.0039,0,,,150528,0,150528,100.0,
-n01860187_black_swan,n01860187_black_swan_seg0_fixmask,False,0,0.0039,0,0.8960988521575928,"[0, 0, 525, 496]",32631,117897,150528,21.677694515306122,fix_mask
-n01860187_black_swan,n01860187_black_swan_seg0_fixnonmask,False,0,0.0039,0,0.8960988521575928,"[0, 0, 525, 496]",117897,32631,150528,78.32230548469387,fix_nonmask
-n01860187_black_swan,n01860187_black_swan_seg1_fixmask,False,1,0.0039,0,0.827996015548706,"[0, 0, 525, 496]",9162,141366,150528,6.086575255102041,fix_mask
-n01860187_black_swan,n01860187_black_swan_seg1_fixnonmask,False,1,0.0039,0,0.827996015548706,"[0, 0, 525, 496]",141366,9162,150528,93.91342474489795,fix_nonmask
-n01860187_black_swan,n01860187_black_swan_seg2_fixmask,False,2,0.0039,0,0.3273716866970062,"[0, 9, 502, 486]",137637,12891,150528,91.43614477040816,fix_mask
-n01860187_black_swan,n01860187_black_swan_seg2_fixnonmask,False,2,0.0039,0,0.3273716866970062,"[0, 9, 502, 486]",12891,137637,150528,8.563855229591837,fix_nonmask
+image,tag,is_global,segment_index,eps,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
+n01860187_black_swan,n01860187_black_swan_global,True,-1,0.0039,,,150528,0,150528,100.0,
+n01860187_black_swan,n01860187_black_swan_seg0_fixmask,False,0,0.0039,0.8960988521575928,"[0, 0, 525, 496]",150528,0,150528,100.0,fix_mask
+n01860187_black_swan,n01860187_black_swan_seg0_fixnonmask,False,0,0.0039,0.8960988521575928,"[0, 0, 525, 496]",150528,0,150528,100.0,fix_nonmask
+n01860187_black_swan,n01860187_black_swan_seg1_fixmask,False,1,0.0039,0.827996015548706,"[0, 0, 525, 496]",150528,0,150528,100.0,fix_mask
+n01860187_black_swan,n01860187_black_swan_seg1_fixnonmask,False,1,0.0039,0.827996015548706,"[0, 0, 525, 496]",150528,0,150528,100.0,fix_nonmask
+n01860187_black_swan,n01860187_black_swan_seg2_fixmask,False,2,0.0039,0.3273716866970062,"[0, 9, 502, 486]",150528,0,150528,100.0,fix_mask
+n01860187_black_swan,n01860187_black_swan_seg2_fixnonmask,False,2,0.0039,0.3273716866970062,"[0, 9, 502, 486]",150528,0,150528,100.0,fix_nonmask

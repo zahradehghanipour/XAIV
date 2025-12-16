@@ -24,81 +24,11 @@ import numpy as np
 from scipy.ndimage import binary_dilation
 from PIL import Image
 
-
-def to_224_rgb01(img: "Image.Image | np.ndarray") -> np.ndarray:
-    # img can be PIL or HWC numpy
-    if isinstance(img, np.ndarray):
-        if img.dtype != np.uint8:
-            img_u8 = np.clip(img * 255.0, 0, 255).astype(np.uint8)
-        else:
-            img_u8 = img
-        img_pil = Image.fromarray(img_u8).convert("RGB")
-    else:
-        img_pil = img.convert("RGB")
-
-    img_pil = img_pil.resize((224, 224), Image.BILINEAR)
-    arr = np.asarray(img_pil, dtype=np.float32) / 255.0
-    assert arr.shape == (224, 224, 3), f"Resized image wrong shape: {arr.shape}"
-    return arr
-
 def mask_to_224(mask_np: np.ndarray) -> np.ndarray:
     # mask_np: HxW boolean or 0/1
     m = Image.fromarray(mask_np.astype(np.uint8) * 255)
     m = m.resize((224, 224), Image.NEAREST)  # IMPORTANT: keep mask crisp
     return (np.asarray(m) > 127)
-
-def bounds_for_segment(
-    image_np: np.ndarray,
-    mask: np.ndarray,
-    eps: float,
-    dilation_radius: int = 0,
-    freeze_mask: bool = False,
-    expected_hw: tuple[int,int] | None = (224,224)
-) -> Tuple[np.ndarray, np.ndarray]:
-
-    # --- 1. Resize FIRST ---
-    image_np = to_224_rgb01(image_np)   # <-- FIXED
-    mask = mask_to_224(mask)            # <-- FIXED
-
-    # --- 2. Now check shape ---
-    assert image_np.ndim == 3, f"image_np must be HxWxC, got {image_np.shape}"
-    H, W, C = image_np.shape
-    assert C == 3, f"Expected 3 channels, got C={C}"
-
-    if expected_hw is not None:
-        eh, ew = expected_hw
-        assert (H, W) == (eh, ew), f"Expected {(eh, ew)}, got {(H, W)}"
-
-    # --- 3. Dilation on RESIZED mask ---
-    if dilation_radius > 0:
-        struct = np.ones(
-            (2 * dilation_radius + 1, 2 * dilation_radius + 1),
-            dtype=bool,
-        )
-        mask = binary_dilation(mask, structure=struct)
-
-    base = image_np.copy()
-    lb = base.copy()
-    ub = base.copy()
-
-    if freeze_mask:
-        free_region = ~mask
-    else:
-        free_region = mask
-
-    ys, xs = np.where(free_region)
-    for y, x in zip(ys, xs):
-        for c in range(C):
-            lb[y, x, c] = np.clip(base[y, x, c] - eps, 0.0, 1.0)
-            ub[y, x, c] = np.clip(base[y, x, c] + eps, 0.0, 1.0)
-
-    lb_flat = lb.transpose(2, 0, 1).reshape(-1)
-    ub_flat = ub.transpose(2, 0, 1).reshape(-1)
-
-    # --- 4. Final sanity check ---
-    assert lb_flat.size == 3 * 224 * 224, f"Wrong input size: {lb_flat.size}"
-
-    return lb_flat, ub_flat
 
 def report_changed_inputs(
     lb_flat: np.ndarray,
@@ -134,6 +64,133 @@ def report_changed_inputs(
     if extra:
         row.update(extra)
     return row
+
+def _ensure_hwc01(image_np, size=224):
+    """
+    Returns float32 HWC in [0,1], shape (size,size,3).
+    Accepts HWC or CHW.
+    """
+    if hasattr(image_np, "detach"):  # torch tensor
+        image_np = image_np.detach().cpu().numpy()
+
+    img = np.asarray(image_np)
+
+    if img.ndim != 3:
+        raise ValueError(f"image_np must be 3D, got {img.shape}")
+
+    # CHW -> HWC
+    if img.shape[0] == 3 and img.shape[1] == size and img.shape[2] == size:
+        img = np.transpose(img, (1, 2, 0))
+
+    if not (img.shape[0] == size and img.shape[1] == size and img.shape[2] == 3):
+        raise ValueError(f"Expected image shape ({size},{size},3) or (3,{size},{size}), got {img.shape}")
+
+    img = img.astype(np.float32)
+
+    # If it came as uint8
+    if img.max() > 1.5:
+        img = img / 255.0
+
+    # Safety clip
+    img = np.clip(img, 0.0, 1.0)
+    return img
+
+def _ensure_hw_bool(mask, size=224):
+    """
+    Returns bool mask shape (size,size).
+    Accepts:
+      - (H,W) bool/int
+      - (1,H,W)
+      - (H,W,1)
+      - (3,H,W) / (H,W,3) (will collapse via any channel)
+    """
+    if hasattr(mask, "detach"):
+        mask = mask.detach().cpu().numpy()
+
+    m = np.asarray(mask)
+
+    # Collapse common shapes
+    if m.ndim == 3:
+        # (1,H,W) -> (H,W)
+        if m.shape[0] == 1 and m.shape[1] == size and m.shape[2] == size:
+            m = m[0]
+        # (H,W,1) -> (H,W)
+        elif m.shape[0] == size and m.shape[1] == size and m.shape[2] == 1:
+            m = m[..., 0]
+        # (H,W,3) -> (H,W)
+        elif m.shape[0] == size and m.shape[1] == size and m.shape[2] == 3:
+            m = np.any(m > 0, axis=2)
+        # (3,H,W) -> (H,W)
+        elif m.shape[0] == 3 and m.shape[1] == size and m.shape[2] == size:
+            m = np.any(m > 0, axis=0)
+        else:
+            raise ValueError(f"Unrecognized mask shape: {m.shape}")
+
+    if m.ndim != 2:
+        raise ValueError(f"mask must become 2D, got {m.shape}")
+
+    if not (m.shape[0] == size and m.shape[1] == size):
+        raise ValueError(f"Expected mask shape ({size},{size}), got {m.shape}")
+
+    # Make boolean
+    m = (m > 0)
+    return m
+
+def _debug_mask_stats(m_bool, tag=""):
+    total = m_bool.size
+    ones = int(m_bool.sum())
+    zeros = total - ones
+    ones_pct = 100.0 * ones / total if total else 0.0
+    zeros_pct = 100.0 * zeros / total if total else 0.0
+    uniq = [0, 1] if (ones > 0 and zeros > 0) else ([1] if ones == total else [0])
+    print(f"[DEBUG][MASK]{'['+tag+']' if tag else ''} unique={uniq} "
+          f"ones={ones_pct:.2f}% zeros={zeros_pct:.2f}% (H={m_bool.shape[0]}, W={m_bool.shape[1]})")
+
+
+def bounds_for_segment(
+    image_np,
+    mask,
+    eps=0.0039,
+    clip_min=0.0,
+    clip_max=1.0,
+    flatten_order="NCHW",  # "NCHW" or "NHWC"
+    debug_tag="",
+):
+    """
+    Create per-variable bounds for VNNLIB.
+
+    Inputs:
+      image_np: resized/cropped image (224x224) as HWC or CHW, in [0,1] (or uint8).
+      mask:     segment mask aligned to image, various shapes accepted; treated as foreground=True where >0.
+
+    Returns:
+      lb_flat, ub_flat: 1D float32 arrays of length 224*224*3
+                        flattened in specified order.
+    """
+    img = _ensure_hwc01(image_np, size=224)         # (224,224,3) float32
+    m   = _ensure_hw_bool(mask, size=224)           # (224,224) bool
+    if debug_tag:
+        _debug_mask_stats(m, tag=debug_tag)
+
+    # Expand mask to channels
+    m3 = np.repeat(m[:, :, None], 3, axis=2)        # (224,224,3) bool
+
+    eps = np.where(m3, eps, eps).astype(np.float32)  # (224,224,3)
+
+    lb = np.clip(img - eps, clip_min, clip_max).astype(np.float32)
+    ub = np.clip(img + eps, clip_min, clip_max).astype(np.float32)
+
+    # Flatten in the same order as your VNNLIB variable indexing expects
+    if flatten_order.upper() == "NHWC":
+        lb_flat = lb.reshape(-1)
+        ub_flat = ub.reshape(-1)
+    elif flatten_order.upper() == "NCHW":
+        lb_flat = np.transpose(lb, (2, 0, 1)).reshape(-1)  # C,H,W
+        ub_flat = np.transpose(ub, (2, 0, 1)).reshape(-1)
+    else:
+        raise ValueError("flatten_order must be 'NCHW' or 'NHWC'")
+
+    return lb_flat, ub_flat
 
 def write_vnnlib_for_segment(
     lb_flat: np.ndarray,

@@ -52,9 +52,136 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 from config_utils import load_config, ensure_dir
 from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
-from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment,to_224_rgb01, mask_to_224
+from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
 from vis_utils import visualize_segments
 
+import torch
+import torchvision.transforms.functional as F
+from torchvision.transforms.functional import InterpolationMode
+import matplotlib.pyplot as plt
+
+# VGG16 normalization (ImageNet)
+VGG16_MEAN = [0.485, 0.456, 0.406]
+VGG16_STD  = [0.229, 0.224, 0.225]
+
+
+def vgg16_preprocess_with_mask(img_pil, mask_pil, size=224):
+    """
+    Resize so SHORTER side = size, then center crop (size x size),
+    with aligned operations for image and mask.
+    Image: bilinear + antialias
+    Mask : nearest (critical)
+    Returns:
+      img_t: float32 tensor [3, size, size] normalized
+      mask_t: bool tensor [1, size, size]
+    """
+    img_r  = F.resize(img_pil, size, interpolation=InterpolationMode.BILINEAR, antialias=True)
+    mask_r = F.resize(mask_pil, size, interpolation=InterpolationMode.NEAREST)
+
+    img_c  = F.center_crop(img_r, [size, size])
+    mask_c = F.center_crop(mask_r, [size, size])
+
+    img_t = F.to_tensor(img_c)  # [3,H,W] in [0,1]
+    mask_t = (F.pil_to_tensor(mask_c) > 0)  # bool, shape could be [1,H,W] or [3,H,W]
+
+    # If mask is RGB, collapse channels
+    if mask_t.ndim == 3 and mask_t.shape[0] > 1:
+        mask_t = mask_t.any(dim=0, keepdim=True)
+
+    img_t = F.normalize(img_t, mean=VGG16_MEAN, std=VGG16_STD)
+    return img_t, mask_t
+
+def debug_print_mask_binary(mask_t: torch.Tensor, tag: str = ""):
+    """
+    Prints a binary sanity check (0/1) in percentage.
+    mask_t is expected bool or {0,1}. Shape [1,H,W] or [H,W].
+    """
+    if mask_t.ndim == 3:
+        m = mask_t[0]
+    else:
+        m = mask_t
+
+    # Convert to int for unique/value checks
+    m_int = m.to(torch.int32)
+    uniq = torch.unique(m_int).cpu().tolist()
+
+    total = m.numel()
+    ones = int(m.sum().item())
+    zeros = total - ones
+    ones_pct = 100.0 * ones / total if total else 0.0
+    zeros_pct = 100.0 * zeros / total if total else 0.0
+
+    print(f"[DEBUG][MASK]{'['+tag+']' if tag else ''} unique={uniq} "
+          f"ones={ones_pct:.2f}% zeros={zeros_pct:.2f}% (H={m.shape[-2]}, W={m.shape[-1]})")
+
+def save_preprocess_debug_vis(
+    out_dir: Path,
+    prefix: str,
+    img_pil_before: Image.Image,
+    mask_pil_before: Image.Image,
+    img_t_after: torch.Tensor,
+    mask_t_after: torch.Tensor,
+):
+    """
+    Saves:
+      - before_mask_bw.png
+      - before_overlay.png
+      - after_mask_bw.png
+      - after_overlay.png
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # --- BEFORE: convert to numpy ---
+    img_before = np.asarray(img_pil_before).astype(np.float32) / 255.0
+    mask_before = np.asarray(mask_pil_before)
+    if mask_before.ndim == 3:
+        mask_before = mask_before[..., 0]
+    mask_before = (mask_before > 0).astype(np.float32)
+
+    # --- AFTER: de-normalize image tensor back to [0,1] for visualization ---
+    img_after = img_t_after.detach().cpu().clone()
+    for c in range(3):
+        img_after[c] = img_after[c] * VGG16_STD[c] + VGG16_MEAN[c]
+    img_after = img_after.clamp(0, 1).permute(1, 2, 0).numpy()
+
+    if mask_t_after.ndim == 3:
+        m_after = mask_t_after[0].detach().cpu().numpy().astype(np.float32)
+    else:
+        m_after = mask_t_after.detach().cpu().numpy().astype(np.float32)
+
+    # --- Save BEFORE mask BW ---
+    plt.figure()
+    plt.imshow(mask_before, cmap="gray", vmin=0, vmax=1)
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(out_dir / f"{prefix}_before_mask_bw.png", dpi=200)
+    plt.close()
+
+    # --- Save BEFORE overlay ---
+    plt.figure()
+    plt.imshow(img_before)
+    plt.imshow(mask_before, cmap="gray", alpha=0.5, vmin=0, vmax=1)
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(out_dir / f"{prefix}_before_overlay.png", dpi=200)
+    plt.close()
+
+    # --- Save AFTER mask BW ---
+    plt.figure()
+    plt.imshow(m_after, cmap="gray", vmin=0, vmax=1)
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(out_dir / f"{prefix}_after_mask_bw.png", dpi=200)
+    plt.close()
+
+    # --- Save AFTER overlay ---
+    plt.figure()
+    plt.imshow(img_after)
+    plt.imshow(m_after, cmap="gray", alpha=0.5, vmin=0, vmax=1)
+    plt.axis("off")
+    plt.tight_layout()
+    plt.savefig(out_dir / f"{prefix}_after_overlay.png", dpi=200)
+    plt.close()
 
 def process_single_image(
     img_path: Path,
@@ -74,7 +201,6 @@ def process_single_image(
     print(f"Processing image: {img_path}")
     timeout = int(cfg["output"]["timeout"])
     eps = float(cfg["verification"]["epsilon"])
-    dilation_radius = int(cfg["verification"]["dilation_radius"])
     num_classes = int(cfg["verification"]["num_classes"])
 
     label = get_label_fn(img_path)
@@ -85,13 +211,6 @@ def process_single_image(
 
     image_pil = Image.open(img_path).convert("RGB")
 
-    # Keep original for SAM + visualization
-    image_np_orig = np.asarray(image_pil, dtype=np.float32) / 255.0
-
-    # Make model-sized version for VNNLIB
-    image_np_224 = to_224_rgb01(image_pil)  # -> (224,224,3) float32 [0,1]
-    print("[DEBUG] image_np_orig:", image_np_orig.shape, "image_np_224:", image_np_224.shape)
-
     seg_cfg = cfg["segmentation"]
     segments = run_segmentation_model(
         predictor=predictor,
@@ -101,6 +220,12 @@ def process_single_image(
         score_threshold=seg_cfg.get("score_threshold", 0.0),
         max_segments=seg_cfg.get("max_segments", None),
     )
+
+    # Use an all-ones mask so the image preprocessing uses the exact same
+    # "short side resize + center crop" logic as masks.
+    dummy_mask = Image.fromarray(np.ones((image_pil.size[1], image_pil.size[0]), dtype=np.uint8) * 255)
+    img_t_224, msk_t_224 = vgg16_preprocess_with_mask(image_pil, dummy_mask, size=224)
+    image_np_224 = img_t_224.detach().cpu().numpy()  # (3,224,224)
 
     if debug_dir is not None:
         img_basename = img_path.stem
@@ -114,15 +239,10 @@ def process_single_image(
     img_basename = img_path.stem
     csv_rows: List[Tuple[str, str, int]] = []
 
-    # 1) global epsilon VNNLIB
-    global_mask_224 = np.ones((224, 224), dtype=bool)
-
     lb_global_flat, ub_global_flat = bounds_for_segment(
         image_np=image_np_224,
-        mask=global_mask_224,
+        mask=msk_t_224,
         eps=eps,
-        dilation_radius=0,
-        freeze_mask=False,
     )
 
     global_stats = report_changed_inputs(
@@ -134,7 +254,6 @@ def process_single_image(
             "is_global": True,
             "segment_index": -1,
             "eps": eps,
-            "dilation_radius": dilation_radius,
             "score": None,
             "bbox": None,
         },
@@ -163,11 +282,29 @@ def process_single_image(
     #      - fix mask      -> object frozen, background can change
     #      - fix non-mask  -> background frozen, object can change
     for seg_idx, seg in enumerate(segments):
-        mask = seg["mask"]
+        mask_orig = seg["mask"]  # numpy HxW (bool or 0/1)
+        mask_pil_orig = Image.fromarray((mask_orig.astype(np.uint8) * 255))
 
-        mask_orig = seg["mask"]          # original HxW (e.g. 525x496)
-        mask_224 = mask_to_224(mask_orig) # -> (224,224) boolean
-        print("[DEBUG] mask_orig:", mask_orig.shape, "mask_224:", mask_224.shape)
+        # Apply the SAME resize/crop pipeline as the image:
+        img_t_seg, mask_t_seg = vgg16_preprocess_with_mask(image_pil, mask_pil_orig, size=224)
+
+        # Use the SAME layout choice as image_np_224
+        # mask as boolean HxW for your bounds code:
+        mask_224 = mask_t_seg[0].detach().cpu().numpy().astype(bool)
+
+        # Debug print: binary & percentage
+        debug_print_mask_binary(mask_t_seg, tag=f"{img_basename}_seg{seg_idx}")
+
+        # Visual debug (before+after)
+        if debug_dir is not None:
+            save_preprocess_debug_vis(
+                out_dir=debug_dir,
+                prefix=f"{img_basename}_seg{seg_idx}",
+                img_pil_before=image_pil,
+                mask_pil_before=mask_pil_orig,
+                img_t_after=img_t_seg,
+                mask_t_after=mask_t_seg,
+            )
 
         # ------------------------------------------------
         # (A) FIX MASK: only NON-MASK region can move
@@ -178,8 +315,6 @@ def process_single_image(
             image_np=image_np_224,
             mask=mask_224,
             eps=eps,
-            dilation_radius=dilation_radius,
-            freeze_mask=True,
         )
 
         seg_stats_fix_mask = report_changed_inputs(
@@ -191,7 +326,6 @@ def process_single_image(
                 "is_global": False,
                 "segment_index": seg_idx,
                 "eps": eps,
-                "dilation_radius": dilation_radius,
                 "score": float(seg["score"]),
                 "bbox": seg["bbox"],
                 "pattern": "fix_mask",
@@ -228,8 +362,6 @@ def process_single_image(
             image_np=image_np_224,
             mask=mask_224,
             eps=eps,
-            dilation_radius=dilation_radius,
-            freeze_mask=False,
         )
 
         seg_stats_fix_nonmask = report_changed_inputs(
@@ -241,7 +373,6 @@ def process_single_image(
                 "is_global": False,
                 "segment_index": seg_idx,
                 "eps": eps,
-                "dilation_radius": dilation_radius,
                 "score": float(seg["score"]),
                 "bbox": seg["bbox"],
                 "pattern": "fix_nonmask",
@@ -406,7 +537,6 @@ def main():
             "is_global",
             "segment_index",
             "eps",
-            "dilation_radius",
             "score",
             "bbox",
             "num_changed",
