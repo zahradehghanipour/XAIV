@@ -22,6 +22,11 @@ bab:
     method: sb
     input_split:
       enable: True
+
 attack:
-  pgd_order: input_bab
-  check_clean: True
+  pgd_order: skip
+
+
+# attack:
+#   pgd_order: input_bab
+#   check_clean: True
