@@ -425,6 +425,8 @@ def main():
     else:
         print(f"[ONNX] Using existing {onnx_target}")
 
+    ort.set_default_logger_severity(3)
+
     onnx_rel_path = str(Path("onnx") / onnx_target.name)
     onnx_session = ort.InferenceSession(str(onnx_target))
 

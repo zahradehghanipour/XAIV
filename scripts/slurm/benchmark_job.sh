@@ -26,7 +26,7 @@ module load cuda/12.2                         # Load CUDA toolkit
 # -- MAIN VARIABLES
 BENCHMARK="vggnet16_benchmark2022_segmented"
 CONFIG="abcrown/vggnet16.yaml"
-CWD="$WORK/my_projects/DLVerifier"
+CWD="$WORK/my_projects/XAIV"
 CONDA_ENV_NAME="abcrown"
 
 # -- load conda and activate environment

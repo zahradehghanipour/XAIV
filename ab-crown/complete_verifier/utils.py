@@ -395,7 +395,7 @@ def print_model(model):
         for node in model.nodes():
             if node.perturbed and node.requires_input_bounds:
                 print('  ', node)
-        breakpoint()
+        # breakpoint()
 
 
 def check_auto_enlarge_batch_size(auto_batch_size):
