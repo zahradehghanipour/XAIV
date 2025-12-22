@@ -124,16 +124,17 @@ def load_model_and_vnnlib(file_root, csv_item):
 
 
 def adhoc_tuning(data_min, data_max, model_ori):
-    if 'vgg' in arguments.Config['general']['root_path']:
-        perturbed = (data_max - data_min > 0).sum()
-        print('Number of perturbed inputs:', int(perturbed))
-        if perturbed > 10000:
-            print('WARNING: prioritizing attack due to too many perturbed pixels on VGG')
-            print('Setting arguments.Config["attack"]["pgd_order"] to "before"')
-            arguments.Config['attack']['pgd_order'] = 'before'
-        if perturbed > 100:
-            print('Setting bound_prop_method to crown')
-            arguments.Config['solver']['bound_prop_method'] = 'crown'
+    # ZD, commenting this for experimental reasons
+    # if 'vgg' in arguments.Config['general']['root_path']:
+    #     perturbed = (data_max - data_min > 0).sum()
+    #     print('Number of perturbed inputs:', int(perturbed))
+    #     if perturbed > 10000:
+    #         print('WARNING: prioritizing attack due to too many perturbed pixels on VGG')
+    #         print('Setting arguments.Config["attack"]["pgd_order"] to "before"')
+    #         arguments.Config['attack']['pgd_order'] = 'before'
+    #     if perturbed > 100:
+    #         print('Setting bound_prop_method to crown')
+    #         arguments.Config['solver']['bound_prop_method'] = 'crown'
 
     if 'nn4sys' in arguments.Config['general']['root_path']:
         if data_max.shape == torch.Size([1, 1]):

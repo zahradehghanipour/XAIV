@@ -4,7 +4,7 @@ vis_utils.py
 Utility functions for visualizing segmentation masks.
 
 Inputs:
-    - Original image (H×W×3, float or uint8)
+    - Original image (H×W×3)
     - A list of segment dicts containing masks and scores
     - Output directory for debug images
 
@@ -62,4 +62,4 @@ def visualize_segments(
         seg_img = Image.fromarray(overlay)
         seg_path = out_dir / f"{img_basename}_seg{i}_score_{score:.3f}.png"
         seg_img.save(seg_path)
-        print(f"[VIS] Saved segment {i} overlay to: {seg_path}")
+        # print(f"[VIS] Saved segment {i} overlay to: {seg_path}")
