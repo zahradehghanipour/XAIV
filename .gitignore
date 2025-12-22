@@ -1,3 +1,13 @@
 benchmarks/vggnet16_benchmark2022_segmented/onnx/
 benchmarks/vggnet16_benchmark2022_segmented/vnnlib/*.vnnlib
 benchmarks/vggnet16_benchmark2022
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated artifacts
+results/
+onnx/
+benchmarks/*/vnnlib/
