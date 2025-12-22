@@ -7,7 +7,6 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
 #SBATCH --partition=boost_usr_prod
-#SBATCH --qos=boost_qos_dbg
 #SBATCH --gres=gpu:1
 #SBATCH --mail-type=FAIL,END
 #SBATCH --export=ALL
