@@ -24,9 +24,5 @@ bab:
       enable: True
 
 attack:
-  pgd_order: skip
-
-
-# attack:
-#   pgd_order: input_bab
-#   check_clean: True
+  pgd_order: input_bab
+  check_clean: True
