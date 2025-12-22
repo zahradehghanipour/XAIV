@@ -1235,6 +1235,10 @@ class ConfigHandler:
                           hierarchy=h + ["max_num_domains"])
 
         h = ["debug"]
+        self.add_argument("--sanity_check", type=str, default="off",
+                          choices=["off", "Full", "Full+Graph"],
+                          help='Debugging mode for sanity checks: "Full" enables extra logging and "Full+Graph" additionally saves convergence plots.',
+                          hierarchy=h + ["sanity_check"])
         self.add_argument('--view_model', action='store_true',
                           help='Print more detailed model information for analyis.',
                           hierarchy=h + ['view_model'])

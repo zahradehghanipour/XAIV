@@ -23,6 +23,9 @@ bab:
     input_split:
       enable: True
 
+debug:
+  sanity_check: Full+Graph
+
 attack:
   pgd_order: input_bab
   check_clean: True
