@@ -1353,16 +1353,15 @@ class ABCROWN:
                 )
             else:
                 #[ZD], adding this to control the output
-                payload = (
-                    result,
-                    "", "", "",
-                    time.time() - self.logger.start_time, # all_time
-                    arguments.Globals["out"]["initial_unstable_neurons"],
-                )
+                tmp_path = self.logger.save_path  # IMPORTANT: use logger save_path
 
-                # overwrite (tmp file)
-                with open(save_path, "w") as f:
-                    f.write(str(payload))
+                all_time = str(time.time() - self.logger.start_time)
+                init_unstable = str(arguments.Globals["out"].get("initial_unstable_neurons", ""))
+
+                tail = f"{result},{""},{""},{""},{all_time},{init_unstable}"
+
+                with open(tmp_path, "w") as f:
+                    f.write(tail + "\n")
 
                 return (
                     result,
