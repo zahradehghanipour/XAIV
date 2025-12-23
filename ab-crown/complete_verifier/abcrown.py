@@ -1355,6 +1355,9 @@ class ABCROWN:
                 #[ZD], adding this to control the output
                 tmp_path = self.logger.save_path  # IMPORTANT: use logger save_path
 
+                import pdb
+                breakpoint()
+
                 lb_minus_rhs = ""
                 domains_visited = ""
                 bab_time = ""
