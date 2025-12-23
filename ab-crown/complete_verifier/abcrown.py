@@ -1316,25 +1316,28 @@ class ABCROWN:
 
         self.logger.finish()
 
-        # [MAX] added this to make it easier to get results from within python.
+        # [ZD] robust mapping from verified_status -> result
+        s = (verified_status or "").strip().lower()
+
         if self.logger.run_mode == "single_vnnlib":
-            if (
-                "timeout" == verified_status
-                or "timed out" == verified_status
-                or "unknown" == verified_status
-            ):
+            if s in {"timeout", "timed out", "unknown"}:
                 result = "timeout"
-            elif (
-                "unsafe" == verified_status 
-                or "unsafe-pgd" == verified_status
-            ):
+
+            elif s.startswith("unsafe") or s.startswith("sat"):
+                # unsafe, unsafe-pgd, unsafe-bab, unsafe-xxx ...
                 result = "sat"
-            elif "safe" == verified_status:
+
+            elif s == "safe" or s.startswith("safe") or s.startswith("unsat"):
                 result = "unsat"
-            elif "threshold" == verified_status:
+
+            elif s == "threshold":
                 result = "threshold"
+
             else:
-                raise ValueError(f"Unknown verified_status {verified_status}")
+                # don't kill the whole run; mark as error and keep going
+                result = "error"
+                # (optional) log it
+                print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
             if len(self.logger.bab_ret) != 0:
                 return (

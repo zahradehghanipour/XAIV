@@ -1,2 +1,3 @@
 benchmarks/vggnet16_benchmark2022_segmented/onnx/
 benchmarks/vggnet16_benchmark2022_segmented/vnnlib/*.vnnlib
+benchmarks/vggnet16_benchmark2022
