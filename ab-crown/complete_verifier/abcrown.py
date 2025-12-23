@@ -1362,7 +1362,7 @@ class ABCROWN:
 
                 # overwrite (tmp file)
                 with open(save_path, "w") as f:
-                    f.write(json.dumps(payload) + "\n")
+                    f.write(payload)
 
                 return (
                     result,
