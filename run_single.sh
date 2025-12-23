@@ -38,10 +38,9 @@ exit_code=$?
 
 if [[ $exit_code -eq 0 ]]; then
     # -- read αβ-CROWN result and save to the main results file, or log an error.
+    result=$(cat $tmp_results_file)
 
-    result_line=$(tr -d '\r' < "$tmp_results_file")
-    echo "$instance_id,$onnx,$vnnlib,$timeout,$result_line" >> "$results_file"
-    
+    echo "$instance_id,$onnx,$vnnlib,$timeout,$result" >> $results_file
     # -- remove temporary αβ-CROWN result file
     rm $tmp_results_file
 else

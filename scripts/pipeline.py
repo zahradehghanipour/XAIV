@@ -495,10 +495,9 @@ def main():
     # Write instances.csv
     # -----------------------------
     print(f"\n[CSV] Writing {len(all_rows)} rows to {instances_csv_path}")
-    with instances_csv_path.open("w", newline="") as f:
-        writer = csv.writer(f)
-        for row in all_rows:
-            writer.writerow(row)
+    with instances_csv_path.open("w", encoding="utf-8", newline="\n") as f:
+        writer = csv.writer(f, lineterminator="\n")
+        writer.writerows(all_rows)
 
     if change_stats_rows:
         fieldnames = [
