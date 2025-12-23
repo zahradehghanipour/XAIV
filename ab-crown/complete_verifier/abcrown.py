@@ -39,6 +39,7 @@ import gc
 import torch
 import numpy as np
 from collections import defaultdict
+import json
 
 import arguments
 from auto_LiRPA import BoundedTensor
@@ -1351,6 +1352,18 @@ class ABCROWN:
                     # if "stable_ratio" in arguments.Globals["out"]
                 )
             else:
+                payload = (
+                    result,
+                    "", "", "",
+                    time.time() - self.logger.start_time, # all_time
+                    arguments.Globals["out"]["initial_unstable_neurons"],
+                )
+
+                os.makedirs(os.path.dirname(save_path), exist_ok=True)
+                # overwrite (tmp file)
+                with open(save_path, "w") as f:
+                    f.write(json.dumps(payload) + "\n")
+
                 return (
                     result,
                     "", "", "",
