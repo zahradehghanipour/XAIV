@@ -1182,6 +1182,7 @@ class AdamClipping(Optimizer):
 
         return loss
 
+
 def boundary_attack(model, x, data_min, data_max):
     perturbation_index = ((data_max - data_min) != 0).view(data_max.shape[0], -1).nonzero()
     # index of the pixels perturbed
@@ -1200,8 +1201,6 @@ def boundary_attack(model, x, data_min, data_max):
         adv_example = torch.cat([adv_example, adv_example_neg], dim=0)
 
     return adv_example.view(-1, *data_max.shape[1:])
-
-
 
 
 def attack_with_general_specs(model, x, data_min, data_max,
@@ -1635,6 +1634,7 @@ def attack_after_crown(lb, vnnlib, model_ori, x, decision_thresh):
         crown_filtered_constraints=crown_filtered_constraints)
 
     return verified_success, attack_images
+
 
 def default_adv_verifier(attack_image, attack_output, vnnlib=None, check_output=False):
     """ 

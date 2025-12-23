@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-instance_id=$1
+instance_id=$28
 
 BENCHMARK="vggnet16_benchmark2022_segmented"
 CONFIG="abcrown/vggnet16.yaml"

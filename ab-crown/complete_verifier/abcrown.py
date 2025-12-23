@@ -1339,6 +1339,8 @@ class ABCROWN:
                 # (optional) log it
                 print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
+            print("verified_status :", verified_status )
+
             if len(self.logger.bab_ret) != 0:
                 return (
                     result, # verification result
