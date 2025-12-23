@@ -1359,9 +1359,7 @@ class ABCROWN:
                     time.time() - self.logger.start_time, # all_time
                     arguments.Globals["out"]["initial_unstable_neurons"],
                 )
-                if arguments.Config['general']['results_file']:
-                    save_path = arguments.Config['general']['results_file']
-                os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
                 # overwrite (tmp file)
                 with open(save_path, "w") as f:
                     f.write(json.dumps(payload) + "\n")
