@@ -1339,9 +1339,6 @@ class ABCROWN:
                 # (optional) log it
                 print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
-
-            print ("len(self.logger.bab_ret)", len(self.logger.bab_ret))
-            
             if len(self.logger.bab_ret) != 0:
                 return (
                     result, # verification result
@@ -1354,11 +1351,6 @@ class ABCROWN:
                     # if "stable_ratio" in arguments.Globals["out"]
                 )
             else:
-
-                print("result :", result)
-                print("time :", time.time() - self.logger.start_time)
-                print("i dont know! :", arguments.Globals["out"]["initial_unstable_neurons"])
-
                 return (
                     result,
                     "", "", "",

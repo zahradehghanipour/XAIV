@@ -36,6 +36,8 @@ python ab-crown/complete_verifier/abcrown.py \
     --view_model
 exit_code=$?
 
+result=$(cat $tmp_results_file)
+
 if [[ $exit_code -eq 0 ]]; then
     # -- read αβ-CROWN result and save to the main results file, or log an error.
     result=$(cat $tmp_results_file)
