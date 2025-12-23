@@ -1351,6 +1351,7 @@ class ABCROWN:
                     # if "stable_ratio" in arguments.Globals["out"]
                 )
             else:
+                print("ta inja?")
                 return (
                     result,
                     "", "", "",
