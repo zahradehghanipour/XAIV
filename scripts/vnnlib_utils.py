@@ -124,9 +124,8 @@ def write_vnnlib_for_segment(
 
         f.write("; Input bounds\n")
         for i in range(N):
-            if lb[i]!=ub[i]:
-                f.write(f"(assert (>= X_{i} {lb[i]:.6f}))\n")
-                f.write(f"(assert (<= X_{i} {ub[i]:.6f}))\n")
+            f.write(f"(assert (>= X_{i} {lb[i]:.6f}))\n")
+            f.write(f"(assert (<= X_{i} {ub[i]:.6f}))\n")
         f.write("\n")
 
         if target_label is not None:
