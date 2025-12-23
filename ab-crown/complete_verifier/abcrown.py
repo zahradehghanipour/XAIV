@@ -1362,7 +1362,7 @@ class ABCROWN:
 
                 # overwrite (tmp file)
                 with open(save_path, "w") as f:
-                    f.write(payload)
+                    f.write(str(payload))
 
                 return (
                     result,
