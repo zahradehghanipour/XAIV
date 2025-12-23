@@ -56,7 +56,7 @@ IFS="," read onnx vnnlib timeout <<< $(sed -n "${SLURM_ARRAY_TASK_ID}p" benchmar
 # -- RUN αβ-CROWN
 python ab-crown/complete_verifier/abcrown.py \
     --instance_id "$SLURM_ARRAY_TASK_ID" \
-    --config configs/$BENCHMARK/$CONFIG \
+    --config configs/$CONFIG \
     --onnx_path benchmarks/$BENCHMARK/$onnx \
     --vnnlib_path benchmarks/$BENCHMARK/$vnnlib \
     --timeout $timeout \
