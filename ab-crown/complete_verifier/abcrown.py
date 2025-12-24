@@ -1341,6 +1341,20 @@ class ABCROWN:
                 print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
             if len(self.logger.bab_ret) != 0:
+                tmp_path = self.logger.save_path 
+
+                lb_minus_rhs = self.logger.bab_ret[0][1]  # lb-rhs
+                domains_visited = self.logger.bab_ret[0][2] # branching decisions
+                bab_time = self.logger.bab_ret[0][3] # bab_time
+
+                all_time = str(time.time() - self.logger.start_time)
+                init_unstable = str(arguments.Globals["out"].get("initial_unstable_neurons", ""))
+
+                tail = f"{result},{lb_minus_rhs},{domains_visited},{bab_time},{all_time},{init_unstable}"
+
+                with open(tmp_path, "w") as f:
+                    f.write(tail + "\n")
+                
                 return (
                     result, # verification result
                     self.logger.bab_ret[0][1],  # lb-rhs
