@@ -1340,6 +1340,19 @@ class ABCROWN:
                 # (optional) log it
                 print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
+            import json, inspect
+            frame = inspect.currentframe()
+            json.dump(
+                {
+                    "locals": frame.f_locals,
+                    "globals": frame.f_globals
+                },
+                open("DEBUG_scope.json", "w"),
+                default=str,
+                indent=2
+            )
+
+
             if len(self.logger.bab_ret) != 0:
                 tmp_path = self.logger.save_path 
 
