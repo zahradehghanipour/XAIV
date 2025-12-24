@@ -17,29 +17,11 @@ Outputs:
         }
 """
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
 from sam2.sam2_image_predictor import SAM2ImagePredictor
-
-
-def load_sam2_predictor(seg_cfg: Dict) -> SAM2ImagePredictor:
-    """Load a SAM2ImagePredictor with device selection."""
-    device_cfg = seg_cfg.get("device", "auto")
-    if device_cfg == "auto":
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-    else:
-        device = device_cfg
-
-    print(f"[SAM2] Using device: {device}")
-
-    predictor = SAM2ImagePredictor.from_pretrained(
-        seg_cfg["model_name"],
-        device=device,
-    )
-    predictor.model.eval()
-    return predictor
 
 
 def run_segmentation_model(
@@ -49,24 +31,32 @@ def run_segmentation_model(
     iou_threshold: float = 0.8,
     score_threshold: float = 0.0,
     max_segments: Optional[int] = None,
+    point_coords: Optional[np.ndarray] = None,   # (N,2) in (x,y)
+    point_labels: Optional[np.ndarray] = None,   # (N,) 1=FG, 0=BG
 ):
     """
     image_np: H x W x 3 in [0,1]
-    Returns a list of segments:
-      {"bbox": [x_min, y_min, x_max, y_max],
-       "mask": 2D bool (H,W),
-       "score": float}
+
+    If point_coords/point_labels are provided, they are used as prompts.
+    Otherwise a grid prompt is generated.
     """
-    H, W, _ = image_np.shape
+    H, W = image_np.shape[:2]
+    predictor.set_image(image_np)
 
-    image_uint8 = (np.clip(image_np, 0.0, 1.0) * 255).astype(np.uint8)
-    predictor.set_image(image_uint8)
+    # --- choose prompts ---
+    if point_coords is None or point_labels is None:
+        # grid prompts (your current behavior)
+        xs = np.linspace(0, W - 1, grid_size, dtype=np.float32)
+        ys = np.linspace(0, H - 1, grid_size, dtype=np.float32)
+        grid_x, grid_y = np.meshgrid(xs, ys)
+        point_coords = np.stack([grid_x.ravel(), grid_y.ravel()], axis=-1)
+        point_labels = np.ones(len(point_coords), dtype=np.int64)
+    else:
+        point_coords = np.asarray(point_coords, dtype=np.float32).reshape(-1, 2)
+        point_labels = np.asarray(point_labels, dtype=np.int64).reshape(-1)
 
-    ys = np.linspace(0, H - 1, grid_size).astype(int)
-    xs = np.linspace(0, W - 1, grid_size).astype(int)
-    grid_y, grid_x = np.meshgrid(ys, xs, indexing="ij")
-    point_coords = np.stack([grid_x.ravel(), grid_y.ravel()], axis=-1)
-    point_labels = np.ones(len(point_coords), dtype=np.int64)
+        if len(point_coords) != len(point_labels):
+            raise ValueError("point_coords and point_labels must have same length")
 
     masks, scores, logits = predictor.predict(
         point_coords=point_coords[None, ...],
@@ -121,3 +111,21 @@ def run_segmentation_model(
 
     print(f"[SAM2] Found {len(segments)} segments after filtering")
     return segments
+
+
+def load_sam2_predictor(seg_cfg: Dict) -> SAM2ImagePredictor:
+    """Load a SAM2ImagePredictor with device selection."""
+    device_cfg = seg_cfg.get("device", "auto")
+    if device_cfg == "auto":
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    else:
+        device = device_cfg
+
+    print(f"[SAM2] Using device: {device}")
+
+    predictor = SAM2ImagePredictor.from_pretrained(
+        seg_cfg["model_name"],
+        device=device,
+    )
+    predictor.model.eval()
+    return predictor

@@ -50,6 +50,38 @@ import onnxruntime as ort
 VGG16_MEAN = [0.485, 0.456, 0.406]
 VGG16_STD = [0.229, 0.224, 0.225]
 
+# pipeline.py
+import json
+
+def load_manual_prompts(prompts_path: Path) -> dict:
+    with prompts_path.open("r") as f:
+        return json.load(f)
+
+def prompts_for_image(prompts_db: dict, image_key: str):
+    """
+    prompts_db example:
+    {
+      "myimg.jpg": {
+        "foreground": [[x,y], [x,y]],
+        "background": [[x,y]]
+      }
+    }
+    """
+    entry = prompts_db.get(image_key)
+    if entry is None:
+        return None, None
+
+    fg = entry.get("foreground", [])
+    bg = entry.get("background", [])
+
+    # labels: 1 for FG, 0 for BG
+    coords = np.array(fg + bg, dtype=np.float32)
+    labels = np.array([1] * len(fg) + [0] * len(bg), dtype=np.int64)
+
+    if coords.size == 0:
+        return None, None
+    return coords, labels
+
 def vgg16_preprocess(img_pil, normalize=True, size=224):
     img_r = F.resize(img_pil, size, interpolation=InterpolationMode.BILINEAR, antialias=True)
     img_c = F.center_crop(img_r, [size, size])
@@ -206,15 +238,38 @@ def process_single_image(
     img_t_224 = vgg16_preprocess(image, normalize=False)       # CHW in [0,1]
     image_np_224 = img_t_224.permute(1, 2, 0).numpy()          # HWC in [0,1] for run_segmentation_model
 
+
+
+
     seg_cfg = cfg["segmentation"]
-    segments = run_segmentation_model(
-        predictor=predictor,
-        image_np=image_np_224,
-        grid_size=seg_cfg.get("grid_size", 6),
-        iou_threshold=seg_cfg.get("iou_threshold", 0.8),
-        score_threshold=seg_cfg.get("score_threshold", 0.0),
-        max_segments=seg_cfg.get("max_segments", None),
-    )
+
+    point_coords = None
+    point_labels = None
+
+    if seg_cfg.get("prompt_mode", "grid") == "manual":
+        prompts_path = Path(seg_cfg["prompts_path"])
+        prompts_db = load_manual_prompts(prompts_path)
+
+        # IMPORTANT: pick a consistent key. I suggest img basename.
+        # e.g. "n01443537_12345.jpg" or whatever your img file name is.
+        coords, labels = prompts_for_image(prompts_db, Path(img_path).name)
+
+        if coords is None:
+            print(f"[PROMPTS] No manual prompts found for {Path(img_path).name}; falling back to grid.")
+        else:
+            point_coords, point_labels = coords, labels
+
+
+        segments = run_segmentation_model(
+            predictor=predictor,
+            image_np=image_np_224,
+            grid_size=seg_cfg.get("grid_size", 6),
+            iou_threshold=seg_cfg.get("iou_threshold", 0.8),
+            score_threshold=seg_cfg.get("score_threshold", 0.0),
+            max_segments=seg_cfg.get("max_segments", None),
+            point_coords=point_coords,
+            point_labels=point_labels,
+        )
 
     img_basename = img_path.stem
     # visualize_segments(
@@ -418,7 +473,7 @@ def main():
 
     # TODO: delete later
     import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
