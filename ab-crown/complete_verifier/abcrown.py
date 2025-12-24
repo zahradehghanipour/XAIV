@@ -1340,18 +1340,7 @@ class ABCROWN:
                 # (optional) log it
                 print(f"[WARN] Unknown verified_status={verified_status!r}, mapping to result='error'")
 
-            import json, inspect
-            frame = inspect.currentframe()
-            json.dump(
-                {
-                    "locals": frame.f_locals,
-                    "globals": frame.f_globals
-                },
-                open("DEBUG_scope.json", "w"),
-                default=str,
-                indent=2
-            )
-
+            status = f"{result} {verified_success}"
 
             if len(self.logger.bab_ret) != 0:
                 tmp_path = self.logger.save_path 
@@ -1363,7 +1352,7 @@ class ABCROWN:
                 all_time = str(time.time() - self.logger.start_time)
                 init_unstable = str(arguments.Globals["out"].get("initial_unstable_neurons", ""))
 
-                tail = f"{result},{lb_minus_rhs},{domains_visited},{bab_time},{all_time},{init_unstable}"
+                tail = f"{status},{lb_minus_rhs},{domains_visited},{bab_time},{all_time},{init_unstable}"
 
                 with open(tmp_path, "w") as f:
                     f.write(tail + "\n")
@@ -1382,9 +1371,7 @@ class ABCROWN:
                 #[ZD], adding this to control the output
                 tmp_path = self.logger.save_path  # IMPORTANT: use logger save_path
 
-                import pdb
-                breakpoint()
-
+                # [ZD] note that verified_success is placed here
                 lb_minus_rhs = ""
                 domains_visited = ""
                 bab_time = ""
@@ -1392,7 +1379,7 @@ class ABCROWN:
                 all_time = str(time.time() - self.logger.start_time)
                 init_unstable = str(arguments.Globals["out"].get("initial_unstable_neurons", ""))
 
-                tail = f"{result},{lb_minus_rhs},{domains_visited},{bab_time},{all_time},{init_unstable}"
+                tail = f"{status},{lb_minus_rhs},{domains_visited},{bab_time},{all_time},{init_unstable}"
 
                 with open(tmp_path, "w") as f:
                     f.write(tail + "\n")

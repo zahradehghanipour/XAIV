@@ -28,7 +28,7 @@ Purpose:
 import argparse
 import csv
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Callable, Dict, Iterable, List, Optional, Tuple, Union
 
 import numpy as np
 from PIL import Image
@@ -370,6 +370,28 @@ def process_single_image(
     return csv_rows
 
 
+def expand_image_entries(entries: Iterable[Union[str, Path]]) -> List[Path]:
+    """
+    Normalize a mixed list of files/dirs into a list of image files.
+    Directories are expanded to common image formats; non-dirs are passed through.
+    """
+    allowed_suffixes = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"}
+    expanded: List[Path] = []
+    for entry in entries:
+        path = Path(entry)
+        if path.is_dir():
+            expanded.extend(
+                sorted(
+                    f
+                    for f in path.iterdir()
+                    if f.is_file() and f.suffix.lower() in allowed_suffixes
+                )
+            )
+        else:
+            expanded.append(path)
+    return expanded
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Image dataset → SAM2 segmentation → VNNLIB pipeline"
@@ -451,7 +473,7 @@ def main():
     images_to_process: List[Path] = []
 
     if args.images:
-        images_to_process.extend(Path(p) for p in args.images)
+        images_to_process.extend(expand_image_entries(args.images))
 
     if args.indices is not None and len(args.indices) > 0:
         for idx in args.indices:
@@ -459,10 +481,11 @@ def main():
     else:
         cfg_indices = cfg.get("run", {}).get("indices", [])
         cfg_paths = cfg.get("run", {}).get("image_paths", [])
+        if isinstance(cfg_paths, (str, Path)):
+            cfg_paths = [cfg_paths]
         for idx in cfg_indices:
             images_to_process.append(all_images[idx])
-        for p in cfg_paths:
-            images_to_process.append(Path(p))
+        images_to_process.extend(expand_image_entries(cfg_paths))
 
     if not images_to_process:
         raise ValueError("No images specified. Use --indices/--images or config.run.*")
