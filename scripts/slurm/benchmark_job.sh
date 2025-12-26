@@ -1,6 +1,7 @@
+#!/bin/bash
 #SBATCH --job-name=segmented_imagenet
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=10532 - 11502
+#SBATCH --array=10532-11500
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
