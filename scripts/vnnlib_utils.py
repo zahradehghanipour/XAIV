@@ -69,26 +69,54 @@ def bounds_for_segment(
     image_np: np.ndarray,
     eps: float,
     mask: Optional[np.ndarray] = None,
+    max_pixels: Optional[int] = None,
+    select: str = "random",
+    seed: int = 0,
 ) -> Tuple[np.ndarray, np.ndarray]:
+    """Create (lb, ub) bounds with an optional *pixel budget*.
+
+    Semantics:
+      - If ``mask`` is provided: pixels where mask==True are eligible to change.
+        Else: all pixels are eligible.
+      - If ``max_pixels`` is provided: at most that many *spatial* pixels (H×W)
+        are allowed to change. (All 3 RGB channels for a chosen pixel change.)
+
+    Notes:
+      - ``image_np`` must be H×W×C in [0,1] (unnormalized).
+      - ``select`` currently supports: "random".
     """
-    Build lower/upper bounds by allowing perturbations only where mask == 1.
-    Outside the mask, the pixel is fixed (lb == ub == image value).
-    """
+
     img = np.asarray(image_np, dtype=np.float32)
     if img.ndim != 3:
         raise ValueError(f"image_np must be 3D (HWC); got shape {img.shape}")
-    
-    H, W = img.shape[0], img.shape[1]
+    H, W, C = img.shape
+    if C != 3:
+        # Not strictly required, but this matches your VGG16 pipeline.
+        raise ValueError(f"Expected 3 channels (RGB); got C={C}")
+
     mask_bool = np.ones((H, W), dtype=bool) if mask is None else np.asarray(mask, dtype=bool)
     if mask_bool.shape != (H, W):
         raise ValueError(f"mask shape {mask_bool.shape} must match spatial dims {(H, W)}")
 
-    # (H, W, 1) so it broadcasts over RGB channels
-    eps_tensor = np.where(mask_bool[:, :, None], eps, 0.0).astype(np.float32)
+    if max_pixels is not None:
+        max_pixels = int(max_pixels)
+        if max_pixels < 0:
+            raise ValueError("max_pixels must be >= 0")
+        ys, xs = np.where(mask_bool)
+        n = int(ys.size)
 
+        if n > max_pixels:
+            if select != "random":
+                raise ValueError(f"Unknown select='{select}'. Only 'random' is implemented.")
+            rng = np.random.default_rng(seed)
+            idx = rng.choice(n, size=max_pixels, replace=False)
+            limited = np.zeros((H, W), dtype=bool)
+            limited[ys[idx], xs[idx]] = True
+            mask_bool = limited
+
+    eps_tensor = np.where(mask_bool[:, :, None], float(eps), 0.0).astype(np.float32)
     lb = img - eps_tensor
     ub = img + eps_tensor
-
     return lb.reshape(-1), ub.reshape(-1)
 
 def write_vnnlib_for_segment(

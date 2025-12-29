@@ -241,6 +241,14 @@ def process_single_image(
 
 
 
+    ver_cfg = cfg.get("verification", {})
+    pixel_counts = ver_cfg.get("perturb_pixels", [None])
+    # allow a single int as shorthand
+    if isinstance(pixel_counts, int):
+        pixel_counts = [pixel_counts]
+    select = ver_cfg.get("perturb_select", "random")
+    seed = int(ver_cfg.get("perturb_seed", 0))
+
     seg_cfg = cfg["segmentation"]
 
     point_coords = None
@@ -260,16 +268,17 @@ def process_single_image(
             point_coords, point_labels = coords, labels
 
 
-        segments = run_segmentation_model(
-            predictor=predictor,
-            image_np=image_np_224,
-            grid_size=seg_cfg.get("grid_size", 6),
-            iou_threshold=seg_cfg.get("iou_threshold", 0.8),
-            score_threshold=seg_cfg.get("score_threshold", 0.0),
-            max_segments=seg_cfg.get("max_segments", None),
-            point_coords=point_coords,
-            point_labels=point_labels,
-        )
+    # Always run segmentation (grid by default; manual prompts if provided above)
+    segments = run_segmentation_model(
+        predictor=predictor,
+        image_np=image_np_224,
+        grid_size=seg_cfg.get("grid_size", 6),
+        iou_threshold=seg_cfg.get("iou_threshold", 0.8),
+        score_threshold=seg_cfg.get("score_threshold", 0.0),
+        max_segments=seg_cfg.get("max_segments", None),
+        point_coords=point_coords,
+        point_labels=point_labels,
+    )
 
     img_basename = img_path.stem
     # visualize_segments(
@@ -281,145 +290,167 @@ def process_single_image(
     
     csv_rows: List[Tuple[str, str, int]] = []
 
-    # 1) VNNLIBs for original image
+    # 1) VNNLIBs for original image (global perturbation), for every (eps, k)
     for eps in epsilons:
-        global_vnnlib = vnnlib_dir / f"{img_basename}_global_eps_{eps:.4f}.vnnlib"
-        lb_global, ub_global = bounds_for_segment(image_np_224, eps=eps)
-
-        write_vnnlib_for_segment(
-            lb=lb_global,
-            ub=ub_global,
-            label=label,
-            num_classes=num_classes,
-            out_path=global_vnnlib,
-            target_label=runner_up_label,
-        )
-
-        global_stats = report_changed_inputs(
-            lb_flat=lb_global,
-            ub_flat=ub_global,
-            tag=f"{img_basename}_global",
-            extra={
-                "image": img_basename,
-                "is_global": True,
-                "segment_index": -1,
-                "eps": eps,
-                "score": None,
-                "bbox": None,
-            },
-        )
-        
-        if stats_rows is not None:
-            stats_rows.append(global_stats)
-
-        csv_rows.append(
-            (
-                onnx_rel_path,
-                str(Path("vnnlib") / global_vnnlib.name),
-                timeout,
+        for k in pixel_counts:
+            global_vnnlib = vnnlib_dir / f"{img_basename}_global_k{k}_eps_{eps:.4f}.vnnlib"
+            lb_global, ub_global = bounds_for_segment(
+                image_np_224,
+                eps=eps,
+                mask=None,
+                max_pixels=k,
+                select=select,
+                seed=seed,
             )
-        )
+
+            write_vnnlib_for_segment(
+                lb=lb_global,
+                ub=ub_global,
+                label=label,
+                num_classes=num_classes,
+                out_path=global_vnnlib,
+                target_label=runner_up_label,
+            )
+
+            global_stats = report_changed_inputs(
+                lb_flat=lb_global,
+                ub_flat=ub_global,
+                tag=f"{img_basename}_global",
+                extra={
+                    "image": img_basename,
+                    "is_global": True,
+                    "segment_index": -1,
+                    "eps": eps,
+                    "k": k,
+                    "score": None,
+                    "bbox": None,
+                    "pattern": "global",
+                },
+            )
+            if stats_rows is not None:
+                stats_rows.append(global_stats)
+
+            csv_rows.append(
+                (
+                    onnx_rel_path,
+                    str(Path("vnnlib") / global_vnnlib.name),
+                    timeout,
+                )
+            )
 
     # 2) segmented VNNLIBs:
     #    for each segment we now create TWO variants:
     #      - fix mask      -> object frozen, background can change
     #      - fix non-mask  -> background frozen, object can change
     for seg_idx, seg in enumerate(segments):
-        mask = seg["mask"]  # numpy HxW (bool or 0/1)
+        # numpy HxW (bool or 0/1)
+        mask = np.asarray(seg["mask"]).astype(bool)
         # ------------------------------------------------
         # (A) FIX MASK: only NON-MASK region can move
         # ------------------------------------------------
         for eps in epsilons:
-            lb_fix_mask, ub_fix_mask = bounds_for_segment(
-                image_np=image_np_224,
-                mask=mask,
-                eps=eps,
-            )
-
-            seg_stats_fix_mask = report_changed_inputs(
-                lb_flat=lb_fix_mask,
-                ub_flat=ub_fix_mask,
-                tag=f"{img_basename}_seg{seg_idx}_fixmask",
-                extra={
-                    "image": img_basename,
-                    "is_global": False,
-                    "segment_index": seg_idx,
-                    "eps": eps,
-                    "score": float(seg["score"]),
-                    "bbox": seg["bbox"],
-                    "pattern": "fix_mask",
-                },
-            )
-            if stats_rows is not None:
-                stats_rows.append(seg_stats_fix_mask)
-
-            seg_vnnlib_fix_mask = (
-                vnnlib_dir
-                / f"{img_basename}_seg{seg_idx}_fixmask_eps_{eps:.4f}.vnnlib"
-            )
-            write_vnnlib_for_segment(
-                lb=lb_fix_mask,
-                ub=ub_fix_mask,
-                label=label,
-                num_classes=num_classes,
-                out_path=seg_vnnlib_fix_mask,
-                target_label=runner_up_label,
-            )
-            csv_rows.append(
-                (
-                    onnx_rel_path,
-                    str(Path("vnnlib") / seg_vnnlib_fix_mask.name),
-                    timeout,
+            for k in pixel_counts:
+                # FIX MASK: object is frozen => allow changes only in NON-mask
+                lb_fix_mask, ub_fix_mask = bounds_for_segment(
+                    image_np=image_np_224,
+                    mask=~mask,
+                    eps=eps,
+                    max_pixels=k,
+                    select=select,
+                    seed=seed + seg_idx,
                 )
-            )
+
+                seg_stats_fix_mask = report_changed_inputs(
+                    lb_flat=lb_fix_mask,
+                    ub_flat=ub_fix_mask,
+                    tag=f"{img_basename}_seg{seg_idx}_fixmask",
+                    extra={
+                        "image": img_basename,
+                        "is_global": False,
+                        "segment_index": seg_idx,
+                        "eps": eps,
+                        "k": k,
+                        "score": float(seg["score"]),
+                        "bbox": seg["bbox"],
+                        "pattern": "fix_mask",
+                    },
+                )
+                if stats_rows is not None:
+                    stats_rows.append(seg_stats_fix_mask)
+
+                seg_vnnlib_fix_mask = (
+                    vnnlib_dir
+                    / f"{img_basename}_seg{seg_idx}_fixmask_k{k}_eps_{eps:.4f}.vnnlib"
+                )
+                write_vnnlib_for_segment(
+                    lb=lb_fix_mask,
+                    ub=ub_fix_mask,
+                    label=label,
+                    num_classes=num_classes,
+                    out_path=seg_vnnlib_fix_mask,
+                    target_label=runner_up_label,
+                )
+                csv_rows.append(
+                    (
+                        onnx_rel_path,
+                        str(Path("vnnlib") / seg_vnnlib_fix_mask.name),
+                        timeout,
+                    )
+                )
 
         # ------------------------------------------------
         # (B) FIX NON-MASK: only MASK region can move
         # ------------------------------------------------
 
         for eps in epsilons:
-            lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
-                image_np=image_np_224,
-                mask=~mask,
-                eps=eps,
-            )
-
-            seg_stats_fix_nonmask = report_changed_inputs(
-                lb_flat=lb_fix_nonmask,
-                ub_flat=ub_fix_nonmask,
-                tag=f"{img_basename}_seg{seg_idx}_fixnonmask",
-                extra={
-                    "image": img_basename,
-                    "is_global": False,
-                    "segment_index": seg_idx,
-                    "eps": eps,
-                    "score": float(seg["score"]),
-                    "bbox": seg["bbox"],
-                    "pattern": "fix_nonmask",
-                },
-            )
-            if stats_rows is not None:
-                stats_rows.append(seg_stats_fix_nonmask)
-
-            seg_vnnlib_fix_nonmask = (
-                vnnlib_dir
-                / f"{img_basename}_seg{seg_idx}_fixnonmask_eps_{eps:.4f}.vnnlib"
-            )
-            write_vnnlib_for_segment(
-                lb=lb_fix_nonmask,
-                ub=ub_fix_nonmask,
-                label=label,
-                num_classes=num_classes,
-                out_path=seg_vnnlib_fix_nonmask,
-                target_label=runner_up_label,
-            )
-            csv_rows.append(
-                (
-                    onnx_rel_path,
-                    str(Path("vnnlib") / seg_vnnlib_fix_nonmask.name),
-                    timeout,
+            for k in pixel_counts:
+                # FIX NON-MASK: background is frozen => allow changes only in MASK
+                lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
+                    image_np=image_np_224,
+                    mask=mask,
+                    eps=eps,
+                    max_pixels=k,
+                    select=select,
+                    seed=seed + seg_idx,
                 )
-            )
+
+                seg_stats_fix_nonmask = report_changed_inputs(
+                    lb_flat=lb_fix_nonmask,
+                    ub_flat=ub_fix_nonmask,
+                    tag=f"{img_basename}_seg{seg_idx}_fixnonmask",
+                    extra={
+                        "image": img_basename,
+                        "is_global": False,
+                        "segment_index": seg_idx,
+                        "eps": eps,
+                        "k": k,
+                        "score": float(seg["score"]),
+                        "bbox": seg["bbox"],
+                        "pattern": "fix_nonmask",
+                    },
+                )
+                if stats_rows is not None:
+                    stats_rows.append(seg_stats_fix_nonmask)
+
+                seg_vnnlib_fix_nonmask = (
+                    vnnlib_dir
+                    / f"{img_basename}_seg{seg_idx}_fixnonmask_k{k}_eps_{eps:.4f}.vnnlib"
+                )
+                write_vnnlib_for_segment(
+                    lb=lb_fix_nonmask,
+                    ub=ub_fix_nonmask,
+                    label=label,
+                    num_classes=num_classes,
+                    out_path=seg_vnnlib_fix_nonmask,
+                    target_label=runner_up_label,
+                )
+                csv_rows.append(
+                    (
+                        onnx_rel_path,
+                        str(Path("vnnlib") / seg_vnnlib_fix_nonmask.name),
+                        timeout,
+                    )
+                )
 
     print(f"[PIPELINE] Created {len(csv_rows)} VNNLIBs for {img_path.name}")
     return csv_rows
@@ -470,10 +501,10 @@ def main():
         nargs="*",
         help="Explicit image paths to process",
     )
-
     # TODO: delete later
     import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+
 
     args = parser.parse_args()
     cfg = load_config(args.config)
@@ -527,14 +558,15 @@ def main():
     # -----------------------------
     images_to_process: List[Path] = []
 
-    if args.images:
-        images_to_process.extend(expand_image_entries(args.images))
 
-    if args.indices is not None and len(args.indices) > 0:
-        for idx in args.indices:
+    cfg_indices = cfg.get("run", {}).get("indices", [])
+
+    if cfg_indices is not None and len(cfg_indices) > 0:
+        for idx in cfg_indices:
             images_to_process.append(all_images[idx])
     else:
-        cfg_indices = cfg.get("run", {}).get("indices", [])
+        if args.images:
+            images_to_process.extend(expand_image_entries(args.images))
         cfg_paths = cfg.get("run", {}).get("image_paths", [])
         if isinstance(cfg_paths, (str, Path)):
             cfg_paths = [cfg_paths]
@@ -584,6 +616,7 @@ def main():
             "is_global",
             "segment_index",
             "eps",
+            "k",
             "score",
             "bbox",
             "num_changed",
