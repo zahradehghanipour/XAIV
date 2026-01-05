@@ -54,8 +54,11 @@ VGG16_STD = [0.229, 0.224, 0.225]
 import json
 
 def load_manual_prompts(prompts_path: Path) -> dict:
-    with prompts_path.open("r") as f:
-        return json.load(f)
+    prompts = {}
+    for p in prompts_path.glob("*.json"):
+        with p.open("r", encoding="utf-8") as f:
+            prompts.update(json.load(f))
+    return prompts
 
 def prompts_for_image(prompts_db: dict, image_key: str):
     """
@@ -503,7 +506,7 @@ def main():
     )
     # TODO: delete later
     import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
 
 
     args = parser.parse_args()

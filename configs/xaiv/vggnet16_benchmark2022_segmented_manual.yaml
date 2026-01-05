@@ -11,7 +11,6 @@ dataset:
 segmentation:
   model_name: "facebook/sam2-hiera-large"
   device: "auto"        # "auto", "cpu" or "cuda"
-
   prompt_mode: "manual"     # "grid" or "manual"
   prompts_path: "benchmarks/points/prompts.json"
 
@@ -35,7 +34,7 @@ output:
 
 run:
   # Option 1: process images by index (sorted over all sample images)
-  indices: [2]
+  indices: [78]
 
   # Option 2: explicit paths (leave empty if using indices)
   image_paths: []
