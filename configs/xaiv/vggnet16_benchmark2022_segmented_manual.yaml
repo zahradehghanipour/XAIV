@@ -12,7 +12,7 @@ segmentation:
   model_name: "facebook/sam2-hiera-large"
   device: "auto"        # "auto", "cpu" or "cuda"
   prompt_mode: "manual"     # "grid" or "manual"
-  prompts_path: "benchmarks/points/prompts.json"
+  prompts_path: "benchmarks/points/"
 
   grid_size: 6
   iou_threshold: 0.8
