@@ -5,6 +5,7 @@ general:
   enable_incomplete_verification: False
   loss_reduction_func: max
   graph_optimizer: Customized("custom_graph_optimizer", "maxpool_to_relu")
+  device: cpu
 model:
   cache_onnx_conversion: True
 solver:

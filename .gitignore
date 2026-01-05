@@ -9,4 +9,3 @@ onnx/
 benchmarks/*/vnnlib/
 benchmarks/*/onnx/
 benchmarks/vggnet16_benchmark2022_segmented/input_change_stats.csv
-!benchmarks/points/*.json

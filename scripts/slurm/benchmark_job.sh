@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=segmented_imagenet
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=1-147
+#SBATCH --array=1-49
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
@@ -61,7 +61,7 @@ python ab-crown/complete_verifier/abcrown.py \
     --timeout $timeout \
     --results_file $tmp_results_file \
     --output_additional_stats \
-    --device "cuda"
+    --device "cpu"
 exit_code=$?
 
 if [[ $exit_code -eq 0 ]]; then
