@@ -284,12 +284,12 @@ def process_single_image(
     )
 
     img_basename = img_path.stem
-    # visualize_segments(
-    #     image_np_224,
-    #     segments,
-    #     debug_dir,
-    #     img_basename
-    #     )
+    visualize_segments(
+        image_np_224,
+        segments,
+        debug_dir,
+        img_basename
+        )
     
     csv_rows: List[Tuple[str, str, int]] = []
 
@@ -506,7 +506,7 @@ def main():
     )
     # TODO: delete later
     import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
 
 
     args = parser.parse_args()

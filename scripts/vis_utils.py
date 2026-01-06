@@ -31,16 +31,18 @@ def visualize_segments(
     Save:
       - original image
       - image with top-k segments overlaid as red regions
+      - black & white mask image for each segment
     """
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # --- Save original image ---
     image_uint8 = (np.clip(image_np, 0.0, 1.0) * 255).astype(np.uint8)
     orig_path = out_dir / f"{img_basename}_original.png"
     Image.fromarray(image_uint8).save(orig_path)
     print(f"[VIS] Saved original image to: {orig_path}")
 
     for i, seg in enumerate(segments[:max_vis]):
-        mask = seg["mask"]
+        mask = seg["mask"]          # boolean or {0,1} mask
         score = seg["score"]
         bbox = seg["bbox"]
         num_pixels = int(mask.sum())
@@ -50,6 +52,7 @@ def visualize_segments(
             f"bbox={bbox}, num_pixels={num_pixels}"
         )
 
+        # --- Overlay visualization (red mask) ---
         overlay = image_uint8.copy()
         red = np.array([255, 0, 0], dtype=np.uint8)
         alpha = 0.5
@@ -62,4 +65,11 @@ def visualize_segments(
         seg_img = Image.fromarray(overlay)
         seg_path = out_dir / f"{img_basename}_seg{i}_score_{score:.3f}.png"
         seg_img.save(seg_path)
-        # print(f"[VIS] Saved segment {i} overlay to: {seg_path}")
+
+        # --- Black & white mask image ---
+        bw_mask = np.zeros((mask.shape[0], mask.shape[1]), dtype=np.uint8)
+        bw_mask[mask] = 255  # white = segment, black = background
+
+        bw_img = Image.fromarray(bw_mask, mode="L")
+        bw_path = out_dir / f"{img_basename}_seg{i}_mask_bw.png"
+        bw_img.save(bw_path)

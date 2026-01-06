@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=segmented_imagenet
+#SBATCH --job-name=imagenet_different_perturbation
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=1-49
+#SBATCH --array=1-253
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
