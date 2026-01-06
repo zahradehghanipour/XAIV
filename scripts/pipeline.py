@@ -505,8 +505,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+    # import sys
+    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)

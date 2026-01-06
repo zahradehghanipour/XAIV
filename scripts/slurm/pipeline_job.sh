@@ -16,7 +16,7 @@
 #SBATCH --account=euhpc_d29_033
 
 # Main knobs to adjust per cluster/use-case.
-CONFIG="configs/xaiv/vggnet16_benchmark2022_segmented.yaml"  # Path to the pipeline config
+CONFIG="configs/xaiv/vggnet16_benchmark2022_segmented_all_pixels.yaml"  # Path to the pipeline config
 CWD="$WORK/my_projects/XAIV"                                # Project root on the cluster
 CONDA_ENV_NAME="xaiv"                                    # Conda env with deps installed
 
@@ -35,4 +35,4 @@ LOG_DIR="results/${SLURM_JOB_NAME:-xaiv_pipeline}/logs"
 mkdir -p "$LOG_DIR"
 
 echo "[SLURM] Running pipeline"
-python scripts/pipeline.py
+python scripts/pipeline.py --config $CONFIG
