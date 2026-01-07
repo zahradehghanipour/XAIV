@@ -16,7 +16,7 @@
 #SBATCH --account=euhpc_d29_033
 
 # Main knobs to adjust per cluster/use-case.
-CONFIG="configs/xaiv/vggnet16_benchmark2022_segmented_all_pixels.yaml"  # Path to the pipeline config
+CONFIG="configs/xaiv/vggnet16_benchmark2022_segmented_diff_pert.yaml"  # Path to the pipeline config
 CWD="$WORK/my_projects/XAIV"                                # Project root on the cluster
 CONDA_ENV_NAME="xaiv"                                    # Conda env with deps installed
 
