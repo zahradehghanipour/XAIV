@@ -24,7 +24,7 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_diff_pert/"
   timeout: 1200
 
 run:
