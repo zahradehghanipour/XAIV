@@ -20,16 +20,20 @@ segmentation:
   max_segments: 1
 
 verification:
-  epsilon: [0.0001, 0.0003, 0.0005, 0.0007, 0.001, 0.005, 0.01] 
+  epsilon: [0.0001, 0.01] 
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
+
+  perturb_pixels: [5, 10, 20, 30, 40, 50, 120, 150528]
+  perturb_select: "random"   # "random" for now
+  perturb_seed: 0
 
 onnx:
   source_model: "benchmarks/vggnet16_benchmark2022/onnx/vgg16-7.onnx"
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_diff_pert_one_img/"
   timeout: 1200
 
 run:

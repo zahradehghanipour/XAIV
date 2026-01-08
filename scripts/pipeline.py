@@ -284,12 +284,12 @@ def process_single_image(
     )
 
     img_basename = img_path.stem
-    visualize_segments(
-        image_np_224,
-        segments,
-        debug_dir,
-        img_basename
-        )
+    # visualize_segments(
+    #     image_np_224,
+    #     segments,
+    #     debug_dir,
+    #     img_basename
+    #     )
     
     csv_rows: List[Tuple[str, str, int]] = []
 
