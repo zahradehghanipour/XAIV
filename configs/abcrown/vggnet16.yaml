@@ -20,7 +20,7 @@ solver:
     batch_size: 64
 bab:
   branching:
-    method: sb
+    method: naive
     input_split:
       enable: True
 
