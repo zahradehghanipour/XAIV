@@ -28,7 +28,7 @@ debug:
   sanity_check: Full+Graph
 
 attack:
-  # pgd_order: skip
-  pgd_order: input_bab
-  check_clean: True
+  pgd_order: skip
+  # pgd_order: input_bab
+  # check_clean: True
 
