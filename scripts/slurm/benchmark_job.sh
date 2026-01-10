@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=vggnet16_benchmark2022_segmented_one_img
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=1-48
+#SBATCH --array=1-132
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=32G
+#SBATCH --mem=128G
 #SBATCH --partition=boost_usr_prod
 #SBATCH --gres=gpu:1
 #SBATCH --mail-type=FAIL,END
