@@ -2,20 +2,31 @@ dataset:
   type: "imagenet_vggnet16"          
   root: "benchmarks/vggnet16_benchmark2022/imagenet-sample"
 
-segmentation:
-  model_name: "facebook/sam2-hiera-large"
-  device: "auto"        # "auto", "cpu" or "cuda"
+  # still keep these for grid mode
   grid_size: 6
   iou_threshold: 0.8
   score_threshold: 0.0
   max_segments: 5
 
+segmentation:
+  model_name: "facebook/sam2-hiera-large"
+  device: "auto"        # "auto", "cpu" or "cuda"
+  prompt_mode: "manual"     # "grid" or "manual"
+  prompts_path: "benchmarks/points/"
+
+  grid_size: 6
+  iou_threshold: 0.8
+  score_threshold: 0.0
+  max_segments: 1
+
+  vis: Flase  
+
 verification:
-  epsilon: [0.0001, 0.0003, 0.0005, 0.0007, 0.001, 0.005, 0.01] 
+  epsilon: [0.0001, 0.0002, 0.0003, 0.0004] 
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
 
-  perturb_pixels: [20, 40, 50]
+  perturb_pixels: [2, 10, 20, 30, 24, 50, 196, 784, 12544, 25088, 50176]
   perturb_select: "random"   # "random" for now
   perturb_seed: 0
 
@@ -24,14 +35,14 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_all_pixels/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img/"
   timeout: 1200
 
 run:
   # Option 1: process images by index (sorted over all sample images)
-  # indices: [1]
+  # indices: []
 
   # Option 2: explicit paths (leave empty if using indices)
-  image_paths:
+  image_paths: []
     # Directory will be expanded to image files by pipeline.py
     - "benchmarks/vggnet16_benchmark2022/imagenet-sample"

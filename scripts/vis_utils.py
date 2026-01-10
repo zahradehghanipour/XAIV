@@ -125,7 +125,7 @@ def visualize_selected_masks_on_image(
                   fill=(0, 0, 255), width=x_width)
 
     im.save(out_path)
-    print(
-        f"[VIS] saved → {out_path} "
-        f"(in-mask={mi.sum()}, out-mask={mo.sum()})"
-    )
+    # print(
+    #     f"[VIS] saved → {out_path} "
+    #     f"(in-mask={mi.sum()}, out-mask={mo.sum()})"
+    # )
