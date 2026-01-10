@@ -13,7 +13,7 @@ solver:
   bound_prop_method: forward
   forward:
     dynamic: True
-    max_dim: 30
+    max_dim: 10
   beta-crown:
     iteration: 1
   crown:
@@ -28,7 +28,7 @@ debug:
   sanity_check: Full+Graph
 
 attack:
-  pgd_order: skip
-  # pgd_order: input_bab
-  # check_clean: True
+  # pgd_order: skip
+  pgd_order: input_bab
+  check_clean: True
 
