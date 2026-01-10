@@ -17,7 +17,7 @@ solver:
   beta-crown:
     iteration: 10  # Iterations for computing intermediate layer bounds.
   crown:
-    batch_size: 64
+    batch_size: 4
 bab:
   branching:
     method: naive
