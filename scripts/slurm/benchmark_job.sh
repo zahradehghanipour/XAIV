@@ -62,7 +62,7 @@ python ab-crown/complete_verifier/abcrown.py \
     --timeout $timeout \
     --results_file $tmp_results_file \
     --output_additional_stats \
-    --device "cpu"
+    --device "cuda"
 exit_code=$?
 
 if [[ $exit_code -eq 0 ]]; then
