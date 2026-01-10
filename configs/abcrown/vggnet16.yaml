@@ -9,8 +9,8 @@ general:
 model:
   cache_onnx_conversion: True
 solver:
-  batch_size: 1024  # Number of parallel domains to compute on GPU.
-  bound_prop_method: forward+backward
+  batch_size: 1  # Number of parallel domains to compute on GPU.
+  bound_prop_method: forward
   forward:
     dynamic: True
     max_dim: 100
