@@ -13,11 +13,11 @@ solver:
   bound_prop_method: forward
   forward:
     dynamic: True
-    max_dim: 100
+    max_dim: 30
   beta-crown:
-    iteration: 10  # Iterations for computing intermediate layer bounds.
+    iteration: 1
   crown:
-    batch_size: 4
+    batch_size: 1
 bab:
   branching:
     method: naive
