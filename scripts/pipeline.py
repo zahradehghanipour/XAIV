@@ -39,7 +39,7 @@ from config_utils import load_config, ensure_dir
 from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
 from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
-from vis_utils import visualize_segments
+from vis_utils import visualize_segments, visualize_selected_masks_on_image
 
 import torch
 import torchvision.transforms.functional as F
@@ -52,6 +52,77 @@ VGG16_STD = [0.229, 0.224, 0.225]
 
 # pipeline.py
 import json
+
+def make_ratio_pixel_selection_mask(
+    seg_mask: np.ndarray,
+    k: int,
+    seed: int = 0,
+):
+    """
+    Returns three boolean masks:
+      1) mask_global : all selected pixels (exactly k True)
+      2) mask_in     : selected pixels where seg_mask == 1
+      3) mask_out    : selected pixels where seg_mask == 0
+
+    Intended usage:
+        mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(...)
+        bounds_for_segment(mask=mask_global, max_pixels=None)
+    """
+    m = np.asarray(seg_mask, dtype=bool)
+    if m.ndim != 2:
+        raise ValueError(f"seg_mask must be 2D, got {m.shape}")
+
+    H, W = m.shape
+    total = H * W
+    k = int(k)
+
+    if k <= 0:
+        z = np.zeros((H, W), dtype=bool)
+        return z, z.copy(), z.copy()
+
+    if k >= total:
+        ones = np.ones((H, W), dtype=bool)
+        return ones, ones & m, ones & ~m
+
+    n_in = int(m.sum())
+    n_out = total - n_in
+
+    # Decide how many pixels to pick from each region
+    if n_in == 0:
+        k_in, k_out = 0, k
+    elif n_out == 0:
+        k_in, k_out = k, 0
+    else:
+        frac_in = n_in / total
+        k_in = int(round(k * frac_in))
+        k_in = min(k_in, n_in)
+        k_out = k - k_in
+
+        # Repair if needed
+        if k_out > n_out:
+            k_out = n_out
+            k_in = k - k_out
+        if k_in > n_in:
+            k_in = n_in
+            k_out = k - k_in
+
+    rng = np.random.default_rng(seed)
+
+    mask_in = np.zeros((H, W), dtype=bool)
+    mask_out = np.zeros((H, W), dtype=bool)
+
+    if k_in > 0:
+        ys, xs = np.where(m)
+        idx = rng.choice(len(ys), size=k_in, replace=False)
+        mask_in[ys[idx], xs[idx]] = True
+
+    if k_out > 0:
+        ys, xs = np.where(~m)
+        idx = rng.choice(len(ys), size=k_out, replace=False)
+        mask_out[ys[idx], xs[idx]] = True
+
+    mask_global = mask_in | mask_out
+    return mask_global, mask_in, mask_out
 
 def load_manual_prompts(prompts_path: Path) -> dict:
     prompts = {}
@@ -241,9 +312,6 @@ def process_single_image(
     img_t_224 = vgg16_preprocess(image, normalize=False)       # CHW in [0,1]
     image_np_224 = img_t_224.permute(1, 2, 0).numpy()          # HWC in [0,1] for run_segmentation_model
 
-
-
-
     ver_cfg = cfg.get("verification", {})
     pixel_counts = ver_cfg.get("perturb_pixels", [None])
     # allow a single int as shorthand
@@ -284,12 +352,14 @@ def process_single_image(
     )
 
     img_basename = img_path.stem
-    # visualize_segments(
-    #     image_np_224,
-    #     segments,
-    #     debug_dir,
-    #     img_basename
-    #     )
+
+    if seg_cfg["vis"]:
+        visualize_segments(
+            image_np_224,
+            segments,
+            debug_dir,
+            img_basename
+            )
     
     csv_rows: List[Tuple[str, str, int]] = []
 
@@ -297,11 +367,24 @@ def process_single_image(
     for eps in epsilons:
         for k in pixel_counts:
             global_vnnlib = vnnlib_dir / f"{img_basename}_global_k{k}_eps_{eps:.4f}.vnnlib"
+
+            mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+
+            if seg_cfg["vis"]:
+                visualize_selected_masks_on_image(
+                    image_np=image_np_224,
+                    mask_in=mask_in,
+                    mask_out=mask_out,
+                    out_path=str(debug_dir / f"{img_basename}_seg0_k{k}_selected_X.png"),
+                    x_size=6,
+                    x_width=2,
+                )
+
             lb_global, ub_global = bounds_for_segment(
                 image_np_224,
                 eps=eps,
-                mask=None,
-                max_pixels=k,
+                mask=mask_global,     # exact chosen pixels
+                max_pixels=None,   # IMPORTANT: no re-sampling
                 select=select,
                 seed=seed,
             )
@@ -354,13 +437,15 @@ def process_single_image(
         for eps in epsilons:
             for k in pixel_counts:
                 # FIX MASK: object is frozen => allow changes only in NON-mask
+                _, _, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+
                 lb_fix_mask, ub_fix_mask = bounds_for_segment(
-                    image_np=image_np_224,
-                    mask=~mask,
+                    image_np_224,
                     eps=eps,
-                    max_pixels=k,
+                    mask=mask_out,     # exact chosen pixels
+                    max_pixels=None,   # IMPORTANT: no re-sampling
                     select=select,
-                    seed=seed + seg_idx,
+                    seed=seed,
                 )
 
                 seg_stats_fix_mask = report_changed_inputs(
@@ -408,13 +493,16 @@ def process_single_image(
         for eps in epsilons:
             for k in pixel_counts:
                 # FIX NON-MASK: background is frozen => allow changes only in MASK
+
+                _, mask_in, _ = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+
                 lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
-                    image_np=image_np_224,
-                    mask=mask,
+                    image_np_224,
                     eps=eps,
-                    max_pixels=k,
+                    mask=mask_in,     # exact chosen pixels
+                    max_pixels=None,   # IMPORTANT: no re-sampling
                     select=select,
-                    seed=seed + seg_idx,
+                    seed=seed,
                 )
 
                 seg_stats_fix_nonmask = report_changed_inputs(
@@ -505,8 +593,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    # import sys
-    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented.yaml"]
+    import sys
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)

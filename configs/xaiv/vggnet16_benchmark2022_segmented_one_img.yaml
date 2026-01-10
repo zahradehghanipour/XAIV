@@ -19,12 +19,14 @@ segmentation:
   score_threshold: 0.0
   max_segments: 1
 
+  vis: True  
+
 verification:
-  epsilon: [0.0001, 0.01] 
+  epsilon: [0.0001, 0.0002, 0.0003, 0.0004] 
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
 
-  perturb_pixels: [5, 10, 20, 30, 40, 50, 120, 150528]
+  perturb_pixels: [2, 10, 20, 30, 24, 50, 196, 784, 12544, 25088, 50176]
   perturb_select: "random"   # "random" for now
   perturb_seed: 0
 
