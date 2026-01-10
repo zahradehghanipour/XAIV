@@ -3,6 +3,19 @@ __pycache__/
 *.pyc
 *.pyo
 
+# macOS junk
+.DS_Store
+
+# Generated debug visuals
+**/debug_vis/
+*_mask_bw.png
+*_score_*.png
+*_original.png
+
+# Generated outputs
+**/input_change_stats.csv
+**/instances.csv
+
 # Generated artifacts
 results/
 onnx/
