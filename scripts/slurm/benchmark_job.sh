@@ -4,7 +4,7 @@
 #SBATCH --array=1-950
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=256G
+#SBATCH --mem=450G
 #SBATCH --partition=boost_usr_prod
 #SBATCH --gres=gpu:a100:1
 #SBATCH --mail-type=FAIL,END
