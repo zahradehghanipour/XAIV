@@ -19,7 +19,7 @@ segmentation:
   score_threshold: 0.0
   max_segments: 1
 
-  vis: Flase  
+  vis: False  
 
 verification:
   epsilon: [0.0001, 0.0002, 0.0003, 0.0004] 
@@ -35,14 +35,22 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_100_img/"
   timeout: 1200
 
 run:
   # Option 1: process images by index (sorted over all sample images)
-  # indices: []
+  indices: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+            21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+            31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
+            41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+            51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+            61, 62, 63, 64, 65, 66, 67, 68, 69, 70,
+            71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
+            81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
+            91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
 
   # Option 2: explicit paths (leave empty if using indices)
   image_paths: []
     # Directory will be expanded to image files by pipeline.py
-    - "benchmarks/vggnet16_benchmark2022/imagenet-sample"
+    # - "benchmarks/vggnet16_benchmark2022/imagenet-sample"

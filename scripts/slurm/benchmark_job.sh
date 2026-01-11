@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_segmented_ten_img
+#SBATCH --job-name=vggnet16_benchmark2022_segmented_100_img
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=1-132
+#SBATCH --array=1-995
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=128G
@@ -23,7 +23,7 @@ module load cuda/12.2                         # Load CUDA toolkit
 # 3. set main variables appropriately
 
 # -- MAIN VARIABLES
-BENCHMARK="vggnet16_benchmark2022_segmented_ten_img"
+BENCHMARK="vggnet16_benchmark2022_segmented_100_img"
 CONFIG="abcrown/vggnet16.yaml"
 CWD="$WORK/my_projects/XAIV"
 CONDA_ENV_NAME="abcrown"

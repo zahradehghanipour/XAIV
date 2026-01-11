@@ -19,7 +19,7 @@ segmentation:
   score_threshold: 0.0
   max_segments: 1
 
-  vis: Flase  
+  vis: False  
 
 verification:
   epsilon: [0.0001, 0.0002, 0.0003, 0.0004] 
