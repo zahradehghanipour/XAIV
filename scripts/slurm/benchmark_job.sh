@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_segmented_100_img
+#SBATCH --job-name=vggnet16_benchmark2022_segmented_10_img_errors
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
 #SBATCH --array=1047-1050
 #SBATCH --ntasks=1
