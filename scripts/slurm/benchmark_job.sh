@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_segmented_10_img_errors
+#SBATCH --job-name=vggnet16_benchmark2022_segmented_100
 #SBATCH --output=results/%x/logs/slurm-%j_%a.out
-#SBATCH --array=1047-1050
+#SBATCH --array=1-950
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=256G
@@ -9,7 +9,7 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH --mail-type=FAIL,END
 #SBATCH --export=ALL
-#SBATCH --time=01:30:00
+#SBATCH --time=02:00:00
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --account=euhpc_d29_033
 
