@@ -11,7 +11,7 @@ dataset:
 segmentation:
   model_name: "facebook/sam2-hiera-large"
   device: "auto"        # "auto", "cpu" or "cuda"
-  prompt_mode: "manual"     # "grid" or "manual"
+  prompt_mode: "grid"     # "grid" or "manual"
   prompts_path: "benchmarks/points/"
 
   grid_size: 6
