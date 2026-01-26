@@ -1,0 +1,1017 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+1,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k2_eps_0.0001.vnnlib,1200,unsat False,1.8333959579467771,0.0,317.78321075439453,1539.4855017662048,0.0
+2,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k10_eps_0.0001.vnnlib,1200,unsat False,1.8333877325057983,0.0,582.4038081169128,1803.143597602844,0.0
+3,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k20_eps_0.0001.vnnlib,1200,unsat False,1.8333748579025269,0.0,621.2964265346527,1847.017946958542,0.0
+4,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k30_eps_0.0001.vnnlib,1200,unsat False,1.8333557844161987,0.0,665.4480366706848,1892.42013669014,0.0
+5,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k24_eps_0.0001.vnnlib,1200,unsat False,1.83337140083313,0.0,638.2574479579926,2154.6910293102264,0.0
+6,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50_eps_0.0001.vnnlib,1200,unsat False,1.8333473205566408,0.0,506.549218416214,1737.0504336357117,0.0
+7,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k196_eps_0.0001.vnnlib,1200,unsat False,1.833208918571472,0.0,570.1028118133545,2083.3365063667297,0.0
+8,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k784_eps_0.0001.vnnlib,1200,unsat False,1.8326524496078491,0.0,573.4315202236176,1799.3954720497131,0.0
+9,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k12544_eps_0.0001.vnnlib,1200,unsat False,1.8155680894851685,0.0,661.4950363636017,2178.8005135059357,0.0
+10,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k25088_eps_0.0001.vnnlib,1200,unsat False,1.7713227272033691,0.0,684.6810250282288,1918.7041351795197,0.0
+11,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-0.4352812767028808,3.0,2273.6261882781982,3787.241411447525,0.0
+12,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k2_eps_0.0002.vnnlib,1200,unsat False,1.83339524269104,0.0,319.6052448749542,1550.191434621811,0.0
+13,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k10_eps_0.0002.vnnlib,1200,unsat False,1.833378553390503,0.0,585.4596462249756,2105.442907094955,0.0
+14,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k20_eps_0.0002.vnnlib,1200,unsat False,1.8333529233932495,0.0,637.0165359973907,1865.9451394081116,0.0
+15,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k30_eps_0.0002.vnnlib,1200,unsat False,1.8333137035369873,0.0,699.4643836021423,2219.438106775284,0.0
+16,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k24_eps_0.0002.vnnlib,1200,unsat False,1.833345890045166,0.0,649.2069849967957,2161.933277606964,0.0
+17,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50_eps_0.0002.vnnlib,1200,unsat False,1.8332974910736084,0.0,522.9141316413879,2031.945961713791,0.0
+18,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k196_eps_0.0002.vnnlib,1200,unsat False,1.8330155611038208,0.0,596.2487297058105,1822.574425697327,0.0
+19,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k784_eps_0.0002.vnnlib,1200,unsat False,1.8318670988082888,0.0,559.437374830246,2075.4041686058044,0.0
+20,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k12544_eps_0.0002.vnnlib,1200,unsat False,1.7705388069152832,0.0,683.437381029129,2203.3040163517,0.0
+21,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k25088_eps_0.0002.vnnlib,1200,timeout False,-0.8217682838439941,3.0,2252.524270772934,3491.8091943264008,0.0
+22,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-95434.5546875,3.0,3703.631811618805,5111.501291036606,0.0
+23,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k2_eps_0.0003.vnnlib,1200,unsat False,1.8333942890167236,0.0,323.1019468307495,1551.1056432724,0.0
+24,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k10_eps_0.0003.vnnlib,1200,unsat False,1.8333693742752075,0.0,588.9325125217438,1911.7272934913635,0.0
+25,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k20_eps_0.0003.vnnlib,1200,unsat False,1.8333302736282349,0.0,646.9411976337433,1874.119033575058,0.0
+26,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k30_eps_0.0003.vnnlib,1200,unsat False,1.8332722187042236,0.0,705.9668395519257,1927.1025023460388,0.0
+27,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k24_eps_0.0003.vnnlib,1200,unsat False,1.833320140838623,0.0,648.1967735290527,2162.2151560783386,0.0
+28,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50_eps_0.0003.vnnlib,1200,unsat False,1.8332464694976809,0.0,529.6575412750244,2046.2515988349917,0.0
+29,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k196_eps_0.0003.vnnlib,1200,unsat False,1.832820177078247,0.0,595.9510357379913,1827.2574081420896,0.0
+30,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k784_eps_0.0003.vnnlib,1200,unsat False,1.8310418128967283,0.0,571.279620885849,1805.3449411392212,0.0
+31,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k12544_eps_0.0003.vnnlib,1200,unsat False,1.5840606689453125,0.0,715.9033780097961,1959.303432226181,0.0
+32,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k25088_eps_0.0003.vnnlib,1200,timeout False,-1349.781982421875,3.0,2869.713532924652,4391.535177946091,0.0
+33,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0003.vnnlib,1200,error,,,,,
+34,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k2_eps_0.0004.vnnlib,1200,unsat False,1.833392858505249,0.0,323.3015422821045,1551.1011726856232,0.0
+35,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k10_eps_0.0004.vnnlib,1200,unsat False,1.833360195159912,0.0,587.7788627147675,2090.173436641693,0.0
+36,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k20_eps_0.0004.vnnlib,1200,unsat False,1.8333070278167725,0.0,646.9039080142975,2144.7388360500336,0.0
+37,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k30_eps_0.0004.vnnlib,1200,unsat False,1.833229660987854,0.0,716.5409474372864,1931.3979923725128,0.0
+38,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k24_eps_0.0004.vnnlib,1200,unsat False,1.8332935571670532,0.0,653.6623644828796,2169.274723291397,0.0
+39,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50_eps_0.0004.vnnlib,1200,unsat False,1.8331952095031736,0.0,529.2070872783661,2041.61474943161,0.0
+40,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k196_eps_0.0004.vnnlib,1200,unsat False,1.8326199054718015,0.0,592.4578051567078,1822.1459164619448,0.0
+41,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k784_eps_0.0004.vnnlib,1200,unsat False,1.8301819562911987,0.0,582.6313419342041,1797.752037525177,0.0
+42,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k12544_eps_0.0004.vnnlib,1200,timeout False,-0.8874627947807312,3.0,2305.623980522156,3663.055310487747,0.0
+43,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k25088_eps_0.0004.vnnlib,1200,timeout False,-125837.3984375,3.0,3700.635634183884,5002.11651468277,0.0
+44,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0004.vnnlib,1200,error,,,,,
+45,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,unsat False,1.833397626876831,0.0,3.3992702960968018,1239.4710063934326,0.0
+46,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,unsat False,1.8333954811096191,0.0,281.87334299087524,1518.350703716278,0.0
+47,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,unsat False,1.8333951234817505,0.0,206.2357227802277,1712.3072242736816,0.0
+48,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,unsat False,1.8333855867385864,0.0,449.9897546768189,1959.6692328453064,0.0
+49,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,unsat False,1.8333910703659055,0.0,341.4532206058502,1564.785350561142,0.0
+50,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,unsat False,1.8333884477615356,0.0,556.1028237342834,1780.0417320728302,0.0
+51,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,unsat False,1.8333622217178345,0.0,499.91414046287537,1747.5688481330872,0.0
+52,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,unsat False,1.8332351446151731,0.0,541.2581543922424,1771.1734099388125,0.0
+53,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,1.830461859703064,0.0,587.8986761569977,1835.5455152988432,0.0
+54,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,1.8272018432617188,0.0,612.872073173523,2142.209400653839,0.0
+55,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,1.8188978433609009,0.0,646.7795038223267,2159.9569029808044,0.0
+56,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,unsat False,1.833397388458252,0.0,3.3037664890289307,1239.3194625377655,0.0
+57,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,unsat False,1.8333938121795657,0.0,284.2928309440613,1523.7670826911926,0.0
+58,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,unsat False,1.8333929777145384,0.0,208.99688148498535,1441.300246477127,0.0
+59,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,unsat False,1.8333733081817627,0.0,457.2179026603699,1688.814917802811,0.0
+60,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,unsat False,1.833384990692139,0.0,342.17123103141785,1798.6196200847626,0.0
+61,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,unsat False,1.8333808183670044,0.0,565.107072353363,1975.0125207901,0.0
+62,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,unsat False,1.833326816558838,0.0,515.9918053150177,1741.3274097442627,0.0
+63,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,unsat False,1.833068609237671,0.0,573.0421981811523,1797.5358490943909,0.0
+64,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,unsat False,1.826991319656372,0.0,616.2230801582336,1841.906691074371,0.0
+65,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,unsat False,1.8186442852020264,0.0,648.3446145057678,2164.5555124282837,0.0
+66,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,unsat False,1.786765217781067,0.0,678.2933416366577,2190.9094257354736,0.0
+67,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,unsat False,1.8333971500396729,0.0,4.84730863571167,1227.6029708385468,0.0
+68,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,unsat False,1.8333923816680908,0.0,285.3769507408142,1794.709817647934,0.0
+69,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,unsat False,1.8333905935287476,0.0,211.8683750629425,1434.8212893009186,0.0
+70,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,unsat False,1.8333611488342283,0.0,467.01703119277954,1972.683925151825,0.0
+71,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,unsat False,1.8333795070648191,0.0,341.61343002319336,1858.1309854984283,0.0
+72,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,unsat False,1.8333717584609983,0.0,564.8955547809601,2079.1016631126404,0.0
+73,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,unsat False,1.833290100097656,0.0,518.6298072338104,1750.0489361286163,0.0
+74,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,unsat False,1.832900881767273,0.0,579.7130172252655,2091.9124598503113,0.0
+75,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,unsat False,1.8229656219482424,0.0,634.3740756511688,2146.6537461280823,0.0
+76,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,unsat False,1.806028127670288,0.0,665.3318908214569,1897.174899339676,0.0
+77,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,unsat False,1.6805189847946167,0.0,693.9734568595886,2208.0406486988068,0.0
+78,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,unsat False,1.8333971500396729,0.0,2.0089752674102783,1504.9001784324646,0.0
+79,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,unsat False,1.833390235900879,0.0,290.5183804035187,1510.559544801712,0.0
+80,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,unsat False,1.8333888053894043,0.0,209.86617279052737,1724.6692624092102,0.0
+81,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,unsat False,1.8333481550216677,0.0,473.00888776779175,1984.1434264183044,0.0
+82,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,unsat False,1.8333730697631836,0.0,344.5725157260895,1572.991451740265,0.0
+83,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,unsat False,1.8333625793457031,0.0,569.6480741500854,2089.3627457618713,0.0
+84,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,unsat False,1.833254098892212,0.0,522.488195180893,1757.755878686905,0.0
+85,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,unsat False,1.8327302932739256,0.0,584.3186466693878,2100.77277469635,0.0
+86,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,unsat False,1.8181232213974,0.0,663.9798529148102,1896.6852505207064,0.0
+87,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,unsat False,1.7849663496017456,0.0,663.5425925254822,1905.324303150177,0.0
+88,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,unsat False,0.7362377643585205,0.0,734.3328759670258,1979.3513910770416,0.0
+89,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,unsat False,1.8333959579467771,0.0,314.05421447753906,1606.9445815086365,0.0
+90,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,unsat False,1.8333897590637207,0.0,543.1910240650177,1868.9729421138763,0.0
+91,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,unsat False,1.8333768844604492,0.0,616.8191154003143,1929.002815246582,0.0
+92,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,unsat False,1.8333677053451536,0.0,632.6762573719025,1870.2820718288424,0.0
+93,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,unsat False,1.833377242088318,0.0,636.347983121872,1929.007594347,0.0
+94,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,unsat False,1.8333556652069092,0.0,497.3114159107208,2020.0220699310305,0.0
+95,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,unsat False,1.8332440853118896,0.0,560.0081655979156,2075.757879257202,0.0
+96,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,unsat False,1.8328216075897217,0.0,574.4894862174988,1812.4998018741608,0.0
+97,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,1.8205972909927368,0.0,651.1291921138763,2175.1736600399017,0.0
+98,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,unsat False,1.796058177947998,0.0,672.0380599498749,1915.206177473068,0.0
+99,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,unsat False,1.4948246479034424,0.0,715.5548679828644,2241.6692724227905,0.0
+100,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,unsat False,1.833395004272461,0.0,318.8890542984009,1558.5310282707214,0.0
+101,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,unsat False,1.8333823680877688,0.0,550.4726557731628,1787.5783388614657,0.0
+102,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,unsat False,1.8333567380905151,0.0,624.4856972694397,2144.552263021469,0.0
+103,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,unsat False,1.8333381414413452,0.0,664.8282961845398,2163.2074704170227,0.0
+104,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,unsat False,1.8333580493927,0.0,652.4307672977448,1886.5969941616056,0.0
+105,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,unsat False,1.833314299583435,0.0,510.5806620121002,2033.3643507957456,0.0
+106,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,unsat False,1.8330878019332888,0.0,582.6945540904999,1820.846541404724,0.0
+107,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,unsat False,1.8322176933288576,0.0,555.6100215911865,2071.8924956321716,0.0
+108,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,unsat False,1.7954846620559692,0.0,670.0726897716522,1915.7151231765747,0.0
+109,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,unsat False,1.4796208143234253,0.0,712.6634266376495,2227.520833969116,0.0
+110,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,timeout False,-2795.9501953125,3.0,2994.639848947525,4505.556522130966,0.0
+111,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,unsat False,1.8333938121795657,0.0,324.12507820129395,1545.0449361801147,0.0
+112,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,unsat False,1.8333745002746584,0.0,547.2672476768494,2062.140564441681,0.0
+113,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,unsat False,1.83333683013916,0.0,639.7362742424011,2151.006456375122,0.0
+114,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,unsat False,1.833308219909668,0.0,665.918053150177,1894.4787278175352,0.0
+115,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,unsat False,1.8333383798599243,0.0,649.4200112819672,2154.831759929657,0.0
+116,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,unsat False,1.8332726955413816,0.0,531.0575413703918,1749.428867340088,0.0
+117,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,unsat False,1.832929611206055,0.0,589.3511946201324,2090.5506949424744,0.0
+118,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,unsat False,1.8315913677215576,0.0,552.1693387031555,2061.8008074760437,0.0
+119,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,unsat False,1.7282094955444336,0.0,697.9410281181335,2214.594028711319,0.0
+120,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,error,,,,,
+122,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,unsat False,1.8333927392959597,0.0,321.5966341495514,1827.6652982234957,0.0
+123,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,unsat False,1.8333672285079956,0.0,552.9039990901947,1776.2777211666107,0.0
+124,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,unsat False,1.833316206932068,0.0,644.2431104183197,1861.2453722953796,0.0
+125,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,unsat False,1.833277940750122,0.0,675.3534798622131,2178.087489128113,0.0
+126,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,unsat False,1.8333184719085691,0.0,657.1673140525818,1872.6986021995544,0.0
+127,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,unsat False,1.833230137825012,0.0,523.3905260562897,2021.811223268509,0.0
+128,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,unsat False,1.832768440246582,0.0,593.5403847694397,2108.266667366028,0.0
+129,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,unsat False,1.8309404850006104,0.0,562.1524314880371,1790.9963054656982,0.0
+130,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,unsat False,1.4580395221710205,0.0,718.6420397758484,2237.408965110779,0.0
+131,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,timeout False,-3265.46875,3.0,3035.2043886184692,4551.1028509140015,0.0
+133,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k2_eps_0.0001.vnnlib,1200,timeout False,-0.1056661009788513,3.0,874.9135038852692,2097.1924526691437,0.0
+134,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k10_eps_0.0001.vnnlib,1200,timeout False,-0.1056686639785766,3.0,1674.8146755695343,3191.6550409793854,0.0
+135,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k20_eps_0.0001.vnnlib,1200,timeout False,-0.1056756377220153,3.0,2018.574004650116,3250.0877130031586,0.0
+137,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k24_eps_0.0001.vnnlib,1200,timeout False,-0.1056785285472869,3.0,2067.073781967163,3468.9458572864532,0.0
+138,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50_eps_0.0001.vnnlib,1200,timeout False,-0.1056972742080688,3.0,1490.1620383262634,2719.3967452049255,0.0
+139,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k196_eps_0.0001.vnnlib,1200,timeout False,-0.1057789027690887,3.0,1573.6192066669464,2890.11794257164,0.0
+140,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k784_eps_0.0001.vnnlib,1200,timeout False,-0.1060787439346313,3.0,1596.1015775203705,3114.818037509918,0.0
+141,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1517.350977897644,0.0
+142,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1235.7269897460938,0.0
+143,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1226.552959442139,0.0
+144,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k2_eps_0.0002.vnnlib,1200,timeout False,-0.1056659519672393,3.0,873.292174577713,2370.9894037246704,0.0
+145,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k10_eps_0.0002.vnnlib,1200,timeout False,-0.1056729555130004,3.0,1764.3690674304962,3266.6355125904083,0.0
+147,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k30_eps_0.0002.vnnlib,1200,error,,,,,
+149,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50_eps_0.0002.vnnlib,1200,timeout False,-0.1057271957397461,3.0,1538.5224316120148,2760.6772956848145,0.0
+150,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k196_eps_0.0002.vnnlib,1200,timeout False,-0.105896919965744,3.0,1684.4379925727844,3201.5202968120575,0.0
+151,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k784_eps_0.0002.vnnlib,1200,timeout False,-0.1065075993537902,3.0,1598.6449935436249,3112.9744453430176,0.0
+152,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1233.3657715320587,0.0
+153,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1515.5669865608215,0.0
+154,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1231.1232085227966,0.0
+155,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k2_eps_0.0003.vnnlib,1200,timeout False,-0.1056676805019378,3.0,882.2753927707672,2393.656976699829,0.0
+157,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k20_eps_0.0003.vnnlib,1200,error,,,,,
+158,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k30_eps_0.0003.vnnlib,1200,error,,,,,
+159,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k24_eps_0.0003.vnnlib,1200,error,,,,,
+160,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50_eps_0.0003.vnnlib,1200,timeout False,-0.105755865573883,3.0,1578.209656000137,3073.7011075019836,0.0
+161,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k196_eps_0.0003.vnnlib,1200,error,,,,,
+162,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k784_eps_0.0003.vnnlib,1200,timeout False,-0.106950044631958,3.0,1608.674940824509,3125.054482936859,0.0
+163,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1513.9045011997223,0.0
+164,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1232.6066572666168,0.0
+165,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1518.9928538799286,0.0
+166,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k2_eps_0.0004.vnnlib,1200,timeout False,-0.1056694388389587,3.0,889.1347758769989,2122.988526582718,0.0
+167,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k10_eps_0.0004.vnnlib,1200,error,,,,,
+168,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k20_eps_0.0004.vnnlib,1200,error,,,,,
+169,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k30_eps_0.0004.vnnlib,1200,error,,,,,
+170,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k24_eps_0.0004.vnnlib,1200,error,,,,,
+171,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50_eps_0.0004.vnnlib,1200,timeout False,-0.1057909727096557,3.0,1577.7291572093964,2937.1968545913696,0.0
+172,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k196_eps_0.0004.vnnlib,1200,timeout False,-0.1061292290687561,3.0,1683.1640465259552,2918.2104115486145,0.0
+173,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k784_eps_0.0004.vnnlib,1200,timeout False,-0.1074093580245971,3.0,1610.2110855579376,2903.105628013611,0.0
+174,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1521.3007771968842,0.0
+175,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1516.8409531116486,0.0
+176,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1237.6787660121918,0.0
+177,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.1056652665138244,3.0,3.887465476989746,1521.244497537613,0.0
+178,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.1056652665138244,3.0,462.20214915275574,1977.240620613098,0.0
+179,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.1056654453277587,3.0,703.4978556632996,1935.773537158966,0.0
+180,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.1056665778160095,3.0,1007.8182461261748,2243.7789645195007,0.0
+181,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.1056658923625946,3.0,483.0732345581054,1717.5484697818756,0.0
+182,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.1056668162345886,3.0,1093.6978676319122,2330.405659675598,0.0
+183,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.1056750118732452,3.0,1776.635179519653,3015.1030926704407,0.0
+184,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.1057150661945343,3.0,1469.0046434402466,2976.998368501663,0.0
+185,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,timeout False,-0.106374591588974,3.0,1604.937452793121,2822.2535362243652,0.0
+186,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.1071036458015441,3.0,1643.4337491989136,3151.3330488204956,0.0
+187,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1509.5218014717102,0.0
+188,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.1056650280952453,3.0,4.203932046890259,1513.134248495102,0.0
+189,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.1056664884090423,3.0,466.8177328109741,1685.068405866623,0.0
+190,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,timeout False,-0.1056657433509826,3.0,711.7798812389374,2220.6892533302307,0.0
+191,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,timeout False,-0.1056686639785766,3.0,1000.4436333179474,2226.6259365081787,0.0
+192,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,timeout False,-0.1056666672229766,3.0,477.6644411087036,1990.2601673603056,0.0
+193,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.1056669950485229,3.0,1092.763184785843,2602.4178264141083,0.0
+194,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,error,,,,,
+195,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.1057687103748321,3.0,1529.0095562934875,2752.297128677368,0.0
+196,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,timeout False,-0.1071322858333587,3.0,1631.4518151283264,3063.101788043976,0.0
+197,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,timeout False,-0.1087883412837982,3.0,1698.754726409912,3043.775280714035,0.0
+198,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1219.945660829544,0.0
+199,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.1056651473045349,3.0,4.097358703613281,1514.9316082000732,0.0
+200,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.1056664586067199,3.0,470.5616545677185,1985.0588870048523,0.0
+201,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,timeout False,-0.1056662499904632,3.0,728.9919714927673,1957.1449596881864,0.0
+202,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,timeout False,-0.1056721210479736,3.0,1013.786958694458,2519.8412556648254,0.0
+203,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,timeout False,-0.1056676805019378,3.0,477.42663192749023,1695.869532585144,0.0
+204,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,timeout False,-0.1056685447692871,3.0,1120.96826171875,2622.901198863983,0.0
+205,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,error,,,,,
+206,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.1058161854743957,3.0,1535.2363605499268,2771.994630098343,0.0
+207,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,error,,,,,
+208,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,timeout False,-0.1107484996318817,3.0,1743.64817404747,3261.3769171237946,0.0
+209,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1516.467900276184,0.0
+210,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.1056655049324035,3.0,5.464293003082275,1238.7039694786072,0.0
+211,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,timeout False,-0.1056675016880035,3.0,489.38794708251953,1717.00558924675,0.0
+212,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,timeout False,-0.1056671738624572,3.0,742.4772951602936,2056.7609643936157,0.0
+213,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,timeout False,-0.1056718826293945,3.0,1047.4836919307709,2340.1149682998657,0.0
+214,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,timeout False,-0.1056683957576751,3.0,494.3638606071472,1731.469074010849,0.0
+215,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,timeout False,-0.1056694090366363,3.0,1147.6528356075287,2669.0979132652283,0.0
+216,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,error,,,,,
+217,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.1058671772480011,3.0,1536.6256821155548,2773.4942486286163,0.0
+218,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-0.1088634431362152,3.0,1698.3002700805664,3051.3841440677643,0.0
+219,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,timeout False,-0.1130756735801696,3.0,1768.0660586357117,3003.390383720398,0.0
+220,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1293.3373992443085,0.0
+221,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.1056664586067199,3.0,870.8865501880646,2106.27663898468,0.0
+222,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.1056695878505706,3.0,1572.022738456726,2864.589875459671,0.0
+223,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.1056742370128631,3.0,1933.0193877220152,3281.863128900528,0.0
+224,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.1056790351867675,3.0,2335.365332365036,3851.444929122925,0.0
+225,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.1056757569313049,3.0,1962.0435817241669,3195.620106220246,0.0
+226,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.1056947410106659,3.0,1454.1298463344574,2972.1881909370422,0.0
+227,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.1057677567005157,3.0,1617.860567569733,3133.063632249832,0.0
+228,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.1060260832309722,3.0,1599.0061116218567,3120.355271577835,0.0
+229,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1238.1653652191162,0.0
+230,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1515.9667456150055,0.0
+231,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1237.5440587997437,0.0
+232,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.1056664288043975,3.0,873.0116674900055,2393.5645570755005,0.0
+233,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.1056727468967437,3.0,1580.40616106987,3097.3575310707092,0.0
+235,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,error,,,,,
+237,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.1057248413562774,3.0,1518.9934582710266,2755.005176782608,0.0
+238,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,timeout False,-0.1058762371540069,3.0,1674.233627796173,3014.0026586055756,0.0
+239,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.1064010560512542,3.0,1605.4536623954773,3125.24547791481,0.0
+240,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1236.8188593387604,0.0
+241,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1517.0961980819702,0.0
+242,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1333.18967962265,0.0
+243,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.1056677997112274,3.0,876.8845999240875,2169.4011714458466,0.0
+244,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.1056751906871795,3.0,1700.6560139656067,2936.658166408539,0.0
+245,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+246,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+247,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+248,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,timeout False,-0.1057523190975189,3.0,1570.6285037994385,3091.7613503932953,0.0
+249,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.1059807240962982,3.0,1684.7931652069092,3200.3489484786987,0.0
+250,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.1067835688591003,3.0,1605.6171028614044,2842.205764770508,0.0
+251,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1518.8323481082916,0.0
+252,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1235.442630290985,0.0
+253,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1517.2003705501556,0.0
+254,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.1056692004203796,3.0,886.8812067508698,2123.721360683441,0.0
+256,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+257,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+258,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+259,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,timeout False,-0.1057856082916259,3.0,1563.506498336792,3062.254566669464,0.0
+260,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,timeout False,-0.1060935854911804,3.0,1667.974341392517,2884.638612985611,0.0
+261,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.107182890176773,3.0,1610.634255886078,3033.453122138977,0.0
+262,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1343.5836622714996,0.0
+263,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1224.3677687644958,0.0
+264,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1508.911635637283,0.0
+265,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k2_eps_0.0001.vnnlib,1200,unsat False,0.5648142695426941,0.0,249.5496411323547,1471.4136497974396,0.0
+266,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k10_eps_0.0001.vnnlib,1200,unsat False,0.5648064613342285,0.0,557.9660310745239,2062.5526502132416,0.0
+267,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k20_eps_0.0001.vnnlib,1200,unsat False,0.5647953152656555,0.0,640.6800181865692,2107.745230436325,0.0
+268,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k30_eps_0.0001.vnnlib,1200,unsat False,0.5647913217544556,0.0,674.4186546802521,1897.7064979076383,0.0
+269,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k24_eps_0.0001.vnnlib,1200,unsat False,0.5647907257080078,0.0,645.1901023387909,2064.5846927165985,0.0
+270,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50_eps_0.0001.vnnlib,1200,unsat False,0.564773678779602,0.0,521.0896801948547,2032.2241640090945,0.0
+271,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k196_eps_0.0001.vnnlib,1200,unsat False,0.5646436214447021,0.0,564.742201089859,2075.833129644394,0.0
+272,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k784_eps_0.0001.vnnlib,1200,unsat False,0.5641595125198364,0.0,548.9501152038574,1769.3122379779816,0.0
+273,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.5387201309204102,0.0,678.6989257335663,2190.6568937301636,0.0
+274,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k25088_eps_0.0001.vnnlib,1200,error,,,,,
+275,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-805957.9375,3.0,4073.0004708766937,5300.848634004593,0.0
+276,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k2_eps_0.0002.vnnlib,1200,unsat False,0.5648126006126404,0.0,246.9355113506317,1754.139809846878,0.0
+277,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k10_eps_0.0002.vnnlib,1200,unsat False,0.5647964477539062,0.0,565.1212148666382,1785.981510639191,0.0
+278,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k20_eps_0.0002.vnnlib,1200,unsat False,0.5647754669189453,0.0,644.1379702091217,2147.739537715912,0.0
+279,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k30_eps_0.0002.vnnlib,1200,unsat False,0.5647659301757812,0.0,675.606969833374,2180.753950357437,0.0
+280,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k24_eps_0.0002.vnnlib,1200,unsat False,0.5647650957107544,0.0,658.6381993293762,1876.7473902702332,0.0
+281,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50_eps_0.0002.vnnlib,1200,unsat False,0.5647304058074951,0.0,526.1476018428802,2027.0791532993317,0.0
+282,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k196_eps_0.0002.vnnlib,1200,unsat False,0.5644657611846924,0.0,575.737434387207,2081.28052020073,0.0
+283,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k784_eps_0.0002.vnnlib,1200,unsat False,0.5634393095970154,0.0,587.5579717159271,1805.9656319618225,0.0
+284,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k12544_eps_0.0002.vnnlib,1200,error,,,,,
+287,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k2_eps_0.0003.vnnlib,1200,unsat False,0.5648104548454285,0.0,252.72109937667847,1472.6732218265531,0.0
+288,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k10_eps_0.0003.vnnlib,1200,unsat False,0.5647866129875183,0.0,563.7085990905762,2067.5669388771057,0.0
+289,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k20_eps_0.0003.vnnlib,1200,unsat False,0.5647546052932739,0.0,647.4250688552856,2147.010609149933,0.0
+290,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k30_eps_0.0003.vnnlib,1200,unsat False,0.5647412538528442,0.0,688.7292013168335,1905.4888467788696,0.0
+291,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k24_eps_0.0003.vnnlib,1200,unsat False,0.5647394061088562,0.0,657.6925630569458,2166.6029682159424,0.0
+292,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50_eps_0.0003.vnnlib,1200,unsat False,0.5646864175796509,0.0,532.7821514606476,1754.596718788147,0.0
+293,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k196_eps_0.0003.vnnlib,1200,unsat False,0.5642830729484558,0.0,575.7218351364136,2080.2430040836334,0.0
+294,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k784_eps_0.0003.vnnlib,1200,unsat False,0.5626408457756042,0.0,600.7108988761902,2104.4502453804016,0.0
+295,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k12544_eps_0.0003.vnnlib,1200,timeout False,-18868.7578125,3.0,3276.9166560173035,4783.403594255447,0.0
+298,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k2_eps_0.0004.vnnlib,1200,unsat False,0.5648085474967957,0.0,249.05315828323364,1748.419916391373,0.0
+299,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k10_eps_0.0004.vnnlib,1200,unsat False,0.5647767782211304,0.0,568.9271469116211,1785.453677892685,0.0
+300,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k20_eps_0.0004.vnnlib,1200,unsat False,0.564733624458313,0.0,654.395660161972,2159.4007132053375,0.0
+301,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k30_eps_0.0004.vnnlib,1200,unsat False,0.5647159814834595,0.0,678.7884981632233,2179.558714389801,0.0
+302,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k24_eps_0.0004.vnnlib,1200,unsat False,0.5647130012512207,0.0,663.5193073749542,1881.4180936813352,0.0
+303,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50_eps_0.0004.vnnlib,1200,unsat False,0.5646415948867798,0.0,530.1757915019989,2038.0606803894043,0.0
+304,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k196_eps_0.0004.vnnlib,1200,unsat False,0.5640958547592163,0.0,576.327244758606,1797.8672206401825,0.0
+305,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k784_eps_0.0004.vnnlib,1200,unsat False,0.5617581009864807,0.0,611.2247562408447,2115.4561562538147,0.0
+309,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,unsat False,0.5648161768913269,0.0,1.9977755546569824,1514.5801844596865,0.0
+310,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,unsat False,0.5648162364959717,0.0,4.7937140464782715,1230.962434053421,0.0
+311,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,unsat False,0.564815878868103,0.0,1.9966769218444824,1510.8989071846008,0.0
+312,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,unsat False,0.5648159384727478,0.0,129.20219683647156,1633.0870916843414,0.0
+313,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,unsat False,0.5648152828216553,0.0,103.61894083023073,1603.2173745632172,0.0
+314,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,unsat False,0.5648150444030762,0.0,121.45596861839294,1338.2319021224976,0.0
+315,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,unsat False,0.5648138523101807,0.0,331.0696325302124,1835.8108577728271,0.0
+316,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,unsat False,0.5648056268692017,0.0,545.0039901733398,1762.6448440551758,0.0
+317,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.5644422769546509,0.0,532.7270362377167,2033.1911590099337,0.0
+318,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.5639804601669312,0.0,563.1623196601868,2070.6100318431854,0.0
+319,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,0.5631398558616638,0.0,579.9627900123596,2083.384775161743,0.0
+320,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,unsat False,0.5648160576820374,0.0,5.490598201751709,1226.0559904575348,0.0
+321,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,unsat False,0.564815878868103,0.0,2.01697039604187,1509.8468594551086,0.0
+322,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,unsat False,0.5648159980773926,0.0,1.982578992843628,1505.7786569595337,0.0
+323,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,unsat False,0.5648155212402344,0.0,134.0564877986908,1354.9799365997314,0.0
+324,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,unsat False,0.5648150444030762,0.0,104.80880928039552,1617.2911512851715,0.0
+325,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,unsat False,0.5648144483566284,0.0,120.8051266670227,1342.4581649303436,0.0
+326,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,unsat False,0.564812421798706,0.0,329.0379033088684,1841.4239797592163,0.0
+327,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,unsat False,0.5647948980331421,0.0,551.1056833267212,1774.1027829647064,0.0
+328,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,unsat False,0.5640509724617004,0.0,547.6688802242279,2053.357490301132,0.0
+329,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,unsat False,0.5630571246147156,0.0,576.1491429805756,2086.181579351425,0.0
+330,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,unsat False,0.5610628724098206,0.0,591.0953259468079,2094.3346276283264,0.0
+331,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,unsat False,0.564815878868103,0.0,1.922581672668457,1500.8209915161133,0.0
+332,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,unsat False,0.5648158192634583,0.0,5.925700664520264,1221.9593827724457,0.0
+333,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,unsat False,0.5648156404495239,0.0,2.043877601623535,1511.8319628238678,0.0
+334,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,unsat False,0.5648155212402344,0.0,130.1456995010376,1636.2862467765808,0.0
+335,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,unsat False,0.564814567565918,0.0,107.13888812065125,1330.5756525993347,0.0
+336,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,unsat False,0.5648137331008911,0.0,117.8091161251068,1620.452969789505,0.0
+337,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,unsat False,0.5648109316825867,0.0,335.17459297180176,1550.361392736435,0.0
+338,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,unsat False,0.5647839307785034,0.0,551.9249558448792,2050.041880607605,0.0
+339,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,unsat False,0.5636410117149353,0.0,554.1846303939819,2066.2099103927612,0.0
+340,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,unsat False,0.5620312690734863,0.0,587.1894702911377,2095.5444016456604,0.0
+341,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,unsat False,0.5583775043487549,0.0,597.9984912872314,1823.696930885315,0.0
+342,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,unsat False,0.5648158192634583,0.0,2.027432680130005,1505.6140055656433,0.0
+343,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,unsat False,0.5648157000541687,0.0,1.942422151565552,1509.5717632770538,0.0
+344,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,unsat False,0.564815878868103,0.0,5.470040559768677,1226.2160971164703,0.0
+345,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,unsat False,0.5648157596588135,0.0,131.5415234565735,1634.7903316020966,0.0
+346,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,unsat False,0.5648141503334045,0.0,109.57039737701416,1325.6031847000122,0.0
+347,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,unsat False,0.5648128390312195,0.0,118.07445955276488,1617.0004467964172,0.0
+348,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,unsat False,0.5648090243339539,0.0,329.35759377479553,1837.125624418259,0.0
+349,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,unsat False,0.5647730827331543,0.0,557.6433064937592,1779.077402830124,0.0
+350,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,unsat False,0.5632039904594421,0.0,553.6433613300323,2057.758677482605,0.0
+351,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,unsat False,0.5608766078948975,0.0,580.4504046440125,2088.788122653961,0.0
+352,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,unsat False,0.5546184182167053,0.0,605.3110795021057,1827.343339204788,0.0
+353,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,unsat False,0.5648142099380493,0.0,247.99315571784973,1752.6763107776642,0.0
+354,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,unsat False,0.5648056268692017,0.0,558.4961547851562,2061.225191116333,0.0
+355,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,unsat False,0.5647960305213928,0.0,640.4375791549683,2138.870031118393,0.0
+356,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,unsat False,0.5647910833358765,0.0,675.0693395137787,1890.6345310211184,0.0
+357,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,unsat False,0.5647913217544556,0.0,644.8312036991119,2082.6647806167603,0.0
+358,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,unsat False,0.5647746324539185,0.0,523.5157423019409,1740.0143058300018,0.0
+359,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,unsat False,0.5646449327468872,0.0,566.2796783447266,1919.8445472717283,0.0
+360,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,unsat False,0.5641714334487915,0.0,544.4678676128387,1969.386152982712,0.0
+361,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.5401171445846558,0.0,678.4860475063324,2029.1015276908877,0.0
+362,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.625817060470581,3.0,2313.041712284088,3544.0909264087677,0.0
+363,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,error,,,,,
+364,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,unsat False,0.5648123025894165,0.0,250.21498084068295,1468.036022901535,0.0
+365,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,unsat False,0.5647965669631958,0.0,562.4622876644135,2063.1148493289948,0.0
+366,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,unsat False,0.5647755265235901,0.0,644.511922121048,2152.27680516243,0.0
+367,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,unsat False,0.5647666454315186,0.0,675.9700038433075,2179.680576324463,0.0
+368,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,unsat False,0.5647661685943604,0.0,659.1865501403809,1880.0389802455904,0.0
+369,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,unsat False,0.5647319555282593,0.0,526.807844877243,2029.307543516159,0.0
+370,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,unsat False,0.5644693374633789,0.0,577.1387360095978,2074.995144128799,0.0
+371,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,unsat False,0.5634661912918091,0.0,586.6170103549957,1801.49733376503,0.0
+372,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,timeout False,-0.9036433696746826,3.0,2343.214287042618,3855.29479765892,0.0
+373,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,error,,,,,
+375,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,unsat False,0.5648102760314941,0.0,248.86297512054443,1761.3479001522064,0.0
+376,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,unsat False,0.5647867918014526,0.0,564.4969182014465,2073.3051903247833,0.0
+377,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,unsat False,0.564754843711853,0.0,649.3289129734039,1875.417322397232,0.0
+378,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,unsat False,0.5647411346435547,0.0,684.9136691093445,2188.773099899292,0.0
+379,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,unsat False,0.5647408962249756,0.0,656.5568990707397,2156.303643465042,0.0
+380,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,unsat False,0.5646884441375732,0.0,534.3136417865753,1751.1013674736023,0.0
+381,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,unsat False,0.5642886161804199,0.0,577.434788942337,2083.841480255127,0.0
+382,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,unsat False,0.5626875758171082,0.0,603.5628349781036,2105.931787967682,0.0
+383,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,timeout False,-16114.6865234375,3.0,3247.958597421646,4477.681964159012,0.0
+386,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,unsat False,0.5648085474967957,0.0,248.7743558883667,1756.0193498134613,0.0
+387,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,unsat False,0.5647768974304199,0.0,565.3615927696228,2073.666708946228,0.0
+388,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,unsat False,0.5647341012954712,0.0,653.529572725296,2158.1839888095856,0.0
+389,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,unsat False,0.5647157430648804,0.0,682.3963377475739,1904.3865299224856,0.0
+390,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,unsat False,0.5647151470184326,0.0,658.8719854354858,2171.6480944156647,0.0
+391,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,unsat False,0.5646445751190186,0.0,529.1386942863464,2038.2336113452911,0.0
+392,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,unsat False,0.5641035437583923,0.0,577.3672239780426,1803.718646287918,0.0
+393,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,unsat False,0.5618305206298828,0.0,610.780919790268,2127.470671892166,0.0
+394,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-1016370.4375,3.0,4031.2448678016663,5271.593275547028,0.0
+397,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k2_eps_0.0001.vnnlib,1200,unsat False,0.1177796721458435,0.0,281.2700345516205,1491.8283648490906,0.0
+398,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k10_eps_0.0001.vnnlib,1200,unsat False,0.1177714169025421,0.0,585.4899959564209,2086.495874643326,0.0
+399,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k20_eps_0.0001.vnnlib,1200,unsat False,0.1177642941474914,0.0,666.7126822471619,2175.4778819084167,0.0
+400,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k30_eps_0.0001.vnnlib,1200,unsat False,0.1177503764629364,0.0,677.5109105110168,2189.9396810531616,0.0
+401,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k24_eps_0.0001.vnnlib,1200,unsat False,0.1177659630775451,0.0,694.1776075363159,1920.2489228248596,0.0
+402,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50_eps_0.0001.vnnlib,1200,unsat False,0.1177505850791931,0.0,539.4385237693787,2050.7933490276337,0.0
+403,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k196_eps_0.0001.vnnlib,1200,unsat False,0.1176253855228424,0.0,578.927145242691,2086.6226422786713,0.0
+404,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k784_eps_0.0001.vnnlib,1200,unsat False,0.1171942949295044,0.0,594.7592742443085,1819.8028347492216,0.0
+405,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.1030090451240539,0.0,676.6549479961395,2188.1264476776123,0.0
+406,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k25088_eps_0.0001.vnnlib,1200,unsat False,0.0587851107120513,0.0,703.7666883468628,2210.90820479393,0.0
+407,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50176_eps_0.0001.vnnlib,1200,error,,,,,
+408,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k2_eps_0.0002.vnnlib,1200,unsat False,0.1177789568901062,0.0,281.89674830436707,1793.692789554596,0.0
+409,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k10_eps_0.0002.vnnlib,1200,unsat False,0.1177630722522735,0.0,591.1027426719666,1816.5713024139404,0.0
+410,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k20_eps_0.0002.vnnlib,1200,unsat False,0.1177484393119812,0.0,682.1672966480255,2190.275423526764,0.0
+411,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k30_eps_0.0002.vnnlib,1200,unsat False,0.1177214682102203,0.0,713.0279705524445,2211.8956549167633,0.0
+412,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k24_eps_0.0002.vnnlib,1200,unsat False,0.1177522838115692,0.0,702.2030198574066,2195.960031270981,0.0
+413,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50_eps_0.0002.vnnlib,1200,unsat False,0.1177204251289367,0.0,549.7937471866608,1760.3639516830444,0.0
+414,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k196_eps_0.0002.vnnlib,1200,unsat False,0.1174685657024383,0.0,587.1010000705719,2105.6385259628296,0.0
+415,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k784_eps_0.0002.vnnlib,1200,unsat False,0.1165732443332672,0.0,582.8797991275787,2099.279352426529,0.0
+416,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k12544_eps_0.0002.vnnlib,1200,unsat False,0.0573658049106597,0.0,706.2587473392487,1948.9472765922544,0.0
+417,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k25088_eps_0.0002.vnnlib,1200,timeout False,-405.6029052734375,3.0,2626.6312651634216,4148.48462843895,0.0
+418,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-102007192.0,3.0,4204.201770544052,5441.856321573257,0.0
+419,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k2_eps_0.0003.vnnlib,1200,unsat False,0.1177787780761718,0.0,281.4210910797119,1792.669039964676,0.0
+420,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k10_eps_0.0003.vnnlib,1200,unsat False,0.1177543997764587,0.0,592.1713676452637,2101.584703683853,0.0
+421,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k20_eps_0.0003.vnnlib,1200,unsat False,0.1177321970462799,0.0,689.5036919116974,2195.300849914551,0.0
+422,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k30_eps_0.0003.vnnlib,1200,unsat False,0.1176912486553192,0.0,731.4088220596313,1954.4620554447176,0.0
+423,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k24_eps_0.0003.vnnlib,1200,unsat False,0.117737591266632,0.0,705.5410737991333,1932.7557682991028,0.0
+424,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50_eps_0.0003.vnnlib,1200,unsat False,0.1176896393299102,0.0,552.4405419826508,2062.373158454895,0.0
+425,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k196_eps_0.0003.vnnlib,1200,unsat False,0.117308109998703,0.0,587.1727895736694,2100.823935508728,0.0
+426,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k784_eps_0.0003.vnnlib,1200,unsat False,0.1159240901470184,0.0,590.2727208137512,2099.9462134838104,0.0
+427,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k12544_eps_0.0003.vnnlib,1200,timeout False,-0.6006363034248352,3.0,2266.903054714203,3779.983324766159,0.0
+428,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k25088_eps_0.0003.vnnlib,1200,timeout False,-2221185.25,3.0,3694.545526266098,4925.855779647827,0.0
+430,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k2_eps_0.0004.vnnlib,1200,unsat False,0.1177783608436584,0.0,282.38095474243164,1782.3287868499756,0.0
+431,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k10_eps_0.0004.vnnlib,1200,unsat False,0.1177456378936767,0.0,596.2106771469116,1805.766664981842,0.0
+432,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k20_eps_0.0004.vnnlib,1200,unsat False,0.1177158653736114,0.0,682.1627933979034,2194.904350757599,0.0
+433,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k30_eps_0.0004.vnnlib,1200,unsat False,0.1176606118679046,0.0,733.69735455513,1960.0594804286957,0.0
+434,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k24_eps_0.0004.vnnlib,1200,unsat False,0.1177234053611755,0.0,706.9869511127472,2216.073659658432,0.0
+435,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50_eps_0.0004.vnnlib,1200,unsat False,0.1176585555076599,0.0,561.979558467865,2072.4232110977173,0.0
+436,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k196_eps_0.0004.vnnlib,1200,unsat False,0.1171469092369079,0.0,589.5330979824066,1813.6341457366943,0.0
+437,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k784_eps_0.0004.vnnlib,1200,unsat False,0.1152454018592834,0.0,599.8421893119812,2106.6515090465546,0.0
+438,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k12544_eps_0.0004.vnnlib,1200,timeout False,-819.3671875,3.0,2647.505890607834,4164.415176868439,0.0
+440,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1514.4567713737488,0.0
+441,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,unsat False,0.1177799105644226,0.0,2.007615089416504,1511.1724071502686,0.0
+442,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,unsat False,0.1177799105644226,0.0,182.98864912986755,1688.4941906929016,0.0
+443,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,unsat False,0.1177792847156524,0.0,131.9085500240326,1354.6925132274628,0.0
+444,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,unsat False,0.1177794337272644,0.0,201.69224905967712,1695.8024713993073,0.0
+445,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,unsat False,0.1177785396575927,0.0,283.46958780288696,1489.4089801311493,0.0
+446,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,unsat False,0.1177780628204345,0.0,319.8458104133606,1808.8759405612943,0.0
+447,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,unsat False,0.1177722811698913,0.0,566.9845819473267,2081.237251758575,0.0
+448,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,unsat False,0.1177474856376648,0.0,486.5008375644684,1717.322813987732,0.0
+449,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.1172772049903869,0.0,575.1843638420105,2093.7038581371307,0.0
+450,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.1167206168174743,0.0,589.8113601207733,2100.907104730606,0.0
+451,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,0.1155391633510589,0.0,606.3360521793365,1831.103703737259,0.0
+452,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,unsat False,0.1177798509597778,0.0,2.0224826335906982,1509.5086905956268,0.0
+453,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,unsat False,0.1177793145179748,0.0,185.0558435916901,1679.1631853580477,0.0
+454,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,unsat False,0.1177788972854614,0.0,128.81916069984436,1617.8425278663635,0.0
+455,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,unsat False,0.117778480052948,0.0,206.4882628917694,1412.3758788108826,0.0
+456,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,unsat False,0.1177767515182495,0.0,282.45610451698303,1791.8788094520569,0.0
+457,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,unsat False,0.117776870727539,0.0,326.21054577827454,1549.2543222904203,0.0
+458,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,unsat False,0.1177637577056884,0.0,569.9517660140991,2075.719668865204,0.0
+459,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,unsat False,0.1177145838737487,0.0,486.617506980896,1995.755048751831,0.0
+460,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,unsat False,0.1167509257793426,0.0,596.0461087226868,1818.8143775463104,0.0
+461,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,unsat False,0.1155678927898407,0.0,598.8759710788727,2104.354211330414,0.0
+462,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,unsat False,0.112909585237503,0.0,626.9806807041168,2124.8496260643005,0.0
+463,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,unsat False,0.1177799105644226,0.0,4.758337736129761,1214.359519481659,0.0
+464,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,unsat False,0.1177797317504882,0.0,183.06893301010132,1675.857820034027,0.0
+465,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,unsat False,0.1177775859832763,0.0,129.07157278060913,1641.0586745738983,0.0
+466,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,unsat False,0.1177770495414733,0.0,209.08084678649905,1717.3895773887634,0.0
+467,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,unsat False,0.117775410413742,0.0,287.1808180809021,1512.831810951233,0.0
+468,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,unsat False,0.1177743077278137,0.0,325.52738857269287,1836.376800060272,0.0
+469,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,unsat False,0.1177560985088348,0.0,573.8226964473724,2081.065716266632,0.0
+470,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,unsat False,0.1176818311214447,0.0,489.6194441318512,1714.1683974266052,0.0
+471,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,unsat False,0.1161967515945434,0.0,594.6585195064545,2109.1846463680267,0.0
+472,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,unsat False,0.1143200695514679,0.0,613.0351176261902,2123.8479747772217,0.0
+473,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,unsat False,0.1097665429115295,0.0,639.1254544258118,1867.212557077408,0.0
+474,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,unsat False,0.1177802085876464,0.0,1.968672275543213,1511.101132631302,0.0
+475,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,unsat False,0.1177795827388763,0.0,187.3779935836792,1410.1267204284668,0.0
+476,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,unsat False,0.1177773177623748,0.0,128.52489590644836,1633.990829706192,0.0
+477,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,unsat False,0.117776870727539,0.0,210.36077666282657,1704.458431005478,0.0
+478,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,unsat False,0.1177733242511749,0.0,283.51570081710815,1771.5557131767273,0.0
+479,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,unsat False,0.1177729964256286,0.0,329.0107226371765,1534.9514496326449,0.0
+480,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,unsat False,0.1177473068237304,0.0,576.9750285148621,2090.5539870262146,0.0
+481,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,unsat False,0.1176482141017913,0.0,490.4323935508728,2006.9905807971952,0.0
+482,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,unsat False,0.1156202256679534,0.0,606.4146816730499,1837.2731120586395,0.0
+483,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,unsat False,0.1129668354988098,0.0,620.6044862270355,2073.5030250549316,0.0
+484,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,unsat False,0.1058489084243774,0.0,649.8457186222076,1986.044896364212,0.0
+485,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,unsat False,0.1177795529365539,0.0,282.380619764328,1506.9169058799744,0.0
+486,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,unsat False,0.1177719235420227,0.0,547.9445066452026,2057.421100139618,0.0
+487,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,unsat False,0.1177652180194854,0.0,665.6752927303314,2170.832569360733,0.0
+488,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,unsat False,0.1177513897418975,0.0,683.0787181854248,1905.505515098572,0.0
+489,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,unsat False,0.1177678406238555,0.0,685.6524004936218,1890.4973945617676,0.0
+490,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,unsat False,0.1177520751953125,0.0,537.1779091358185,1766.7721855640411,0.0
+491,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,unsat False,0.1176331937313079,0.0,583.5048425197601,2099.0323383808136,0.0
+492,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,unsat False,0.1172280311584472,0.0,590.3380904197693,2102.653053998947,0.0
+493,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.1039550304412841,0.0,683.6444783210754,2200.5395634174347,0.0
+494,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.0643607079982757,0.0,696.9051487445831,1929.9824569225311,0.0
+495,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-163.17279052734375,3.0,2528.001877784729,4041.2448658943176,0.0
+496,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,unsat False,0.1177789568901062,0.0,281.87724566459656,1792.32612657547,0.0
+497,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,unsat False,0.1177636086940765,0.0,555.818642616272,2062.622918844223,0.0
+498,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,unsat False,0.1177496612071991,0.0,681.0701673030853,1905.1692957878113,0.0
+499,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,unsat False,0.1177227199077606,0.0,713.7049992084503,2223.1774265766144,0.0
+500,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,unsat False,0.117755502462387,0.0,693.0608336925507,2198.8669805526733,0.0
+501,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,unsat False,0.1177235841751098,0.0,545.738582611084,1768.846992969513,0.0
+502,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,unsat False,0.1174848079681396,0.0,586.5170848369598,1996.511883020401,0.0
+503,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,unsat False,0.116643488407135,0.0,586.2818374633789,1813.5167872905731,0.0
+504,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,unsat False,0.0629479885101318,0.0,701.0774004459381,2034.2457270622251,0.0
+505,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,timeout False,-263.6995544433594,3.0,2549.75017619133,4051.0019347667694,0.0
+506,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,timeout False,-82756088.0,3.0,4123.541648387909,5339.092875003815,0.0
+507,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,unsat False,0.1177786588668823,0.0,280.67213439941406,1769.6697902679443,0.0
+508,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,unsat False,0.1177553236484527,0.0,561.0049221515656,2072.5923566818237,0.0
+509,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,unsat False,0.1177347302436828,0.0,684.1936066150665,2192.108371734619,0.0
+510,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,unsat False,0.1176933944225311,0.0,727.6219623088837,1952.8617339134216,0.0
+511,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,unsat False,0.1177431344985961,0.0,695.1956677436829,2208.5779552459717,0.0
+512,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,unsat False,0.1176950633525848,0.0,549.7725088596344,2059.2546899318695,0.0
+513,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,unsat False,0.117333322763443,0.0,589.9698903560638,1816.7556483745575,0.0
+514,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,unsat False,0.1160310804843902,0.0,593.9263813495636,2110.509220123291,0.0
+515,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,timeout False,-0.430126428604126,3.0,2205.0794558525085,3725.603718519211,0.0
+516,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,timeout False,-1708495.625,3.0,3577.932496070862,4817.4580290317535,0.0
+517,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,error,,,,,
+518,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,unsat False,0.1177781224250793,0.0,283.2386155128479,1800.4153671264648,0.0
+519,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,unsat False,0.1177464127540588,0.0,564.6447267532349,1790.89240026474,0.0
+520,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,unsat False,0.1177195608615875,0.0,678.6665775775909,2196.0924019813538,0.0
+521,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,unsat False,0.117663949728012,0.0,725.109311580658,2240.2531995773315,0.0
+522,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,unsat False,0.117730438709259,0.0,701.3888423442841,1933.7600231170657,0.0
+523,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,unsat False,0.117665946483612,0.0,557.4003427028656,2074.2854928970337,0.0
+524,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,unsat False,0.1171810626983642,0.0,584.4319221973419,1816.21391749382,0.0
+525,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,unsat False,0.1153932213783264,0.0,601.500483751297,2116.058819293976,0.0
+526,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-537.1692504882812,3.0,2587.8143453598022,4111.591332912445,0.0
+527,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,timeout False,-116877016.0,3.0,4089.9075186252594,5330.058780431747,0.0
+528,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1515.3114442825315,0.0
+529,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k2_eps_0.0001.vnnlib,1200,timeout False,-0.984391748905182,3.0,899.1610043048859,2413.667785167694,0.0
+530,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k10_eps_0.0001.vnnlib,1200,timeout False,-0.9843983054161072,3.0,1806.6269173622131,3034.750443458557,0.0
+531,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k20_eps_0.0001.vnnlib,1200,timeout False,-0.9844045639038086,3.0,2231.8721301555634,3742.725429534912,0.0
+533,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k24_eps_0.0001.vnnlib,1200,timeout False,-0.9844017028808594,3.0,2209.345575094223,3717.870321035385,0.0
+534,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50_eps_0.0001.vnnlib,1200,timeout False,-0.9844273328781128,3.0,1567.702985048294,2793.6377477645874,0.0
+535,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k196_eps_0.0001.vnnlib,1200,timeout False,-0.9845804572105408,3.0,1760.7263667583466,3275.0567417144775,0.0
+536,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k784_eps_0.0001.vnnlib,1200,error,,,,,
+537,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1517.779503107071,0.0
+538,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1516.564444065094,0.0
+539,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1513.3117504119873,0.0
+540,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k2_eps_0.0002.vnnlib,1200,timeout False,-0.9843928813934326,3.0,922.6268904209136,2151.9874165058136,0.0
+541,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k10_eps_0.0002.vnnlib,1200,timeout False,-0.9844076633453368,3.0,2109.424482345581,3622.5119318962097,0.0
+542,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k20_eps_0.0002.vnnlib,1200,error,,,,,
+543,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k30_eps_0.0002.vnnlib,1200,error,,,,,
+544,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k24_eps_0.0002.vnnlib,1200,error,,,,,
+545,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50_eps_0.0002.vnnlib,1200,timeout False,-0.9844695329666138,3.0,1634.2810504436493,3141.388911962509,0.0
+546,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k196_eps_0.0002.vnnlib,1200,timeout False,-0.9847650527954102,3.0,1739.9200496673584,2965.08233833313,0.0
+547,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k784_eps_0.0002.vnnlib,1200,timeout False,-0.9857832193374634,3.0,1737.079384803772,3248.2214839458466,0.0
+548,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1230.1834688186646,0.0
+549,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1515.4073810577393,0.0
+550,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1512.8372657299042,0.0
+551,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k2_eps_0.0003.vnnlib,1200,timeout False,-0.9843949675559998,3.0,926.6516354084016,2435.1762330532074,0.0
+552,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k10_eps_0.0003.vnnlib,1200,error,,,,,
+553,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k20_eps_0.0003.vnnlib,1200,error,,,,,
+554,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k30_eps_0.0003.vnnlib,1200,error,,,,,
+555,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k24_eps_0.0003.vnnlib,1200,error,,,,,
+556,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50_eps_0.0003.vnnlib,1200,timeout False,-0.9845049381256104,3.0,1640.2928075790403,3160.227083683014,0.0
+557,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k196_eps_0.0003.vnnlib,1200,timeout False,-0.984960913658142,3.0,1771.612396478653,3291.448826313019,0.0
+558,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k784_eps_0.0003.vnnlib,1200,timeout False,-0.9865527153015136,3.0,1810.653378725052,3039.4544548988342,0.0
+559,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1516.8089179992676,0.0
+560,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1231.9265496730804,0.0
+561,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1513.4458680152893,0.0
+562,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k2_eps_0.0004.vnnlib,1200,timeout False,-0.9843976497650146,3.0,935.844465970993,2443.9719944000244,0.0
+563,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k10_eps_0.0004.vnnlib,1200,error,,,,,
+564,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k20_eps_0.0004.vnnlib,1200,error,,,,,
+565,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k30_eps_0.0004.vnnlib,1200,error,,,,,
+566,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k24_eps_0.0004.vnnlib,1200,error,,,,,
+567,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50_eps_0.0004.vnnlib,1200,timeout False,-0.9845532178878784,3.0,1653.2059321403503,3167.124220132828,0.0
+568,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k196_eps_0.0004.vnnlib,1200,timeout False,-0.9851580262184144,3.0,1783.7573034763336,3297.3101394176483,0.0
+569,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k784_eps_0.0004.vnnlib,1200,timeout False,-0.9873660802841188,3.0,1886.7872622013092,3113.9106800556183,0.0
+570,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1510.3948101997375,0.0
+571,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1515.0639872550964,0.0
+572,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1511.4304101467133,0.0
+573,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.9843904972076416,3.0,6.2510786056518555,1234.3450038433075,0.0
+574,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.9843931198120116,3.0,496.7290325164795,2004.231386899948,0.0
+575,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.9843908548355104,3.0,636.0282878875732,2139.920711040497,0.0
+576,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.9843933582305908,3.0,611.9439189434052,1833.1015107631683,0.0
+577,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.9843909740447998,3.0,560.0148129463196,2075.2744908332825,0.0
+578,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.9843931198120116,3.0,1085.5498328208923,2314.6900351047516,0.0
+579,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.984400749206543,3.0,1766.4699578285215,3278.340074300766,0.0
+580,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.9844316244125366,3.0,1520.4268026351929,3033.5837712287903,0.0
+581,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,timeout False,-0.9850869178771972,3.0,1777.2536597251892,3286.7147810459137,0.0
+582,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.98585444688797,3.0,1813.535134792328,3040.2933959960938,0.0
+583,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-0.9875562787055968,3.0,1835.2828323841095,3345.73637509346,0.0
+584,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.9843900203704834,3.0,3.9209389686584473,1510.697625875473,0.0
+585,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.9843968152999878,3.0,522.1307904720306,1746.2070660591123,0.0
+586,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,timeout False,-0.984391450881958,3.0,650.524777173996,2164.1465446949005,0.0
+587,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,timeout False,-0.984397292137146,3.0,639.9753224849701,1867.1946194171903,0.0
+588,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,timeout False,-0.9843912124633788,3.0,566.3296735286713,2076.24743103981,0.0
+589,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.9843961000442504,3.0,1100.3817219734192,2493.9683265686035,0.0
+590,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,timeout False,-0.9844095706939696,3.0,1933.915903568268,3164.8536846637726,0.0
+591,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.984465479850769,3.0,1552.99654006958,2862.0641651153564,0.0
+592,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,timeout False,-0.9858253598213196,3.0,1808.139661550522,3319.839397907257,0.0
+593,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,timeout False,-0.9875273704528807,3.0,1848.5141923427584,3073.896954059601,0.0
+594,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,timeout False,-0.9915735721588136,3.0,1874.023600578308,3382.0682530403137,0.0
+595,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.9843903183937072,3.0,3.794020175933838,1512.0270855426788,0.0
+596,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.98440021276474,3.0,527.071989774704,2031.630846261978,0.0
+597,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,timeout False,-0.9843919277191162,3.0,655.5158059597015,1877.400959968567,0.0
+598,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,timeout False,-0.9844003915786744,3.0,644.5456433296204,2161.0552434921265,0.0
+599,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,timeout False,-0.9843912124633788,3.0,581.3351936340332,1812.2841925621033,0.0
+600,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,timeout False,-0.984398066997528,3.0,1129.7753520011902,2643.471656560898,0.0
+601,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.9844183921813964,3.0,2374.260134935379,3890.2629532814026,0.0
+602,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.9845021963119508,3.0,1561.3185300827026,3074.06631398201,0.0
+603,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,timeout False,-0.9866173267364502,3.0,1854.7041821479795,3084.7188460826874,0.0
+604,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,timeout False,-0.9894230961799622,3.0,1896.276664495468,3410.0472304821014,0.0
+605,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,error,,,,,
+606,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.984390139579773,3.0,5.901708602905273,1233.2556688785553,0.0
+607,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,timeout False,-0.9844033718109132,3.0,529.9788374900818,2042.2007431983948,0.0
+608,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,timeout False,-0.9843919277191162,3.0,655.0961120128632,2163.638721227646,0.0
+609,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,timeout False,-0.9844030141830444,3.0,646.24405169487,1872.12841963768,0.0
+610,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,timeout False,-0.9843932390213012,3.0,582.1375403404236,2090.0207319259644,0.0
+611,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,timeout False,-0.984400749206543,3.0,1165.8230469226835,2387.3795499801636,0.0
+613,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.9845457077026368,3.0,1554.5130932331083,3072.228006839752,0.0
+614,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-0.9874598979949952,3.0,1874.183174610138,3106.7704327106476,0.0
+615,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,timeout False,-0.9915599822998048,3.0,1926.440770626068,3441.8318059444427,0.0
+616,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,timeout False,-1.0037471055984497,3.0,1995.8622345924375,3511.7031383514404,0.0
+617,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.9843921065330504,3.0,899.1708352565765,2416.875801563263,0.0
+618,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.9843945503234864,3.0,1787.7628960609436,3021.033449411392,0.0
+619,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.984400510787964,3.0,2230.527287006378,3741.7661616802216,0.0
+621,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.9843989610671996,3.0,2214.419031858444,3439.3572523593903,0.0
+622,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.9844307899475098,3.0,1582.4319565296173,3094.0933282375336,0.0
+623,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.9845696687698364,3.0,1744.3801763057709,3252.362814426422,0.0
+624,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.9850224256515504,3.0,1720.1408019065857,2945.4385871887207,0.0
+625,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1519.4836013317108,0.0
+626,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1519.279084444046,0.0
+627,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1229.731359243393,0.0
+628,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.9843930006027222,3.0,918.7834942340852,2436.273616552353,0.0
+629,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.9844027161598206,3.0,2118.6754217147827,3351.196017742157,0.0
+630,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,error,,,,,
+631,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,error,,,,,
+632,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,error,,,,,
+633,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.984462022781372,3.0,1627.921617269516,2855.9232170581818,0.0
+634,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,timeout False,-0.9847468137741088,3.0,1774.0553719997406,3275.024165391922,0.0
+635,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.9856960773468018,3.0,1733.263428926468,3234.1397914886475,0.0
+636,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1212.067804813385,0.0
+637,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1518.2075698375702,0.0
+638,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1515.8908925056458,0.0
+639,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.984394907951355,3.0,928.3835051059724,2160.9244372844696,0.0
+640,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,error,,,,,
+641,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+642,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+643,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+644,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,timeout False,-0.9845033288002014,3.0,1628.446144580841,3145.827449321747,0.0
+645,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.9849332571029664,3.0,1787.9411396980286,3020.532670021057,0.0
+646,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.9864165782928468,3.0,1823.307934999466,3339.8606548309326,0.0
+647,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1514.2796614170074,0.0
+648,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1232.69912815094,0.0
+649,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1514.7236115932465,0.0
+650,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.984397292137146,3.0,947.7695558071136,2175.5525798797607,0.0
+651,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,error,,,,,
+652,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+653,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+654,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+655,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,timeout False,-0.9845418334007264,3.0,1652.0074112415314,3150.570420742035,0.0
+656,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,timeout False,-0.9851191639900208,3.0,1805.2334423065183,3013.4102804660797,0.0
+657,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.987186074256897,3.0,1890.6448032855988,3389.1483566761017,0.0
+658,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1515.8285684585571,0.0
+659,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1512.1004178524015,0.0
+660,onnx/vgg16-7.onnx,vnnlib/n01514668_cock_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1230.8417212963104,0.0
+661,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k2_eps_0.0001.vnnlib,1200,timeout False,-0.0264466200023889,3.0,981.267817735672,2180.6545395851135,0.0
+662,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k10_eps_0.0001.vnnlib,1200,timeout False,-0.0264523215591907,3.0,1879.7990217208865,3077.4908349514008,0.0
+664,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k30_eps_0.0001.vnnlib,1200,error,,,,,
+666,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50_eps_0.0001.vnnlib,1200,timeout False,-0.0264760423451662,3.0,1567.9943089485168,2797.2654852867126,0.0
+667,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k196_eps_0.0001.vnnlib,1200,error,,,,,
+668,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k784_eps_0.0001.vnnlib,1200,timeout False,-0.0268533043563365,3.0,1755.271250963211,3265.381183862686,0.0
+669,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1229.3603315353394,0.0
+670,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1501.7048921585083,0.0
+671,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1212.3496067523956,0.0
+672,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k2_eps_0.0002.vnnlib,1200,timeout False,-0.026447981595993,3.0,997.3699164390564,2498.383969783783,0.0
+674,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k20_eps_0.0002.vnnlib,1200,error,,,,,
+675,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k30_eps_0.0002.vnnlib,1200,error,,,,,
+676,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k24_eps_0.0002.vnnlib,1200,error,,,,,
+677,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50_eps_0.0002.vnnlib,1200,timeout False,-0.0265080220997333,3.0,1597.0379283428192,3107.061199903488,0.0
+678,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k196_eps_0.0002.vnnlib,1200,timeout False,-0.0266574639827013,3.0,1682.2911291122437,2910.434639453888,0.0
+679,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k784_eps_0.0002.vnnlib,1200,timeout False,-0.0272908136248588,3.0,1779.2333528995514,3293.5703418254852,0.0
+680,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1229.79775929451,0.0
+681,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1511.216383934021,0.0
+682,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1511.793172121048,0.0
+683,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k2_eps_0.0003.vnnlib,1200,timeout False,-0.0264503210783004,3.0,1005.700877904892,2234.12980055809,0.0
+684,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k10_eps_0.0003.vnnlib,1200,error,,,,,
+685,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k20_eps_0.0003.vnnlib,1200,error,,,,,
+686,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k30_eps_0.0003.vnnlib,1200,error,,,,,
+687,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k24_eps_0.0003.vnnlib,1200,error,,,,,
+688,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50_eps_0.0003.vnnlib,1200,timeout False,-0.0265414342284202,3.0,1625.8738536834717,3141.759017705918,0.0
+689,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k196_eps_0.0003.vnnlib,1200,timeout False,-0.026765601709485,3.0,1710.951533079147,3223.5644295215607,0.0
+690,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k784_eps_0.0003.vnnlib,1200,timeout False,-0.0277555994689464,3.0,1835.191366672516,3065.067566871643,0.0
+691,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1514.249167919159,0.0
+692,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1517.0185306072235,0.0
+693,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1232.6930100917816,0.0
+694,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k2_eps_0.0004.vnnlib,1200,timeout False,-0.0264517161995172,3.0,1023.55423951149,2251.4431657791138,0.0
+695,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k10_eps_0.0004.vnnlib,1200,error,,,,,
+696,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k20_eps_0.0004.vnnlib,1200,error,,,,,
+697,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k30_eps_0.0004.vnnlib,1200,error,,,,,
+698,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k24_eps_0.0004.vnnlib,1200,error,,,,,
+699,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50_eps_0.0004.vnnlib,1200,timeout False,-0.026570526883006,3.0,1652.8681643009186,2862.4632432460785,0.0
+700,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k196_eps_0.0004.vnnlib,1200,timeout False,-0.0268782321363687,3.0,1734.0661120414734,3234.024656534195,0.0
+701,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k784_eps_0.0004.vnnlib,1200,timeout False,-0.0282607190310955,3.0,1891.1336386203768,3406.979026556015,0.0
+702,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1513.1694746017456,0.0
+703,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1231.5513916015625,0.0
+704,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1517.4415638446808,0.0
+705,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.0264460165053606,3.0,608.9499418735504,1840.5259556770325,0.0
+706,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.0264476705342531,3.0,1160.2548913955688,2674.5854387283325,0.0
+707,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.0264481715857982,3.0,1520.6286301612854,3016.260730981827,0.0
+708,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.0264570191502571,3.0,1810.5926904678345,3301.143006324768,0.0
+709,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.0264517646282911,3.0,1625.2345986366272,2832.6684832572937,0.0
+710,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.0264551360160112,3.0,2239.323171138763,3614.664616584778,0.0
+711,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.026480246335268,3.0,1648.497872591019,2943.7757980823517,0.0
+712,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.0265950262546539,3.0,1729.9384591579435,2963.5287799835205,0.0
+713,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1517.606177330017,0.0
+714,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1232.9728708267212,0.0
+715,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1514.7406961917875,0.0
+716,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.0264476239681243,3.0,617.7617330551147,2117.325726747513,0.0
+717,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.0264518689364194,3.0,1215.5045268535614,2715.0337052345276,0.0
+718,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,timeout False,-0.026451313868165,3.0,1531.6512582302094,2740.782233953476,0.0
+720,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,timeout False,-0.0264568105340003,3.0,1705.8378868103027,2936.285659313202,0.0
+721,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,error,,,,,
+722,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,timeout False,-0.0265114959329366,3.0,1663.9997518062592,3179.3564743995667,0.0
+723,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.0267454106360673,3.0,1713.0566596984863,2942.4341175556183,0.0
+724,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1512.673611164093,0.0
+725,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1230.48082113266,0.0
+726,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1512.1049222946167,0.0
+727,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.026450790464878,3.0,623.9276788234711,2136.630149364471,0.0
+728,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.0264554712921381,3.0,1235.8060269355774,2750.7591989040375,0.0
+729,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+730,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+731,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+732,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,error,,,,,
+733,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.0265454277396202,3.0,1675.0093531608582,2883.1141591072083,0.0
+734,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.0269023440778255,3.0,1736.923448562622,3251.1837949752808,0.0
+735,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1229.7661237716677,0.0
+736,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1511.0905787944794,0.0
+737,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1511.8190224170685,0.0
+738,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.0264509562402963,3.0,629.716628074646,2144.5477504730225,0.0
+740,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+741,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+742,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+743,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,error,,,,,
+744,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,timeout False,-0.0265806764364242,3.0,1677.3399374485016,2904.0861003398895,0.0
+745,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.0270657762885093,3.0,1779.4621777534485,3288.9492037296295,0.0
+746,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1503.0821783542633,0.0
+747,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1498.4286646842957,0.0
+748,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1218.321120262146,0.0
+749,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.026445236057043,3.0,636.1424305438995,2145.3849170207977,0.0
+750,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.0264491476118564,3.0,1528.0657427310944,2746.632396697998,0.0
+751,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.0264536328613758,3.0,2027.7150809764864,3536.9107251167297,0.0
+752,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.0264573376625776,3.0,2107.7774963378906,3324.8692343235016,0.0
+753,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.0264541823416948,3.0,1989.658194065094,3205.558888196945,0.0
+754,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,error,,,,,
+755,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.0265163425356149,3.0,1678.444195985794,2897.605632543564,0.0
+756,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,error,,,,,
+757,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1500.9780163764954,0.0
+758,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1215.6054906845093,0.0
+759,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1495.8934886455536,0.0
+760,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.026445148512721,3.0,652.2109916210175,2154.8699889183044,0.0
+761,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.0264533497393131,3.0,1570.3970584869385,3068.5427029132843,0.0
+763,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,error,,,,,
+765,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,error,,,,,
+766,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,timeout False,-0.0265902671962976,3.0,1706.5052902698517,3208.144985437393,0.0
+767,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.0269668120890855,3.0,1731.4543368816376,3227.942073583603,0.0
+768,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1495.9245777130127,0.0
+769,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1504.07155919075,0.0
+770,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1499.6487939357758,0.0
+771,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.0264449920505285,3.0,655.1670351028442,1871.436748981476,0.0
+772,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.026456331834197,3.0,1692.6942224502563,3196.7316131591797,0.0
+773,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+774,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+775,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+776,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,error,,,,,
+777,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.0266642905771732,3.0,1705.3968102931976,3216.780670404434,0.0
+778,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.0272432435303926,3.0,1768.72038936615,3272.3088200092316,0.0
+779,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1504.088295698166,0.0
+780,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1216.5591797828674,0.0
+781,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1501.8180394172668,0.0
+782,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.0264451000839471,3.0,660.3333897590637,2156.9471414089203,0.0
+784,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+785,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+786,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+787,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,error,,,,,
+788,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,timeout False,-0.0267381723970174,3.0,1718.1451890468595,2930.548016309738,0.0
+789,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.0275339279323816,3.0,1794.8963022232056,3290.396795988083,0.0
+790,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1503.165462017059,0.0
+791,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1498.60408949852,0.0
+792,onnx/vgg16-7.onnx,vnnlib/n01514859_hen_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1218.1940066814425,0.0
+793,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k2_eps_0.0001.vnnlib,1200,timeout False,-1.5017368793487549,3.0,1016.6133937835692,2525.6108775138855,0.0
+794,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k10_eps_0.0001.vnnlib,1200,timeout False,-1.501756191253662,3.0,2157.338935136795,3662.669033288956,0.0
+795,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k20_eps_0.0001.vnnlib,1200,error,,,,,
+796,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k30_eps_0.0001.vnnlib,1200,error,,,,,
+797,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k24_eps_0.0001.vnnlib,1200,error,,,,,
+798,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50_eps_0.0001.vnnlib,1200,timeout False,-1.5018428564071655,3.0,1715.44553399086,3182.2957031726837,0.0
+799,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k196_eps_0.0001.vnnlib,1200,timeout False,-1.502171754837036,3.0,1962.9007234573364,3467.4593966007233,0.0
+800,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k784_eps_0.0001.vnnlib,1200,timeout False,-1.5034470558166504,3.0,1816.7451412677765,3316.241222143173,0.0
+801,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1219.8143796920776,0.0
+802,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1504.1034133434296,0.0
+803,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1504.0644142627716,0.0
+804,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k2_eps_0.0002.vnnlib,1200,timeout False,-1.5017341375350952,3.0,1045.422250509262,2258.40904378891,0.0
+805,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k10_eps_0.0002.vnnlib,1200,error,,,,,
+806,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k20_eps_0.0002.vnnlib,1200,error,,,,,
+807,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k30_eps_0.0002.vnnlib,1200,error,,,,,
+808,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k24_eps_0.0002.vnnlib,1200,error,,,,,
+809,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50_eps_0.0002.vnnlib,1200,timeout False,-1.5019540786743164,3.0,1772.8658514022827,2992.9033057689667,0.0
+810,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k196_eps_0.0002.vnnlib,1200,timeout False,-1.502658128738403,3.0,1979.637817621231,3322.736547231674,0.0
+811,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k784_eps_0.0002.vnnlib,1200,timeout False,-1.5053420066833496,3.0,1918.5972123146057,3419.6038541793823,0.0
+812,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1216.536775112152,0.0
+813,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1496.9929616451263,0.0
+814,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1507.0005202293396,0.0
+815,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k2_eps_0.0003.vnnlib,1200,timeout False,-1.5017437934875488,3.0,1067.660629987717,2573.925930023194,0.0
+816,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k10_eps_0.0003.vnnlib,1200,error,,,,,
+817,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k20_eps_0.0003.vnnlib,1200,error,,,,,
+818,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k30_eps_0.0003.vnnlib,1200,error,,,,,
+819,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k24_eps_0.0003.vnnlib,1200,error,,,,,
+820,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50_eps_0.0003.vnnlib,1200,timeout False,-1.5020655393600464,3.0,1824.1824743747711,3330.119807243347,0.0
+821,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k196_eps_0.0003.vnnlib,1200,timeout False,-1.5031169652938845,3.0,1984.96160030365,3203.955830335617,0.0
+822,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k784_eps_0.0003.vnnlib,1200,timeout False,-1.5075024366378784,3.0,1953.3257038593292,3455.102339744568,0.0
+823,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1500.6009738445282,0.0
+824,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1215.8279042243958,0.0
+825,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1495.8632156848907,0.0
+826,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k2_eps_0.0004.vnnlib,1200,timeout False,-1.5017430782318115,3.0,1148.3446815013883,2650.954455137253,0.0
+827,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k10_eps_0.0004.vnnlib,1200,error,,,,,
+828,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k20_eps_0.0004.vnnlib,1200,error,,,,,
+829,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k30_eps_0.0004.vnnlib,1200,error,,,,,
+830,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k24_eps_0.0004.vnnlib,1200,error,,,,,
+831,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50_eps_0.0004.vnnlib,1200,timeout False,-1.5021835565567017,3.0,1850.4311544895172,3072.828911781311,0.0
+832,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k196_eps_0.0004.vnnlib,1200,timeout False,-1.5036022663116455,3.0,1976.1547091007233,3482.0180253982544,0.0
+833,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k784_eps_0.0004.vnnlib,1200,timeout False,-1.509949803352356,3.0,1985.9149057865145,3201.155447244644,0.0
+834,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1506.447894334793,0.0
+835,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1505.2055704593658,0.0
+836,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1500.8397526741028,0.0
+837,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,timeout False,-1.5017333030700684,3.0,8.039400577545166,1225.4446194171906,0.0
+838,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,timeout False,-1.5017399787902832,3.0,956.4886491298676,2463.1390252113342,0.0
+839,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,timeout False,-1.501738429069519,3.0,1214.747153520584,2717.3499970436096,0.0
+840,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,timeout False,-1.501755714416504,3.0,1411.1479210853577,2630.919922351837,0.0
+841,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,timeout False,-1.5017406940460205,3.0,1387.4470212459564,2887.943902492523,0.0
+842,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,timeout False,-1.501750111579895,3.0,1734.6212775707245,2947.6277689933777,0.0
+843,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k196_eps_0.0001.vnnlib,1200,timeout False,-1.5018163919448853,3.0,1533.726725578308,3029.691346883774,0.0
+844,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,error,,,,,
+845,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,timeout False,-1.5090402364730835,3.0,2014.484976530075,3515.296990633011,0.0
+846,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1221.1384973526,0.0
+847,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1433.5992619991302,0.0
+848,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,timeout False,-1.5017331838607788,3.0,7.767634868621826,1226.348398923874,0.0
+849,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,timeout False,-1.501746654510498,3.0,992.8739795684814,2342.703601360321,0.0
+850,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,timeout False,-1.5017484426498413,3.0,1276.4398517608645,2779.1162536144257,0.0
+851,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,timeout False,-1.5017788410186768,3.0,1954.596082687378,3457.221398830414,0.0
+852,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,timeout False,-1.5017457008361816,3.0,1476.479016304016,2688.6551854610443,0.0
+853,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,error,,,,,
+854,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,timeout False,-1.5018863677978516,3.0,1548.158083677292,3052.508847475052,0.0
+855,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,timeout False,-1.5024209022521973,3.0,1836.4179821014404,3050.254228115082,0.0
+856,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,timeout False,-1.5208492279052734,3.0,2164.309463500977,3665.225868701935,0.0
+857,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1219.5023970603943,0.0
+858,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1499.7484681606293,0.0
+859,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,timeout False,-1.5017329454421997,3.0,4.045767307281494,1504.5205962657928,0.0
+860,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,timeout False,-1.501755952835083,3.0,1086.8305158615112,2582.7574229240417,0.0
+862,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+863,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,timeout False,-1.5017603635787964,3.0,1813.4468443393707,3014.696171283722,0.0
+864,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,error,,,,,
+865,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,timeout False,-1.5019686222076416,3.0,1567.3001067638395,3071.5972802639008,0.0
+866,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,timeout False,-1.5027698278427124,3.0,1851.3756556510923,3072.9697091579437,0.0
+867,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,timeout False,-1.5429366827011108,3.0,2243.8978276252747,3751.862814188003,0.0
+868,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1513.7814254760742,0.0
+869,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1510.1925945281982,0.0
+870,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,timeout False,-1.5017337799072266,3.0,6.468871593475342,1233.2230722904203,0.0
+871,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,timeout False,-1.5017577409744265,3.0,1098.875081062317,2605.1582486629486,0.0
+872,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+873,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+874,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+875,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,error,,,,,
+876,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,timeout False,-1.5020349025726318,3.0,1603.5683271884918,3110.2458267211914,0.0
+877,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,timeout False,-1.503138542175293,3.0,1849.746258020401,3343.8316266536713,0.0
+878,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-1.5928001403808594,3.0,2249.229330301285,3738.241469144821,0.0
+879,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1207.9140391349792,0.0
+880,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1508.7235264778135,0.0
+881,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,timeout False,-1.5017359256744385,3.0,1017.4670979976654,2521.9113268852234,0.0
+882,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,timeout False,-1.501750349998474,3.0,1960.5654094219208,3182.3103663921356,0.0
+883,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,error,,,,,
+884,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,error,,,,,
+885,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,error,,,,,
+886,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,timeout False,-1.501838445663452,3.0,1690.1726744174955,3202.6034984588623,0.0
+887,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,timeout False,-1.5021076202392578,3.0,1954.907649755478,3180.2645864486694,0.0
+888,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,timeout False,-1.5031126737594604,3.0,1830.1915919780731,3338.231127500534,0.0
+889,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1508.1002988815308,0.0
+890,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1503.9651193618774,0.0
+891,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1223.3084058761597,0.0
+892,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,timeout False,-1.501737356185913,3.0,1039.0483312606812,2546.6621947288513,0.0
+894,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,error,,,,,
+895,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,error,,,,,
+896,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,error,,,,,
+897,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,timeout False,-1.5019347667694092,3.0,1734.828194618225,2954.0304045677185,0.0
+898,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,timeout False,-1.5024943351745603,3.0,1978.599365711212,3486.086683988571,0.0
+899,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,timeout False,-1.5045878887176514,3.0,1904.4859366416931,3129.280067920685,0.0
+900,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1511.7499759197235,0.0
+901,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1489.727257013321,0.0
+902,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1487.0112233161926,0.0
+903,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,timeout False,-1.501745581626892,3.0,1105.809678554535,2307.04896068573,0.0
+904,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,error,,,,,
+905,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+906,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+907,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+908,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,timeout False,-1.5020276308059692,3.0,1759.5980899333954,3261.742010831833,0.0
+909,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,timeout False,-1.502896428108215,3.0,1960.2836911678312,3179.5982098579407,0.0
+910,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,timeout False,-1.5062057971954346,3.0,1936.5380268096924,3446.927550315857,0.0
+911,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1507.3085548877716,0.0
+912,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1226.1880469322205,0.0
+913,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,1429.3150112628937,0.0
+914,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,timeout False,-1.501744270324707,3.0,1101.750331878662,2447.02814412117,0.0
+915,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,error,,,,,
+916,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+917,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+918,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+919,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,timeout False,-1.5021283626556396,3.0,1797.8904581069946,3312.119423151016,0.0
+921,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,timeout False,-1.5080608129501345,3.0,1938.1877646446228,3165.380838394165,0.0
+922,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,1511.1553790569303,0.0
+923,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,1222.61434674263,0.0
+924,onnx/vgg16-7.onnx,vnnlib/n01518878_ostrich_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,1511.0912747383118,0.0
+925,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k2_eps_0.0001.vnnlib,1200,timeout False,-0.6660215854644775,3.0,906.1025745868684,2416.4338324069977,0.0
+926,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k10_eps_0.0001.vnnlib,1200,timeout False,-0.6660398244857788,3.0,1925.7450568675995,3436.0296375751495,0.0
+927,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k20_eps_0.0001.vnnlib,1200,error,,,,,
+928,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k30_eps_0.0001.vnnlib,1200,error,,,,,
+929,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k24_eps_0.0001.vnnlib,1200,error,,,,,
+930,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50_eps_0.0001.vnnlib,1200,timeout False,-0.6661014556884766,3.0,1647.2630677223206,2873.988803386688,0.0
+931,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k196_eps_0.0001.vnnlib,1200,timeout False,-0.6663525104522705,3.0,1839.1924879550936,3341.286042690277,0.0
+932,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k784_eps_0.0001.vnnlib,1200,timeout False,-0.6672128438949585,3.0,1782.143268585205,3285.822928905487,0.0
+933,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k12544_eps_0.0001.vnnlib,1200,sat True,,,,1222.2750067710876,0.0
+934,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k25088_eps_0.0001.vnnlib,1200,sat True,,,,1508.293984889984,0.0
+935,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,1504.5852427482605,0.0
+936,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k2_eps_0.0002.vnnlib,1200,timeout False,-0.6660232543945312,3.0,933.4822914600372,2154.762241125107,0.0
+938,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k20_eps_0.0002.vnnlib,1200,error,,,,,
+939,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k30_eps_0.0002.vnnlib,1200,error,,,,,
+940,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k24_eps_0.0002.vnnlib,1200,error,,,,,
+941,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50_eps_0.0002.vnnlib,1200,error,,,,,
+942,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k196_eps_0.0002.vnnlib,1200,timeout False,-0.6666938066482544,3.0,1853.8519358634949,3073.472801208496,0.0
+943,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k784_eps_0.0002.vnnlib,1200,timeout False,-0.6685078144073486,3.0,1867.5049014091492,3351.4332644939423,0.0
+944,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k12544_eps_0.0002.vnnlib,1200,sat True,,,,1200.0084130764008,0.0
+945,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k25088_eps_0.0002.vnnlib,1200,sat True,,,,1486.1304109096527,0.0
+946,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,1514.280408859253,0.0
+947,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k2_eps_0.0003.vnnlib,1200,timeout False,-0.666024923324585,3.0,938.7579765319824,2165.980471611023,0.0
+948,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k10_eps_0.0003.vnnlib,1200,error,,,,,
+949,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k20_eps_0.0003.vnnlib,1200,error,,,,,
+950,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k30_eps_0.0003.vnnlib,1200,error,,,,,
+951,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k24_eps_0.0003.vnnlib,1200,error,,,,,
+952,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50_eps_0.0003.vnnlib,1200,timeout False,-0.6662778258323669,3.0,1699.653860092163,3206.1183676719666,0.0
+953,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k196_eps_0.0003.vnnlib,1200,timeout False,-0.667045533657074,3.0,1872.211454153061,3091.7758083343506,0.0
+954,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k784_eps_0.0003.vnnlib,1200,timeout False,-0.6699175834655762,3.0,1916.8434557914736,3419.2396047115326,0.0
+955,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k12544_eps_0.0003.vnnlib,1200,sat True,,,,1222.4432785511017,0.0
+956,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k25088_eps_0.0003.vnnlib,1200,sat True,,,,1222.443142414093,0.0
+957,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,11.785664081573486,0.0
+958,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k2_eps_0.0004.vnnlib,1200,timeout False,-0.6660265326499939,6.0,1570.016303062439,1580.3970041275024,0.0
+959,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k10_eps_0.0004.vnnlib,1200,error,,,,,
+960,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k20_eps_0.0004.vnnlib,1200,error,,,,,
+961,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k30_eps_0.0004.vnnlib,1200,error,,,,,
+962,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k24_eps_0.0004.vnnlib,1200,error,,,,,
+963,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50_eps_0.0004.vnnlib,1200,timeout False,-0.6663714647293091,3.0,1722.9005341529846,1732.64927983284,0.0
+964,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k196_eps_0.0004.vnnlib,1200,timeout False,-0.6674103736877441,3.0,1855.303139925003,1863.777197599411,0.0
+965,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k784_eps_0.0004.vnnlib,1200,timeout False,-0.671445369720459,3.0,1968.629941701889,1978.4931795597076,0.0
+966,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k12544_eps_0.0004.vnnlib,1200,sat True,,,,11.184250354766846,0.0
+967,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k25088_eps_0.0004.vnnlib,1200,sat True,,,,9.854991912841797,0.0
+968,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_global_k50176_eps_0.0004.vnnlib,1200,sat True,,,,11.311516761779783,0.0
+969,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.6660200357437134,46107.0,1193.2279732227323,1202.14617395401,0.0
+970,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.6660221815109253,12.0,1373.156442403793,1382.0731337070465,0.0
+971,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k20_eps_0.0001.vnnlib,1200,timeout False,-0.6660219430923462,6.0,1351.8494791984558,1361.9629411697388,0.0
+972,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k30_eps_0.0001.vnnlib,1200,timeout False,-0.6660201549530029,6.0,1598.4613196849823,1608.573309659958,0.0
+973,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k24_eps_0.0001.vnnlib,1200,timeout False,-0.6660218238830566,3.0,1319.403778553009,1328.9185202121737,0.0
+974,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.6660292744636536,3.0,1358.0928246974945,1367.6041193008425,0.0
+976,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k784_eps_0.0001.vnnlib,1200,timeout False,-0.6661359071731567,3.0,1741.1112768650055,1749.7152440547943,0.0
+977,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,timeout False,-0.6680477857589722,3.0,1860.5236225128176,1869.4063374996183,0.0
+978,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.6703789234161377,3.0,1975.2902429103851,1984.1716558933256,0.0
+979,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,9.947603225708008,0.0
+980,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.6660197973251343,46263.0,1193.9532310962677,1202.016224861145,0.0
+981,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k10_eps_0.0002.vnnlib,1200,timeout False,-0.6660247445106506,12.0,1374.2007992267609,1384.6026651859283,0.0
+982,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k20_eps_0.0002.vnnlib,1200,timeout False,-0.6660256385803223,6.0,1355.3760123252869,1365.7840747833252,0.0
+983,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k30_eps_0.0002.vnnlib,1200,timeout False,-0.6660211086273193,6.0,1597.8739063739777,1608.2759792804718,0.0
+984,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k24_eps_0.0002.vnnlib,1200,timeout False,-0.6660256385803223,3.0,1371.5561847686768,1381.1281793117523,0.0
+985,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.6660354137420654,3.0,1453.3152198791504,1462.8848624229431,0.0
+986,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k196_eps_0.0002.vnnlib,1200,error,,,,,
+987,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.6662489175796509,3.0,1812.2143948078156,1822.0361413955688,0.0
+988,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k12544_eps_0.0002.vnnlib,1200,timeout False,-0.6703735589981079,3.0,1935.7455563545227,1945.5647230148315,0.0
+989,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k25088_eps_0.0002.vnnlib,1200,timeout False,-0.6763497591018677,3.0,2047.676789522171,2057.496626138687,0.0
+990,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,11.789245367050173,0.0
+991,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.6660200357437134,47013.0,1191.9042570590973,1202.229195356369,0.0
+992,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k10_eps_0.0003.vnnlib,1200,timeout False,-0.6660284399986267,12.0,1388.2690370082855,1398.5927259922028,0.0
+993,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k20_eps_0.0003.vnnlib,1200,timeout False,-0.6660281419754028,6.0,1365.355286359787,1375.56117105484,0.0
+994,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k30_eps_0.0003.vnnlib,1200,timeout False,-0.6660233736038208,6.0,1644.281177997589,1654.4854702949524,0.0
+995,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k24_eps_0.0003.vnnlib,1200,timeout False,-0.6660282611846924,3.0,1386.7766065597534,1396.9825241565704,0.0
+996,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50_eps_0.0003.vnnlib,1200,error,,,,,
+997,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k196_eps_0.0003.vnnlib,1200,error,,,,,
+998,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.6663661003112793,3.0,1791.2735681533811,1801.028820514679,0.0
+999,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k12544_eps_0.0003.vnnlib,1200,timeout False,-0.673073410987854,3.0,2027.003809928894,2036.2652761936188,0.0
+1000,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k25088_eps_0.0003.vnnlib,1200,timeout False,-0.6847370862960815,3.0,2149.868538379669,2159.108992099762,0.0
+1001,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,11.803415298461914,0.0
+1002,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.6660199165344238,46911.0,1191.8017537593842,1202.197844028473,0.0
+1003,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k10_eps_0.0004.vnnlib,1200,timeout False,-0.6660327911376953,12.0,1378.4661583900452,1388.8623633384705,0.0
+1004,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k20_eps_0.0004.vnnlib,1200,timeout False,-0.6660319566726685,6.0,1399.5237481594086,1409.2664077281952,0.0
+1005,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k30_eps_0.0004.vnnlib,1200,timeout False,-0.6660245656967163,6.0,1657.3232834339142,1667.063205242157,0.0
+1006,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k24_eps_0.0004.vnnlib,1200,timeout False,-0.6660282015800476,3.0,1518.656265258789,1529.0331451892853,0.0
+1007,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50_eps_0.0004.vnnlib,1200,error,,,,,
+1008,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k196_eps_0.0004.vnnlib,1200,error,,,,,
+1009,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.666485607624054,3.0,1811.344412565231,1821.6648163795471,0.0
+1010,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k12544_eps_0.0004.vnnlib,1200,timeout False,-0.6763124465942383,3.0,2071.7239763736725,2082.043051481247,0.0
+1011,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k25088_eps_0.0004.vnnlib,1200,timeout False,-0.6978223323822021,3.0,2155.847465991974,2165.9913330078125,0.0
+1012,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,11.568129062652588,0.0
+1013,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k2_eps_0.0001.vnnlib,1200,timeout False,-0.6660212278366089,6.0,1515.5376844406128,1525.6829838752749,0.0
+1014,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k10_eps_0.0001.vnnlib,1200,timeout False,-0.6660362482070923,3.0,1797.0259144306185,1807.1422410011292,0.0
+1015,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k20_eps_0.0001.vnnlib,1200,error,,,,,
+1016,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k30_eps_0.0001.vnnlib,1200,error,,,,,
+1017,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k24_eps_0.0001.vnnlib,1200,error,,,,,
+1018,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50_eps_0.0001.vnnlib,1200,timeout False,-0.6660944819450378,3.0,1596.739199399948,1607.1940824985504,0.0
+1019,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k196_eps_0.0001.vnnlib,1200,timeout False,-0.6663202047348022,3.0,1823.2746093273165,1833.7286796569824,0.0
+1020,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k784_eps_0.0001.vnnlib,1200,error,,,,,
+1021,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,sat True,,,,11.669143676757812,0.0
+1022,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,sat True,,,,11.669733762741089,0.0
+1023,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,sat True,,,,11.582059621810911,0.0
+1024,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k2_eps_0.0002.vnnlib,1200,timeout False,-0.6660234928131104,6.0,1527.8155088424685,1538.0103046894071,0.0
+1026,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k20_eps_0.0002.vnnlib,1200,error,,,,,
+1027,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k30_eps_0.0002.vnnlib,1200,error,,,,,
+1028,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k24_eps_0.0002.vnnlib,1200,error,,,,,
+1029,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50_eps_0.0002.vnnlib,1200,timeout False,-0.6661698818206787,3.0,1619.0193395614624,1629.3110764026642,0.0
+1030,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k196_eps_0.0002.vnnlib,1200,error,,,,,
+1031,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k784_eps_0.0002.vnnlib,1200,timeout False,-0.6682435274124146,3.0,1868.767373085022,1879.035715341568,0.0
+1032,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k12544_eps_0.0002.vnnlib,1200,sat True,,,,11.73453402519226,0.0
+1033,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k25088_eps_0.0002.vnnlib,1200,sat True,,,,10.78970742225647,0.0
+1034,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50176_eps_0.0002.vnnlib,1200,sat True,,,,10.789733171463013,0.0
+1035,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k2_eps_0.0003.vnnlib,1200,timeout False,-0.6660255193710327,6.0,1564.8423836231232,1574.25137591362,0.0
+1036,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k10_eps_0.0003.vnnlib,1200,error,,,,,
+1037,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k20_eps_0.0003.vnnlib,1200,error,,,,,
+1038,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k30_eps_0.0003.vnnlib,1200,error,,,,,
+1039,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k24_eps_0.0003.vnnlib,1200,error,,,,,
+1040,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50_eps_0.0003.vnnlib,1200,timeout False,-0.6662497520446777,3.0,1649.9605674743652,1660.193344593048,0.0
+1041,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k196_eps_0.0003.vnnlib,1200,timeout False,-0.6669585108757019,3.0,1870.8674638271332,1881.100164413452,0.0
+1042,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k784_eps_0.0003.vnnlib,1200,timeout False,-0.6694801449775696,3.0,1891.1753356456757,1901.357589006424,0.0
+1043,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k12544_eps_0.0003.vnnlib,1200,sat True,,,,11.559970140457152,0.0
+1044,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k25088_eps_0.0003.vnnlib,1200,sat True,,,,11.56017780303955,0.0
+1045,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50176_eps_0.0003.vnnlib,1200,sat True,,,,9.33630084991455,0.0
+1046,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k2_eps_0.0004.vnnlib,1200,timeout False,-0.6660267114639282,6.0,1562.8891015052795,1573.063325881958,0.0
+1047,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k10_eps_0.0004.vnnlib,1200,error,,,,,
+1048,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k20_eps_0.0004.vnnlib,1200,error,,,,,
+1049,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k30_eps_0.0004.vnnlib,1200,error,,,,,
+1050,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k24_eps_0.0004.vnnlib,1200,error,,,,,
+1051,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50_eps_0.0004.vnnlib,1200,timeout False,-0.6663303375244141,3.0,4442.302793979645,4452.82439661026,0.0
+1052,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k196_eps_0.0004.vnnlib,1200,timeout False,-0.667282223701477,3.0,1892.3187062740328,1901.1599340438845,0.0
+1053,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k784_eps_0.0004.vnnlib,1200,timeout False,-0.6708426475524902,3.0,1920.5144617557528,1929.3553194999697,0.0
+1054,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k12544_eps_0.0004.vnnlib,1200,sat True,,,,10.167114734649658,0.0
+1055,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k25088_eps_0.0004.vnnlib,1200,sat True,,,,11.537091732025146,0.0
+1056,onnx/vgg16-7.onnx,vnnlib/n01530575_brambling_seg0_fixnonmask_k50176_eps_0.0004.vnnlib,1200,sat True,,,,11.570422649383543,0.0
