@@ -27,7 +27,8 @@ Purpose:
 
 import argparse
 import csv
-from pathlib import Path
+from os import path
+from pathlib import Path, PosixPath
 from typing import Callable, Dict, Iterable, List, Optional, Tuple, Union
 
 import numpy as np
@@ -593,8 +594,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    # import sys
-    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img.yaml"]
+    import sys
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
@@ -648,7 +649,6 @@ def main():
     # -----------------------------
     images_to_process: List[Path] = []
 
-
     cfg_indices = cfg.get("run", {}).get("indices", [])
 
     if cfg_indices is not None and len(cfg_indices) > 0:
@@ -666,6 +666,7 @@ def main():
 
     if not images_to_process:
         raise ValueError("No images specified. Use --indices/--images or config.run.*")
+
 
     # -----------------------------
     # Load SAM2 model

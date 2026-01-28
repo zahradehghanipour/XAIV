@@ -95,7 +95,6 @@ def input_split_heuristic_sb(x_L, x_U, dom_lb, thresholds, lA, split_depth=1) ->
     # 2) If max split depth > # inputs, then split_depth = # inputs.
     return torch.topk(score, split_depth, -1).indices
 
-
 def input_split_heuristic_bf(net, x_L, x_U, dom_lb, thresholds, lA):
     branching_args = arguments.Config['bab']['branching']
     input_split_args = branching_args['input_split']
@@ -183,3 +182,4 @@ def input_split_heuristic_bf(net, x_L, x_U, dom_lb, thresholds, lA):
         import pdb; pdb.set_trace()
 
     return index
+
