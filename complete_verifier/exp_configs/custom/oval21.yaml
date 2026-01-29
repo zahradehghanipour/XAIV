@@ -1,0 +1,14 @@
+general:
+  enable_incomplete_verification: False
+solver:
+  batch_size: 1024
+  beta-crown:
+    iteration: 20
+bab:
+  timeout: 3600
+  branching:
+    method: fsb
+    reduceop: min
+    candidates: 1
+attack:
+  pgd_order: skip

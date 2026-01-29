@@ -1,0 +1,32 @@
+model:
+  name: mnist_cnn_4layer
+  path: models/sdp/mnist_cnn_a_adv.model
+data:
+  dataset: MNIST
+  start: 0
+  end: 100
+  std: [1.]
+  mean: [0.]
+specification:
+  epsilon: 0.3
+  norm: .inf
+attack:
+  pgd_restarts: 50
+solver:
+  batch_size: 1024
+  beta-crown:
+    iteration: 20
+bab:
+  timeout: 180
+  branching:
+    method: RTRL
+    rl:
+      hidden_dim: 128
+      num_layers: 2
+      gamma: 0.99
+      lr: 5e-4
+      epsilon: 0.2
+      reward_len_cof : 1
+      reward_imp_cof : 100
+      ReplayBuffer_batch : 32
+      model: mnist

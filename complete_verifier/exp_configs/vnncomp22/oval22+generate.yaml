@@ -1,0 +1,23 @@
+# Configuration file for running the oval21 benchmark (all properties).
+general:
+  root_path: ../vnncomp2022_benchmarks/benchmarks/oval21
+  csv_name: instances.csv
+  conv_mode: matrix
+  dataset_output_dir: /cluster/home/sur/mp773/proj/bright/dl-verifier/oval21-dataset
+solver:
+  batch_size: 1
+  beta-crown:
+    lr_beta: 0.01
+  start_save_best: -1
+  prune_after_crown: False
+bab:
+  branching:
+    method: generate_dataset #!
+  cut:
+    enabled: True
+    cplex_cuts: True
+    bab_cut: True
+    lr_beta: 0.01
+  timeout: 600
+attack:
+  pgd_order: middle
