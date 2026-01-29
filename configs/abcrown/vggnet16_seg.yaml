@@ -1,0 +1,30 @@
+# Configuration file for running the vggnet16_2022 benchmark (all properties).
+general:
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  csv_name: instances.csv
+  enable_incomplete_verification: False
+  loss_reduction_func: max
+  graph_optimizer: Customized("custom_graph_optimizer", "maxpool_to_relu")
+
+model:
+  cache_onnx_conversion: True
+solver:
+  batch_size: 1
+  beta-crown:
+    iteration: 1
+  crown:
+    batch_size: 1
+bab:
+  branching:
+    method: seg
+    input_split:
+      enable: True
+
+debug:
+  sanity_check: Full+Graph
+
+attack:
+  # pgd_order: skip
+  pgd_order: input_bab
+  check_clean: True
+
