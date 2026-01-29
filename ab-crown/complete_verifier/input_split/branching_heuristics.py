@@ -33,6 +33,11 @@ def input_split_branching(net, dom_lb, x_L, x_U, lA, thresholds,
     if branching_method == 'naive':
         # we just select the longest edge
         return torch.topk(x_U - x_L, split_depth, -1).indices
+    
+    elif branching_method == 'seg':
+        return input_split_heuristic_seg(
+            x_L, x_U, dom_lb, thresholds, lA, split_depth)
+
     elif branching_method == 'sb':
         return input_split_heuristic_sb(
             x_L, x_U, dom_lb, thresholds, lA, split_depth)
@@ -183,3 +188,127 @@ def input_split_heuristic_bf(net, x_L, x_U, dom_lb, thresholds, lA):
 
     return index
 
+
+
+def _to_bool_mask(seg_mask: torch.Tensor, x_L: torch.Tensor) -> torch.Tensor:
+    """
+    seg_mask -> boolean mask of shape (batch, input_dim)
+
+    Accepts:
+      - (input_dim,)  -> broadcast to (batch, input_dim)
+      - (batch, input_dim)
+    """
+    if not isinstance(seg_mask, torch.Tensor):
+        seg_mask = torch.tensor(seg_mask, device=x_L.device)
+    seg_mask = seg_mask.to(x_L.device)
+
+    if seg_mask.ndim == 1:
+        seg_mask = seg_mask.unsqueeze(0).expand(x_L.shape[0], -1)
+    elif seg_mask.ndim != 2:
+        raise ValueError(f"seg_mask must be 1D or 2D, got {seg_mask.ndim}D")
+
+    if seg_mask.shape != x_L.shape:
+        raise ValueError(f"seg_mask shape {tuple(seg_mask.shape)} must match x_L {tuple(x_L.shape)}")
+
+    return seg_mask.bool() if seg_mask.dtype == torch.bool else (seg_mask > 0)
+
+
+@torch.no_grad()
+def input_split_heuristic_seg(
+    x_L: torch.Tensor,
+    x_U: torch.Tensor,
+    dom_lb: torch.Tensor,
+    thresholds: torch.Tensor,
+    lA: torch.Tensor,
+    seg_mask: torch.Tensor,
+    split_depth: int = 1,
+    *,
+    region: str = "object",      # "object" | "background" | "adaptive"
+    fallback: str = "sb",        # "sb" | "naive"
+) -> Tuple[torch.Tensor]:
+    """
+    Segmentation-aware input splitting.
+
+    seg_mask: True = object pixels (background = ~seg_mask)
+
+    region:
+      - "object": choose splits only in object
+      - "background": choose splits only in background
+      - "adaptive": for each sample, choose the region with larger total SB-score mass
+
+    fallback:
+      - "sb": if chosen region has no pixels, fall back to standard SB (unrestricted)
+      - "naive": if chosen region has no pixels, fall back to widest interval (x_U-x_L)
+    """
+
+    # Flatten to (batch, input_dim) if needed
+    if x_L.ndim != 2:
+        x_L = x_L.flatten(1)
+    if x_U.ndim != 2:
+        x_U = x_U.flatten(1)
+    lA = lA.flatten(2)  # (batch, spec, input_dim)
+
+    # --- Config (same as SB heuristic in your file) ---
+    branching_args = arguments.Config['bab']['branching']
+    input_split_args = branching_args['input_split']
+    lA_clamping_thresh = input_split_args['sb_coeff_thresh']
+    sb_margin_weight = input_split_args['sb_margin_weight']
+    sb_sum = input_split_args['sb_sum']
+    sb_primary_spec = input_split_args['sb_primary_spec']
+    touch_zero_score = input_split_args.get('touch_zero_score', 0.0)
+
+    # --- Compute base SB score per input dimension ---
+    perturb = (x_U - x_L).unsqueeze(-2)  # (batch, 1, input_dim)
+
+    if sb_sum:
+        base_score = (lA.abs().clamp(min=lA_clamping_thresh) * perturb / 2).sum(dim=-2)  # (batch, input_dim)
+        if touch_zero_score:
+            touch_zero = torch.logical_or(x_L == 0, x_U == 0)
+            base_score = base_score + touch_zero * (x_U - x_L) * touch_zero_score
+    else:
+        tmp = (
+            lA.abs().clamp(min=lA_clamping_thresh) * perturb / 2
+            + (dom_lb.to(lA.device).unsqueeze(-1) - thresholds.unsqueeze(-1)) * sb_margin_weight
+        )  # (batch, spec, input_dim)
+
+        if sb_primary_spec is not None:
+            base_score = tmp[:, sb_primary_spec, :]   # (batch, input_dim)
+        else:
+            base_score = tmp.amax(dim=-2)            # (batch, input_dim)
+
+    # --- Build region masks ---
+    obj_mask = _to_bool_mask(seg_mask, x_L)  # True=object
+    bg_mask = ~obj_mask
+
+    if region not in {"object", "background", "adaptive"}:
+        raise ValueError(f"region must be object/background/adaptive, got {region}")
+
+    if region == "adaptive":
+        obj_mass = (base_score * obj_mask).sum(dim=-1)  # (batch,)
+        bg_mass  = (base_score * bg_mask).sum(dim=-1)   # (batch,)
+        use_obj = obj_mass >= bg_mass
+        chosen_mask = torch.where(use_obj.unsqueeze(-1), obj_mask, bg_mask)
+    else:
+        chosen_mask = obj_mask if region == "object" else bg_mask
+
+    # --- Restrict score to the chosen region ---
+    neg_inf = torch.finfo(base_score.dtype).min
+    score = torch.where(chosen_mask, base_score, torch.full_like(base_score, neg_inf))
+
+    # --- Handle rows where chosen_mask is empty (all -inf) ---
+    has_any = chosen_mask.any(dim=-1)  # (batch,)
+    if (~has_any).any():
+        if fallback == "sb":
+            # Replace those rows with unrestricted SB score
+            score = score.clone()
+            score[~has_any] = base_score[~has_any]
+        elif fallback == "naive":
+            # Replace with widest interval score
+            naive = (x_U - x_L)
+            score = score.clone()
+            score[~has_any] = naive[~has_any]
+        else:
+            raise ValueError(f"fallback must be 'sb' or 'naive', got {fallback}")
+
+    # Return indices like the other heuristics
+    return torch.topk(score, split_depth, dim=-1).indices
