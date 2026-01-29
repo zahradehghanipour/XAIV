@@ -26,3 +26,4 @@ benchmarks/vggnet16_benchmark2022_segmented/input_change_stats.csv
 # datasets
 complete_verifier/datasets/
 *.tar.gz
+complete_verifier/heuristics/data/
