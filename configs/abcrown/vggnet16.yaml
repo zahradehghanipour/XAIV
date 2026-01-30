@@ -9,11 +9,11 @@ general:
 model:
   cache_onnx_conversion: True
 solver:
-  batch_size: 1
+  batch_size: 5
   beta-crown:
-    iteration: 1
+    iteration: 5
   crown:
-    batch_size: 1
+    batch_size: 5
 bab:
   branching:
     method: naive

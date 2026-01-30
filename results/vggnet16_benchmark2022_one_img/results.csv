@@ -1,1 +1,4 @@
 instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+2,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,1.3113384246826172,0,948.9291756153107,972.1574900150299,0
+3,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-22.268617630004883,3,3808.4126987457275,3830.986013650894,0
+1,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-263.4014587402344,3,4126.018338680267,4150.241785764694,0

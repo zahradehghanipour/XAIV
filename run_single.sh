@@ -3,13 +3,12 @@
 instance_id=$1
 
 BENCHMARK="vggnet16_benchmark2022_segmented_one_img"
-CONFIG="abcrown/vggnet16_seg.yaml"
+CONFIG="abcrown/vggnet16.yaml"
 
 experiment_path=results/$BENCHMARK
 
 results_file="results/$BENCHMARK/results.csv"
 tmp_results_file="result_${instance_id}.txt"
-
 
 
 mkdir -p $experiment_path
@@ -31,7 +30,7 @@ python ab-crown/complete_verifier/abcrown.py \
     --timeout $timeout \
     --results_file $tmp_results_file \
     --output_additional_stats \
-    --device "cpu"\
+    --device "cuda"\
     --print_verbose_decisions\
     --view_model
 exit_code=$?
