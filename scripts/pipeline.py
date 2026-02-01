@@ -53,11 +53,15 @@ VGG16_STD = [0.229, 0.224, 0.225]
 
 # pipeline.py
 import json
+import numpy as np
+from collections import deque
+
 
 def make_ratio_pixel_selection_mask(
     seg_mask: np.ndarray,
     k: int,
     seed: int = 0,
+    select: str = "random",
 ):
     """
     Returns three boolean masks:
@@ -65,10 +69,11 @@ def make_ratio_pixel_selection_mask(
       2) mask_in     : selected pixels where seg_mask == 1
       3) mask_out    : selected pixels where seg_mask == 0
 
-    Intended usage:
-        mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(...)
-        bounds_for_segment(mask=mask_global, max_pixels=None)
+    select:
+        "random"       -> uniform random pixels (old behaviour)
+        "concentrated" -> spatially contiguous blocks in each region
     """
+
     m = np.asarray(seg_mask, dtype=bool)
     if m.ndim != 2:
         raise ValueError(f"seg_mask must be 2D, got {m.shape}")
@@ -88,7 +93,9 @@ def make_ratio_pixel_selection_mask(
     n_in = int(m.sum())
     n_out = total - n_in
 
-    # Decide how many pixels to pick from each region
+    # --------------------------------------------------
+    # Decide ratio
+    # --------------------------------------------------
     if n_in == 0:
         k_in, k_out = 0, k
     elif n_out == 0:
@@ -99,7 +106,6 @@ def make_ratio_pixel_selection_mask(
         k_in = min(k_in, n_in)
         k_out = k - k_in
 
-        # Repair if needed
         if k_out > n_out:
             k_out = n_out
             k_in = k - k_out
@@ -112,18 +118,142 @@ def make_ratio_pixel_selection_mask(
     mask_in = np.zeros((H, W), dtype=bool)
     mask_out = np.zeros((H, W), dtype=bool)
 
-    if k_in > 0:
-        ys, xs = np.where(m)
-        idx = rng.choice(len(ys), size=k_in, replace=False)
-        mask_in[ys[idx], xs[idx]] = True
+    # ==================================================
+    # RANDOM MODE  (old behaviour)
+    # ==================================================
+    if select == "random":
 
-    if k_out > 0:
-        ys, xs = np.where(~m)
-        idx = rng.choice(len(ys), size=k_out, replace=False)
-        mask_out[ys[idx], xs[idx]] = True
+        if k_in > 0:
+            ys, xs = np.where(m)
+            idx = rng.choice(len(ys), size=k_in, replace=False)
+            mask_in[ys[idx], xs[idx]] = True
+
+        if k_out > 0:
+            ys, xs = np.where(~m)
+            idx = rng.choice(len(ys), size=k_out, replace=False)
+            mask_out[ys[idx], xs[idx]] = True
+
+    # ==================================================
+    # CONCENTRATED MODE
+    # ==================================================
+    elif select == "concentrated":
+
+        def grow_region(region_mask, k_target):
+            """ BFS expansion inside region_mask """
+            out = np.zeros((H, W), dtype=bool)
+
+            ys, xs = np.where(region_mask)
+            if len(ys) == 0 or k_target == 0:
+                return out
+
+            start = rng.integers(len(ys))
+            sy, sx = ys[start], xs[start]
+
+            q = deque([(sy, sx)])
+            out[sy, sx] = True
+            visited = set([(sy, sx)])
+
+            while q and out.sum() < k_target:
+                y, x = q.popleft()
+
+                for dy, dx in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                    ny, nx = y + dy, x + dx
+                    if (
+                        0 <= ny < H
+                        and 0 <= nx < W
+                        and region_mask[ny, nx]
+                        and (ny, nx) not in visited
+                    ):
+                        visited.add((ny, nx))
+                        out[ny, nx] = True
+                        q.append((ny, nx))
+                        if out.sum() >= k_target:
+                            break
+
+            return out
+
+        if k_in > 0:
+            mask_in = grow_region(m, k_in)
+
+        if k_out > 0:
+            mask_out = grow_region(~m, k_out)
+
+    else:
+        raise ValueError(f"Unknown select mode: {select}")
 
     mask_global = mask_in | mask_out
     return mask_global, mask_in, mask_out
+
+# def make_ratio_pixel_selection_mask(
+#     seg_mask: np.ndarray,
+#     k: int,
+#     seed: int = 0,
+# ):
+#     """
+#     Returns three boolean masks:
+#       1) mask_global : all selected pixels (exactly k True)
+#       2) mask_in     : selected pixels where seg_mask == 1
+#       3) mask_out    : selected pixels where seg_mask == 0
+
+#     Intended usage:
+#         mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(...)
+#         bounds_for_segment(mask=mask_global, max_pixels=None)
+#     """
+#     m = np.asarray(seg_mask, dtype=bool)
+#     if m.ndim != 2:
+#         raise ValueError(f"seg_mask must be 2D, got {m.shape}")
+
+#     H, W = m.shape
+#     total = H * W
+#     k = int(k)
+
+#     if k <= 0:
+#         z = np.zeros((H, W), dtype=bool)
+#         return z, z.copy(), z.copy()
+
+#     if k >= total:
+#         ones = np.ones((H, W), dtype=bool)
+#         return ones, ones & m, ones & ~m
+
+#     n_in = int(m.sum())
+#     n_out = total - n_in
+
+#     # Decide how many pixels to pick from each region
+#     if n_in == 0:
+#         k_in, k_out = 0, k
+#     elif n_out == 0:
+#         k_in, k_out = k, 0
+#     else:
+#         frac_in = n_in / total
+#         k_in = int(round(k * frac_in))
+#         k_in = min(k_in, n_in)
+#         k_out = k - k_in
+
+#         # Repair if needed
+#         if k_out > n_out:
+#             k_out = n_out
+#             k_in = k - k_out
+#         if k_in > n_in:
+#             k_in = n_in
+#             k_out = k - k_in
+
+#     rng = np.random.default_rng(seed)
+
+#     mask_in = np.zeros((H, W), dtype=bool)
+#     mask_out = np.zeros((H, W), dtype=bool)
+
+#     if k_in > 0:
+#         ys, xs = np.where(m)
+#         idx = rng.choice(len(ys), size=k_in, replace=False)
+#         mask_in[ys[idx], xs[idx]] = True
+
+#     if k_out > 0:
+#         ys, xs = np.where(~m)
+#         idx = rng.choice(len(ys), size=k_out, replace=False)
+#         mask_out[ys[idx], xs[idx]] = True
+
+#     mask_global = mask_in | mask_out
+#     return mask_global, mask_in, mask_out
 
 def load_manual_prompts(prompts_path: Path) -> dict:
     prompts = {}
@@ -370,7 +500,7 @@ def process_single_image(
         for k in pixel_counts:
             global_vnnlib = vnnlib_dir / f"{img_basename}_global_k{k}_eps_{eps:.4f}.vnnlib"
 
-            mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+            mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
 
             if seg_cfg["vis"]:
                 visualize_selected_masks_on_image(
@@ -439,7 +569,7 @@ def process_single_image(
         for eps in epsilons:
             for k in pixel_counts:
                 # FIX MASK: object is frozen => allow changes only in NON-mask
-                _, _, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+                _, _, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
 
                 lb_fix_mask, ub_fix_mask = bounds_for_segment(
                     image_np_224,
@@ -496,7 +626,7 @@ def process_single_image(
             for k in pixel_counts:
                 # FIX NON-MASK: background is frozen => allow changes only in MASK
 
-                _, mask_in, _ = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k)
+                _, mask_in, _ = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
 
                 lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
                     image_np_224,
@@ -595,8 +725,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    # import sys
-    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img.yaml"]
+    import sys
+    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img_select_concentrated.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
