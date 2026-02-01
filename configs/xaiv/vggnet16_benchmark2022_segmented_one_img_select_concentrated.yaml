@@ -27,7 +27,7 @@ verification:
   num_classes: 1000     # ImageNet-1k
 
   perturb_pixels: [500]
-  perturb_select: "random"   # "random" for now
+  perturb_select: "concentrated"  # Supported: 'random', 'concentrated'
   perturb_seed: 0
 
 onnx:
@@ -35,7 +35,7 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img_k500/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img_k500_concentrated/"
   timeout: 1200
 
 run:

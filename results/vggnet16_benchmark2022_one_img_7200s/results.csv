@@ -1,3 +1,0 @@
-instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
-3,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,7200,timeout False,-22.268226623535156,6,7777.090625047684,7838.013061761856,0
-1,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_global_k50176_eps_0.0001.vnnlib,7200,timeout False,-263.4049072265625,9,9378.509567022324,9403.261214494705,0

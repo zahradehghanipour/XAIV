@@ -11,21 +11,26 @@ data:
 
 model:
   cache_onnx_conversion: True
-
 solver:
-  batch_size: 1  # Number of parallel domains to compute on GPU.
-  bound_prop_method: forward+backward
-  forward:
-    dynamic: True
-    max_dim: 100
+  batch_size: 1
   beta-crown:
-    iteration: 10  # Iterations for computing intermediate layer bounds.
+    iteration: 1
   crown:
-    batch_size: 16
+    batch_size: 1
+
+# solver:
+#   batch_size: 1  # Number of parallel domains to compute on GPU.
+#   bound_prop_method: forward+backward
+#   forward:
+#     dynamic: True
+#     max_dim: 100
+#   beta-crown:
+#     iteration: 10  # Iterations for computing intermediate layer bounds.
+#   crown:
+#     batch_size: 16
 
 bab:
   branching:
-    # method: naive
     method: sb
     input_split:
       enable: True

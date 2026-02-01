@@ -25,8 +25,8 @@ solver:
 
 bab:
   branching:
-    # method: naive
-    method: sb
+    method: naive
+    # method: sb
     input_split:
       enable: True
 

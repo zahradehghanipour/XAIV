@@ -1,8 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_new_config
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_h200
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
+#SBATCH --gres=gpu:h200:1
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -12,6 +13,8 @@
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
+
+
 
 module purge
 module load cuda/12.8

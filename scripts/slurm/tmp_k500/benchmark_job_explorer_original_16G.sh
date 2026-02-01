@@ -1,14 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_new_config
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_16G_k500
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
+#SBATCH --gres=gpu:a100:1
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
-#SBATCH --mem=128G
+#SBATCH --mem=16G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
@@ -17,7 +18,7 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="/home/z.dehghanipour/XAIV/benchmarks/vggnet16_benchmark2022_segmented_one_img"
+BENCHMARK="/home/z.dehghanipour/XAIV/benchmarks/vggnet16_benchmark2022_segmented_one_img_k500"
 CWD="/home/z.dehghanipour/XAIV"
 CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"

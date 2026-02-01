@@ -1,14 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_new_config
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_16G
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
+#SBATCH --gres=gpu:a100:1
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
-#SBATCH --mem=128G
+#SBATCH --mem=16G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL

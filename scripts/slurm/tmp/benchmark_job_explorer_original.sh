@@ -1,8 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_new_config
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
+#SBATCH --gres=gpu:a100:1
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1

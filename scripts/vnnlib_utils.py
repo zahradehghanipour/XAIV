@@ -19,10 +19,11 @@ Outputs:
 """
 
 from pathlib import Path
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, List
 import numpy as np
 from scipy.ndimage import binary_dilation
 from PIL import Image
+from collections import deque
 
 def mask_to_224(mask_np: np.ndarray) -> np.ndarray:
     # mask_np: HxW boolean or 0/1
@@ -65,12 +66,58 @@ def report_changed_inputs(
         row.update(extra)
     return row
 
+
+def _grow_concentrated_blob(mask_bool: np.ndarray,
+                            max_pixels: int,
+                            rng: np.random.Generator) -> np.ndarray:
+    """
+    Grow ONE dense connected blob using BFS expansion.
+    Produces a compact patch instead of scattered growth.
+    """
+    H, W = mask_bool.shape
+    ys, xs = np.where(mask_bool)
+
+    if len(ys) == 0 or max_pixels <= 0:
+        return np.zeros((H, W), dtype=bool)
+
+    # pick seed
+    i = int(rng.integers(0, len(ys)))
+    sy, sx = int(ys[i]), int(xs[i])
+
+    selected = np.zeros((H, W), dtype=bool)
+    visited  = np.zeros((H, W), dtype=bool)
+
+    q = deque()
+    q.append((sy, sx))
+    visited[sy, sx] = True
+
+    count = 0
+
+    while q and count < max_pixels:
+        y, x = q.popleft()
+
+        if not mask_bool[y, x]:
+            continue
+
+        if not selected[y, x]:
+            selected[y, x] = True
+            count += 1
+
+        # explore neighbors outward
+        for ny, nx in ((y-1,x),(y+1,x),(y,x-1),(y,x+1)):
+            if 0 <= ny < H and 0 <= nx < W:
+                if not visited[ny, nx] and mask_bool[ny, nx]:
+                    visited[ny, nx] = True
+                    q.append((ny, nx))
+
+    return selected
+
 def bounds_for_segment(
     image_np: np.ndarray,
     eps: float,
     mask: Optional[np.ndarray] = None,
     max_pixels: Optional[int] = None,
-    select: str = "random",
+    select: str = "random",   # "random" or "concentrated"
     seed: int = 0,
 ) -> Tuple[np.ndarray, np.ndarray]:
     """Create (lb, ub) bounds with an optional *pixel budget*.
@@ -83,15 +130,13 @@ def bounds_for_segment(
 
     Notes:
       - ``image_np`` must be H×W×C in [0,1] (unnormalized).
-      - ``select`` currently supports: "random".
+      - ``select`` supports: "random", "concentrated" (aka "clustered"/"contiguous").
     """
-
     img = np.asarray(image_np, dtype=np.float32)
     if img.ndim != 3:
         raise ValueError(f"image_np must be 3D (HWC); got shape {img.shape}")
     H, W, C = img.shape
     if C != 3:
-        # Not strictly required, but this matches your VGG16 pipeline.
         raise ValueError(f"Expected 3 channels (RGB); got C={C}")
 
     mask_bool = np.ones((H, W), dtype=bool) if mask is None else np.asarray(mask, dtype=bool)
@@ -102,22 +147,91 @@ def bounds_for_segment(
         max_pixels = int(max_pixels)
         if max_pixels < 0:
             raise ValueError("max_pixels must be >= 0")
+
         ys, xs = np.where(mask_bool)
         n = int(ys.size)
 
+        print("eligible pixels n =", n, " max_pixels =", max_pixels, " select =", select)
         if n > max_pixels:
-            if select != "random":
-                raise ValueError(f"Unknown select='{select}'. Only 'random' is implemented.")
             rng = np.random.default_rng(seed)
-            idx = rng.choice(n, size=max_pixels, replace=False)
-            limited = np.zeros((H, W), dtype=bool)
-            limited[ys[idx], xs[idx]] = True
-            mask_bool = limited
+
+            sel = select.lower().strip()
+            if sel == "random":
+                idx = rng.choice(n, size=max_pixels, replace=False)
+                limited = np.zeros((H, W), dtype=bool)
+                limited[ys[idx], xs[idx]] = True
+                mask_bool = limited
+
+            elif sel in ("concentrated"):
+                limited = _grow_concentrated_blob(mask_bool,
+                                                max_pixels=max_pixels,
+                                                rng=rng)
+                mask_bool = limited
+
+            else:
+                raise ValueError(
+                    f"Unknown select='{select}'. Supported: 'random', 'concentrated'/'clustered'/'contiguous'."
+                )
+                
 
     eps_tensor = np.where(mask_bool[:, :, None], float(eps), 0.0).astype(np.float32)
     lb = img - eps_tensor
     ub = img + eps_tensor
     return lb.reshape(-1), ub.reshape(-1)
+
+# def bounds_for_segment(
+#     image_np: np.ndarray,
+#     eps: float,
+#     mask: Optional[np.ndarray] = None,
+#     max_pixels: Optional[int] = None,
+#     select: str = "random",
+#     seed: int = 0,
+# ) -> Tuple[np.ndarray, np.ndarray]:
+#     """Create (lb, ub) bounds with an optional *pixel budget*.
+
+#     Semantics:
+#       - If ``mask`` is provided: pixels where mask==True are eligible to change.
+#         Else: all pixels are eligible.
+#       - If ``max_pixels`` is provided: at most that many *spatial* pixels (H×W)
+#         are allowed to change. (All 3 RGB channels for a chosen pixel change.)
+
+#     Notes:
+#       - ``image_np`` must be H×W×C in [0,1] (unnormalized).
+#       - ``select`` currently supports: "random".
+#     """
+
+#     img = np.asarray(image_np, dtype=np.float32)
+#     if img.ndim != 3:
+#         raise ValueError(f"image_np must be 3D (HWC); got shape {img.shape}")
+#     H, W, C = img.shape
+#     if C != 3:
+#         # Not strictly required, but this matches your VGG16 pipeline.
+#         raise ValueError(f"Expected 3 channels (RGB); got C={C}")
+
+#     mask_bool = np.ones((H, W), dtype=bool) if mask is None else np.asarray(mask, dtype=bool)
+#     if mask_bool.shape != (H, W):
+#         raise ValueError(f"mask shape {mask_bool.shape} must match spatial dims {(H, W)}")
+
+#     if max_pixels is not None:
+#         max_pixels = int(max_pixels)
+#         if max_pixels < 0:
+#             raise ValueError("max_pixels must be >= 0")
+#         ys, xs = np.where(mask_bool)
+#         n = int(ys.size)
+
+#         if n > max_pixels:
+#             if select != "random":
+#                 raise ValueError(f"Unknown select='{select}'. Only 'random' is implemented.")
+#             rng = np.random.default_rng(seed)
+#             idx = rng.choice(n, size=max_pixels, replace=False)
+#             limited = np.zeros((H, W), dtype=bool)
+#             limited[ys[idx], xs[idx]] = True
+#             mask_bool = limited
+
+#     eps_tensor = np.where(mask_bool[:, :, None], float(eps), 0.0).astype(np.float32)
+#     lb = img - eps_tensor
+#     ub = img + eps_tensor
+#     return lb.reshape(-1), ub.reshape(-1)
 
 def write_vnnlib_for_segment(
     lb: np.ndarray,
