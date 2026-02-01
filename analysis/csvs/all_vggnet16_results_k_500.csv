@@ -1,0 +1,7 @@
+vnnlib,timeout,result,all_time,onnx,instance_id,lb_minus_rhs,bab_time,domains_visited,init_unstable,source_folder
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,842.1632499694824,onnx/vgg16-7.onnx,1,1.3206205368041992,794.1718530654907,0,0,vggnet16_benchmark2022_one_img_naive_k500
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,804.6202256679535,onnx/vgg16-7.onnx,1,1.3206206560134888,793.8658721446991,0,0,vggnet16_benchmark2022_one_img_original_16G_k500
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,803.4082322120667,onnx/vgg16-7.onnx,1,1.3206212520599365,793.6970009803772,0,0,vggnet16_benchmark2022_one_img_original_h200_k500
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,306.72416257858276,onnx/vgg16-7.onnx,1,1.3206207752227783,299.512576341629,0,0,vggnet16_benchmark2022_one_img_original_k500
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,806.40354347229,onnx/vgg16-7.onnx,1,1.3206207752227783,794.6742885112762,0,0,vggnet16_benchmark2022_one_img_simple_solver_k500
+vnnlib/n02033041_dowitcher_global_k500_eps_0.0001.vnnlib,1200,unsat False,330.17080950737,onnx/vgg16-7.onnx,1,1.3206212520599365,297.81512427330017,0,0,vggnet16_benchmark2022_one_no_attack_k500

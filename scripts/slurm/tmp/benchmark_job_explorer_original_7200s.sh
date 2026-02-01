@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_16G
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_7200s
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -9,10 +9,12 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
-#SBATCH --mem=16G
+#SBATCH --mem=128G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
+
+
 
 module purge
 module load cuda/12.8
@@ -77,6 +79,8 @@ for ID in $(seq "$START_ID" "$END_ID"); do
     echo "$ID,,,,error,,,,," >> "$results_file"
     continue
   fi
+
+  $timeout = 7200
 
   python ab-crown/complete_verifier/abcrown.py \
     --instance_id "$ID" \

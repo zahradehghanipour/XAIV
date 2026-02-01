@@ -26,7 +26,7 @@ verification:
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
 
-  perturb_pixels: [500]
+  perturb_pixels: [12544, 25088]
   perturb_select: "concentrated"  # Supported: 'random', 'concentrated'
   perturb_seed: 0
 
@@ -35,7 +35,7 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img_k500_concentrated/"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img_k_concentrated/"
   timeout: 1200
 
 run:

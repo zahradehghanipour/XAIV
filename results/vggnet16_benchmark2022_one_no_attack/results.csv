@@ -1,2 +1,0 @@
-instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
-1,onnx/vgg16-7.onnx,vnnlib/n02033041_dowitcher_global_k50176_eps_0.0001.vnnlib,1200,error,,,,,

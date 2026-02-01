@@ -184,76 +184,6 @@ def make_ratio_pixel_selection_mask(
     mask_global = mask_in | mask_out
     return mask_global, mask_in, mask_out
 
-# def make_ratio_pixel_selection_mask(
-#     seg_mask: np.ndarray,
-#     k: int,
-#     seed: int = 0,
-# ):
-#     """
-#     Returns three boolean masks:
-#       1) mask_global : all selected pixels (exactly k True)
-#       2) mask_in     : selected pixels where seg_mask == 1
-#       3) mask_out    : selected pixels where seg_mask == 0
-
-#     Intended usage:
-#         mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(...)
-#         bounds_for_segment(mask=mask_global, max_pixels=None)
-#     """
-#     m = np.asarray(seg_mask, dtype=bool)
-#     if m.ndim != 2:
-#         raise ValueError(f"seg_mask must be 2D, got {m.shape}")
-
-#     H, W = m.shape
-#     total = H * W
-#     k = int(k)
-
-#     if k <= 0:
-#         z = np.zeros((H, W), dtype=bool)
-#         return z, z.copy(), z.copy()
-
-#     if k >= total:
-#         ones = np.ones((H, W), dtype=bool)
-#         return ones, ones & m, ones & ~m
-
-#     n_in = int(m.sum())
-#     n_out = total - n_in
-
-#     # Decide how many pixels to pick from each region
-#     if n_in == 0:
-#         k_in, k_out = 0, k
-#     elif n_out == 0:
-#         k_in, k_out = k, 0
-#     else:
-#         frac_in = n_in / total
-#         k_in = int(round(k * frac_in))
-#         k_in = min(k_in, n_in)
-#         k_out = k - k_in
-
-#         # Repair if needed
-#         if k_out > n_out:
-#             k_out = n_out
-#             k_in = k - k_out
-#         if k_in > n_in:
-#             k_in = n_in
-#             k_out = k - k_in
-
-#     rng = np.random.default_rng(seed)
-
-#     mask_in = np.zeros((H, W), dtype=bool)
-#     mask_out = np.zeros((H, W), dtype=bool)
-
-#     if k_in > 0:
-#         ys, xs = np.where(m)
-#         idx = rng.choice(len(ys), size=k_in, replace=False)
-#         mask_in[ys[idx], xs[idx]] = True
-
-#     if k_out > 0:
-#         ys, xs = np.where(~m)
-#         idx = rng.choice(len(ys), size=k_out, replace=False)
-#         mask_out[ys[idx], xs[idx]] = True
-
-#     mask_global = mask_in | mask_out
-#     return mask_global, mask_in, mask_out
 
 def load_manual_prompts(prompts_path: Path) -> dict:
     prompts = {}
@@ -725,8 +655,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    import sys
-    sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img_select_concentrated.yaml"]
+    # import sys
+    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img_select_concentrated.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
