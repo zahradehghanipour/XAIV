@@ -27,35 +27,29 @@ Purpose:
 
 import argparse
 import csv
+import torch
+import torchvision.transforms.functional as F
+import matplotlib.pyplot as plt
+import onnxruntime as ort
+import json
+import numpy as np
+
 from os import path
 from pathlib import Path, PosixPath
 from typing import Callable, Dict, Iterable, List, Optional, Tuple, Union
-
-import numpy as np
 from PIL import Image
 
 from sam2.sam2_image_predictor import SAM2ImagePredictor
-
 from config_utils import load_config, ensure_dir
 from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
 from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
 from vis_utils import visualize_segments, visualize_selected_masks_on_image
-
-import torch
-import torchvision.transforms.functional as F
+from collections import deque
 from torchvision.transforms.functional import InterpolationMode
-import matplotlib.pyplot as plt
-import onnxruntime as ort
 
 VGG16_MEAN = [0.485, 0.456, 0.406]
 VGG16_STD = [0.229, 0.224, 0.225]
-
-# pipeline.py
-import json
-import numpy as np
-from collections import deque
-
 
 def make_ratio_pixel_selection_mask(
     seg_mask: np.ndarray,
@@ -183,7 +177,6 @@ def make_ratio_pixel_selection_mask(
 
     mask_global = mask_in | mask_out
     return mask_global, mask_in, mask_out
-
 
 def load_manual_prompts(prompts_path: Path) -> dict:
     prompts = {}
@@ -607,7 +600,6 @@ def process_single_image(
 
     print(f"[PIPELINE] Created {len(csv_rows)} VNNLIBs for {img_path.name}")
     return csv_rows
-
 
 def expand_image_entries(entries: Iterable[Union[str, Path]]) -> List[Path]:
     """
