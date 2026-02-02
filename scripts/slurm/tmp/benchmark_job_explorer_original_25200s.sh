@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_7200s
+#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_25200s
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -8,13 +8,10 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --gres=gpu:1
-#SBATCH --mem=128G
+#SBATCH --mem=256G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
-
-
 
 module purge
 module load cuda/12.8
@@ -26,12 +23,32 @@ CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=3
+END_ID=1
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1
 
+echo "========== ENV CHECK =========="
+which python
+python -V
 python -c "import sys; print('PYTHON:', sys.executable)"
+
+python - <<'PY'
+import os, sys, torch
+print("torch:", torch.__version__)
+print("torch.version.cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("device:", torch.cuda.get_device_name(0))
+    print("capability:", torch.cuda.get_device_capability(0))
+    a = torch.randn(1024,1024, device="cuda")
+    b = (a @ a).sum()
+    print("matmul ok:", float(b))
+print("CUDA_VISIBLE_DEVICES:", os.environ.get("CUDA_VISIBLE_DEVICES"))
+PY
+
+nvidia-smi
+echo "================================"
 
 # Ensure logs directory exists
 mkdir -p "$CWD/results/$SLURM_JOB_NAME/logs" || true
@@ -79,8 +96,6 @@ for ID in $(seq "$START_ID" "$END_ID"); do
     echo "$ID,,,,error,,,,," >> "$results_file"
     continue
   fi
-
-  $timeout = 7200
 
   python ab-crown/complete_verifier/abcrown.py \
     --instance_id "$ID" \

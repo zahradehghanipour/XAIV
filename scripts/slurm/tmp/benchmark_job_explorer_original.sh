@@ -8,7 +8,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --gres=gpu:1
 #SBATCH --mem=128G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
@@ -28,6 +27,36 @@ END_ID=1
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1
+
+echo "SLURM_JOB_NODELIST=$SLURM_JOB_NODELIST"
+echo "SLURM_GPUS=$SLURM_GPUS"
+echo "SLURM_JOB_GPUS=$SLURM_JOB_GPUS"
+
+echo "========== ENV CHECK =========="
+which python
+python -V
+python -c "import sys; print('PYTHON:', sys.executable)"
+
+python - <<'PY'
+import os, sys, torch
+print("torch:", torch.__version__)
+print("torch.version.cuda:", torch.version.cuda)
+print("cuda available:", torch.cuda.is_available())
+if torch.cuda.is_available():
+    print("device:", torch.cuda.get_device_name(0))
+    print("capability:", torch.cuda.get_device_capability(0))
+    a = torch.randn(1024,1024, device="cuda")
+    b = (a @ a).sum()
+    print("matmul ok:", float(b))
+print("CUDA_VISIBLE_DEVICES:", os.environ.get("CUDA_VISIBLE_DEVICES"))
+PY
+
+nvidia-smi
+echo "================================"
+
+# Debug for real CUDA error location
+export CUDA_LAUNCH_BLOCKING=1
+export TORCH_SHOW_CPP_STACKTRACES=1
 
 python -c "import sys; print('PYTHON:', sys.executable)"
 

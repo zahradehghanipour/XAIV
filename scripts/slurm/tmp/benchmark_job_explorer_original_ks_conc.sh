@@ -8,7 +8,6 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --gres=gpu:1
 #SBATCH --mem=128G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu

@@ -8,8 +8,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --gres=gpu:1
-#SBATCH --mem=128G
+#SBATCH --mem=256G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
@@ -24,7 +23,7 @@ CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=6
+END_ID=18
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1
