@@ -36,7 +36,7 @@ onnx:
 
 output:
   benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_one_img_k/"
-  timeout: 25200
+  timeout: 1200
 
 run:
   # Option 1: process images by index (sorted over all sample images)
