@@ -35,12 +35,16 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_first_ten_imgs/"
+  benchmark_dir: "/projects/air/dlverifier/vggnet16_4_ten_imgs"
   timeout: 1200
 
 run:
   # Option 1: process images by index (sorted over all sample images)
-  indices: [1,2,3,4,5,6,7,8,9,10]
+  # indices: [1,2,3,4,5,6,7,8,9,10]
+  # indices: [11,12,13,14,15,16,17,18,19,20]
+  # indices: [21,22,23,24,25,26,27,28,29,30]
+  indices: [31,32,33,34,35,36,37,38,39,40]
+
 
   # Option 2: explicit paths (leave empty if using indices)
   image_paths: []
