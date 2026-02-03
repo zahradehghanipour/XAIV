@@ -1,0 +1,23 @@
+{
+  "vnnlib": "vnnlib/CIFAR100_resnet_large_prop_idx_383_sidx_3388_eps_0.0039.vnnlib",
+  "n_inputs": 3072,
+  "inferred_label": 81,
+  "rhs_label_vote_counts": {
+    "81": 99
+  },
+  "cifar_layout": "CHW",
+  "denormalize_mean": [
+    0.507099986076355,
+    0.48669999837875366,
+    0.4408000111579895
+  ],
+  "denormalize_std": [
+    0.26750001311302185,
+    0.2565000057220459,
+    0.2761000096797943
+  ],
+  "denorm_used": true,
+  "png_saved": "decoded_vnnlib_output/81.png",
+  "npy_saved": "decoded_vnnlib_output/81.npy",
+  "notes": "Image is reconstructed as midpoint of bounds. PNG is clipped to [0,1] (after optional denorm)."
+}
