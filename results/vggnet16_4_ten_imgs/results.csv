@@ -107,3 +107,5 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 106,onnx/vgg16-7.onnx,vnnlib/n01669191_box_turtle_seg0_fixnonmask_k6272_eps_0.0001.vnnlib,1200,sat True,,,,5.544771909713745,0
 107,onnx/vgg16-7.onnx,vnnlib/n01669191_box_turtle_seg0_fixnonmask_k3136_eps_0.0001.vnnlib,1200,sat False,-inf,None,1.7479281425476074,7.068980693817139,0
 108,onnx/vgg16-7.onnx,vnnlib/n01669191_box_turtle_seg0_fixnonmask_k1568_eps_0.0001.vnnlib,1200,sat False,-inf,None,0.918846845626831,6.1525866985321045,0
+109,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-2420.204833984375,3,3835.000403404236,3848.2561094760895,0
+110,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k25088_eps_0.0001.vnnlib,1200,unsat False,0.5435906648635864,0,852.0686278343201,865.2746524810791,0
