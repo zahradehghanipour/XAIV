@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=cifar100
+#SBATCH --job-name=cifar100_segmented
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -17,13 +17,13 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="/home/z.dehghanipour/XAIV/benchmarks/vnncomp2025_benchmarks-main/benchmarks/cifar100_2024"
+BENCHMARK="benchmarks/cifar100_one"
 CWD="/home/z.dehghanipour/XAIV"
-CONFIG="/home/z.dehghanipour/XAIV/ab-crown/complete_verifier/exp_configs/vnncomp24/cifar100.yaml"
+CONFIG="configs/abcrown/cifar100.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=200
+END_ID=600
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1

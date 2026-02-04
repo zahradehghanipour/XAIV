@@ -12,8 +12,8 @@ from dataset_utils import load_imagenet_vggnet16_metadata
 # ===============================
 
 # TODO: delete later
-import sys
-sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
+# import sys
+# sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_manual.yaml"]
 
 IMG_SIZE = 224
 

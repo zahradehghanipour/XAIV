@@ -2,8 +2,8 @@
 
 instance_id=$1
 
-BENCHMARK="vggnet16_benchmark2022_segmented_one_img"
-CONFIG="abcrown/vggnet16.yaml"
+BENCHMARK="cifar100_one"
+CONFIG="abcrown/cifar100.yaml"
 
 experiment_path=results/$BENCHMARK
 
@@ -30,7 +30,7 @@ python ab-crown/complete_verifier/abcrown.py \
     --timeout $timeout \
     --results_file $tmp_results_file \
     --output_additional_stats \
-    --device "cuda"\
+    --device "cpu"\
     --print_verbose_decisions\
     --view_model
 exit_code=$?

@@ -41,7 +41,7 @@ from PIL import Image
 
 from sam2.sam2_image_predictor import SAM2ImagePredictor
 from config_utils import load_config, ensure_dir
-from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image
+from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image,load_cifar100_decoded_metadata, get_cifar_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
 from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
 from vis_utils import visualize_segments, visualize_selected_masks_on_image
@@ -50,6 +50,129 @@ from torchvision.transforms.functional import InterpolationMode
 
 VGG16_MEAN = [0.485, 0.456, 0.406]
 VGG16_STD = [0.229, 0.224, 0.225]
+
+CIFAR100_MEAN = [0.5071, 0.4865, 0.4409]
+CIFAR100_STD  = [0.2673, 0.2564, 0.2762]
+
+import re
+
+MODEL_KEY_RE = re.compile(r"^(?P<key>[^_]+(?:_[^_]+)?)__")  
+# matches: "resnet_large__..." or "resnet_medium__..."
+
+def infer_model_key_from_image_path(img_path: Path) -> str:
+    """
+    Infer model key from filename prefix:
+      resnet_large__label_10__idx_8477.png -> "resnet_large"
+    """
+    m = MODEL_KEY_RE.match(img_path.name)
+    if not m:
+        raise ValueError(
+            f"Cannot infer model key from filename: {img_path.name}\n"
+            f"Expected prefix like 'resnet_large__' or 'resnet_medium__'."
+        )
+    return m.group("key")
+
+def build_onnx_session_map(cfg: Dict, onnx_dir: Path) -> Dict[str, Dict]:
+    """
+    Builds sessions for the ONNX models in cfg["onnx"]["target_name"] but does NOT loop
+    over them for every image. Instead, returns a dict keyed by model key, e.g.
+      {
+        "resnet_large": {"session": ..., "rel_path": "onnx/CIFAR100_resnet_large.onnx", "model_tag": "CIFAR100_resnet_large"},
+        "resnet_medium": {...}
+      }
+    The mapping from model key -> target_name uses substring matching.
+    """
+    targets = cfg["onnx"].get("target_name", None)
+    if not isinstance(targets, (list, tuple)):
+        targets = [targets] if targets is not None else []
+
+    # Copy + build sessions using your existing resolver (it handles src dir/file)
+    entries = resolve_onnx_targets(cfg, onnx_dir)
+
+    # Build a session map by heuristics on the ONNX filename
+    session_map: Dict[str, Dict] = {}
+
+    for e in entries:
+        name = Path(e["rel_path"]).name.lower()
+
+        if "large" in name:
+            session_map["resnet_large"] = e
+        elif "medium" in name:
+            session_map["resnet_medium"] = e
+        else:
+            # fallback key: stem
+            session_map[Path(name).stem] = e
+
+    if not session_map:
+        raise RuntimeError("No ONNX sessions created; check onnx.source_model/target_name in config.")
+
+    print("[ONNX] Session map keys:", sorted(session_map.keys()))
+    return session_map
+
+def cifar_preprocess(img_pil, normalize=True, size=32):
+    """
+    CIFAR decoded images may already be 32x32; we still enforce size via resize+center_crop.
+    Returns CHW tensor in [0,1] (or normalized).
+    """
+    img_r = F.resize(img_pil, size, interpolation=InterpolationMode.BILINEAR, antialias=True)
+    img_c = F.center_crop(img_r, [size, size])
+    img_t = F.to_tensor(img_c)  # [3,H,W] in [0,1]
+    if normalize:
+        img_t = F.normalize(img_t, mean=CIFAR100_MEAN, std=CIFAR100_STD)
+    return img_t
+
+def resolve_onnx_targets(cfg: Dict, onnx_dir: Path):
+    """
+    Supports:
+      - cfg["onnx"]["source_model"] = /path/to/model.onnx   (single file)
+      - cfg["onnx"]["source_model"] = /path/to/dir          (directory)
+        cfg["onnx"]["target_name"]  = ["A.onnx","B.onnx"]   (list)
+    Returns list of dicts: [{"session":..., "rel_path":..., "model_tag":...}, ...]
+    """
+    src = Path(cfg["onnx"]["source_model"])
+    target = cfg["onnx"].get("target_name", None)
+
+    # Normalize target_name into a list
+    if target is None:
+        # fallback: if src is file, use its name; if dir, error
+        if src.is_file():
+            target_names = [src.name]
+        else:
+            raise ValueError(
+                "onnx.target_name is required when onnx.source_model is a directory."
+            )
+    elif isinstance(target, (list, tuple)):
+        target_names = list(target)
+    else:
+        target_names = [str(target)]
+
+    ort.set_default_logger_severity(3)
+
+    out = []
+    for name in target_names:
+        if src.is_dir():
+            src_file = src / name
+        else:
+            # if src is a file, allow either exact match or ignore name mismatch and copy src
+            src_file = src
+
+        if not src_file.exists():
+            raise FileNotFoundError(f"[ONNX] Missing ONNX file: {src_file}")
+
+        dst_file = onnx_dir / name
+        if not dst_file.exists():
+            print(f"[ONNX] Copying {src_file} -> {dst_file}")
+            dst_file.write_bytes(src_file.read_bytes())
+        else:
+            print(f"[ONNX] Using existing {dst_file}")
+
+        sess = ort.InferenceSession(str(dst_file))
+        rel = str(Path("onnx") / dst_file.name)
+
+        model_tag = Path(name).stem  # e.g. "CIFAR100_resnet_large"
+        out.append({"session": sess, "rel_path": rel, "model_tag": model_tag})
+
+    return out
 
 def make_ratio_pixel_selection_mask(
     seg_mask: np.ndarray,
@@ -317,9 +440,13 @@ def process_single_image(
     get_label_fn: Callable[[Path], int],
     onnx_session: ort.InferenceSession,
     onnx_rel_path: str,
-    vnnlib_dir: Path,
+    model_tag: str = "model",
+    preprocess_for_onnx: Optional[Callable[[Image.Image], torch.Tensor]] = None,
+    preprocess_for_seg: Optional[Callable[[Image.Image], np.ndarray]] = None,
+    vnnlib_dir: Optional[Path] = None,
     debug_dir: Optional[Path] = None,
     stats_rows: Optional[List[Dict]] = None,
+    vnn_spec_type: str = "targeted",
 ) -> List[Tuple[str, str, int]]:
     """
     Returns list of instances.csv rows for this image.
@@ -333,28 +460,39 @@ def process_single_image(
 
     image = Image.open(img_path).convert("RGB")
 
-    # resize + center crop of the img
-    img_t_224 = vgg16_preprocess(image)
-    image_np_224 = img_t_224.detach().cpu().numpy()  # (3,224,224)
+    # Backward-compatible fallbacks (in case an older call site still exists)
+    if preprocess_for_onnx is None or preprocess_for_seg is None:
+        dataset_type = cfg.get("dataset", {}).get("type", "imagenet_vgg16")
+        if dataset_type == "imagenet_vgg16":
+            preprocess_for_onnx = lambda im: vgg16_preprocess(im, normalize=True, size=224)
+            preprocess_for_seg  = lambda im: vgg16_preprocess(im, normalize=False, size=224).permute(1, 2, 0).numpy()
+        elif dataset_type == "cifar100":
+            preprocess_for_onnx = lambda im: cifar_preprocess(im, normalize=True, size=32)
+            preprocess_for_seg  = lambda im: cifar_preprocess(im, normalize=False, size=32).permute(1, 2, 0).numpy()
+        else:
+            raise ValueError(f"Unknown dataset.type='{dataset_type}'")
 
-    # Run model to verify the image is correctly classified before generating specs
+    if vnnlib_dir is None:
+        raise ValueError("vnnlib_dir is required (pass it from main())")
+
+    # --- ONNX input (dataset-aware) ---
+    img_t = preprocess_for_onnx(image)                 # CHW, normalized for model
+    image_np_chw = img_t.detach().cpu().numpy()        # (3,H,W)
+
+    # Verify the image is correctly classified before generating specs
     label = get_label_fn(img_path)
     print(f"True label index: {label} / {num_classes}")
 
     onnx_input_name = onnx_session.get_inputs()[0].name
-    onnx_input = np.expand_dims(image_np_224, axis=0).astype(np.float32, copy=False)
-    logits = onnx_session.run(
-        None, {onnx_input_name: onnx_input}
-    )[0]
+    onnx_input = np.expand_dims(image_np_chw, axis=0).astype(np.float32, copy=False)
+    logits = onnx_session.run(None, {onnx_input_name: onnx_input})[0]
     pred_label = int(np.argmax(logits, axis=1)[0])
     print(f"Predicted label index: {pred_label} / {num_classes}")
     if pred_label != label:
-        print(
-            f"[SKIP] Model top-1 ({pred_label}) != ground truth ({label}); skipping image."
-        )
+        print(f"[SKIP] Model top-1 ({pred_label}) != ground truth ({label}); skipping image.")
         return []
 
-    # Second-best class for targeted misclassification (matches benchmark style)
+    # Runner-up target label (benchmark style)
     logits_flat = logits[0].reshape(-1)
     order = np.argsort(logits_flat)
     top1_label = int(order[-1])
@@ -362,42 +500,33 @@ def process_single_image(
     if top1_label != label:
         print(f"[WARN] Top-1 from logits ({top1_label}) != label ({label}); using label as top-1.")
         top1_label = label
-    
-    img_t_224 = vgg16_preprocess(image, normalize=False)       # CHW in [0,1]
-    image_np_224 = img_t_224.permute(1, 2, 0).numpy()          # HWC in [0,1] for run_segmentation_model
+
+    # --- Segmentation input (unnormalized [0,1], HWC) ---
+    image_np_hwc = preprocess_for_seg(image)  # HWC float32 in [0,1]
 
     ver_cfg = cfg.get("verification", {})
     pixel_counts = ver_cfg.get("perturb_pixels", [None])
-    # allow a single int as shorthand
     if isinstance(pixel_counts, int):
         pixel_counts = [pixel_counts]
     select = ver_cfg.get("perturb_select", "random")
-
     seed = int(ver_cfg.get("perturb_seed", 0))
 
     seg_cfg = cfg["segmentation"]
-
     point_coords = None
     point_labels = None
 
     if seg_cfg.get("prompt_mode", "grid") == "manual":
         prompts_path = Path(seg_cfg["prompts_path"])
         prompts_db = load_manual_prompts(prompts_path)
-
-        # IMPORTANT: pick a consistent key. I suggest img basename.
-        # e.g. "n01443537_12345.jpg" or whatever your img file name is.
-        coords, labels = prompts_for_image(prompts_db, Path(img_path).name)
-
+        coords, labels2 = prompts_for_image(prompts_db, Path(img_path).name)
         if coords is None:
             print(f"[PROMPTS] No manual prompts found for {Path(img_path).name}; falling back to grid.")
         else:
-            point_coords, point_labels = coords, labels
+            point_coords, point_labels = coords, labels2
 
-
-    # Always run segmentation (grid by default; manual prompts if provided above)
     segments = run_segmentation_model(
         predictor=predictor,
-        image_np=image_np_224,
+        image_np=image_np_hwc,
         grid_size=seg_cfg.get("grid_size", 6),
         iou_threshold=seg_cfg.get("iou_threshold", 0.8),
         score_threshold=seg_cfg.get("score_threshold", 0.0),
@@ -406,199 +535,131 @@ def process_single_image(
         point_labels=point_labels,
     )
 
-    img_basename = img_path.stem
+    # Use the model key already baked into the image filename to keep names stable
+    # Example stem: "resnet_large__label_10__idx_8477"
+    img_basename = f"{model_tag}__{img_path.stem}"
 
     if seg_cfg["vis"]:
         visualize_segments(
-            image_np_224,
+            image_np_hwc,
             segments,
             debug_dir,
-            img_basename
-            )
-    
+            img_basename,
+        )
+
     csv_rows: List[Tuple[str, str, int]] = []
 
-    # 1) VNNLIBs for original image (global perturbation), for every (eps, k)
+    # ------------------------------------------------------
+    # For each segment (plus global), write vnnlibs per eps,k
+    # ------------------------------------------------------
     for eps in epsilons:
+        eps = float(eps)
+
+        # Global: all pixels eligible (or pixel-budgeted)
         for k in pixel_counts:
-            global_vnnlib = vnnlib_dir / f"{img_basename}_global_k{k}_eps_{eps:.4f}.vnnlib"
-
-            mask_global, mask_in, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
-
-            if seg_cfg["vis"]:
-                visualize_selected_masks_on_image(
-                    image_np=image_np_224,
-                    mask_in=mask_in,
-                    mask_out=mask_out,
-                    out_path=str(debug_dir / f"{img_basename}_seg0_k{k}_selected_X.png"),
-                    x_size=6,
-                    x_width=2,
-                )
-
-            lb_global, ub_global = bounds_for_segment(
-                image_np_224,
+            lb_flat, ub_flat = bounds_for_segment(
+                image_np=image_np_hwc,
                 eps=eps,
-                mask=mask_global,     # exact chosen pixels
-                max_pixels=None,   # IMPORTANT: no re-sampling
-                select=select,
+                mask=None,
+                max_pixels=k,
+                select="random",
                 seed=seed,
             )
 
+            vnn_name = f"{img_basename}_global_k{k}_eps_{eps}.vnnlib"
+            vnn_path = vnnlib_dir / vnn_name
+
             write_vnnlib_for_segment(
-                lb=lb_global,
-                ub=ub_global,
+                lb=lb_flat,
+                ub=ub_flat,
                 label=label,
                 num_classes=num_classes,
-                out_path=global_vnnlib,
-                target_label=runner_up_label,
+                out_path=vnn_path,
+                target_label=runner_up_label if vnn_spec_type == "targeted" else None,
+                spec_type=vnn_spec_type,
             )
 
-            global_stats = report_changed_inputs(
-                lb_flat=lb_global,
-                ub_flat=ub_global,
-                tag=f"{img_basename}_global",
-                extra={
-                    "image": img_basename,
-                    "is_global": True,
-                    "segment_index": -1,
-                    "eps": eps,
-                    "k": k,
-                    "score": None,
-                    "bbox": None,
-                    "pattern": "global",
-                },
-            )
+            vnn_rel = str(Path("vnnlib") / vnn_name)
+            csv_rows.append((onnx_rel_path, vnn_rel, timeout))
+
             if stats_rows is not None:
-                stats_rows.append(global_stats)
-
-            csv_rows.append(
-                (
-                    onnx_rel_path,
-                    str(Path("vnnlib") / global_vnnlib.name),
-                    timeout,
-                )
-            )
-
-    # 2) segmented VNNLIBs:
-    #    for each segment we now create TWO variants:
-    #      - fix mask      -> object frozen, background can change
-    #      - fix non-mask  -> background frozen, object can change
-    for seg_idx, seg in enumerate(segments):
-        # numpy HxW (bool or 0/1)
-        mask = np.asarray(seg["mask"]).astype(bool)
-        # ------------------------------------------------
-        # (A) FIX MASK: only NON-MASK region can move
-        # ------------------------------------------------
-        for eps in epsilons:
-            for k in pixel_counts:
-                # FIX MASK: object is frozen => allow changes only in NON-mask
-                _, _, mask_out = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
-
-                lb_fix_mask, ub_fix_mask = bounds_for_segment(
-                    image_np_224,
-                    eps=eps,
-                    mask=mask_out,     # exact chosen pixels
-                    max_pixels=None,   # IMPORTANT: no re-sampling
-                    select=select,
-                    seed=seed,
-                )
-
-                seg_stats_fix_mask = report_changed_inputs(
-                    lb_flat=lb_fix_mask,
-                    ub_flat=ub_fix_mask,
-                    tag=f"{img_basename}_seg{seg_idx}_fixmask",
+                row = report_changed_inputs(
+                    lb_flat, ub_flat,
+                    tag="global",
                     extra={
                         "image": img_basename,
-                        "is_global": False,
-                        "segment_index": seg_idx,
+                        "is_global": True,
+                        "segment_index": -1,
                         "eps": eps,
                         "k": k,
-                        "score": float(seg["score"]),
-                        "bbox": seg["bbox"],
-                        "pattern": "fix_mask",
+                        "score": None,
+                        "bbox": None,
+                        "pattern": select,
+                        "model": model_tag,
                     },
                 )
-                if stats_rows is not None:
-                    stats_rows.append(seg_stats_fix_mask)
+                stats_rows.append(row)
 
-                seg_vnnlib_fix_mask = (
-                    vnnlib_dir
-                    / f"{img_basename}_seg{seg_idx}_fixmask_k{k}_eps_{eps:.4f}.vnnlib"
-                )
-                write_vnnlib_for_segment(
-                    lb=lb_fix_mask,
-                    ub=ub_fix_mask,
-                    label=label,
-                    num_classes=num_classes,
-                    out_path=seg_vnnlib_fix_mask,
-                    target_label=runner_up_label,
-                )
-                csv_rows.append(
-                    (
-                        onnx_rel_path,
-                        str(Path("vnnlib") / seg_vnnlib_fix_mask.name),
-                        timeout,
+        # Per-segment masks: fix_mask / fix_nonmask logic
+        for sidx, seg in enumerate(segments):
+            seg_mask = np.asarray(seg["mask"], dtype=bool)
+            score = float(seg.get("score", 0.0))
+            bbox = seg.get("bbox", None)
+
+            # For each segment, create two threat sets:
+            #  - fix_mask    : perturb outside the segment (mask==False)
+            #  - fix_nonmask : perturb inside the segment (mask==True)
+            for tag, mask in [
+                ("fix_mask", ~seg_mask),
+                ("fix_nonmask", seg_mask),
+            ]:
+                for k in pixel_counts:
+                    # Optional: ratio-budgeted selection concentrated/random
+                    # If you want the ratio split: use your make_ratio_pixel_selection_mask
+                    # Here we keep your current behavior: bounds_for_segment can budget within mask.
+                    lb_flat, ub_flat = bounds_for_segment(
+                        image_np=image_np_hwc,
+                        eps=eps,
+                        mask=mask,
+                        max_pixels=k,
+                        select="random",
+                        seed=seed,
                     )
-                )
 
-        # ------------------------------------------------
-        # (B) FIX NON-MASK: only MASK region can move
-        # ------------------------------------------------
+                    vnn_name = f"{img_basename}_{tag}_seg{sidx}_k{k}_eps_{eps}.vnnlib"
+                    vnn_path = vnnlib_dir / vnn_name
 
-        for eps in epsilons:
-            for k in pixel_counts:
-                # FIX NON-MASK: background is frozen => allow changes only in MASK
-
-                _, mask_in, _ = make_ratio_pixel_selection_mask(segments[0]["mask"], k=k, select=select, seed=seed)
-
-                lb_fix_nonmask, ub_fix_nonmask = bounds_for_segment(
-                    image_np_224,
-                    eps=eps,
-                    mask=mask_in,     # exact chosen pixels
-                    max_pixels=None,   # IMPORTANT: no re-sampling
-                    select=select,
-                    seed=seed,
-                )
-
-                seg_stats_fix_nonmask = report_changed_inputs(
-                    lb_flat=lb_fix_nonmask,
-                    ub_flat=ub_fix_nonmask,
-                    tag=f"{img_basename}_seg{seg_idx}_fixnonmask",
-                    extra={
-                        "image": img_basename,
-                        "is_global": False,
-                        "segment_index": seg_idx,
-                        "eps": eps,
-                        "k": k,
-                        "score": float(seg["score"]),
-                        "bbox": seg["bbox"],
-                        "pattern": "fix_nonmask",
-                    },
-                )
-                if stats_rows is not None:
-                    stats_rows.append(seg_stats_fix_nonmask)
-
-                seg_vnnlib_fix_nonmask = (
-                    vnnlib_dir
-                    / f"{img_basename}_seg{seg_idx}_fixnonmask_k{k}_eps_{eps:.4f}.vnnlib"
-                )
-                write_vnnlib_for_segment(
-                    lb=lb_fix_nonmask,
-                    ub=ub_fix_nonmask,
-                    label=label,
-                    num_classes=num_classes,
-                    out_path=seg_vnnlib_fix_nonmask,
-                    target_label=runner_up_label,
-                )
-                csv_rows.append(
-                    (
-                        onnx_rel_path,
-                        str(Path("vnnlib") / seg_vnnlib_fix_nonmask.name),
-                        timeout,
+                    write_vnnlib_for_segment(
+                        lb=lb_flat,
+                        ub=ub_flat,
+                        label=label,
+                        num_classes=num_classes,
+                        out_path=vnn_path,
+                        target_label=runner_up_label if vnn_spec_type == "targeted" else None,
+                        spec_type=vnn_spec_type,
                     )
-                )
 
-    print(f"[PIPELINE] Created {len(csv_rows)} VNNLIBs for {img_path.name}")
+                    vnn_rel = str(Path("vnnlib") / vnn_name)
+                    csv_rows.append((onnx_rel_path, vnn_rel, timeout))
+
+                    if stats_rows is not None:
+                        row = report_changed_inputs(
+                            lb_flat, ub_flat,
+                            tag=tag,
+                            extra={
+                                "image": img_basename,
+                                "is_global": False,
+                                "segment_index": sidx,
+                                "eps": eps,
+                                "k": k,
+                                "score": score,
+                                "bbox": bbox,
+                                "pattern": select,
+                                "model": model_tag,
+                            },
+                        )
+                        stats_rows.append(row)
+
     return csv_rows
 
 def expand_image_entries(entries: Iterable[Union[str, Path]]) -> List[Path]:
@@ -648,7 +709,7 @@ def main():
     )
     # TODO: delete later
     # import sys
-    # sys.argv += ["--config", "configs/xaiv/vggnet16_benchmark2022_segmented_one_img_select_concentrated.yaml"]
+    # sys.argv += ["--config", "configs/cifar100/cifar100_one_img.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
@@ -664,62 +725,82 @@ def main():
     stats_csv_path = out_root / "input_change_stats.csv"
     change_stats_rows: List[Dict] = []
 
+     # -----------------------------
+    # Dataset (type-aware)
     # -----------------------------
-    # Handle ONNX model
-    # -----------------------------
-    onnx_source = Path(cfg["onnx"]["source_model"])
-    onnx_target_name = cfg["onnx"].get("target_name", onnx_source.name)
-    onnx_target = onnx_dir / onnx_target_name
+    dataset_type = cfg.get("dataset", {}).get("type", "imagenet_vgg16")
 
-    if not onnx_target.exists():
-        print(f"[ONNX] Copying {onnx_source} -> {onnx_target}")
-        onnx_target.write_bytes(onnx_source.read_bytes())
+    # CIFAR100 uses VNN-COMP style "untargeted" output constraint,
+    # ImageNet/VGG keeps the old targeted style
+    if dataset_type == "cifar100":
+        vnn_spec_type = "untargeted"
     else:
-        print(f"[ONNX] Using existing {onnx_target}")
+        vnn_spec_type = "targeted"
 
-    ort.set_default_logger_severity(3)
+    if dataset_type == "imagenet_vgg16":
+        all_images, img_to_label, num_classes = load_imagenet_vggnet16_metadata(cfg["dataset"])
 
-    onnx_rel_path = str(Path("onnx") / onnx_target.name)
-    onnx_session = ort.InferenceSession(str(onnx_target))
+        def get_label(img_path: Path) -> int:
+            return get_imagenet_label_for_image(img_path, img_to_label)
 
-    # -----------------------------
-    # Dataset
-    # -----------------------------
+        preprocess_for_onnx = lambda im: vgg16_preprocess(im, normalize=True, size=224)
+        preprocess_for_seg  = lambda im: vgg16_preprocess(im, normalize=False, size=224).permute(1, 2, 0).numpy()
 
-    all_images, img_to_label, num_classes = load_imagenet_vggnet16_metadata(
-        cfg["dataset"]
-    )
+    elif dataset_type == "cifar100":
+        all_images, img_to_label, num_classes = load_cifar100_decoded_metadata(cfg["dataset"])
 
-    def get_label(img_path: Path) -> int:
-        return get_imagenet_label_for_image(img_path, img_to_label)
+        def get_label(img_path: Path) -> int:
+            return get_cifar_label_for_image(img_path, img_to_label)
+
+        preprocess_for_onnx = lambda im: cifar_preprocess(im, normalize=True, size=32)
+        preprocess_for_seg  = lambda im: cifar_preprocess(im, normalize=False, size=32).permute(1, 2, 0).numpy()
+
+    else:
+        raise ValueError(f"Unknown dataset.type='{dataset_type}' (expected 'imagenet_vgg16' or 'cifar100')")
 
     print(f"[Dataset] Found {len(all_images)} images; num_classes = {num_classes}")
     cfg.setdefault("verification", {})
     cfg["verification"]["num_classes"] = num_classes
 
     # -----------------------------
-    # Which images to process?
+    # Choose which images to process (args > config > all)
     # -----------------------------
     images_to_process: List[Path] = []
 
-    cfg_indices = cfg.get("run", {}).get("indices", [])
+    # 1) CLI --images has highest priority
+    if args.images:
+        images_to_process = expand_image_entries(args.images)
 
-    if cfg_indices is not None and len(cfg_indices) > 0:
-        for idx in cfg_indices:
+    # 2) Otherwise CLI --indices
+    elif args.indices:
+        for idx in args.indices:
+            if idx < 0 or idx >= len(all_images):
+                raise IndexError(f"--indices contains {idx} but dataset has {len(all_images)} images.")
             images_to_process.append(all_images[idx])
+
+    # 3) Otherwise config.run.image_paths / config.run.indices (optional)
     else:
-        if args.images:
-            images_to_process.extend(expand_image_entries(args.images))
-        cfg_paths = cfg.get("run", {}).get("image_paths", [])
-        if isinstance(cfg_paths, (str, Path)):
-            cfg_paths = [cfg_paths]
-        for idx in cfg_indices:
-            images_to_process.append(all_images[idx])
-        images_to_process.extend(expand_image_entries(cfg_paths))
+        run_cfg = cfg.get("run", {})
 
-    if not images_to_process:
-        raise ValueError("No images specified. Use --indices/--images or config.run.*")
+        cfg_image_paths = run_cfg.get("image_paths", None)
+        cfg_indices = run_cfg.get("indices", None)
 
+        if cfg_image_paths:
+            if isinstance(cfg_image_paths, (str, Path)):
+                cfg_image_paths = [cfg_image_paths]
+            images_to_process = expand_image_entries(cfg_image_paths)
+
+        elif cfg_indices:
+            for idx in cfg_indices:
+                if idx < 0 or idx >= len(all_images):
+                    raise IndexError(f"config.run.indices contains {idx} but dataset has {len(all_images)} images.")
+                images_to_process.append(all_images[idx])
+
+        else:
+            # fallback: everything (explicit)
+            images_to_process = list(all_images)
+
+    print(f"[RUN] Will process {len(images_to_process)} image(s)")
 
     # -----------------------------
     # Load SAM2 model
@@ -727,11 +808,29 @@ def main():
     predictor = load_sam2_predictor(cfg["segmentation"])
 
     # -----------------------------
-    # Run pipeline
+    # Build ONNX sessions (but do NOT run both per image)
+    # -----------------------------
+    session_map = build_onnx_session_map(cfg, onnx_dir)
+
+    # -----------------------------
+    # Run pipeline (choose model based on image name)
     # -----------------------------
     all_rows: List[Tuple[str, str, int]] = []
 
     for img_path in images_to_process:
+        model_key = infer_model_key_from_image_path(img_path)
+
+        if model_key not in session_map:
+            raise KeyError(
+                f"Model key '{model_key}' not found in ONNX session map.\n"
+                f"Available: {sorted(session_map.keys())}\n"
+                f"Image: {img_path}"
+            )
+
+        onnx_session = session_map[model_key]["session"]
+        onnx_rel_path = session_map[model_key]["rel_path"]
+        model_tag = session_map[model_key]["model_tag"]
+
         rows = process_single_image(
             img_path=img_path,
             predictor=predictor,
@@ -739,9 +838,13 @@ def main():
             get_label_fn=get_label,
             onnx_session=onnx_session,
             onnx_rel_path=onnx_rel_path,
+            model_tag=model_tag,
+            preprocess_for_onnx=preprocess_for_onnx,
+            preprocess_for_seg=preprocess_for_seg,
             vnnlib_dir=vnnlib_dir,
             debug_dir=debug_vis_dir,
             stats_rows=change_stats_rows,
+            vnn_spec_type=vnn_spec_type,
         )
         all_rows.extend(rows)
 
@@ -756,6 +859,7 @@ def main():
     if change_stats_rows:
         fieldnames = [
             "image",
+            "model",
             "tag",
             "is_global",
             "segment_index",
