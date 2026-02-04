@@ -1,6 +1,6 @@
 dataset:
   type: "cifar100"          
-  root: "benchmarks/cifar100_2024/sample"
+  root: "benchmarks/cifar100_2024/decoded_vnnlibs"
 
   # still keep these for grid mode
   grid_size: 6
@@ -42,5 +42,5 @@ run:
   # Option 1: process images by index (sorted over all sample images)
   # indices: []    # Indices of images to process (0-based)
 
-  image_paths: ["benchmarks/cifar100_2024/sample"]
+  image_paths: ["benchmarks/cifar100_2024/decoded_vnnlibs"]
 

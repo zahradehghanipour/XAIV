@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_benchmark2022_one_img_original_25200s_no_attack
+#SBATCH --job-name=vggnet16_6_ten_imgs
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -8,7 +8,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=256G
+#SBATCH --mem=128G
 #SBATCH --mail-type=FAIL,END
 #SBATCH --mail-user=z.dehghanipour@northeastern.edu
 #SBATCH --export=ALL
@@ -17,16 +17,20 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="/home/z.dehghanipour/XAIV/benchmarks/vggnet16_benchmark2022_segmented_one_img"
+BENCHMARK="/projects/air/dlverifier/vggnet16_6_ten_imgs"
 CWD="/home/z.dehghanipour/XAIV"
-CONFIG="abcrown/vggnet16_no_attack.yaml"
+CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=1
+END_ID=90
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1
+
+echo "SLURM_JOB_NODELIST=$SLURM_JOB_NODELIST"
+echo "SLURM_GPUS=$SLURM_GPUS"
+echo "SLURM_JOB_GPUS=$SLURM_JOB_GPUS"
 
 echo "========== ENV CHECK =========="
 which python
@@ -49,6 +53,10 @@ PY
 
 nvidia-smi
 echo "================================"
+
+# Debug for real CUDA error location
+export CUDA_LAUNCH_BLOCKING=1
+export TORCH_SHOW_CPP_STACKTRACES=1
 
 # Ensure logs directory exists
 mkdir -p "$CWD/results/$SLURM_JOB_NAME/logs" || true

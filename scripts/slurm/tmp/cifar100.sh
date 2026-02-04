@@ -17,7 +17,7 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="benchmarks/cifar100_one"
+BENCHMARK="benchmarks/cifar100_all"
 CWD="/home/z.dehghanipour/XAIV"
 CONFIG="configs/abcrown/cifar100.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
