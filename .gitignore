@@ -27,3 +27,6 @@ benchmarks/vggnet16_benchmark2022_segmented/input_change_stats.csv
 complete_verifier/datasets/
 *.tar.gz
 complete_verifier/heuristics/data/
+auto_LiRPA/
+benchmarks/vggnet16_benchmark2022/
+sam2/
