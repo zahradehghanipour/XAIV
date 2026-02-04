@@ -1,0 +1,9 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+1,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-52.490787506103516,3,2526.8753249645233,2576.2641665935516,0
+2,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k25088_eps_0.0001.vnnlib,1200,unsat False,0.20922639966011047,0,706.7796905040741,725.046599149704,0
+3,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.2508986294269562,0,669.265058517456,683.0001978874207,0
+4,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k6272_eps_0.0001.vnnlib,1200,unsat False,0.2583107352256775,0,641.2591197490692,655.440657377243,0
+5,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.26081112027168274,0,614.8038952350616,621.7487905025482,0
+6,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k1568_eps_0.0001.vnnlib,1200,unsat False,0.26192519068717957,0,570.3919887542725,576.7204449176788,0
+7,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,0.25441569089889526,0,659.5274696350098,672.3596248626709,0
+8,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.25934913754463196,0,636.6893737316132,649.6964440345764,0

@@ -93,3 +93,11 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 63,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.06027096509933472,0,691.4251410961151,696.9391367435455,0
 64,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.06158190965652466,0,648.9524862766266,654.3178081512451,0
 65,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.06223738193511963,0,621.2129085063934,626.712682723999,0
+66,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.06250286102294922,0,641.853698015213,647.5572054386139,0
+67,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-735.902587890625,3,3051.362909078598,3064.606032371521,0
+68,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.012978076934814453,3,3051.0750863552094,3064.5033071041107,0
+69,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.04830896854400635,0,731.9096357822418,745.3496861457825,0
+70,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.05734288692474365,0,711.1015481948853,724.3118250370026,0
+71,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.0603863000869751,0,687.900130033493,692.988353729248,0
+72,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_seg0_fixnonmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.06167435646057129,0,642.9839084148407,648.1666100025177,0
+73,onnx/vgg16-7.onnx,vnnlib/n01558993_robin_global_k50176_eps_0.0001.vnnlib,1200,sat True,,,,5.919490814208984,0
