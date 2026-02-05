@@ -743,8 +743,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    import sys
-    sys.argv += ["--config", "configs/cifar100/cifar100_one_img.yaml"]
+    # import sys
+    # sys.argv += ["--config", "configs/cifar100/cifar100_one_img.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
