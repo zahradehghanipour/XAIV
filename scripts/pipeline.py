@@ -763,7 +763,7 @@ def main():
      # -----------------------------
     # Dataset (type-aware)
     # -----------------------------
-    dataset_type = cfg.get("dataset", {}).get("type", "imagenet_vgg16")
+    dataset_type = cfg.get("dataset", {}).get("type", "imagenet_vggnet16")
 
     # CIFAR100 uses VNN-COMP style "untargeted" output constraint,
     # ImageNet/VGG keeps the old targeted style
@@ -772,7 +772,7 @@ def main():
     else:
         vnn_spec_type = "targeted"
 
-    if dataset_type == "imagenet_vgg16":
+    if dataset_type == "imagenet_vggnet16":
         all_images, img_to_label, num_classes = load_imagenet_vggnet16_metadata(cfg["dataset"])
 
         def get_label(img_path: Path) -> int:
