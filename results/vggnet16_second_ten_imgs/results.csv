@@ -84,6 +84,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 52,onnx/vgg16-7.onnx,vnnlib/n01534433_junco_seg0_fixnonmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.12681308388710022,0,703.9750623703003,709.2067985534668,0
 53,onnx/vgg16-7.onnx,vnnlib/n01534433_junco_seg0_fixnonmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.12799257040023804,0,659.4010970592499,664.6681082248688,0
 54,onnx/vgg16-7.onnx,vnnlib/n01534433_junco_seg0_fixnonmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.12853533029556274,0,663.0032176971436,668.0525012016296,0
+<<<<<<< Updated upstream
 57,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.0417599081993103,0,774.6311855316162,787.8108260631561,0
 58,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_global_k6272_eps_0.0001.vnnlib,1200,unsat False,0.05550956726074219,0,708.1151697635651,721.2757935523987,0
 59,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.05968272686004639,0,702.4752175807953,707.7138731479645,0
@@ -131,3 +132,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 99,onnx/vgg16-7.onnx,vnnlib/n01560419_bulbul_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,1.050670862197876,0,619.3090674877167,633.110767364502,0
 100,onnx/vgg16-7.onnx,vnnlib/n01560419_bulbul_seg0_fixmask_k6272_eps_0.0001.vnnlib,1200,unsat False,1.05161452293396,0,570.0251550674438,575.6569945812225,0
 101,onnx/vgg16-7.onnx,vnnlib/n01560419_bulbul_seg0_fixmask_k3136_eps_0.0001.vnnlib,1200,unsat False,1.0521080493927002,0,547.2588970661163,552.8088731765747,0
+=======
+55,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-14280.4697265625,3,3641.3371543884277,3654.483767747879,0
+56,onnx/vgg16-7.onnx,vnnlib/n01537544_indigo_bunting_global_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.14348846673965454,3,2410.819212436676,2423.9561178684235,0
+>>>>>>> Stashed changes

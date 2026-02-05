@@ -109,6 +109,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 108,onnx/vgg16-7.onnx,vnnlib/n01669191_box_turtle_seg0_fixnonmask_k1568_eps_0.0001.vnnlib,1200,sat False,-inf,None,0.918846845626831,6.1525866985321045,0
 109,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-2420.204833984375,3,3835.000403404236,3848.2561094760895,0
 110,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k25088_eps_0.0001.vnnlib,1200,unsat False,0.5435906648635864,0,852.0686278343201,865.2746524810791,0
+<<<<<<< Updated upstream
 118,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.7575817108154297,0,623.3698987960815,628.5970091819763,0
 119,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.7578842043876648,0,626.8302111625671,631.9123318195343,0
 120,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.7581473588943481,0,615.6985967159271,620.8107342720032,0
@@ -155,3 +156,10 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 154,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.15149536728858948,0,610.5982615947723,616.0446238517761,0
 155,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.15165869891643524,0,604.0880711078644,609.4667353630066,0
 156,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.15174424648284912,0,576.6971166133881,582.0987920761108,0
+=======
+113,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.7538292407989502,0,718.605485200882,723.8856611251831,0
+114,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_global_k1568_eps_0.0001.vnnlib,1200,unsat False,0.7562812566757202,0,685.2035241127014,690.4160995483398,0
+115,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,0.7494305968284607,0,701.2605087757111,714.3614056110382,0
+116,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.7549235820770264,0,671.8141076564789,676.953938961029,0
+117,onnx/vgg16-7.onnx,vnnlib/n01675722_banded_gecko_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.7567551136016846,0,670.3962404727936,675.5345532894135,0
+>>>>>>> Stashed changes

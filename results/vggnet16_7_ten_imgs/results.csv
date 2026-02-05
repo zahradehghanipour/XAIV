@@ -121,3 +121,4 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 120,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixmask_k1568_eps_0.0001.vnnlib,1200,unsat False,2.2962257862091064,0,606.9648175239563,612.34836602211,0
 121,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-1680.058837890625,3,2940.840550661087,2953.84597158432,0
 122,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,unsat False,2.111551523208618,0,774.0296716690063,787.236517906189,0
+123,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,2.2655115127563477,0,720.345577955246,733.347817659378,0
