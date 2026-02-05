@@ -859,7 +859,15 @@ def main():
     all_rows: List[Tuple[str, str, int]] = []
 
     for img_path in images_to_process:
-        model_key = infer_model_key_from_image_path(img_path)
+        if dataset_type == "cifar100":
+            model_key = infer_model_key_from_image_path(img_path)
+        else:
+            if len(session_map) != 1:
+                raise ValueError(
+                    "Multiple ONNX sessions found, but dataset.type is not 'cifar100'.\n"
+                    "Set dataset.type='cifar100' to infer model key per image, or provide a single ONNX model."
+                )
+            model_key = next(iter(session_map.keys()))
 
         if model_key not in session_map:
             raise KeyError(
