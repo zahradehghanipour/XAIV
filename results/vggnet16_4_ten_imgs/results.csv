@@ -149,3 +149,9 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 148,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_global_k6272_eps_0.0001.vnnlib,1200,unsat False,0.1450885683298111,0,669.8310980796814,682.8686091899872,0
 149,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.14905530214309692,0,682.9818847179413,688.2327885627747,0
 150,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_global_k1568_eps_0.0001.vnnlib,1200,unsat False,0.150556281208992,0,653.2080919742584,658.5940389633179,0
+151,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k50176_eps_0.0001.vnnlib,1200,unsat False,0.14864298701286316,0,663.1446545124054,676.2320718765259,0
+152,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k25088_eps_0.0001.vnnlib,1200,unsat False,0.15042805671691895,0,647.0075483322144,652.2866129875183,0
+153,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k12544_eps_0.0001.vnnlib,1200,unsat False,0.151134192943573,0,619.6845414638519,625.9867415428162,0
+154,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k6272_eps_0.0001.vnnlib,1200,unsat False,0.15149536728858948,0,610.5982615947723,616.0446238517761,0
+155,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k3136_eps_0.0001.vnnlib,1200,unsat False,0.15165869891643524,0,604.0880711078644,609.4667353630066,0
+156,onnx/vgg16-7.onnx,vnnlib/n01682714_American_chameleon_seg0_fixmask_k1568_eps_0.0001.vnnlib,1200,unsat False,0.15174424648284912,0,576.6971166133881,582.0987920761108,0
