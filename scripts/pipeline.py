@@ -43,7 +43,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 from config_utils import load_config, ensure_dir
 from dataset_utils import load_imagenet_vggnet16_metadata,get_imagenet_label_for_image,load_cifar100_decoded_metadata, get_cifar_label_for_image
 from sam2_utils import load_sam2_predictor, run_segmentation_model
-from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment
+from vnnlib_utils import bounds_for_segment,report_changed_inputs,write_vnnlib_for_segment, normalize_bounds_hwc, reorder_bounds_hwc_to_chw
 from vis_utils import visualize_segments, visualize_selected_masks_on_image
 from collections import deque
 from torchvision.transforms.functional import InterpolationMode
@@ -52,7 +52,7 @@ VGG16_MEAN = [0.485, 0.456, 0.406]
 VGG16_STD = [0.229, 0.224, 0.225]
 
 CIFAR100_MEAN = [0.5071, 0.4865, 0.4409]
-CIFAR100_STD  = [0.2673, 0.2564, 0.2762]
+CIFAR100_STD  = [0.2673, 0.2564, 0.2761]
 
 import re
 
@@ -109,12 +109,26 @@ def build_onnx_session_map(cfg: Dict, onnx_dir: Path) -> Dict[str, Dict]:
     print("[ONNX] Session map keys:", sorted(session_map.keys()))
     return session_map
 
-def cifar_preprocess(img_pil, normalize=True, size=32):
+def cifar_preprocess(
+    img_pil,
+    normalize=True,
+    size=32,
+    antialias=False,
+    skip_resize_if_exact=True,
+):
     """
     CIFAR decoded images may already be 32x32; we still enforce size via resize+center_crop.
     Returns CHW tensor in [0,1] (or normalized).
     """
-    img_r = F.resize(img_pil, size, interpolation=InterpolationMode.BILINEAR, antialias=True)
+    if skip_resize_if_exact and img_pil.size == (size, size):
+        img_r = img_pil
+    else:
+        img_r = F.resize(
+            img_pil,
+            size,
+            interpolation=InterpolationMode.BILINEAR,
+            antialias=antialias,
+        )
     img_c = F.center_crop(img_r, [size, size])
     img_t = F.to_tensor(img_c)  # [3,H,W] in [0,1]
     if normalize:
@@ -458,7 +472,9 @@ def process_single_image(
     epsilons = list(cfg["verification"]["epsilon"])
     num_classes = int(cfg["verification"]["num_classes"])
 
+    dataset_type = cfg.get("dataset", {}).get("type", "imagenet_vgg16")
     image = Image.open(img_path).convert("RGB")
+    image.load()  # force decode now for determinism
 
     # Backward-compatible fallbacks (in case an older call site still exists)
     if preprocess_for_onnx is None or preprocess_for_seg is None:
@@ -467,8 +483,12 @@ def process_single_image(
             preprocess_for_onnx = lambda im: vgg16_preprocess(im, normalize=True, size=224)
             preprocess_for_seg  = lambda im: vgg16_preprocess(im, normalize=False, size=224).permute(1, 2, 0).numpy()
         elif dataset_type == "cifar100":
-            preprocess_for_onnx = lambda im: cifar_preprocess(im, normalize=True, size=32)
-            preprocess_for_seg  = lambda im: cifar_preprocess(im, normalize=False, size=32).permute(1, 2, 0).numpy()
+            preprocess_for_onnx = lambda im: cifar_preprocess(
+                im, normalize=True, size=32, antialias=False, skip_resize_if_exact=True
+            )
+            preprocess_for_seg  = lambda im: cifar_preprocess(
+                im, normalize=False, size=32, antialias=False, skip_resize_if_exact=True
+            ).permute(1, 2, 0).numpy()
         else:
             raise ValueError(f"Unknown dataset.type='{dataset_type}'")
 
@@ -503,6 +523,7 @@ def process_single_image(
 
     # --- Segmentation input (unnormalized [0,1], HWC) ---
     image_np_hwc = preprocess_for_seg(image)  # HWC float32 in [0,1]
+    image_np_hwc_seg = image_np_hwc
 
     ver_cfg = cfg.get("verification", {})
     pixel_counts = ver_cfg.get("perturb_pixels", [None])
@@ -526,7 +547,7 @@ def process_single_image(
 
     segments = run_segmentation_model(
         predictor=predictor,
-        image_np=image_np_hwc,
+        image_np=image_np_hwc_seg,
         grid_size=seg_cfg.get("grid_size", 6),
         iou_threshold=seg_cfg.get("iou_threshold", 0.8),
         score_threshold=seg_cfg.get("score_threshold", 0.0),
@@ -565,6 +586,13 @@ def process_single_image(
                 select="random",
                 seed=seed,
             )
+            if dataset_type == "cifar100":
+                lb_flat, ub_flat = normalize_bounds_hwc(
+                    lb_flat, ub_flat, CIFAR100_MEAN, CIFAR100_STD, image_np_hwc.shape
+                )
+                lb_flat, ub_flat = reorder_bounds_hwc_to_chw(
+                    lb_flat, ub_flat, image_np_hwc.shape
+                )
 
             vnn_name = f"{img_basename}_global_k{k}_eps_{eps}.vnnlib"
             vnn_path = vnnlib_dir / vnn_name
@@ -625,6 +653,13 @@ def process_single_image(
                         select="random",
                         seed=seed,
                     )
+                    if dataset_type == "cifar100":
+                        lb_flat, ub_flat = normalize_bounds_hwc(
+                            lb_flat, ub_flat, CIFAR100_MEAN, CIFAR100_STD, image_np_hwc.shape
+                        )
+                        lb_flat, ub_flat = reorder_bounds_hwc_to_chw(
+                            lb_flat, ub_flat, image_np_hwc.shape
+                        )
 
                     vnn_name = f"{img_basename}_{tag}_seg{sidx}_k{k}_eps_{eps}.vnnlib"
                     vnn_path = vnnlib_dir / vnn_name
@@ -708,8 +743,8 @@ def main():
         help="Explicit image paths to process",
     )
     # TODO: delete later
-    # import sys
-    # sys.argv += ["--config", "configs/cifar100/cifar100_one_img.yaml"]
+    import sys
+    sys.argv += ["--config", "configs/cifar100/cifar100_one_img.yaml"]
 
     args = parser.parse_args()
     cfg = load_config(args.config)
@@ -752,11 +787,17 @@ def main():
         def get_label(img_path: Path) -> int:
             return get_cifar_label_for_image(img_path, img_to_label)
 
-        preprocess_for_onnx = lambda im: cifar_preprocess(im, normalize=True, size=32)
-        preprocess_for_seg  = lambda im: cifar_preprocess(im, normalize=False, size=32).permute(1, 2, 0).numpy()
+        preprocess_for_onnx = lambda im: cifar_preprocess(
+            im, normalize=True, size=32, antialias=False, skip_resize_if_exact=True
+        )
+        preprocess_for_seg  = lambda im: cifar_preprocess(
+            im, normalize=False, size=32, antialias=False, skip_resize_if_exact=True
+        ).permute(1, 2, 0).numpy()
 
     else:
         raise ValueError(f"Unknown dataset.type='{dataset_type}' (expected 'imagenet_vgg16' or 'cifar100')")
+
+    # no vnnlib source override
 
     print(f"[Dataset] Found {len(all_images)} images; num_classes = {num_classes}")
     cfg.setdefault("verification", {})

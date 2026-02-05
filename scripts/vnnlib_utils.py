@@ -25,6 +25,49 @@ from scipy.ndimage import binary_dilation
 from PIL import Image
 from collections import deque
 
+def normalize_bounds_hwc(
+    lb_flat: np.ndarray,
+    ub_flat: np.ndarray,
+    mean: List[float],
+    std: List[float],
+    shape_hwc: Tuple[int, int, int],
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Normalize flat HWC bounds with per-channel mean/std.
+    Assumes std > 0 for all channels.
+    """
+    lb = np.asarray(lb_flat, dtype=np.float64).reshape(shape_hwc)
+    ub = np.asarray(ub_flat, dtype=np.float64).reshape(shape_hwc)
+    if lb.shape != ub.shape:
+        raise ValueError(f"lb/ub shapes must match, got {lb.shape} vs {ub.shape}")
+    if lb.shape[-1] != len(mean) or lb.shape[-1] != len(std):
+        raise ValueError(
+            f"Channel mismatch: shape {lb.shape}, mean {len(mean)}, std {len(std)}"
+        )
+
+    mean_arr = np.array(mean, dtype=np.float64).reshape(1, 1, -1)
+    std_arr = np.array(std, dtype=np.float64).reshape(1, 1, -1)
+
+    lb_n = (lb - mean_arr) / std_arr
+    ub_n = (ub - mean_arr) / std_arr
+    return lb_n.reshape(-1), ub_n.reshape(-1)
+
+def reorder_bounds_hwc_to_chw(
+    lb_flat: np.ndarray,
+    ub_flat: np.ndarray,
+    shape_hwc: Tuple[int, int, int],
+) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Reorder flat HWC bounds to CHW order to match common ONNX input layouts.
+    """
+    lb = np.asarray(lb_flat, dtype=np.float64).reshape(shape_hwc)
+    ub = np.asarray(ub_flat, dtype=np.float64).reshape(shape_hwc)
+    if lb.shape != ub.shape:
+        raise ValueError(f"lb/ub shapes must match, got {lb.shape} vs {ub.shape}")
+    lb_c = np.transpose(lb, (2, 0, 1)).reshape(-1)
+    ub_c = np.transpose(ub, (2, 0, 1)).reshape(-1)
+    return lb_c, ub_c
+
 def mask_to_224(mask_np: np.ndarray) -> np.ndarray:
     # mask_np: HxW boolean or 0/1
     m = Image.fromarray(mask_np.astype(np.uint8) * 255)
