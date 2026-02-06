@@ -13,7 +13,6 @@ __pycache__/
 *_original.png
 
 # Generated outputs
-**/input_change_stats.csv
 **/instances.csv
 
 # Generated artifacts
@@ -21,7 +20,6 @@ results/**/logs/
 onnx/
 benchmarks/*/vnnlib/
 benchmarks/*/onnx/
-benchmarks/vggnet16_benchmark2022_segmented/input_change_stats.csv
 
 # datasets
 complete_verifier/datasets/

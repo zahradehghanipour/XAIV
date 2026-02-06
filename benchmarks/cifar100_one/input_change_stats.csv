@@ -1,0 +1,4 @@
+image,model,tag,is_global,segment_index,eps,k,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
+resnet_large__label_10__idx_8477,CIFAR100_resnet_large,global,True,-1,0.0039,1024,,,3072,0,3072,100.0,random
+resnet_large__label_10__idx_8477,CIFAR100_resnet_large,fix_mask,False,0,0.0039,1024,0.9435862302780151,"[1, 0, 29, 30]",948,2124,3072,30.859375,random
+resnet_large__label_10__idx_8477,CIFAR100_resnet_large,fix_nonmask,False,0,0.0039,1024,0.9435862302780151,"[1, 0, 29, 30]",2124,948,3072,69.140625,random
