@@ -36,7 +36,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 35,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k3136_eps_0.0001.vnnlib,1200,sat False,-inf,,1.396486759185791,6.560077428817749,0
 36,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_seg0_fixnonmask_k1568_eps_0.0001.vnnlib,1200,sat False,-inf,,1.2874877452850342,6.459707498550415,0
 37,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-805926.75,3.0,4144.68217754364,4157.327424287796,0
-38,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.9213818907737732,3.0,2348.2661588191986,2360.9840445518494,0
+38,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k25088_eps_0.0001.vnnlib,1200,timeout False,-0.9213818907737732,3.0,2348.2661588191986,2360.98404455185,0
 39,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.5387461185455322,0.0,688.2320783138275,701.4362599849701,0
 40,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k6272_eps_0.0001.vnnlib,1200,unsat False,0.5570738315582275,0.0,663.3336718082428,675.9456715583801,0
 41,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.5616589188575745,0.0,637.0945451259613,642.0762116909027,0
