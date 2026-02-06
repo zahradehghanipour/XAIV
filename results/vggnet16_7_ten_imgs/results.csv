@@ -122,3 +122,6 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 121,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k50176_eps_0.0001.vnnlib,1200,timeout False,-1680.058837890625,3,2940.840550661087,2953.84597158432,0
 122,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k25088_eps_0.0001.vnnlib,1200,unsat False,2.111551523208618,0,774.0296716690063,787.236517906189,0
 123,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_seg0_fixnonmask_k12544_eps_0.0001.vnnlib,1200,unsat False,2.2655115127563477,0,720.345577955246,733.347817659378,0
+124,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_fix_nonmask_seg0_k6272_eps_0.0001.vnnlib,1200,unsat False,2.2831599712371826,0,731.2594075202942,748.0247321128845,0
+125,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_fix_nonmask_seg0_k3136_eps_0.0001.vnnlib,1200,unsat False,2.2909789085388184,0,714.674113035202,720.0877859592438,0
+126,onnx/vgg16-7.onnx,vnnlib/n01770081_harvestman_fix_nonmask_seg0_k1568_eps_0.0001.vnnlib,1200,unsat False,2.294055700302124,0,684.3447463512421,689.9053497314453,0

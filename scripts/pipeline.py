@@ -558,7 +558,9 @@ def process_single_image(
 
     # Use the model key already baked into the image filename to keep names stable
     # Example stem: "resnet_large__label_10__idx_8477"
-    img_basename = f"{model_tag}__{img_path.stem}"
+
+    # img_basename = f"{model_tag}__{img_path.stem}"
+    img_basename = f"{img_path.stem}"
 
     if seg_cfg["vis"]:
         visualize_segments(
