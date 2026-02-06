@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_second_ten_imgs
+#SBATCH --job-name=vggnet16_9_ten_imgs
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -17,13 +17,13 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="/home/z.dehghanipour/XAIV/benchmarks/vggnet16_benchmark2022_segmented_second_ten_imgs"
+BENCHMARK="/projects/air/dlverifier/vggnet16_9_ten_imgs"
 CWD="/home/z.dehghanipour/XAIV"
 CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=180
+END_ID=162
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 source activate /home/z.dehghanipour/.conda/envs/ab-crown-v1

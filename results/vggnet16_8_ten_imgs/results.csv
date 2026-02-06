@@ -39,3 +39,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 38,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_global_k25088_eps_0.0001.vnnlib,1200,unsat False,0.7356809377670288,0,797.5049910545349,810.7113964557648,0
 39,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_global_k12544_eps_0.0001.vnnlib,1200,unsat False,0.7607486844062805,0,715.8063354492188,728.8324477672577,0
 40,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_global_k6272_eps_0.0001.vnnlib,1200,unsat False,0.765541672706604,0,701.2991602420807,714.4982161521912,0
+41,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.7672502398490906,0,694.7910397052765,700.1184902191162,0
+42,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_global_k1568_eps_0.0001.vnnlib,1200,unsat False,0.7679808139801025,0,643.6847126483917,648.8372910022736,0
+43,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_fix_mask_seg0_k50176_eps_0.0001.vnnlib,1200,unsat False,0.7642338871955872,0,688.6783385276794,701.8246326446533,0
+44,onnx/vgg16-7.onnx,vnnlib/n01773797_garden_spider_fix_mask_seg0_k25088_eps_0.0001.vnnlib,1200,unsat False,0.7642337679862976,0,687.5760564804077,700.633142709732,0
