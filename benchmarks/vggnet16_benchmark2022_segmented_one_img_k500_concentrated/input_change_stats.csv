@@ -1,0 +1,4 @@
+image,tag,is_global,segment_index,eps,k,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
+n02033041_dowitcher,n02033041_dowitcher_global,True,-1,0.0001,500,,,1500,149028,150528,0.9964923469387755,global
+n02033041_dowitcher,n02033041_dowitcher_seg0_fixmask,False,0,0.0001,500,0.8100309371948242,"[0, 0, 223, 223]",183,150345,150528,0.12157206632653061,fix_mask
+n02033041_dowitcher,n02033041_dowitcher_seg0_fixnonmask,False,0,0.0001,500,0.8100309371948242,"[0, 0, 223, 223]",1317,149211,150528,0.8749202806122449,fix_nonmask
