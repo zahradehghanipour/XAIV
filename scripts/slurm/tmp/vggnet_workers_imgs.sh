@@ -8,8 +8,8 @@
 # START WITH 1 GPU (test)
 # Later: change a100:1 -> a100:4 and ntasks=1 -> ntasks=4
 # =========================
-#SBATCH --gres=gpu:a100:2
-#SBATCH --ntasks=2
+#SBATCH --gres=gpu:a100:1
+#SBATCH --ntasks=1
 
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1

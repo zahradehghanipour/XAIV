@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_101_150_ten_imgs
+#SBATCH --job-name=vggnet16_101_150_imgs
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -8,8 +8,8 @@
 # START WITH 1 GPU (test)
 # Later: change a100:1 -> a100:4 and ntasks=1 -> ntasks=4
 # =========================
-#SBATCH --gres=gpu:a100:2
-#SBATCH --ntasks=2
+#SBATCH --gres=gpu:a100:1
+#SBATCH --ntasks=1
 
 #SBATCH --time=08:00:00
 #SBATCH --nodes=1
@@ -26,13 +26,13 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="/projects/air/dlverifier/vggnet16_10_ten_imgs"
+BENCHMARK="/projects/air/dlverifier/vggnet16_101_150_imgs"
 CWD="/home/z.dehghanipour/XAIV"
 CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=180
+END_ID=846
 
 # Conda
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
