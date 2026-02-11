@@ -54,3 +54,4 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 53,onnx/vgg16-7.onnx,vnnlib/n02085936_Maltese_dog_fix_nonmask_seg0_k3136_eps_0.0001.vnnlib,1200,unsat False,1.0114035606384277,0,539.0183289051056,573.8737933635712,0
 54,onnx/vgg16-7.onnx,vnnlib/n02085936_Maltese_dog_fix_nonmask_seg0_k1568_eps_0.0001.vnnlib,1200,unsat False,1.0124716758728027,0,504.0898563861847,540.3470366001129,0
 55,onnx/vgg16-7.onnx,vnnlib/n02086079_Pekinese_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-152.37918090820312,3,2386.8220286369324,2430.7960653305054,0
+180,onnx/vgg16-7.onnx,vnnlib/n02088364_beagle_fix_nonmask_seg0_k1568_eps_0.0001.vnnlib,1200,unsat False,1.1108119487762451,0,552.1737394332886,586.5664713382721,0
