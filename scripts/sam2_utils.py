@@ -22,7 +22,17 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 import torch
 from sam2.sam2_image_predictor import SAM2ImagePredictor
+from scipy.ndimage import binary_dilation
 
+def dilate_mask(mask: np.ndarray, radius: int) -> np.ndarray:
+    if radius <= 0:
+        return mask
+
+    # circular-ish structuring element
+    y, x = np.ogrid[-radius:radius+1, -radius:radius+1]
+    selem = x*x + y*y <= radius*radius
+
+    return binary_dilation(mask, structure=selem)
 
 def run_segmentation_model(
     predictor: SAM2ImagePredictor,
@@ -31,6 +41,7 @@ def run_segmentation_model(
     iou_threshold: float = 0.8,
     score_threshold: float = 0.0,
     max_segments: Optional[int] = None,
+    dilation_radius: int = 0,
     point_coords: Optional[np.ndarray] = None,   # (N,2) in (x,y)
     point_labels: Optional[np.ndarray] = None,   # (N,) 1=FG, 0=BG
 ):
@@ -90,6 +101,10 @@ def run_segmentation_model(
             continue
 
         mask = masks_np[k].astype(bool)
+
+        if dilation_radius > 0:
+            mask = dilate_mask(mask, dilation_radius)
+
         ys_mask, xs_mask = np.where(mask)
         if len(ys_mask) == 0:
             continue

@@ -210,6 +210,39 @@ class ABCROWN:
             interm_bounds=interm_bounds,
         )
 
+        # -----------------------------
+        import torch
+        import numpy as np
+
+        def serialize_obj(obj):
+            if isinstance(obj, torch.Tensor):
+                return obj.detach().cpu().numpy().tolist()
+            elif isinstance(obj, np.ndarray):
+                return obj.tolist()
+            elif isinstance(obj, dict):
+                return {k: serialize_obj(v) for k, v in obj.items()}
+            elif isinstance(obj, (list, tuple)):
+                return [serialize_obj(x) for x in obj]
+            else:
+                return obj
+
+
+        ret_clean = serialize_obj(ret)
+
+        import json
+        from pathlib import Path
+
+        out_dir = Path("debug_outputs")
+        out_dir.mkdir(exist_ok=True)
+
+        out_path = out_dir / "build_ret.json"
+
+        with open(out_path, "w") as f:
+            json.dump(ret_clean, f, indent=2)
+
+        print(f"[Saved] ret dict -> {out_path}")
+        # -----------------------------
+
         if arguments.Config["general"]["return_optimized_model"]:
             return model
 
@@ -498,7 +531,7 @@ class ABCROWN:
             output = self.model.net(x).flatten()
             print("Model prediction is:", output)
 
-            # save output:
+            # save output:i
             if arguments.Config["general"]["save_output"]:
                 arguments.Globals["out"]["pred"] = output.cpu()
 

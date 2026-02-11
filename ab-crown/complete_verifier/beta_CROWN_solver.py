@@ -489,6 +489,7 @@ class LiRPANet:
 
             if stop_criterion_func(lb).all().item():
                 # Fast path. Initial CROWN bound can verify the network.
+
                 print('Verified with initial CROWN!')
                 return lb, result
 

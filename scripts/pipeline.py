@@ -554,6 +554,7 @@ def process_single_image(
         max_segments=seg_cfg.get("max_segments", None),
         point_coords=point_coords,
         point_labels=point_labels,
+        dilation_radius=seg_cfg.get("dilation_radius", 0),
     )
 
     # Use the model key already baked into the image filename to keep names stable

@@ -21,9 +21,11 @@ segmentation:
 
   vis: False  
 
+  dilation_radius: 0
+
 verification:
   epsilon: [0.0039] 
-  dilation_radius: 0
+
   num_classes: 100
 
   perturb_pixels: [1024]

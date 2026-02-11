@@ -2,8 +2,8 @@
 
 instance_id=$1
 
-BENCHMARK="cifar100_one"
-CONFIG="abcrown/cifar100.yaml"
+BENCHMARK="vggnet16_benchmark2022_segmented_one_img"
+CONFIG="abcrown/vggnet16.yaml"
 
 experiment_path=results/$BENCHMARK
 
