@@ -213,4 +213,8 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 211,onnx/vgg16-7.onnx,vnnlib/n02101006_Gordon_setter_fix_nonmask_seg0_k50176_eps_0.0001.vnnlib,1200,unsat False,0.07123750448226929,0,728.6880271434784,773.1546475887299,0
 212,onnx/vgg16-7.onnx,vnnlib/n02101006_Gordon_setter_fix_nonmask_seg0_k25088_eps_0.0001.vnnlib,1200,unsat False,0.23787353932857513,0,689.452098608017,733.5877470970154,0
 213,onnx/vgg16-7.onnx,vnnlib/n02101006_Gordon_setter_fix_nonmask_seg0_k12544_eps_0.0001.vnnlib,1200,unsat False,0.26014843583106995,0,638.710693359375,682.2462260723114,0
+<<<<<<< HEAD
 275,onnx/vgg16-7.onnx,vnnlib/n02102318_cocker_spaniel_global_k3136_eps_0.0001.vnnlib,1200,unsat False,0.23610782623291016,0,619.199963092804,656.2426147460938,0
+=======
+214,onnx/vgg16-7.onnx,vnnlib/n02101006_Gordon_setter_fix_nonmask_seg0_k6272_eps_0.0001.vnnlib,1200,unsat False,0.2665013074874878,0,627.6165668964386,671.8905036449432,0
+>>>>>>> 78d32eabc (commit)

@@ -165,3 +165,4 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 163,onnx/vgg16-7.onnx,vnnlib/n02088364_beagle_global_k50176_eps_0.0001.vnnlib,1200,unsat False,0.935978889465332,0,713.87184715271,755.6462483406067,0
 164,onnx/vgg16-7.onnx,vnnlib/n02088364_beagle_global_k25088_eps_0.0001.vnnlib,1200,unsat False,1.086632490158081,0,682.9301202297211,725.7595145702362,0
 165,onnx/vgg16-7.onnx,vnnlib/n02088364_beagle_global_k12544_eps_0.0001.vnnlib,1200,unsat False,1.1025691032409668,0,645.0198047161102,687.7259569168091,0
+166,onnx/vgg16-7.onnx,vnnlib/n02088364_beagle_global_k6272_eps_0.0001.vnnlib,1200,unsat False,1.1075844764709473,0,639.0676355361938,681.7949044704437,0

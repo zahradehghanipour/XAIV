@@ -3,6 +3,9 @@ __pycache__/
 *.pyc
 *.pyo
 
+#tmp
+/home/z.dehghanipour/XAIV/results
+
 # macOS junk
 .DS_Store
 

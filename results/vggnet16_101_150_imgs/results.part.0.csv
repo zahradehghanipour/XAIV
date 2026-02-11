@@ -262,3 +262,5 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 261,onnx/vgg16-7.onnx,vnnlib/n01955084_chiton_fix_mask_seg0_k12544_eps_0.0001.vnnlib,1200,unsat False,0.6241337060928345,0,629.4507563114166,671.8295485973358,0
 262,onnx/vgg16-7.onnx,vnnlib/n01955084_chiton_fix_mask_seg0_k6272_eps_0.0001.vnnlib,1200,unsat False,0.626424252986908,0,620.3962621688843,663.3761477470398,0
 263,onnx/vgg16-7.onnx,vnnlib/n01955084_chiton_fix_mask_seg0_k3136_eps_0.0001.vnnlib,1200,unsat False,0.6301875710487366,0,627.2529962062836,662.3935325145721,0
+264,onnx/vgg16-7.onnx,vnnlib/n01955084_chiton_fix_mask_seg0_k1568_eps_0.0001.vnnlib,1200,unsat False,0.6317221522331238,0,603.9509117603302,638.688006401062,0
+289,onnx/vgg16-7.onnx,vnnlib/n01978455_rock_crab_global_k50176_eps_0.0001.vnnlib,1200,timeout False,-29.219968795776367,3,2551.167722463608,2595.905806541443,0
