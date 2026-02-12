@@ -4,7 +4,10 @@ __pycache__/
 *.pyo
 
 #tmp
-# /home/z.dehghanipour/XAIV/results
+/home/z.dehghanipour/XAIV/results/vggnet16_101_150_imgs
+/home/z.dehghanipour/XAIV/results/vggnet16_151_200_imgs
+/home/z.dehghanipour/XAIV/results/vggnet16_201_250_imgs
+/home/z.dehghanipour/XAIV/results/vggnet16_251_300_imgs
 
 # macOS junk
 .DS_Store
