@@ -211,8 +211,9 @@ class ABCROWN:
         )
 
         # -----------------------------
-        import torch
-        import numpy as np
+        # TODO delete later
+        import json
+        from pathlib import Path
 
         def serialize_obj(obj):
             if isinstance(obj, torch.Tensor):
@@ -229,8 +230,6 @@ class ABCROWN:
 
         ret_clean = serialize_obj(ret)
 
-        import json
-        from pathlib import Path
 
         out_dir = Path("debug_outputs")
         out_dir.mkdir(exist_ok=True)

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=vggnet16_251_300_ten_imgs
+#SBATCH --job-name=vggnet16_251_300_imgs
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu

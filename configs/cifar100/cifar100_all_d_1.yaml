@@ -19,7 +19,7 @@ segmentation:
   score_threshold: 0.0
   max_segments: 1
 
-  vis: False  
+  vis: True
 
   dilation_radius: 1
 
