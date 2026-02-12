@@ -23,6 +23,7 @@ results/**/logs/
 onnx/
 benchmarks/*/vnnlib/
 benchmarks/*/onnx/
+debug_outputs/build_ret.json
 
 # datasets
 complete_verifier/datasets/
