@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=cifar100_segmented_d_1
+#SBATCH --job-name=cifar100_segmented_d_3
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
 #SBATCH --partition=gpu
@@ -17,7 +17,7 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="benchmarks/cifar100_all_d_1"
+BENCHMARK="benchmarks/cifar100_all_d_3"
 CWD="/home/z.dehghanipour/XAIV"
 CONFIG="configs/abcrown/cifar100.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
