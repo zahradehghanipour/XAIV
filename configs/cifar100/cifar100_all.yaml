@@ -2,12 +2,6 @@ dataset:
   type: "cifar100"          
   root: "benchmarks/cifar100_2024/decoded_vnnlibs"
 
-  # still keep these for grid mode
-  grid_size: 6
-  iou_threshold: 0.8
-  score_threshold: 0.0
-  max_segments: 5
-
 segmentation:
   model_name: "facebook/sam2-hiera-large"
   device: "auto"        # "auto", "cpu" or "cuda"
