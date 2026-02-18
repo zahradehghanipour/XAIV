@@ -22,11 +22,11 @@ segmentation:
   vis: False  
 
 verification:
-  epsilon: [0.0001, 0.0003] 
+  epsilon: [0.0002, 0.0003] 
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
 
-  perturb_pixels: [10, 50176]
+  perturb_pixels: [50176]
   perturb_select: "random"   # "random" for now
   perturb_seed: 0
 
