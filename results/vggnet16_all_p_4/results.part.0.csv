@@ -1,0 +1,22 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+751,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,82.58435916900635,0
+752,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,57.08884119987488,0
+753,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,54.839653968811035,0
+754,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,47.48266530036926,0
+755,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,50.79622030258179,0
+756,onnx/vgg16-7.onnx,vnnlib/n02089867_Walker_hound_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,47.220146894454956,0
+757,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,41.6525182723999,0
+758,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,49.84206199645996,0
+759,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,47.70888066291809,0
+760,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,46.621230125427246,0
+761,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,43.10406732559204,0
+762,onnx/vgg16-7.onnx,vnnlib/n02089973_English_foxhound_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,53.880122900009155,0
+763,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-928213.0,3,4061.9812982082367,4123.188453435898,0
+764,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-1090.5709228515625,3,2350.7286517620087,2399.684286594391,0
+765,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-3009.585693359375,3,2837.4945409297943,2883.0323498249054,0
+766,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-87163024.0,3,4632.638453722,4689.710832834244,0
+767,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-354328.3125,3,2994.7814116477966,3041.13289475441,0
+768,onnx/vgg16-7.onnx,vnnlib/n02090379_redbone_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-866070.8125,3,3802.8198754787445,3853.511602640152,0
+769,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-232185.484375,3,3955.30726146698,4003.1869904994965,0
+770,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.2750759720802307,0,649.8764803409576,698.9392881393433,0
+771,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-27507.42578125,3,3693.646139860153,3739.1675078868866,0

@@ -1,0 +1,19 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+251,onnx/vgg16-7.onnx,vnnlib/n01728920_ringneck_snake_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-633046.3125,3,4149.308003902435,4195.837037563324,0
+252,onnx/vgg16-7.onnx,vnnlib/n01728920_ringneck_snake_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-623500672.0,3,4608.386063575745,4656.834193229675,0
+253,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,42.59087252616882,0
+254,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,39.375667333602905,0
+255,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,39.23841977119446,0
+256,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,38.665048599243164,0
+257,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,47.7439820766449,0
+258,onnx/vgg16-7.onnx,vnnlib/n01735189_garter_snake_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,42.97859311103821,0
+259,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-187839904.0,3,5224.317289829254,5273.396922588348,0
+260,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,1.6035605669021606,0,645.5801472663879,693.6358370780945,0
+261,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-151228544.0,3,5128.650325298309,5181.90597987175,0
+262,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-14222883840.0,3,5849.504246473312,5896.877265453339,0
+263,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,1.5782355070114136,0,646.3913288116455,697.3125321865082,0
+264,onnx/vgg16-7.onnx,vnnlib/n01737021_water_snake_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-11349443584.0,3,5224.640993356705,5272.382510900497,0
+265,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-1298279.875,3,3846.2816610336304,3892.819774866104,0
+266,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.1512141078710556,0,703.2822947502136,756.6357419490814,0
+267,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-4715.74072265625,3,2803.4266455173492,2857.1498124599457,0
+268,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-239971328.0,3,4502.560448408127,4548.210511684418,0

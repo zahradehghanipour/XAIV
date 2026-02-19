@@ -1,0 +1,21 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
+1,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-95439.921875,3,3557.9462890625,3602.341367483139,0
+2,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,1.7867681980133057,0,630.519279718399,679.2851779460907,0
+3,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-2796.38037109375,3,2852.77157831192,2898.7975897789,0
+4,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-13289175.0,3,4335.802865743637,4387.869834423065,0
+5,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,1.6805132627487183,0,644.8720262050629,691.0250225067139,0
+6,onnx/vgg16-7.onnx,vnnlib/n01443537_goldfish_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-867758.0,3,3999.7152004241943,4043.2839031219482,0
+7,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,36.96867871284485,0
+8,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,39.63700747489929,0
+9,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,36.76482343673706,0
+10,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,36.703927755355835,0
+11,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,37.26279640197754,0
+12,onnx/vgg16-7.onnx,vnnlib/n01484850_great_white_shark_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,37.45989537239075,0
+13,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-5305017856.0,3,5128.830708026886,5172.846725940704,0
+14,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.5610620975494385,0,550.894326210022,593.8680307865143,0
+15,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-4788121088.0,3,5087.720911979675,5138.1638560295105,0
+16,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-148050116608.0,3,5948.412142276764,5997.044085025787,0
+17,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,0.5583764314651489,0,606.2513732910156,645.237900018692,0
+18,onnx/vgg16-7.onnx,vnnlib/n01491361_tiger_shark_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-134138396672.0,3,5935.774156808853,5985.528429985046,0
+19,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-90830712.0,3,4504.106237411499,4552.416823387146,0
+20,onnx/vgg16-7.onnx,vnnlib/n01496331_electric_ray_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.0889594554901123,0,616.9259254932404,656.5344223976135,0
