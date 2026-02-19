@@ -27,3 +27,17 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 526,onnx/vgg16-7.onnx,vnnlib/n01917289_brain_coral_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,38.36256456375122,0
 527,onnx/vgg16-7.onnx,vnnlib/n01917289_brain_coral_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,35.80351138114929,0
 528,onnx/vgg16-7.onnx,vnnlib/n01917289_brain_coral_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,36.410380601882935,0
+529,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-86717.9609375,3,3729.545590162277,3773.8556394577026,0
+530,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.582410454750061,0,619.489904165268,665.186910867691,0
+531,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-15671.9716796875,3,3215.055248975754,3258.696811914444,0
+532,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-7724783.5,3,4284.729381322861,4329.922838926315,0
+533,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,0.5533881783485413,0,645.1091821193695,691.4350981712341,0
+534,onnx/vgg16-7.onnx,vnnlib/n01924916_flatworm_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-2186031.25,3,4094.446131706238,4139.274852752686,0
+535,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_global_k50176_eps_0.0002.vnnlib,1200,sat True,,,,40.28952932357788,0
+536,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,sat False,-inf,None,1.1323518753051758,39.254732608795166,0
+537,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,sat True,,,,38.62796998023987,0
+538,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_global_k50176_eps_0.0003.vnnlib,1200,sat True,,,,40.83740568161011,0
+539,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,sat False,-inf,None,0.9103620052337646,37.80763292312622,0
+540,onnx/vgg16-7.onnx,vnnlib/n01930112_nematode_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,40.43485760688782,0
+541,onnx/vgg16-7.onnx,vnnlib/n01943899_conch_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-75738.7578125,3,3193.6125729084015,3240.596271753311,0
+542,onnx/vgg16-7.onnx,vnnlib/n01943899_conch_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,1.2722631692886353,0,547.7663660049438,593.1585619449615,0

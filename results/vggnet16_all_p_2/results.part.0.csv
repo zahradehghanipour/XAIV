@@ -17,3 +17,7 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 266,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.1512141078710556,0,703.2822947502136,756.6357419490814,0
 267,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-4715.74072265625,3,2803.4266455173492,2857.1498124599457,0
 268,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-239971328.0,3,4502.560448408127,4548.210511684418,0
+269,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-2317.095458984375,3,2673.063397169113,2718.190908432007,0
+270,onnx/vgg16-7.onnx,vnnlib/n01739381_vine_snake_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-753782.0,3,3631.797113418579,3676.2660841941833,0
+271,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-714061.4375,3,3908.362963914871,3952.9082679748535,0
+272,onnx/vgg16-7.onnx,vnnlib/n01742172_boa_constrictor_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.2346574068069458,0,630.011118888855,675.9010927677155,0

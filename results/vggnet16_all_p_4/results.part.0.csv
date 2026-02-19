@@ -20,3 +20,9 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 769,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-232185.484375,3,3955.30726146698,4003.1869904994965,0
 770,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.2750759720802307,0,649.8764803409576,698.9392881393433,0
 771,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-27507.42578125,3,3693.646139860153,3739.1675078868866,0
+772,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-26590266.0,3,4973.719434499741,5020.87374830246,0
+773,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,0.22755368053913116,0,717.508838891983,762.5535819530487,0
+774,onnx/vgg16-7.onnx,vnnlib/n02090622_borzoi_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-5309029.0,3,4784.316457986832,4832.784431219101,0
+775,onnx/vgg16-7.onnx,vnnlib/n02090721_Irish_wolfhound_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-279320.90625,3,4352.668460845947,4396.9122269153595,0
+776,onnx/vgg16-7.onnx,vnnlib/n02090721_Irish_wolfhound_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.5448359251022339,0,594.6117241382599,643.641458272934,0
+777,onnx/vgg16-7.onnx,vnnlib/n02090721_Irish_wolfhound_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-158281.625,3,4162.14976644516,4210.411444425583,0
