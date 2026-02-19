@@ -1,0 +1,4 @@
+instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable,image,tag,segment_index,k,eps,model,is_global,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,
