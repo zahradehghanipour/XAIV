@@ -18,7 +18,7 @@ module load cuda/12.8
 
 # --- MAIN VARIABLES
 BENCHMARK="benchmarks/cifar100_all"
-CWD="/home/z.dehghanipour/XAIV"
+CWD="/home/z.dehghanipour/XAIV"squeue -u $USER -o "%.18i %.9P %.30j %.2t %.10M %.6D %R %b"
 CONFIG="configs/abcrown/cifar100.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 

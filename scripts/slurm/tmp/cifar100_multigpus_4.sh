@@ -30,7 +30,7 @@ CONFIG="abcrown/cifar100.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
 START_ID=1
-END_ID=40
+END_ID=200
 
 # Conda
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh

@@ -1,16 +1,18 @@
 #!/bin/bash
-#SBATCH --job-name=cifar100_multigpus_2
+#SBATCH --job-name=vggnet16_all_p_2
 #SBATCH --output=results/%x/logs/slurm-%j.out
 #SBATCH --error=results/%x/logs/slurm-%j.err
+#SBATCH --partition=sharing
 
 # =========================
-#SBATCH -p reservation
-#SBATCH --reservation=z.dehghanipour_test2
-#SBATCH --time=12:00:00
-#SBATCH --gres=gpu:v100-sxm2:2
-#SBATCH --ntasks=2
+# START WITH 1 GPU (test)
+# Later: change a100:1 -> a100:4 and ntasks=1 -> ntasks=4
 # =========================
+#SBATCH --gres=gpu:a100:1
+#SBATCH --ntasks=1
 
+#SBATCH --time=01:00:00
+#SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=128G
 #SBATCH --mail-type=FAIL,END
@@ -24,13 +26,13 @@ module purge
 module load cuda/12.8
 
 # --- MAIN VARIABLES
-BENCHMARK="benchmarks/cifar100_all"
+BENCHMARK="/projects/air/dlverifier/vggnet16_all"
 CWD="/home/z.dehghanipour/XAIV"
-CONFIG="abcrown/cifar100.yaml"
+CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
-START_ID=1
-END_ID=200
+START_ID=251
+END_ID=500
 
 # Conda
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
@@ -80,30 +82,7 @@ echo "================================"
 # Debug flags:
 # Keep CUDA_LAUNCH_BLOCKING OFF for speed. Enable only when debugging crashes.
 # export CUDA_LAUNCH_BLOCKING=1
-export TORCH_SHOW_CPP_STACKTRACES=
-
 export TORCH_SHOW_CPP_STACKTRACES=1
-
-echo "========== RESERVATION / ALLOCATION CHECK =========="
-echo "Now (UTC): $(date -u)"
-echo "Now (local): $(date)"
-echo "Reservation requested: z.dehghanipour_test2"
-
-echo "SLURM_RESERVATION=${SLURM_RESERVATION:-<not set by Slurm>}"
-
-echo "JobId=$SLURM_JOB_ID"
-scontrol show job "$SLURM_JOB_ID" | egrep -i "JobId=|UserId=|Account=|Partition=|Reservation=|NodeList=|NumNodes=|NumCPUs=|NumTasks=|TRES=|TresPerNode=|Gres=|GRES=|CpusPerTask=|Mem=|State=" || true
-
-echo "---- Nodes / GPUs ----"
-scontrol show hostnames "$SLURM_JOB_NODELIST" || true
-nvidia-smi -L || true
-nvidia-smi topo -m || true
-echo "=============================================="
-
-echo "========== TIMING START =========="
-JOB_START_TIME=$(date +%s)
-echo "Start timestamp: $JOB_START_TIME"
-echo "=================================="
 
 echo "========== QUICK GPU CHECK =========="
 nvidia-smi
@@ -230,14 +209,5 @@ echo "instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_ti
 # Concatenate without headers and sort by instance_id numeric
 awk 'FNR==1{next} {print}' "$experiment_path"/results.part.*.csv \
   | sort -t',' -k1,1n >> "$final_csv"
-
-echo "========== TIMING END =========="
-JOB_END_TIME=$(date +%s)
-echo "End timestamp: $JOB_END_TIME"
-
-TOTAL_RUNTIME=$((JOB_END_TIME - JOB_START_TIME))
-echo "TOTAL WALL CLOCK RUNTIME (seconds): $TOTAL_RUNTIME"
-echo "TOTAL WALL CLOCK RUNTIME (minutes): $((TOTAL_RUNTIME / 60))"
-echo "=================================="
 
 echo "Merged -> $final_csv"
