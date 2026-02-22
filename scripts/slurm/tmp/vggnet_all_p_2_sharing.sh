@@ -31,7 +31,7 @@ CWD="/home/z.dehghanipour/XAIV"
 CONFIG="abcrown/vggnet16.yaml"
 CONDA_ENV_NAME="ab-crown-v1"
 
-START_ID=251
+START_ID=400
 END_ID=500
 
 # Conda

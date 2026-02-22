@@ -1,0 +1,9 @@
+Submitting jobs at Sun Feb 22 12:38:03 PM EST 2026
+Submitted batch job 4517586
+Submitted batch job 4517587
+Submitted batch job 4517588
+Submitted batch job 4517589
+Submitted batch job 4517591
+Submitted batch job 4517592
+Sleeping for 1 hour...
+slurmstepd: error: *** JOB 4517579 ON c0614 CANCELLED AT 2026-02-22T12:38:05 ***

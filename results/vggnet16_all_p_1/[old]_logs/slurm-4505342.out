@@ -1,0 +1,1803 @@
+----- SLURM_JOB_ID=4505342
+SLURM_JOB_NODELIST=d3146
+SLURM_JOB_GPUS=0,1,2,3
+SLURM_GPUS=<unset>
+SLURM_STEP_GPUS=<unset>
+CUDA_VISIBLE_DEVICES=0,1,2,3
+SLURM_NTASKS=4
+SLURM_CPUS_PER_TASK=4
+SHELL=/bin/bash
+PATH=/shared/EL9/explorer/cuda/12.8.0/bin:/shared/EL9/explorer/code-server/4.91.1/code-server-4.91.1-linux-amd64/lib/vscode/bin/remote-cli:/home/z.dehghanipour/.conda/envs/ab-crown-v1/bin:/shared/EL9/explorer/anaconda3/2024.06/condabin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/z.dehghanipour/.local/bin:/home/z.dehghanipour/bin:/home/z.dehghanipour/.local/bin:/home/z.dehghanipour/bin
+========== ENV CHECK ==========
+/home/z.dehghanipour/.conda/envs/ab-crown-v1/bin/python
+Python 3.11.9
+PYTHON: /home/z.dehghanipour/.conda/envs/ab-crown-v1/bin/python
+torch: 2.3.1
+torch.version.cuda: 12.1
+cuda available: False
+CUDA_VISIBLE_DEVICES: 0,1,2,3
+Sat Feb 21 18:54:49 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:07:00.0 Off |                    0 |
+| N/A   33C    P0             56W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   33C    P0             55W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-40GB          On  |   00000000:47:00.0 Off |                    0 |
+| N/A   33C    P0             56W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-40GB          On  |   00000000:4E:00.0 Off |                    0 |
+| N/A   33C    P0             52W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+================================
+========== QUICK GPU CHECK ==========
+Sat Feb 21 18:54:51 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:07:00.0 Off |                    0 |
+| N/A   34C    P0             62W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:0F:00.0 Off |                    0 |
+| N/A   34C    P0             60W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-40GB          On  |   00000000:47:00.0 Off |                    0 |
+| N/A   33C    P0             61W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-40GB          On  |   00000000:4E:00.0 Off |                    0 |
+| N/A   34C    P0             57W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+=====================================
+[rank 1/4] host=d3146 CUDA_VISIBLE_DEVICES=0,1,2,3
+[rank 0/4] host=d3146 CUDA_VISIBLE_DEVICES=0,1,2,3
+[rank 2/4] host=d3146 CUDA_VISIBLE_DEVICES=0,1,2,3
+[rank 3/4] host=d3146 CUDA_VISIBLE_DEVICES=0,1,2,3
+[rank 1] === Checking instance ID 2 ===
+[rank 1] >>> ID 2 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 6 ===
+[rank 1] >>> ID 6 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 10 ===
+[rank 1] >>> ID 10 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 14 ===
+[rank 1] >>> ID 14 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 18 ===
+[rank 1] >>> ID 18 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 22 ===
+[rank 1] >>> ID 22 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 26 ===
+[rank 0] === Checking instance ID 1 ===
+[rank 1] >>> ID 26 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 30 ===
+[rank 1] >>> ID 30 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 34 ===
+[rank 0] >>> ID 1 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 5 ===
+[rank 2] === Checking instance ID 3 ===
+[rank 0] >>> ID 5 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 9 ===
+[rank 1] >>> ID 34 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 38 ===
+[rank 2] >>> ID 3 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 7 ===
+[rank 0] >>> ID 9 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 13 ===
+[rank 1] >>> ID 38 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 42 ===
+[rank 0] >>> ID 13 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 17 ===
+[rank 2] >>> ID 7 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 11 ===
+[rank 1] >>> ID 42 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 46 ===
+[rank 0] >>> ID 17 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 11 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 15 ===
+[rank 0] === Checking instance ID 21 ===
+[rank 1] >>> ID 46 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 50 ===
+[rank 2] >>> ID 15 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 19 ===
+[rank 0] >>> ID 21 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 25 ===
+[rank 1] >>> ID 50 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 54 ===
+[rank 1] >>> ID 54 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 58 ===
+[rank 2] >>> ID 19 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 23 ===
+[rank 0] >>> ID 25 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 29 ===
+[rank 1] >>> ID 58 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 62 ===
+[rank 0] >>> ID 29 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 23 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 27 ===
+[rank 0] === Checking instance ID 33 ===
+[rank 1] >>> ID 62 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 66 ===
+[rank 0] >>> ID 33 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 27 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 31 ===
+[rank 0] === Checking instance ID 37 ===
+[rank 3] === Checking instance ID 4 ===
+[rank 1] >>> ID 66 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 70 ===
+[rank 0] >>> ID 37 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 41 ===
+[rank 2] >>> ID 31 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 35 ===
+[rank 1] >>> ID 70 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 74 ===
+[rank 2] >>> ID 35 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 39 ===
+[rank 0] >>> ID 41 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 45 ===
+[rank 1] >>> ID 74 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 78 ===
+[rank 2] >>> ID 39 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 43 ===
+[rank 3] >>> ID 4 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 8 ===
+[rank 0] >>> ID 45 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 49 ===
+[rank 1] >>> ID 78 already done (results.csv / parts) — skipping
+[rank 1] === Checking instance ID 82 ===
+[rank 2] >>> ID 43 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 47 ===
+[rank 0] >>> ID 49 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 53 ===
+[rank 3] >>> ID 8 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 12 ===
+[rank 2] >>> ID 47 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 51 ===
+[rank 0] >>> ID 53 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 57 ===
+[rank 3] >>> ID 12 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 51 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 16 ===
+[rank 2] === Checking instance ID 55 ===
+[rank 0] >>> ID 57 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 61 ===
+[rank 3] >>> ID 16 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 20 ===
+[rank 0] >>> ID 61 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 55 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 65 ===
+[rank 2] === Checking instance ID 59 ===
+[rank 3] >>> ID 20 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 24 ===
+[rank 0] >>> ID 65 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 69 ===
+[rank 3] >>> ID 24 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 28 ===
+[rank 2] >>> ID 59 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 63 ===
+[rank 0] >>> ID 69 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 73 ===
+[rank 3] >>> ID 28 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 32 ===
+[rank 0] >>> ID 73 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 77 ===
+[rank 2] >>> ID 63 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 67 ===
+[rank 3] >>> ID 32 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 36 ===
+[rank 0] >>> ID 77 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 81 ===
+[rank 2] >>> ID 67 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 71 ===
+[rank 3] >>> ID 36 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 40 ===
+[rank 0] >>> ID 81 already done (results.csv / parts) — skipping
+[rank 2] >>> ID 71 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 85 ===
+[rank 2] === Checking instance ID 75 ===
+[rank 3] >>> ID 40 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 44 ===
+[rank 2] >>> ID 75 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 79 ===
+[rank 3] >>> ID 44 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 48 ===
+[rank 1] >>> Running ID=82 onnx=onnx/vgg16-7.onnx
+[rank 2] >>> ID 79 already done (results.csv / parts) — skipping
+[rank 2] === Checking instance ID 83 ===
+[rank 3] >>> ID 48 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 52 ===
+[rank 3] >>> ID 52 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 56 ===
+[rank 0] >>> Running ID=85 onnx=onnx/vgg16-7.onnx
+[rank 3] >>> ID 56 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 60 ===
+[rank 3] >>> ID 60 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 64 ===
+[rank 3] >>> ID 64 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 68 ===
+[rank 2] >>> Running ID=83 onnx=onnx/vgg16-7.onnx
+[rank 3] >>> ID 68 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 72 ===
+[rank 3] >>> ID 72 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 76 ===
+[rank 3] >>> ID 76 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 80 ===
+[rank 3] >>> ID 80 already done (results.csv / parts) — skipping
+[rank 3] === Checking instance ID 84 ===
+[rank 3] >>> Running ID=84 onnx=onnx/vgg16-7.onnx
+Configurations:
+
+general:
+  device: cuda
+  seed: 100
+  conv_mode: patches
+  deterministic: false
+  double_fp: false
+  loss_reduction_func: max
+  sparse_alpha: true
+  sparse_interm: true
+  save_adv_example: false
+  verify_onnxruntime_output: false
+  eval_adv_example: false
+  show_adv_example: false
+  precompile_jit: false
+  prepare_only: false
+  complete_verifier: bab
+  enable_incomplete_verification: false
+  csv_name: instances.csv
+  results_file: results/vggnet16_all_p_1/result_84.rank3.txt
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  deterministic_opt: false
+  graph_optimizer: 'Customized("custom_graph_optimizer", "maxpool_to_relu")'
+  buffer_has_batchdim: false
+  save_output: false
+  output_file: out.pkl
+  return_optimized_model: false
+  output_additional_stats: true
+  instance_id: 84
+  dataset_output_dir: dataset
+  min_stable_neurons_ratio_threshold: 0.0
+model:
+  name: null
+  path: null
+  onnx_path: /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+  onnx_path_prefix: ''
+  cache_onnx_conversion: true
+  debug_onnx: false
+  onnx_quirks: null
+  input_shape: null
+  onnx_loader: default_onnx_and_vnnlib_loader
+  onnx_optimization_flags: []
+  onnx_vnnlib_joint_optimization_flags: none
+  check_optimized: false
+  flatten_final_output: false
+  optimize_graph: null
+  with_jacobian: false
+data:
+  start: 0
+  end: 10000
+  select_instance: null
+  num_outputs: 1000
+  mean: 0.0
+  std: 1.0
+  pkl_path: null
+  dataset: null
+  data_filter_path: null
+  data_idx_file: null
+specification:
+  type: lp
+  robustness_type: verified-acc
+  norm: .inf
+  epsilon: null
+  epsilon_min: 0.0
+  vnnlib_path: /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib
+  vnnlib_path_prefix: ''
+  rhs_offset: null
+solver:
+  batch_size: 1
+  auto_enlarge_batch_size: false
+  min_batch_size_ratio: 0.1
+  use_float64_in_last_iteration: false
+  early_stop_patience: 10
+  start_save_best: 0.5
+  bound_prop_method: forward+backward
+  init_bound_prop_method: same
+  prune_after_crown: false
+  optimize_disjuncts_separately: false
+  crown:
+    batch_size: 16
+    max_crown_size: 1000000000
+    relu_option: adaptive
+  alpha-crown:
+    alpha: true
+    lr_alpha: 0.1
+    iteration: 100
+    share_alphas: false
+    lr_decay: 0.98
+    full_conv_alpha: true
+    max_coeff_mul: .inf
+    matmul_share_alphas: false
+    disable_optimization: []
+    max_time: 1.0
+  invprop:
+    apply_output_constraints_to: []
+    tighten_input_bounds: false
+    best_of_oc_and_no_oc: false
+    directly_optimize: []
+    oc_lr: 0.1
+    share_gammas: false
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    lr_decay: 0.98
+    optimizer: adam
+    iteration: 10
+    beta: true
+    beta_warmup: true
+    enable_opt_interm_bounds: false
+    all_node_split_LP: false
+  forward:
+    refine: false
+    dynamic: true
+    max_dim: 100
+    reset_threshold: 1.0
+  intermediate_refinement:
+    enabled: false
+    batch_size: 10
+    opt_coeffs: false
+    opt_bias: false
+    lr: 0.05
+    layers: [-1]
+    max_domains: 1000
+  multi_class:
+    label_batch_size: 32
+    skip_with_refined_bound: true
+  mip:
+    unstable_neuron_threshold: 0
+    parallel_solvers: null
+    solver_threads: 1
+    refine_neuron_timeout: 15
+    refine_neuron_time_percentage: 0.8
+    early_stop: true
+    adv_warmup: true
+    mip_solver: gurobi
+    skip_unsafe: false
+    topk_filter: 1.0
+    sliding_window: -1
+    extra_constraint: false
+    refine_neuron_timeout_increasement: 0
+    timeout_neuron_percentage: 0.3
+    remaining_timeout_threshold: 1
+    remove_unstable_neurons: true
+    lp_solver: false
+bab:
+  initial_max_domains: 1
+  backing_up_max_domain: null
+  max_domains: .inf
+  decision_thresh: 0
+  timeout: 1200.0
+  timeout_scale: 1
+  max_iterations: -1
+  override_timeout: null
+  get_upper_bound: false
+  pruning_in_iteration: true
+  pruning_in_iteration_ratio: 0.2
+  sort_targets: false
+  batched_domain_list: true
+  optimized_interm: ''
+  interm_transfer: true
+  recompute_interm: false
+  sort_domain_interval: -1
+  vanilla_crown: false
+  tree_traversal: depth_first
+  cut:
+    enabled: false
+    cuts_path: /tmp/abcrown_cuts
+    implication: false
+    bab_cut: false
+    lp_cut: false
+    method: null
+    lr: 0.01
+    lr_decay: 1.0
+    iteration: 100
+    bab_iteration: -1
+    early_stop_patience: -1
+    lr_beta: 0.02
+    number_cuts: 50
+    topk_cuts_in_filter: 1000
+    batch_size_primal: 100
+    max_num: 1000000000
+    patches_cut: false
+    cplex_cuts: false
+    cplex_cuts_wait: 0
+    cplex_cuts_revpickup: true
+    cut_reference_bounds: true
+    fix_intermediate_bounds: false
+    _tmp_cuts: null
+    fixed_cuts: false
+    add_implied_cuts: false
+    add_input_cuts: false
+    biccos:
+      enabled: false
+      constraint_strengthening: true
+      recursively_strengthening: false
+      drop_ratio: 0.5
+      verified_bonus: 0.3
+      max_infer_iter: 20
+      heuristic: neuron_influence_score
+      save_biccos_cuts: false
+      multi_tree_branching:
+        enabled: false
+        restore_best_tree: false
+        keep_n_best_domains: 1
+        k_splits: 1
+        iterations: 1
+  branching:
+    method: sb
+    candidates: 3
+    reduceop: min
+    enable_intermediate_bound_opt: false
+    branching_input_and_activation: false
+    branching_input_and_activation_order: [input, relu]
+    branching_input_iterations: 30
+    branching_relu_iterations: 50
+    gnn_path: ''
+    neural_heuristic:
+      model_path: ''
+    rl:
+      experiment: general
+      eval: false
+      extras: []
+      logging:
+        color: true
+        debug: true
+        file: rl-experiment.log
+      pnet:
+        gH: 64
+        tH: 64
+        nheads: 64
+        nlayers: 64
+        useDynamicGraph: true
+        bidirectional: false
+        GAT: true
+      training:
+        gamma: 0.99
+        lr: 0.001
+        batchSize: 8
+        loop: 8
+        totalEpochs: 10
+        updatePolicyFrequency: 10
+        updateTargetFrequency: 10
+        buffer: buffer.pkl
+        preparedBuffer: 'False'
+        TestingPreparedBuffer: false
+        scriptTraining: false
+        policynet: policy-checkpoint.pt
+        targetnet: target-checkpoint.pt
+        datasetShuffle: true
+        targetedData: all
+        splitRatio: 0.8
+        maxInstances: -1
+        trainingMode: full
+        reward:
+          norm: null
+          bonus: 10.0
+          penalty: -1.0
+      egreedy:
+        epsilon: 0.1
+        epsilonDecay: 0.1
+        minEpsilon: 0.1
+        ePath: epsilon.pt
+        enabled: true
+      expert:
+        useExpertUntilEpisode: 0.1
+        enabled: true
+        learnToImitateExpertEpochs: 10
+    nonlinear_split:
+      method: shortcut
+      branching_point_method: uniform
+      num_branches: 2
+      filter: false
+      filter_beta: false
+      filter_clamp: false
+      filter_batch_size: 10000
+      filter_iterations: 25
+      relu_only: false
+      loose_tanh_threshold: null
+      dynamic_bbps: false
+      dynamic_options: [uniform, three_left, three_right]
+      branching_point_node: ''
+      branching_point_db: []
+    input_split:
+      enable_clip_domains: false
+      split_hint: null
+      reorder_bab: false
+      enable: true
+      enhanced_bound_prop_method: alpha-crown
+      enhanced_branching_method: naive
+      enhanced_bound_patience: 100000000.0
+      attack_patience: 100000000.0
+      adv_check: 0
+      split_partitions: 2
+      sb_margin_weight: 1.0
+      sb_sum: false
+      sb_primary_spec: null
+      bf_backup_thresh: -1
+      bf_rhs_offset: 0
+      bf_iters: 1000000000.0
+      bf_batch_size: 100000
+      bf_zero_crossing_score: false
+      touch_zero_score: 0
+      ibp_enhancement: false
+      catch_assertion: false
+      compare_with_old_bounds: false
+      update_rhs_with_attack: false
+      sb_coeff_thresh: 0.001
+      sort_index: null
+      sort_descending: true
+      show_progress: false
+      presplit_domains: null
+      skip_getting_worst_domain: false
+  attack:
+    enabled: false
+    beam_candidates: 8
+    beam_depth: 7
+    max_dive_fix_ratio: 0.8
+    min_local_free_ratio: 0.2
+    mip_start_iteration: 5
+    mip_timeout: 30.0
+    adv_pool_threshold: null
+    refined_mip_attacker: false
+    refined_batch_size: null
+attack:
+  pgd_order: input_bab
+  pgd_steps: 100
+  pgd_restarts: 30
+  pgd_batch_size: 100000000
+  pgd_early_stop: true
+  pgd_lr_decay: 0.99
+  pgd_alpha: auto
+  pgd_alpha_scale: false
+  pgd_loss_mode: null
+  pgd_restart_when_stuck: false
+  enable_mip_attack: false
+  adv_saver: default_adv_saver
+  adv_verifier: default_adv_verifier
+  early_stop_condition: default_early_stop_condition
+  adv_example_finalizer: default_adv_example_finalizer
+  pgd_loss: default_pgd_loss
+  cex_path: ./test_cex.txt
+  attack_mode: PGD
+  attack_tolerance: 0.0
+  attack_func: attack_with_general_specs
+  gama_lambda: 10.0
+  gama_decay: 0.9
+  check_clean: true
+  input_split:
+    pgd_steps: 100
+    pgd_restarts: 30
+    pgd_alpha: auto
+  input_split_enhanced:
+    pgd_steps: 200
+    pgd_restarts: 500000
+    pgd_alpha: auto
+  input_split_check_adv:
+    enabled: auto
+    pgd_steps: 5
+    pgd_restarts: 5
+    pgd_alpha: auto
+    max_num_domains: 10
+debug:
+  sanity_check: Full+Graph
+  view_model: false
+  lp_test: null
+  rescale_vnnlib_ptb: null
+  test_optimized_bounds: false
+  test_optimized_bounds_after_n_iterations: 0
+  print_verbose_decisions: false
+Configurations:
+
+general:
+  device: cuda
+  seed: 100
+  conv_mode: patches
+  deterministic: false
+  double_fp: false
+  loss_reduction_func: max
+  sparse_alpha: true
+  sparse_interm: true
+  save_adv_example: false
+  verify_onnxruntime_output: false
+  eval_adv_example: false
+  show_adv_example: false
+  precompile_jit: false
+  prepare_only: false
+  complete_verifier: bab
+  enable_incomplete_verification: false
+  csv_name: instances.csv
+  results_file: results/vggnet16_all_p_1/result_82.rank1.txt
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  deterministic_opt: false
+  graph_optimizer: 'Customized("custom_graph_optimizer", "maxpool_to_relu")'
+  buffer_has_batchdim: false
+  save_output: false
+  output_file: out.pkl
+  return_optimized_model: false
+  output_additional_stats: true
+  instance_id: 82
+  dataset_output_dir: dataset
+  min_stable_neurons_ratio_threshold: 0.0
+model:
+  name: null
+  path: null
+  onnx_path: /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+  onnx_path_prefix: ''
+  cache_onnx_conversion: true
+  debug_onnx: false
+  onnx_quirks: null
+  input_shape: null
+  onnx_loader: default_onnx_and_vnnlib_loader
+  onnx_optimization_flags: []
+  onnx_vnnlib_joint_optimization_flags: none
+  check_optimized: false
+  flatten_final_output: false
+  optimize_graph: null
+  with_jacobian: false
+data:
+  start: 0
+  end: 10000
+  select_instance: null
+  num_outputs: 1000
+  mean: 0.0
+  std: 1.0
+  pkl_path: null
+  dataset: null
+  data_filter_path: null
+  data_idx_file: null
+specification:
+  type: lp
+  robustness_type: verified-acc
+  norm: .inf
+  epsilon: null
+  epsilon_min: 0.0
+  vnnlib_path: /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_global_k50176_eps_0.0003.vnnlib
+  vnnlib_path_prefix: ''
+  rhs_offset: null
+solver:
+  batch_size: 1
+  auto_enlarge_batch_size: false
+  min_batch_size_ratio: 0.1
+  use_float64_in_last_iteration: false
+  early_stop_patience: 10
+  start_save_best: 0.5
+  bound_prop_method: forward+backward
+  init_bound_prop_method: same
+  prune_after_crown: false
+  optimize_disjuncts_separately: false
+  crown:
+    batch_size: 16
+    max_crown_size: 1000000000
+    relu_option: adaptive
+  alpha-crown:
+    alpha: true
+    lr_alpha: 0.1
+    iteration: 100
+    share_alphas: false
+    lr_decay: 0.98
+    full_conv_alpha: true
+    max_coeff_mul: .inf
+    matmul_share_alphas: false
+    disable_optimization: []
+    max_time: 1.0
+  invprop:
+    apply_output_constraints_to: []
+    tighten_input_bounds: false
+    best_of_oc_and_no_oc: false
+    directly_optimize: []
+    oc_lr: 0.1
+    share_gammas: false
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    lr_decay: 0.98
+    optimizer: adam
+    iteration: 10
+    beta: true
+    beta_warmup: true
+    enable_opt_interm_bounds: false
+    all_node_split_LP: false
+  forward:
+    refine: false
+    dynamic: true
+    max_dim: 100
+    reset_threshold: 1.0
+  intermediate_refinement:
+    enabled: false
+    batch_size: 10
+    opt_coeffs: false
+    opt_bias: false
+    lr: 0.05
+    layers: [-1]
+    max_domains: 1000
+  multi_class:
+    label_batch_size: 32
+    skip_with_refined_bound: true
+  mip:
+    unstable_neuron_threshold: 0
+    parallel_solvers: null
+    solver_threads: 1
+    refine_neuron_timeout: 15
+    refine_neuron_time_percentage: 0.8
+    early_stop: true
+    adv_warmup: true
+    mip_solver: gurobi
+    skip_unsafe: false
+    topk_filter: 1.0
+    sliding_window: -1
+    extra_constraint: false
+    refine_neuron_timeout_increasement: 0
+    timeout_neuron_percentage: 0.3
+    remaining_timeout_threshold: 1
+    remove_unstable_neurons: true
+    lp_solver: false
+bab:
+  initial_max_domains: 1
+  backing_up_max_domain: null
+  max_domains: .inf
+  decision_thresh: 0
+  timeout: 1200.0
+  timeout_scale: 1
+  max_iterations: -1
+  override_timeout: null
+  get_upper_bound: false
+  pruning_in_iteration: true
+  pruning_in_iteration_ratio: 0.2
+  sort_targets: false
+  batched_domain_list: true
+  optimized_interm: ''
+  interm_transfer: true
+  recompute_interm: false
+  sort_domain_interval: -1
+  vanilla_crown: false
+  tree_traversal: depth_first
+  cut:
+    enabled: false
+    cuts_path: /tmp/abcrown_cuts
+    implication: false
+    bab_cut: false
+    lp_cut: false
+    method: null
+    lr: 0.01
+    lr_decay: 1.0
+    iteration: 100
+    bab_iteration: -1
+    early_stop_patience: -1
+    lr_beta: 0.02
+    number_cuts: 50
+    topk_cuts_in_filter: 1000
+    batch_size_primal: 100
+    max_num: 1000000000
+    patches_cut: false
+    cplex_cuts: false
+    cplex_cuts_wait: 0
+    cplex_cuts_revpickup: true
+    cut_reference_bounds: true
+    fix_intermediate_bounds: false
+    _tmp_cuts: null
+    fixed_cuts: false
+    add_implied_cuts: false
+    add_input_cuts: false
+    biccos:
+      enabled: false
+      constraint_strengthening: true
+      recursively_strengthening: false
+      drop_ratio: 0.5
+      verified_bonus: 0.3
+      max_infer_iter: 20
+      heuristic: neuron_influence_score
+      save_biccos_cuts: false
+      multi_tree_branching:
+        enabled: false
+        restore_best_tree: false
+        keep_n_best_domains: 1
+        k_splits: 1
+        iterations: 1
+  branching:
+    method: sb
+    candidates: 3
+    reduceop: min
+    enable_intermediate_bound_opt: false
+    branching_input_and_activation: false
+    branching_input_and_activation_order: [input, relu]
+    branching_input_iterations: 30
+    branching_relu_iterations: 50
+    gnn_path: ''
+    neural_heuristic:
+      model_path: ''
+    rl:
+      experiment: general
+      eval: false
+      extras: []
+      logging:
+        color: true
+        debug: true
+        file: rl-experiment.log
+      pnet:
+        gH: 64
+        tH: 64
+        nheads: 64
+        nlayers: 64
+        useDynamicGraph: true
+        bidirectional: false
+        GAT: true
+      training:
+        gamma: 0.99
+        lr: 0.001
+        batchSize: 8
+        loop: 8
+        totalEpochs: 10
+        updatePolicyFrequency: 10
+        updateTargetFrequency: 10
+        buffer: buffer.pkl
+        preparedBuffer: 'False'
+        TestingPreparedBuffer: false
+        scriptTraining: false
+        policynet: policy-checkpoint.pt
+        targetnet: target-checkpoint.pt
+        datasetShuffle: true
+        targetedData: all
+        splitRatio: 0.8
+        maxInstances: -1
+        trainingMode: full
+        reward:
+          norm: null
+          bonus: 10.0
+          penalty: -1.0
+      egreedy:
+        epsilon: 0.1
+        epsilonDecay: 0.1
+        minEpsilon: 0.1
+        ePath: epsilon.pt
+        enabled: true
+      expert:
+        useExpertUntilEpisode: 0.1
+        enabled: true
+        learnToImitateExpertEpochs: 10
+    nonlinear_split:
+      method: shortcut
+      branching_point_method: uniform
+      num_branches: 2
+      filter: false
+      filter_beta: false
+      filter_clamp: false
+      filter_batch_size: 10000
+      filter_iterations: 25
+      relu_only: false
+      loose_tanh_threshold: null
+      dynamic_bbps: false
+      dynamic_options: [uniform, three_left, three_right]
+      branching_point_node: ''
+      branching_point_db: []
+    input_split:
+      enable_clip_domains: false
+      split_hint: null
+      reorder_bab: false
+      enable: true
+      enhanced_bound_prop_method: alpha-crown
+      enhanced_branching_method: naive
+      enhanced_bound_patience: 100000000.0
+      attack_patience: 100000000.0
+      adv_check: 0
+      split_partitions: 2
+      sb_margin_weight: 1.0
+      sb_sum: false
+      sb_primary_spec: null
+      bf_backup_thresh: -1
+      bf_rhs_offset: 0
+      bf_iters: 1000000000.0
+      bf_batch_size: 100000
+      bf_zero_crossing_score: false
+      touch_zero_score: 0
+      ibp_enhancement: false
+      catch_assertion: false
+      compare_with_old_bounds: false
+      update_rhs_with_attack: false
+      sb_coeff_thresh: 0.001
+      sort_index: null
+      sort_descending: true
+      show_progress: false
+      presplit_domains: null
+      skip_getting_worst_domain: false
+  attack:
+    enabled: false
+    beam_candidates: 8
+    beam_depth: 7
+    max_dive_fix_ratio: 0.8
+    min_local_free_ratio: 0.2
+    mip_start_iteration: 5
+    mip_timeout: 30.0
+    adv_pool_threshold: null
+    refined_mip_attacker: false
+    refined_batch_size: null
+attack:
+  pgd_order: input_bab
+  pgd_steps: 100
+  pgd_restarts: 30
+  pgd_batch_size: 100000000
+  pgd_early_stop: true
+  pgd_lr_decay: 0.99
+  pgd_alpha: auto
+  pgd_alpha_scale: false
+  pgd_loss_mode: null
+  pgd_restart_when_stuck: false
+  enable_mip_attack: false
+  adv_saver: default_adv_saver
+  adv_verifier: default_adv_verifier
+  early_stop_condition: default_early_stop_condition
+  adv_example_finalizer: default_adv_example_finalizer
+  pgd_loss: default_pgd_loss
+  cex_path: ./test_cex.txt
+  attack_mode: PGD
+  attack_tolerance: 0.0
+  attack_func: attack_with_general_specs
+  gama_lambda: 10.0
+  gama_decay: 0.9
+  check_clean: true
+  input_split:
+    pgd_steps: 100
+    pgd_restarts: 30
+    pgd_alpha: auto
+  input_split_enhanced:
+    pgd_steps: 200
+    pgd_restarts: 500000
+    pgd_alpha: auto
+  input_split_check_adv:
+    enabled: auto
+    pgd_steps: 5
+    pgd_restarts: 5
+    pgd_alpha: auto
+    max_num_domains: 10
+debug:
+  sanity_check: Full+Graph
+  view_model: false
+  lp_test: null
+  rescale_vnnlib_ptb: null
+  test_optimized_bounds: false
+  test_optimized_bounds_after_n_iterations: 0
+  print_verbose_decisions: false
+Configurations:
+
+general:
+  device: cuda
+  seed: 100
+  conv_mode: patches
+  deterministic: false
+  double_fp: false
+  loss_reduction_func: max
+  sparse_alpha: true
+  sparse_interm: true
+  save_adv_example: false
+  verify_onnxruntime_output: false
+  eval_adv_example: false
+  show_adv_example: false
+  precompile_jit: false
+  prepare_only: false
+  complete_verifier: bab
+  enable_incomplete_verification: false
+  csv_name: instances.csv
+  results_file: results/vggnet16_all_p_1/result_83.rank2.txt
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  deterministic_opt: false
+  graph_optimizer: 'Customized("custom_graph_optimizer", "maxpool_to_relu")'
+  buffer_has_batchdim: false
+  save_output: false
+  output_file: out.pkl
+  return_optimized_model: false
+  output_additional_stats: true
+  instance_id: 83
+  dataset_output_dir: dataset
+  min_stable_neurons_ratio_threshold: 0.0
+model:
+  name: null
+  path: null
+  onnx_path: /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+  onnx_path_prefix: ''
+  cache_onnx_conversion: true
+  debug_onnx: false
+  onnx_quirks: null
+  input_shape: null
+  onnx_loader: default_onnx_and_vnnlib_loader
+  onnx_optimization_flags: []
+  onnx_vnnlib_joint_optimization_flags: none
+  check_optimized: false
+  flatten_final_output: false
+  optimize_graph: null
+  with_jacobian: false
+data:
+  start: 0
+  end: 10000
+  select_instance: null
+  num_outputs: 1000
+  mean: 0.0
+  std: 1.0
+  pkl_path: null
+  dataset: null
+  data_filter_path: null
+  data_idx_file: null
+specification:
+  type: lp
+  robustness_type: verified-acc
+  norm: .inf
+  epsilon: null
+  epsilon_min: 0.0
+  vnnlib_path: /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_mask_seg0_k50176_eps_0.0003.vnnlib
+  vnnlib_path_prefix: ''
+  rhs_offset: null
+solver:
+  batch_size: 1
+  auto_enlarge_batch_size: false
+  min_batch_size_ratio: 0.1
+  use_float64_in_last_iteration: false
+  early_stop_patience: 10
+  start_save_best: 0.5
+  bound_prop_method: forward+backward
+  init_bound_prop_method: same
+  prune_after_crown: false
+  optimize_disjuncts_separately: false
+  crown:
+    batch_size: 16
+    max_crown_size: 1000000000
+    relu_option: adaptive
+  alpha-crown:
+    alpha: true
+    lr_alpha: 0.1
+    iteration: 100
+    share_alphas: false
+    lr_decay: 0.98
+    full_conv_alpha: true
+    max_coeff_mul: .inf
+    matmul_share_alphas: false
+    disable_optimization: []
+    max_time: 1.0
+  invprop:
+    apply_output_constraints_to: []
+    tighten_input_bounds: false
+    best_of_oc_and_no_oc: false
+    directly_optimize: []
+    oc_lr: 0.1
+    share_gammas: false
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    lr_decay: 0.98
+    optimizer: adam
+    iteration: 10
+    beta: true
+    beta_warmup: true
+    enable_opt_interm_bounds: false
+    all_node_split_LP: false
+  forward:
+    refine: false
+    dynamic: true
+    max_dim: 100
+    reset_threshold: 1.0
+  intermediate_refinement:
+    enabled: false
+    batch_size: 10
+    opt_coeffs: false
+    opt_bias: false
+    lr: 0.05
+    layers: [-1]
+    max_domains: 1000
+  multi_class:
+    label_batch_size: 32
+    skip_with_refined_bound: true
+  mip:
+    unstable_neuron_threshold: 0
+    parallel_solvers: null
+    solver_threads: 1
+    refine_neuron_timeout: 15
+    refine_neuron_time_percentage: 0.8
+    early_stop: true
+    adv_warmup: true
+    mip_solver: gurobi
+    skip_unsafe: false
+    topk_filter: 1.0
+    sliding_window: -1
+    extra_constraint: false
+    refine_neuron_timeout_increasement: 0
+    timeout_neuron_percentage: 0.3
+    remaining_timeout_threshold: 1
+    remove_unstable_neurons: true
+    lp_solver: false
+bab:
+  initial_max_domains: 1
+  backing_up_max_domain: null
+  max_domains: .inf
+  decision_thresh: 0
+  timeout: 1200.0
+  timeout_scale: 1
+  max_iterations: -1
+  override_timeout: null
+  get_upper_bound: false
+  pruning_in_iteration: true
+  pruning_in_iteration_ratio: 0.2
+  sort_targets: false
+  batched_domain_list: true
+  optimized_interm: ''
+  interm_transfer: true
+  recompute_interm: false
+  sort_domain_interval: -1
+  vanilla_crown: false
+  tree_traversal: depth_first
+  cut:
+    enabled: false
+    cuts_path: /tmp/abcrown_cuts
+    implication: false
+    bab_cut: false
+    lp_cut: false
+    method: null
+    lr: 0.01
+    lr_decay: 1.0
+    iteration: 100
+    bab_iteration: -1
+    early_stop_patience: -1
+    lr_beta: 0.02
+    number_cuts: 50
+    topk_cuts_in_filter: 1000
+    batch_size_primal: 100
+    max_num: 1000000000
+    patches_cut: false
+    cplex_cuts: false
+    cplex_cuts_wait: 0
+    cplex_cuts_revpickup: true
+    cut_reference_bounds: true
+    fix_intermediate_bounds: false
+    _tmp_cuts: null
+    fixed_cuts: false
+    add_implied_cuts: false
+    add_input_cuts: false
+    biccos:
+      enabled: false
+      constraint_strengthening: true
+      recursively_strengthening: false
+      drop_ratio: 0.5
+      verified_bonus: 0.3
+      max_infer_iter: 20
+      heuristic: neuron_influence_score
+      save_biccos_cuts: false
+      multi_tree_branching:
+        enabled: false
+        restore_best_tree: false
+        keep_n_best_domains: 1
+        k_splits: 1
+        iterations: 1
+  branching:
+    method: sb
+    candidates: 3
+    reduceop: min
+    enable_intermediate_bound_opt: false
+    branching_input_and_activation: false
+    branching_input_and_activation_order: [input, relu]
+    branching_input_iterations: 30
+    branching_relu_iterations: 50
+    gnn_path: ''
+    neural_heuristic:
+      model_path: ''
+    rl:
+      experiment: general
+      eval: false
+      extras: []
+      logging:
+        color: true
+        debug: true
+        file: rl-experiment.log
+      pnet:
+        gH: 64
+        tH: 64
+        nheads: 64
+        nlayers: 64
+        useDynamicGraph: true
+        bidirectional: false
+        GAT: true
+      training:
+        gamma: 0.99
+        lr: 0.001
+        batchSize: 8
+        loop: 8
+        totalEpochs: 10
+        updatePolicyFrequency: 10
+        updateTargetFrequency: 10
+        buffer: buffer.pkl
+        preparedBuffer: 'False'
+        TestingPreparedBuffer: false
+        scriptTraining: false
+        policynet: policy-checkpoint.pt
+        targetnet: target-checkpoint.pt
+        datasetShuffle: true
+        targetedData: all
+        splitRatio: 0.8
+        maxInstances: -1
+        trainingMode: full
+        reward:
+          norm: null
+          bonus: 10.0
+          penalty: -1.0
+      egreedy:
+        epsilon: 0.1
+        epsilonDecay: 0.1
+        minEpsilon: 0.1
+        ePath: epsilon.pt
+        enabled: true
+      expert:
+        useExpertUntilEpisode: 0.1
+        enabled: true
+        learnToImitateExpertEpochs: 10
+    nonlinear_split:
+      method: shortcut
+      branching_point_method: uniform
+      num_branches: 2
+      filter: false
+      filter_beta: false
+      filter_clamp: false
+      filter_batch_size: 10000
+      filter_iterations: 25
+      relu_only: false
+      loose_tanh_threshold: null
+      dynamic_bbps: false
+      dynamic_options: [uniform, three_left, three_right]
+      branching_point_node: ''
+      branching_point_db: []
+    input_split:
+      enable_clip_domains: false
+      split_hint: null
+      reorder_bab: false
+      enable: true
+      enhanced_bound_prop_method: alpha-crown
+      enhanced_branching_method: naive
+      enhanced_bound_patience: 100000000.0
+      attack_patience: 100000000.0
+      adv_check: 0
+      split_partitions: 2
+      sb_margin_weight: 1.0
+      sb_sum: false
+      sb_primary_spec: null
+      bf_backup_thresh: -1
+      bf_rhs_offset: 0
+      bf_iters: 1000000000.0
+      bf_batch_size: 100000
+      bf_zero_crossing_score: false
+      touch_zero_score: 0
+      ibp_enhancement: false
+      catch_assertion: false
+      compare_with_old_bounds: false
+      update_rhs_with_attack: false
+      sb_coeff_thresh: 0.001
+      sort_index: null
+      sort_descending: true
+      show_progress: false
+      presplit_domains: null
+      skip_getting_worst_domain: false
+  attack:
+    enabled: false
+    beam_candidates: 8
+    beam_depth: 7
+    max_dive_fix_ratio: 0.8
+    min_local_free_ratio: 0.2
+    mip_start_iteration: 5
+    mip_timeout: 30.0
+    adv_pool_threshold: null
+    refined_mip_attacker: false
+    refined_batch_size: null
+attack:
+  pgd_order: input_bab
+  pgd_steps: 100
+  pgd_restarts: 30
+  pgd_batch_size: 100000000
+  pgd_early_stop: true
+  pgd_lr_decay: 0.99
+  pgd_alpha: auto
+  pgd_alpha_scale: false
+  pgd_loss_mode: null
+  pgd_restart_when_stuck: false
+  enable_mip_attack: false
+  adv_saver: default_adv_saver
+  adv_verifier: default_adv_verifier
+  early_stop_condition: default_early_stop_condition
+  adv_example_finalizer: default_adv_example_finalizer
+  pgd_loss: default_pgd_loss
+  cex_path: ./test_cex.txt
+  attack_mode: PGD
+  attack_tolerance: 0.0
+  attack_func: attack_with_general_specs
+  gama_lambda: 10.0
+  gama_decay: 0.9
+  check_clean: true
+  input_split:
+    pgd_steps: 100
+    pgd_restarts: 30
+    pgd_alpha: auto
+  input_split_enhanced:
+    pgd_steps: 200
+    pgd_restarts: 500000
+    pgd_alpha: auto
+  input_split_check_adv:
+    enabled: auto
+    pgd_steps: 5
+    pgd_restarts: 5
+    pgd_alpha: auto
+    max_num_domains: 10
+debug:
+  sanity_check: Full+Graph
+  view_model: false
+  lp_test: null
+  rescale_vnnlib_ptb: null
+  test_optimized_bounds: false
+  test_optimized_bounds_after_n_iterations: 0
+  print_verbose_decisions: false
+Configurations:
+
+general:
+  device: cuda
+  seed: 100
+  conv_mode: patches
+  deterministic: false
+  double_fp: false
+  loss_reduction_func: max
+  sparse_alpha: true
+  sparse_interm: true
+  save_adv_example: false
+  verify_onnxruntime_output: false
+  eval_adv_example: false
+  show_adv_example: false
+  precompile_jit: false
+  prepare_only: false
+  complete_verifier: bab
+  enable_incomplete_verification: false
+  csv_name: instances.csv
+  results_file: results/vggnet16_all_p_1/result_85.rank0.txt
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  deterministic_opt: false
+  graph_optimizer: 'Customized("custom_graph_optimizer", "maxpool_to_relu")'
+  buffer_has_batchdim: false
+  save_output: false
+  output_file: out.pkl
+  return_optimized_model: false
+  output_additional_stats: true
+  instance_id: 85
+  dataset_output_dir: dataset
+  min_stable_neurons_ratio_threshold: 0.0
+model:
+  name: null
+  path: null
+  onnx_path: /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+  onnx_path_prefix: ''
+  cache_onnx_conversion: true
+  debug_onnx: false
+  onnx_quirks: null
+  input_shape: null
+  onnx_loader: default_onnx_and_vnnlib_loader
+  onnx_optimization_flags: []
+  onnx_vnnlib_joint_optimization_flags: none
+  check_optimized: false
+  flatten_final_output: false
+  optimize_graph: null
+  with_jacobian: false
+data:
+  start: 0
+  end: 10000
+  select_instance: null
+  num_outputs: 1000
+  mean: 0.0
+  std: 1.0
+  pkl_path: null
+  dataset: null
+  data_filter_path: null
+  data_idx_file: null
+specification:
+  type: lp
+  robustness_type: verified-acc
+  norm: .inf
+  epsilon: null
+  epsilon_min: 0.0
+  vnnlib_path: /projects/air/dlverifier/vggnet16_all/vnnlib/n01580077_jay_global_k50176_eps_0.0002.vnnlib
+  vnnlib_path_prefix: ''
+  rhs_offset: null
+solver:
+  batch_size: 1
+  auto_enlarge_batch_size: false
+  min_batch_size_ratio: 0.1
+  use_float64_in_last_iteration: false
+  early_stop_patience: 10
+  start_save_best: 0.5
+  bound_prop_method: forward+backward
+  init_bound_prop_method: same
+  prune_after_crown: false
+  optimize_disjuncts_separately: false
+  crown:
+    batch_size: 16
+    max_crown_size: 1000000000
+    relu_option: adaptive
+  alpha-crown:
+    alpha: true
+    lr_alpha: 0.1
+    iteration: 100
+    share_alphas: false
+    lr_decay: 0.98
+    full_conv_alpha: true
+    max_coeff_mul: .inf
+    matmul_share_alphas: false
+    disable_optimization: []
+    max_time: 1.0
+  invprop:
+    apply_output_constraints_to: []
+    tighten_input_bounds: false
+    best_of_oc_and_no_oc: false
+    directly_optimize: []
+    oc_lr: 0.1
+    share_gammas: false
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    lr_decay: 0.98
+    optimizer: adam
+    iteration: 10
+    beta: true
+    beta_warmup: true
+    enable_opt_interm_bounds: false
+    all_node_split_LP: false
+  forward:
+    refine: false
+    dynamic: true
+    max_dim: 100
+    reset_threshold: 1.0
+  intermediate_refinement:
+    enabled: false
+    batch_size: 10
+    opt_coeffs: false
+    opt_bias: false
+    lr: 0.05
+    layers: [-1]
+    max_domains: 1000
+  multi_class:
+    label_batch_size: 32
+    skip_with_refined_bound: true
+  mip:
+    unstable_neuron_threshold: 0
+    parallel_solvers: null
+    solver_threads: 1
+    refine_neuron_timeout: 15
+    refine_neuron_time_percentage: 0.8
+    early_stop: true
+    adv_warmup: true
+    mip_solver: gurobi
+    skip_unsafe: false
+    topk_filter: 1.0
+    sliding_window: -1
+    extra_constraint: false
+    refine_neuron_timeout_increasement: 0
+    timeout_neuron_percentage: 0.3
+    remaining_timeout_threshold: 1
+    remove_unstable_neurons: true
+    lp_solver: false
+bab:
+  initial_max_domains: 1
+  backing_up_max_domain: null
+  max_domains: .inf
+  decision_thresh: 0
+  timeout: 1200.0
+  timeout_scale: 1
+  max_iterations: -1
+  override_timeout: null
+  get_upper_bound: false
+  pruning_in_iteration: true
+  pruning_in_iteration_ratio: 0.2
+  sort_targets: false
+  batched_domain_list: true
+  optimized_interm: ''
+  interm_transfer: true
+  recompute_interm: false
+  sort_domain_interval: -1
+  vanilla_crown: false
+  tree_traversal: depth_first
+  cut:
+    enabled: false
+    cuts_path: /tmp/abcrown_cuts
+    implication: false
+    bab_cut: false
+    lp_cut: false
+    method: null
+    lr: 0.01
+    lr_decay: 1.0
+    iteration: 100
+    bab_iteration: -1
+    early_stop_patience: -1
+    lr_beta: 0.02
+    number_cuts: 50
+    topk_cuts_in_filter: 1000
+    batch_size_primal: 100
+    max_num: 1000000000
+    patches_cut: false
+    cplex_cuts: false
+    cplex_cuts_wait: 0
+    cplex_cuts_revpickup: true
+    cut_reference_bounds: true
+    fix_intermediate_bounds: false
+    _tmp_cuts: null
+    fixed_cuts: false
+    add_implied_cuts: false
+    add_input_cuts: false
+    biccos:
+      enabled: false
+      constraint_strengthening: true
+      recursively_strengthening: false
+      drop_ratio: 0.5
+      verified_bonus: 0.3
+      max_infer_iter: 20
+      heuristic: neuron_influence_score
+      save_biccos_cuts: false
+      multi_tree_branching:
+        enabled: false
+        restore_best_tree: false
+        keep_n_best_domains: 1
+        k_splits: 1
+        iterations: 1
+  branching:
+    method: sb
+    candidates: 3
+    reduceop: min
+    enable_intermediate_bound_opt: false
+    branching_input_and_activation: false
+    branching_input_and_activation_order: [input, relu]
+    branching_input_iterations: 30
+    branching_relu_iterations: 50
+    gnn_path: ''
+    neural_heuristic:
+      model_path: ''
+    rl:
+      experiment: general
+      eval: false
+      extras: []
+      logging:
+        color: true
+        debug: true
+        file: rl-experiment.log
+      pnet:
+        gH: 64
+        tH: 64
+        nheads: 64
+        nlayers: 64
+        useDynamicGraph: true
+        bidirectional: false
+        GAT: true
+      training:
+        gamma: 0.99
+        lr: 0.001
+        batchSize: 8
+        loop: 8
+        totalEpochs: 10
+        updatePolicyFrequency: 10
+        updateTargetFrequency: 10
+        buffer: buffer.pkl
+        preparedBuffer: 'False'
+        TestingPreparedBuffer: false
+        scriptTraining: false
+        policynet: policy-checkpoint.pt
+        targetnet: target-checkpoint.pt
+        datasetShuffle: true
+        targetedData: all
+        splitRatio: 0.8
+        maxInstances: -1
+        trainingMode: full
+        reward:
+          norm: null
+          bonus: 10.0
+          penalty: -1.0
+      egreedy:
+        epsilon: 0.1
+        epsilonDecay: 0.1
+        minEpsilon: 0.1
+        ePath: epsilon.pt
+        enabled: true
+      expert:
+        useExpertUntilEpisode: 0.1
+        enabled: true
+        learnToImitateExpertEpochs: 10
+    nonlinear_split:
+      method: shortcut
+      branching_point_method: uniform
+      num_branches: 2
+      filter: false
+      filter_beta: false
+      filter_clamp: false
+      filter_batch_size: 10000
+      filter_iterations: 25
+      relu_only: false
+      loose_tanh_threshold: null
+      dynamic_bbps: false
+      dynamic_options: [uniform, three_left, three_right]
+      branching_point_node: ''
+      branching_point_db: []
+    input_split:
+      enable_clip_domains: false
+      split_hint: null
+      reorder_bab: false
+      enable: true
+      enhanced_bound_prop_method: alpha-crown
+      enhanced_branching_method: naive
+      enhanced_bound_patience: 100000000.0
+      attack_patience: 100000000.0
+      adv_check: 0
+      split_partitions: 2
+      sb_margin_weight: 1.0
+      sb_sum: false
+      sb_primary_spec: null
+      bf_backup_thresh: -1
+      bf_rhs_offset: 0
+      bf_iters: 1000000000.0
+      bf_batch_size: 100000
+      bf_zero_crossing_score: false
+      touch_zero_score: 0
+      ibp_enhancement: false
+      catch_assertion: false
+      compare_with_old_bounds: false
+      update_rhs_with_attack: false
+      sb_coeff_thresh: 0.001
+      sort_index: null
+      sort_descending: true
+      show_progress: false
+      presplit_domains: null
+      skip_getting_worst_domain: false
+  attack:
+    enabled: false
+    beam_candidates: 8
+    beam_depth: 7
+    max_dive_fix_ratio: 0.8
+    min_local_free_ratio: 0.2
+    mip_start_iteration: 5
+    mip_timeout: 30.0
+    adv_pool_threshold: null
+    refined_mip_attacker: false
+    refined_batch_size: null
+attack:
+  pgd_order: input_bab
+  pgd_steps: 100
+  pgd_restarts: 30
+  pgd_batch_size: 100000000
+  pgd_early_stop: true
+  pgd_lr_decay: 0.99
+  pgd_alpha: auto
+  pgd_alpha_scale: false
+  pgd_loss_mode: null
+  pgd_restart_when_stuck: false
+  enable_mip_attack: false
+  adv_saver: default_adv_saver
+  adv_verifier: default_adv_verifier
+  early_stop_condition: default_early_stop_condition
+  adv_example_finalizer: default_adv_example_finalizer
+  pgd_loss: default_pgd_loss
+  cex_path: ./test_cex.txt
+  attack_mode: PGD
+  attack_tolerance: 0.0
+  attack_func: attack_with_general_specs
+  gama_lambda: 10.0
+  gama_decay: 0.9
+  check_clean: true
+  input_split:
+    pgd_steps: 100
+    pgd_restarts: 30
+    pgd_alpha: auto
+  input_split_enhanced:
+    pgd_steps: 200
+    pgd_restarts: 500000
+    pgd_alpha: auto
+  input_split_check_adv:
+    enabled: auto
+    pgd_steps: 5
+    pgd_restarts: 5
+    pgd_alpha: auto
+    max_num_domains: 10
+debug:
+  sanity_check: Full+Graph
+  view_model: false
+  lp_test: null
+  rescale_vnnlib_ptb: null
+  test_optimized_bounds: false
+  test_optimized_bounds_after_n_iterations: 0
+  print_verbose_decisions: false
+
+Experiments at Sat Feb 21 18:55:25 2026 on d3146
+Internal results will be saved to results/vggnet16_all_p_1/result_82.rank1.txt.
+
+[ZRL] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% idx: 0, vnnlib ID: 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+Using vnnlib /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_global_k50176_eps_0.0003.vnnlib
+Precompiled vnnlib file found at /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_global_k50176_eps_0.0003.vnnlib.compiled
+Loading cached onnx model from /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx.cached
+Cannot read cached onnx file. Regenerating...
+Loading onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx with quirks {}
+Finished onnx model loading in 64.4944 seconds
+Number of perturbed inputs: 150528
+WARNING: prioritizing attack due to too many perturbed pixels on VGG
+Setting arguments.Config["attack"]["pgd_order"] to "before"
+Setting bound_prop_method to crown
+
+Experiments at Sat Feb 21 18:55:25 2026 on d3146
+Internal results will be saved to results/vggnet16_all_p_1/result_84.rank3.txt.
+
+[ZRL] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% idx: 0, vnnlib ID: 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+Using vnnlib /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib
+Precompiled vnnlib file found at /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib.compiled
+Loading cached onnx model from /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx.cached
+Cannot read cached onnx file. Regenerating...
+Loading onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx with quirks {}
+Finished onnx model loading in 64.4335 seconds
+Number of perturbed inputs: 97785
+WARNING: prioritizing attack due to too many perturbed pixels on VGG
+Setting arguments.Config["attack"]["pgd_order"] to "before"
+Setting bound_prop_method to crown
+
+Experiments at Sat Feb 21 18:55:25 2026 on d3146
+Internal results will be saved to results/vggnet16_all_p_1/result_85.rank0.txt.
+
+[ZRL] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% idx: 0, vnnlib ID: 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+Using vnnlib /projects/air/dlverifier/vggnet16_all/vnnlib/n01580077_jay_global_k50176_eps_0.0002.vnnlib
+150528 inputs and 1000 outputs in vnnlib
+Loading cached onnx model from /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx.cached
+Cannot read cached onnx file. Regenerating...
+Loading onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx with quirks {}
+Finished onnx model loading in 62.3137 seconds
+Number of perturbed inputs: 150528
+WARNING: prioritizing attack due to too many perturbed pixels on VGG
+Setting arguments.Config["attack"]["pgd_order"] to "before"
+Setting bound_prop_method to crown
+
+Experiments at Sat Feb 21 18:55:25 2026 on d3146
+Internal results will be saved to results/vggnet16_all_p_1/result_83.rank2.txt.
+
+[ZRL] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% idx: 0, vnnlib ID: 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+Using vnnlib /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_mask_seg0_k50176_eps_0.0003.vnnlib
+Precompiled vnnlib file found at /projects/air/dlverifier/vggnet16_all/vnnlib/n01560419_bulbul_fix_mask_seg0_k50176_eps_0.0003.vnnlib.compiled
+Loading cached onnx model from /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx.cached
+Cannot read cached onnx file. Regenerating...
+Loading onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx with quirks {}
+Finished onnx model loading in 64.4494 seconds
+Number of perturbed inputs: 52743
+WARNING: prioritizing attack due to too many perturbed pixels on VGG
+Setting arguments.Config["attack"]["pgd_order"] to "before"
+Setting bound_prop_method to crown

@@ -1,0 +1,1689 @@
+----- SLURM_JOB_ID=4503465
+SLURM_JOB_NODELIST=d1026
+SLURM_JOB_GPUS=0
+SLURM_GPUS=<unset>
+SLURM_STEP_GPUS=<unset>
+CUDA_VISIBLE_DEVICES=0
+SLURM_NTASKS=1
+SLURM_CPUS_PER_TASK=4
+SHELL=/bin/bash
+PATH=/shared/EL9/explorer/cuda/12.8.0/bin:/shared/EL9/explorer/code-server/4.91.1/code-server-4.91.1-linux-amd64/lib/vscode/bin/remote-cli:/home/z.dehghanipour/.conda/envs/ab-crown-v1/bin:/shared/EL9/explorer/anaconda3/2024.06/condabin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/z.dehghanipour/.local/bin:/home/z.dehghanipour/bin:/home/z.dehghanipour/.local/bin:/home/z.dehghanipour/bin
+========== ENV CHECK ==========
+/home/z.dehghanipour/.conda/envs/ab-crown-v1/bin/python
+Python 3.11.9
+PYTHON: /home/z.dehghanipour/.conda/envs/ab-crown-v1/bin/python
+torch: 2.3.1
+torch.version.cuda: 12.1
+cuda available: True
+CUDA_VISIBLE_DEVICES: 0
+device[0]: NVIDIA A100-SXM4-40GB
+capability[0]: (8, 0)
+matmul ok: -21139.775390625
+Sun Feb 22 00:05:12 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   37C    P0             58W /  400W |       1MiB /  40960MiB |      9%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   31C    P0             54W /  400W |     427MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A         2234971      C   /alphafold3_venv/bin/python             416MiB |
++-----------------------------------------------------------------------------------------+
+================================
+========== QUICK GPU CHECK ==========
+Sun Feb 22 00:05:13 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.86.15              Driver Version: 570.86.15      CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   37C    P0             74W /  400W |       1MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   31C    P0             56W /  400W |     427MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    1   N/A  N/A         2234971      C   /alphafold3_venv/bin/python             416MiB |
++-----------------------------------------------------------------------------------------+
+=====================================
+[rank 0/1] host=d1026 CUDA_VISIBLE_DEVICES=0
+[rank 0] === Checking instance ID 501 ===
+[rank 0] >>> ID 501 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 502 ===
+[rank 0] >>> ID 502 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 503 ===
+[rank 0] >>> ID 503 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 504 ===
+[rank 0] >>> ID 504 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 505 ===
+[rank 0] >>> ID 505 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 506 ===
+[rank 0] >>> ID 506 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 507 ===
+[rank 0] >>> ID 507 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 508 ===
+[rank 0] >>> ID 508 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 509 ===
+[rank 0] >>> ID 509 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 510 ===
+[rank 0] >>> ID 510 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 511 ===
+[rank 0] >>> ID 511 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 512 ===
+[rank 0] >>> ID 512 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 513 ===
+[rank 0] >>> ID 513 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 514 ===
+[rank 0] >>> ID 514 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 515 ===
+[rank 0] >>> ID 515 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 516 ===
+[rank 0] >>> ID 516 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 517 ===
+[rank 0] >>> ID 517 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 518 ===
+[rank 0] >>> ID 518 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 519 ===
+[rank 0] >>> ID 519 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 520 ===
+[rank 0] >>> ID 520 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 521 ===
+[rank 0] >>> ID 521 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 522 ===
+[rank 0] >>> ID 522 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 523 ===
+[rank 0] >>> ID 523 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 524 ===
+[rank 0] >>> ID 524 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 525 ===
+[rank 0] >>> ID 525 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 526 ===
+[rank 0] >>> ID 526 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 527 ===
+[rank 0] >>> ID 527 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 528 ===
+[rank 0] >>> ID 528 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 529 ===
+[rank 0] >>> ID 529 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 530 ===
+[rank 0] >>> ID 530 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 531 ===
+[rank 0] >>> ID 531 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 532 ===
+[rank 0] >>> ID 532 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 533 ===
+[rank 0] >>> ID 533 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 534 ===
+[rank 0] >>> ID 534 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 535 ===
+[rank 0] >>> ID 535 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 536 ===
+[rank 0] >>> ID 536 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 537 ===
+[rank 0] >>> ID 537 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 538 ===
+[rank 0] >>> ID 538 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 539 ===
+[rank 0] >>> ID 539 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 540 ===
+[rank 0] >>> ID 540 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 541 ===
+[rank 0] >>> ID 541 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 542 ===
+[rank 0] >>> ID 542 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 543 ===
+[rank 0] >>> ID 543 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 544 ===
+[rank 0] >>> ID 544 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 545 ===
+[rank 0] >>> ID 545 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 546 ===
+[rank 0] >>> ID 546 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 547 ===
+[rank 0] >>> ID 547 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 548 ===
+[rank 0] >>> ID 548 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 549 ===
+[rank 0] >>> ID 549 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 550 ===
+[rank 0] >>> ID 550 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 551 ===
+[rank 0] >>> ID 551 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 552 ===
+[rank 0] >>> ID 552 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 553 ===
+[rank 0] >>> ID 553 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 554 ===
+[rank 0] >>> ID 554 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 555 ===
+[rank 0] >>> ID 555 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 556 ===
+[rank 0] >>> ID 556 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 557 ===
+[rank 0] >>> ID 557 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 558 ===
+[rank 0] >>> ID 558 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 559 ===
+[rank 0] >>> ID 559 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 560 ===
+[rank 0] >>> ID 560 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 561 ===
+[rank 0] >>> ID 561 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 562 ===
+[rank 0] >>> ID 562 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 563 ===
+[rank 0] >>> ID 563 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 564 ===
+[rank 0] >>> ID 564 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 565 ===
+[rank 0] >>> ID 565 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 566 ===
+[rank 0] >>> ID 566 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 567 ===
+[rank 0] >>> ID 567 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 568 ===
+[rank 0] >>> ID 568 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 569 ===
+[rank 0] >>> ID 569 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 570 ===
+[rank 0] >>> ID 570 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 571 ===
+[rank 0] >>> ID 571 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 572 ===
+[rank 0] >>> ID 572 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 573 ===
+[rank 0] >>> ID 573 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 574 ===
+[rank 0] >>> ID 574 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 575 ===
+[rank 0] >>> ID 575 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 576 ===
+[rank 0] >>> ID 576 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 577 ===
+[rank 0] >>> ID 577 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 578 ===
+[rank 0] >>> ID 578 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 579 ===
+[rank 0] >>> ID 579 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 580 ===
+[rank 0] >>> ID 580 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 581 ===
+[rank 0] >>> ID 581 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 582 ===
+[rank 0] >>> ID 582 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 583 ===
+[rank 0] >>> ID 583 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 584 ===
+[rank 0] >>> ID 584 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 585 ===
+[rank 0] >>> ID 585 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 586 ===
+[rank 0] >>> ID 586 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 587 ===
+[rank 0] >>> ID 587 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 588 ===
+[rank 0] >>> ID 588 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 589 ===
+[rank 0] >>> ID 589 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 590 ===
+[rank 0] >>> ID 590 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 591 ===
+[rank 0] >>> ID 591 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 592 ===
+[rank 0] >>> ID 592 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 593 ===
+[rank 0] >>> ID 593 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 594 ===
+[rank 0] >>> ID 594 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 595 ===
+[rank 0] >>> ID 595 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 596 ===
+[rank 0] >>> ID 596 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 597 ===
+[rank 0] >>> ID 597 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 598 ===
+[rank 0] >>> ID 598 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 599 ===
+[rank 0] >>> ID 599 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 600 ===
+[rank 0] >>> ID 600 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 601 ===
+[rank 0] >>> ID 601 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 602 ===
+[rank 0] >>> ID 602 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 603 ===
+[rank 0] >>> ID 603 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 604 ===
+[rank 0] >>> ID 604 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 605 ===
+[rank 0] >>> ID 605 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 606 ===
+[rank 0] >>> ID 606 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 607 ===
+[rank 0] >>> ID 607 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 608 ===
+[rank 0] >>> ID 608 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 609 ===
+[rank 0] >>> ID 609 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 610 ===
+[rank 0] >>> ID 610 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 611 ===
+[rank 0] >>> ID 611 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 612 ===
+[rank 0] >>> ID 612 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 613 ===
+[rank 0] >>> ID 613 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 614 ===
+[rank 0] >>> ID 614 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 615 ===
+[rank 0] >>> ID 615 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 616 ===
+[rank 0] >>> ID 616 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 617 ===
+[rank 0] >>> ID 617 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 618 ===
+[rank 0] >>> ID 618 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 619 ===
+[rank 0] >>> ID 619 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 620 ===
+[rank 0] >>> ID 620 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 621 ===
+[rank 0] >>> ID 621 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 622 ===
+[rank 0] >>> ID 622 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 623 ===
+[rank 0] >>> ID 623 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 624 ===
+[rank 0] >>> ID 624 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 625 ===
+[rank 0] >>> ID 625 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 626 ===
+[rank 0] >>> ID 626 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 627 ===
+[rank 0] >>> ID 627 already done (results.csv / parts) — skipping
+[rank 0] === Checking instance ID 628 ===
+[rank 0] >>> Running ID=628 onnx=onnx/vgg16-7.onnx
+Configurations:
+
+general:
+  device: cuda
+  seed: 100
+  conv_mode: patches
+  deterministic: false
+  double_fp: false
+  loss_reduction_func: max
+  sparse_alpha: true
+  sparse_interm: true
+  save_adv_example: false
+  verify_onnxruntime_output: false
+  eval_adv_example: false
+  show_adv_example: false
+  precompile_jit: false
+  prepare_only: false
+  complete_verifier: bab
+  enable_incomplete_verification: false
+  csv_name: instances.csv
+  results_file: results/vggnet16_all_p_3/result_628.rank0.txt
+  root_path: ../../vnncomp2023_benchmarks/benchmarks/vggnet16
+  deterministic_opt: false
+  graph_optimizer: 'Customized("custom_graph_optimizer", "maxpool_to_relu")'
+  buffer_has_batchdim: false
+  save_output: false
+  output_file: out.pkl
+  return_optimized_model: false
+  output_additional_stats: true
+  instance_id: 628
+  dataset_output_dir: dataset
+  min_stable_neurons_ratio_threshold: 0.0
+model:
+  name: null
+  path: null
+  onnx_path: /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+  onnx_path_prefix: ''
+  cache_onnx_conversion: true
+  debug_onnx: false
+  onnx_quirks: null
+  input_shape: null
+  onnx_loader: default_onnx_and_vnnlib_loader
+  onnx_optimization_flags: []
+  onnx_vnnlib_joint_optimization_flags: none
+  check_optimized: false
+  flatten_final_output: false
+  optimize_graph: null
+  with_jacobian: false
+data:
+  start: 0
+  end: 10000
+  select_instance: null
+  num_outputs: 1000
+  mean: 0.0
+  std: 1.0
+  pkl_path: null
+  dataset: null
+  data_filter_path: null
+  data_idx_file: null
+specification:
+  type: lp
+  robustness_type: verified-acc
+  norm: .inf
+  epsilon: null
+  epsilon_min: 0.0
+  vnnlib_path: /projects/air/dlverifier/vggnet16_all/vnnlib/n02002724_black_stork_global_k50176_eps_0.0003.vnnlib
+  vnnlib_path_prefix: ''
+  rhs_offset: null
+solver:
+  batch_size: 1
+  auto_enlarge_batch_size: false
+  min_batch_size_ratio: 0.1
+  use_float64_in_last_iteration: false
+  early_stop_patience: 10
+  start_save_best: 0.5
+  bound_prop_method: forward+backward
+  init_bound_prop_method: same
+  prune_after_crown: false
+  optimize_disjuncts_separately: false
+  crown:
+    batch_size: 16
+    max_crown_size: 1000000000
+    relu_option: adaptive
+  alpha-crown:
+    alpha: true
+    lr_alpha: 0.1
+    iteration: 100
+    share_alphas: false
+    lr_decay: 0.98
+    full_conv_alpha: true
+    max_coeff_mul: .inf
+    matmul_share_alphas: false
+    disable_optimization: []
+    max_time: 1.0
+  invprop:
+    apply_output_constraints_to: []
+    tighten_input_bounds: false
+    best_of_oc_and_no_oc: false
+    directly_optimize: []
+    oc_lr: 0.1
+    share_gammas: false
+  beta-crown:
+    lr_alpha: 0.01
+    lr_beta: 0.05
+    lr_decay: 0.98
+    optimizer: adam
+    iteration: 10
+    beta: true
+    beta_warmup: true
+    enable_opt_interm_bounds: false
+    all_node_split_LP: false
+  forward:
+    refine: false
+    dynamic: true
+    max_dim: 100
+    reset_threshold: 1.0
+  intermediate_refinement:
+    enabled: false
+    batch_size: 10
+    opt_coeffs: false
+    opt_bias: false
+    lr: 0.05
+    layers: [-1]
+    max_domains: 1000
+  multi_class:
+    label_batch_size: 32
+    skip_with_refined_bound: true
+  mip:
+    unstable_neuron_threshold: 0
+    parallel_solvers: null
+    solver_threads: 1
+    refine_neuron_timeout: 15
+    refine_neuron_time_percentage: 0.8
+    early_stop: true
+    adv_warmup: true
+    mip_solver: gurobi
+    skip_unsafe: false
+    topk_filter: 1.0
+    sliding_window: -1
+    extra_constraint: false
+    refine_neuron_timeout_increasement: 0
+    timeout_neuron_percentage: 0.3
+    remaining_timeout_threshold: 1
+    remove_unstable_neurons: true
+    lp_solver: false
+bab:
+  initial_max_domains: 1
+  backing_up_max_domain: null
+  max_domains: .inf
+  decision_thresh: 0
+  timeout: 1200.0
+  timeout_scale: 1
+  max_iterations: -1
+  override_timeout: null
+  get_upper_bound: false
+  pruning_in_iteration: true
+  pruning_in_iteration_ratio: 0.2
+  sort_targets: false
+  batched_domain_list: true
+  optimized_interm: ''
+  interm_transfer: true
+  recompute_interm: false
+  sort_domain_interval: -1
+  vanilla_crown: false
+  tree_traversal: depth_first
+  cut:
+    enabled: false
+    cuts_path: /tmp/abcrown_cuts
+    implication: false
+    bab_cut: false
+    lp_cut: false
+    method: null
+    lr: 0.01
+    lr_decay: 1.0
+    iteration: 100
+    bab_iteration: -1
+    early_stop_patience: -1
+    lr_beta: 0.02
+    number_cuts: 50
+    topk_cuts_in_filter: 1000
+    batch_size_primal: 100
+    max_num: 1000000000
+    patches_cut: false
+    cplex_cuts: false
+    cplex_cuts_wait: 0
+    cplex_cuts_revpickup: true
+    cut_reference_bounds: true
+    fix_intermediate_bounds: false
+    _tmp_cuts: null
+    fixed_cuts: false
+    add_implied_cuts: false
+    add_input_cuts: false
+    biccos:
+      enabled: false
+      constraint_strengthening: true
+      recursively_strengthening: false
+      drop_ratio: 0.5
+      verified_bonus: 0.3
+      max_infer_iter: 20
+      heuristic: neuron_influence_score
+      save_biccos_cuts: false
+      multi_tree_branching:
+        enabled: false
+        restore_best_tree: false
+        keep_n_best_domains: 1
+        k_splits: 1
+        iterations: 1
+  branching:
+    method: sb
+    candidates: 3
+    reduceop: min
+    enable_intermediate_bound_opt: false
+    branching_input_and_activation: false
+    branching_input_and_activation_order: [input, relu]
+    branching_input_iterations: 30
+    branching_relu_iterations: 50
+    gnn_path: ''
+    neural_heuristic:
+      model_path: ''
+    rl:
+      experiment: general
+      eval: false
+      extras: []
+      logging:
+        color: true
+        debug: true
+        file: rl-experiment.log
+      pnet:
+        gH: 64
+        tH: 64
+        nheads: 64
+        nlayers: 64
+        useDynamicGraph: true
+        bidirectional: false
+        GAT: true
+      training:
+        gamma: 0.99
+        lr: 0.001
+        batchSize: 8
+        loop: 8
+        totalEpochs: 10
+        updatePolicyFrequency: 10
+        updateTargetFrequency: 10
+        buffer: buffer.pkl
+        preparedBuffer: 'False'
+        TestingPreparedBuffer: false
+        scriptTraining: false
+        policynet: policy-checkpoint.pt
+        targetnet: target-checkpoint.pt
+        datasetShuffle: true
+        targetedData: all
+        splitRatio: 0.8
+        maxInstances: -1
+        trainingMode: full
+        reward:
+          norm: null
+          bonus: 10.0
+          penalty: -1.0
+      egreedy:
+        epsilon: 0.1
+        epsilonDecay: 0.1
+        minEpsilon: 0.1
+        ePath: epsilon.pt
+        enabled: true
+      expert:
+        useExpertUntilEpisode: 0.1
+        enabled: true
+        learnToImitateExpertEpochs: 10
+    nonlinear_split:
+      method: shortcut
+      branching_point_method: uniform
+      num_branches: 2
+      filter: false
+      filter_beta: false
+      filter_clamp: false
+      filter_batch_size: 10000
+      filter_iterations: 25
+      relu_only: false
+      loose_tanh_threshold: null
+      dynamic_bbps: false
+      dynamic_options: [uniform, three_left, three_right]
+      branching_point_node: ''
+      branching_point_db: []
+    input_split:
+      enable_clip_domains: false
+      split_hint: null
+      reorder_bab: false
+      enable: true
+      enhanced_bound_prop_method: alpha-crown
+      enhanced_branching_method: naive
+      enhanced_bound_patience: 100000000.0
+      attack_patience: 100000000.0
+      adv_check: 0
+      split_partitions: 2
+      sb_margin_weight: 1.0
+      sb_sum: false
+      sb_primary_spec: null
+      bf_backup_thresh: -1
+      bf_rhs_offset: 0
+      bf_iters: 1000000000.0
+      bf_batch_size: 100000
+      bf_zero_crossing_score: false
+      touch_zero_score: 0
+      ibp_enhancement: false
+      catch_assertion: false
+      compare_with_old_bounds: false
+      update_rhs_with_attack: false
+      sb_coeff_thresh: 0.001
+      sort_index: null
+      sort_descending: true
+      show_progress: false
+      presplit_domains: null
+      skip_getting_worst_domain: false
+  attack:
+    enabled: false
+    beam_candidates: 8
+    beam_depth: 7
+    max_dive_fix_ratio: 0.8
+    min_local_free_ratio: 0.2
+    mip_start_iteration: 5
+    mip_timeout: 30.0
+    adv_pool_threshold: null
+    refined_mip_attacker: false
+    refined_batch_size: null
+attack:
+  pgd_order: input_bab
+  pgd_steps: 100
+  pgd_restarts: 30
+  pgd_batch_size: 100000000
+  pgd_early_stop: true
+  pgd_lr_decay: 0.99
+  pgd_alpha: auto
+  pgd_alpha_scale: false
+  pgd_loss_mode: null
+  pgd_restart_when_stuck: false
+  enable_mip_attack: false
+  adv_saver: default_adv_saver
+  adv_verifier: default_adv_verifier
+  early_stop_condition: default_early_stop_condition
+  adv_example_finalizer: default_adv_example_finalizer
+  pgd_loss: default_pgd_loss
+  cex_path: ./test_cex.txt
+  attack_mode: PGD
+  attack_tolerance: 0.0
+  attack_func: attack_with_general_specs
+  gama_lambda: 10.0
+  gama_decay: 0.9
+  check_clean: true
+  input_split:
+    pgd_steps: 100
+    pgd_restarts: 30
+    pgd_alpha: auto
+  input_split_enhanced:
+    pgd_steps: 200
+    pgd_restarts: 500000
+    pgd_alpha: auto
+  input_split_check_adv:
+    enabled: auto
+    pgd_steps: 5
+    pgd_restarts: 5
+    pgd_alpha: auto
+    max_num_domains: 10
+debug:
+  sanity_check: Full+Graph
+  view_model: false
+  lp_test: null
+  rescale_vnnlib_ptb: null
+  test_optimized_bounds: false
+  test_optimized_bounds_after_n_iterations: 0
+  print_verbose_decisions: false
+
+Experiments at Sun Feb 22 00:05:48 2026 on d1026
+Internal results will be saved to results/vggnet16_all_p_3/result_628.rank0.txt.
+
+[ZRL] %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% idx: 0, vnnlib ID: 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Using onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx
+Using vnnlib /projects/air/dlverifier/vggnet16_all/vnnlib/n02002724_black_stork_global_k50176_eps_0.0003.vnnlib
+Precompiled vnnlib file found at /projects/air/dlverifier/vggnet16_all/vnnlib/n02002724_black_stork_global_k50176_eps_0.0003.vnnlib.compiled
+Loading cached onnx model from /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx.cached
+Cannot read cached onnx file. Regenerating...
+Loading onnx /projects/air/dlverifier/vggnet16_all/onnx/vgg16-7.onnx with quirks {}
+Finished onnx model loading in 43.2588 seconds
+Number of perturbed inputs: 150528
+WARNING: prioritizing attack due to too many perturbed pixels on VGG
+Setting arguments.Config["attack"]["pgd_order"] to "before"
+Setting bound_prop_method to crown
+Attack parameters: initialization=uniform, steps=100, restarts=30, alpha=7.500126957893372e-05, initialization=uniform, GAMA=False
+Model output of first 5 examples:
+ tensor([[-7.04721034e-01,  1.57800317e+00, -8.99968743e-01, -1.02828538e+00,
+         -8.63162518e-01,  2.23108158e-01, -3.82568061e-01, -1.33011329e+00,
+         -1.16543627e+00, -4.91769105e-01, -9.79033634e-02,  4.29549545e-01,
+          3.47785056e-01, -9.34442207e-02,  5.99443495e-01,  4.59013820e-01,
+          9.38631147e-02, -5.87555587e-01, -4.34032321e-01, -2.02462897e-01,
+         -4.05444652e-01,  5.70941329e-01,  4.16263431e-01, -3.50111216e-01,
+          4.40220565e-01, -7.94846892e-01,  4.38385457e-01, -7.23462224e-01,
+         -1.12419248e+00,  7.33182013e-01, -1.28243554e+00,  5.54731607e-01,
+         -5.73262513e-01, -1.27733958e+00, -1.45518637e+00, -1.08975160e+00,
+          5.17317057e-01, -1.63531947e+00, -2.00889111e-01, -6.17736340e-01,
+          7.33565986e-01, -1.13008690e+00, -1.03290415e+00, -2.84778595e-01,
+         -1.98923782e-01, -5.43156505e-01,  9.56076384e-01, -2.38356799e-01,
+         -1.36771572e+00, -2.16539949e-01,  5.14205456e-01, -1.87263906e+00,
+         -2.17384458e-01,  4.48219478e-02, -9.31360841e-01, -2.29401439e-01,
+         -5.54129779e-01, -1.35810804e+00, -2.27783367e-01,  4.41128612e-01,
+         -3.08465928e-01, -7.25897729e-01, -9.69987690e-01,  3.37581992e-01,
+          4.00346220e-01, -7.07951069e-01, -7.43930042e-01, -5.27436376e-01,
+         -1.23369765e+00, -1.87196505e+00,  3.74814600e-01,  3.02529931e-01,
+          1.05569315e+00,  1.70246387e+00,  1.52412665e+00,  1.59515488e+00,
+          6.64436758e-01,  1.60431731e+00,  8.43834698e-01,  8.06042135e-01,
+          8.89006376e-01, -1.69512105e+00,  7.24701956e-02, -8.53330791e-01,
+         -8.25064778e-02, -3.78509045e-01, -9.53321040e-01,  1.34155452e-01,
+          4.85524327e-01, -6.23680234e-01,  1.52856531e-03, -4.74574000e-01,
+          5.42909145e-01,  4.35344964e-01,  6.90516114e-01, -2.82881737e-01,
+          8.90979052e-01, -1.08873904e+00,  9.04499143e-02, -4.73167628e-01,
+          5.98153472e-01, -1.06150913e+00, -1.83341610e+00,  4.53167319e-01,
+         -3.70910197e-01, -9.46719527e-01, -8.61680031e-01, -1.04841185e+00,
+         -8.93109322e-01, -1.39431691e+00, -4.31707323e-01,  2.02966666e+00,
+         -4.52922493e-01,  4.22466516e-01,  3.22967730e-02, -1.16431141e+00,
+         -1.00578809e+00,  1.17990538e-01, -1.35069132e+00, -1.80570757e+00,
+         -1.45684624e+00, -1.62027752e+00, -1.29891837e+00, -2.16801548e+00,
+         -1.33665061e+00, -1.58096528e+00,  6.45371556e-01, -1.75985366e-01,
+          1.05915082e+00,  4.98303711e-01, -1.74971558e-02, -2.34210163e-01,
+          7.68756866e-01,  2.66947359e-01,  1.77821800e-01,  4.89012860e-02,
+         -5.59515953e-01,  3.04791391e-01, -9.87097025e-02, -1.70647693e+00,
+         -1.91606069e+00,  3.19214053e-02, -5.08378625e-01, -8.22657704e-01,
+         -7.90043056e-01, -2.85818815e-01, -7.92907834e-01,  4.02145594e-01,
+         -3.30925822e-01, -1.20029077e-01, -9.67496455e-01,  4.85116154e-01,
+          2.05504075e-02,  4.79590118e-01,  3.35865796e-01, -3.46090823e-01,
+         -4.11389858e-01,  1.74636424e-01, -6.90001547e-01, -9.99422431e-01,
+         -5.07743478e-01, -5.49363017e-01, -1.98939636e-01, -3.88090402e-01,
+         -5.37416875e-01, -7.00789154e-01, -6.34224117e-01, -7.11446762e-01,
+         -7.79459104e-02, -2.74652779e-01, -6.85992897e-01, -4.95236158e-01,
+         -1.44392240e+00, -9.70529020e-02, -3.57990116e-01, -4.75721002e-01,
+         -1.41040647e+00, -5.64205468e-01, -5.25595069e-01, -1.34540117e+00,
+         -1.07730591e+00, -2.29950055e-01, -2.90961489e-02,  2.22052559e-01,
+          2.93426570e-02, -3.75970989e-01,  5.78011237e-02,  5.28332055e-01,
+         -1.68525100e-01, -2.66489476e-01, -2.47836664e-01,  8.26300144e-01,
+         -3.64362836e-01, -3.83036762e-01, -5.43175042e-01,  6.43908262e-01,
+         -4.08313066e-01, -5.59750795e-01, -1.06487155e+00,  4.35244441e-01,
+         -1.41651958e-01, -1.09354436e+00, -2.56485909e-01,  7.82514095e-01,
+         -3.83581221e-03, -5.21099508e-01, -7.46586740e-01, -3.73273045e-01,
+         -5.81943572e-01, -7.52596200e-01, -1.31798363e+00, -4.52813387e-01,
+         -1.61949590e-01, -7.96570063e-01, -3.65728319e-01, -4.54298198e-01,
+         -2.43376762e-01, -3.73051092e-02, -9.01205301e-01, -5.51685572e-01,
+         -2.73981601e-01, -8.14514607e-02, -4.92628329e-02,  3.47270638e-01,
+          3.77988130e-01, -9.64855075e-01, -3.61312509e-01, -6.89521551e-01,
+         -7.29889870e-01,  5.95804155e-01, -4.51699317e-01,  2.27384567e-01,
+         -6.86270595e-01, -2.64439806e-02, -4.36277032e-01, -1.77566245e-01,
+         -6.04482532e-01, -8.42677876e-02, -6.51492953e-01,  1.23496652e-02,
+         -4.48205888e-01, -4.89569873e-01, -1.13731742e-01, -1.16628873e+00,
+         -3.55328470e-01,  7.74715841e-02, -8.04365933e-01, -3.81775759e-02,
+          4.16079730e-01,  5.91817319e-01,  2.06863210e-01, -1.03826511e+00,
+          7.96831191e-01,  2.45292764e-02,  8.18243623e-01, -8.55174124e-01,
+         -5.78822017e-01,  4.49224889e-01,  6.53441668e-01,  1.04199815e+00,
+          1.04408479e+00,  1.16545357e-01, -3.93933862e-01, -4.06695008e-01,
+         -2.84003913e-01,  6.29000664e-01, -1.24363333e-01, -6.31679147e-02,
+         -1.39363992e+00,  1.29208195e+00,  1.36486828e+00,  6.81008875e-01,
+          9.58396971e-01,  6.17891967e-01,  6.05981052e-01,  2.19431683e-01,
+          2.26712301e-01,  1.35206079e+00,  6.53155625e-01,  1.29463720e+00,
+          8.99720669e-01,  2.15655494e+00,  2.00835156e+00,  2.99020386e+00,
+          2.34319758e+00,  1.49194968e+00,  5.83987981e-02,  1.44411182e+00,
+          3.94365847e-01,  3.38897526e-01,  1.78644404e-01,  1.32426769e-01,
+          1.89811349e-01,  5.93262970e-01, -4.62241352e-01, -9.56437141e-02,
+          3.03601176e-01,  5.62759079e-02, -6.83610618e-01,  3.19193453e-01,
+         -1.33734727e+00,  1.61318347e-01, -1.35253549e-01, -3.36808503e-01,
+         -5.20643115e-01, -2.00986123e+00,  2.40345113e-02,  1.31032318e-01,
+          1.96690336e-01, -4.34798568e-01,  8.72913122e-01,  1.18518972e+00,
+         -1.18205622e-01,  1.22484326e+00,  8.52320254e-01,  3.89842808e-01,
+          7.60378838e-02, -1.05049193e+00,  1.20312619e+00,  8.62651706e-01,
+          4.82264787e-01, -1.60862017e+00, -1.04760909e+00, -8.62680674e-01,
+         -8.72909248e-01, -1.51250565e+00, -1.06251335e+00, -3.48856449e-01,
+         -1.69358230e+00, -1.56735969e+00,  7.09052682e-02,  8.28634858e-01,
+          1.91157472e+00,  2.26821415e-02, -4.22314256e-01,  3.05525899e-01,
+         -1.48103261e+00,  7.57039368e-01, -5.66320896e-01, -1.87706375e+00,
+         -7.33825445e-01, -5.68413854e-01, -9.49214399e-01, -1.43358171e+00,
+         -9.61494386e-01, -1.71528959e+00, -1.72428882e+00, -4.41683918e-01,
+         -2.58744764e+00, -1.53615355e+00, -1.68473864e+00, -1.13897598e+00,
+         -7.88592577e-01, -1.15798855e+00, -1.37069654e+00, -1.20945501e+00,
+          2.87858784e-01,  5.33762753e-01,  4.93594855e-01,  3.76618385e-01,
+         -1.50092915e-01,  4.12329376e-01, -2.70216614e-02, -9.46053982e-01,
+         -6.50346160e-01, -3.11795287e-02,  2.63684124e-01,  2.56012797e-01,
+          9.51988816e-01,  7.56224394e-02,  6.85889304e-01, -3.78080726e-01,
+         -2.89024949e-01,  5.51979542e-01,  7.28686571e-01, -8.16383660e-02,
+          5.49737930e-01,  7.55046248e-01,  1.18736184e+00, -1.43985569e-01,
+          8.59876513e-01,  2.27501243e-01,  6.10827982e-01,  8.89126807e-02,
+          4.15814012e-01, -7.18172908e-01, -9.81215477e-01, -5.57539999e-01,
+         -8.53731453e-01, -2.96161115e-01, -1.32334542e+00, -7.24959016e-01,
+         -4.92709517e-01, -1.97268450e+00, -9.55013633e-01,  7.75488839e-02,
+         -1.75846636e+00, -1.12942529e+00, -2.41796240e-01,  1.49309552e+00,
+          1.49290822e-02, -3.72029990e-01,  4.02919173e-01, -1.19624805e+00,
+         -1.58117652e-01,  7.19022691e-01, -1.58585906e-01, -3.44380677e-01,
+         -1.48568165e+00,  2.45130253e+00, -1.44975948e+00,  1.01393688e+00,
+          1.83754146e-01,  8.95737529e-01,  4.20559734e-01, -1.62481356e+00,
+          1.62507355e+00,  6.95183337e-01,  1.73264039e+00,  9.53610480e-01,
+          4.79149789e-01,  6.99591696e-01, -1.17563725e-01, -4.74887788e-01,
+         -3.38699639e-01, -8.72874141e-01,  1.21694362e+00, -8.77290547e-01,
+         -2.63796508e-01, -4.85747427e-01, -1.11685741e+00, -9.61463340e-03,
+          5.54329991e-01,  4.73214477e-01,  6.89440727e-01,  1.98159683e+00,
+         -7.92777717e-01, -3.18701684e-01,  1.62866843e+00,  5.21350741e-01,
+         -9.17787552e-02,  1.22535586e+00,  3.87497663e-01,  1.05727553e+00,
+         -8.16729069e-01, -4.27912325e-01,  2.18137741e+00, -3.44064027e-01,
+         -5.82393944e-01,  7.29744881e-02, -6.48371756e-01,  2.64575481e-01,
+         -2.43287161e-01,  8.08291435e-01, -1.08206534e+00, -7.13075995e-01,
+          3.47806096e-01,  1.45380449e+00, -9.59825397e-01,  4.42605406e-01,
+         -1.53037620e+00,  1.11589052e-01,  1.74840915e+00, -1.80988371e-01,
+         -2.27451533e-01,  1.37949610e+00, -2.29418010e-01, -2.11753869e+00,
+          5.37877530e-02, -1.21738106e-01,  1.67725897e+00, -8.51700008e-01,
+         -7.24946916e-01,  3.58513087e-01, -9.09551263e-01,  1.01820254e+00,
+         -5.18096566e-01, -8.56983960e-01,  5.45315556e-02, -9.60937679e-01,
+          2.06892347e+00,  5.62798619e-01,  2.40517855e-01, -7.55085468e-01,
+         -7.37217844e-01,  6.94262922e-01,  6.75707936e-01,  2.10493684e+00,
+         -8.92450094e-01, -1.26194939e-01, -2.89311469e-01, -4.99825031e-01,
+         -6.46954596e-01,  9.45282936e-01,  1.19754231e+00,  1.11596251e+00,
+          1.30287036e-01,  1.34182662e-01, -4.66208011e-02,  1.74735200e+00,
+         -2.07883596e+00,  8.70015204e-01, -6.66192055e-01,  8.24582040e-01,
+          3.82631510e-01, -3.37772816e-03, -1.82924688e+00,  8.53885710e-01,
+          1.35060036e+00, -2.35077620e+00, -9.64301825e-01, -9.22291875e-01,
+         -3.43890488e-02, -1.52384877e-01, -4.27951753e-01, -3.38636994e-01,
+         -1.12488830e+00,  3.86088312e-01, -2.19249889e-01, -4.65256214e-01,
+          2.24632807e-02,  4.69329506e-01, -1.70066166e+00,  5.30869253e-02,
+         -3.59252036e-01, -1.14260221e+00,  9.42845345e-01,  2.09084392e+00,
+         -1.73778832e-01, -3.42399091e-01,  1.96138012e+00,  1.03390276e+00,
+          7.43820488e-01, -4.27842706e-01,  2.65395308e+00, -1.59233284e+00,
+         -1.23535120e+00, -1.03680933e+00, -5.55007875e-01,  1.21784925e+00,
+          3.25657755e-01, -1.38429034e+00,  1.49650276e+00, -5.24281710e-02,
+         -1.22228408e+00,  9.80605304e-01,  3.45293760e-01, -2.22257304e+00,
+          1.45406532e+00,  1.75780439e+00, -5.07622838e-01, -8.67578268e-01,
+          1.25365722e+00,  1.61127090e+00,  8.86364132e-02, -7.97016323e-01,
+          3.78652573e+00,  1.52429473e+00,  4.98417497e-01,  1.26158431e-01,
+         -1.32435060e+00, -2.70462483e-02,  2.12659550e+00,  2.71972060e-01,
+          3.89701903e-01,  5.81727505e-01, -5.33393621e-01,  1.68297172e-01,
+          1.12691009e+00, -2.14809799e+00,  7.07140118e-02, -9.41466689e-01,
+          9.50127125e-01, -1.17413676e+00, -5.20791292e-01, -6.39725924e-01,
+         -1.52834463e+00,  7.58089125e-01,  9.08927441e-01,  1.18773592e+00,
+          3.80077094e-01, -1.08313739e+00, -2.30705619e+00, -3.18916626e-02,
+          5.82781136e-01,  1.22269356e+00, -5.82518697e-01,  9.13526118e-01,
+          6.68137610e-01,  6.72509372e-01,  1.41459262e+00,  3.44878387e+00,
+          1.80205286e-01,  4.08712953e-01,  4.89061624e-01, -1.65677333e+00,
+          1.15653121e+00, -6.59896612e-01,  1.66961026e+00,  7.46612847e-01,
+          1.44795215e+00,  2.02512413e-01,  1.52555752e+00, -1.88929772e+00,
+          1.25205219e+00,  1.63736892e+00,  8.00641060e-01, -6.57550916e-02,
+          8.33906591e-01, -1.11796606e+00,  8.06707263e-01,  6.05057716e-01,
+         -6.86488867e-01,  4.68320213e-02,  6.49019182e-01,  7.33435631e-01,
+          5.62433183e-01,  5.90512276e-01,  8.19202304e-01,  2.61351871e+00,
+          2.25497222e+00, -4.50343609e-01,  8.16882491e-01,  9.86058176e-01,
+         -4.89765137e-01, -1.42280245e+00,  1.32343209e+00,  1.14127629e-01,
+         -1.58944690e+00,  1.12282813e+00, -3.54313165e-01,  5.12052655e-01,
+          2.89746928e+00,  1.15659393e-01, -1.81904483e+00,  7.60365874e-02,
+          6.89350069e-01, -6.82971597e-01, -1.10063575e-01, -1.53701231e-01,
+         -1.71462643e+00,  3.39010715e-01, -2.88795590e-01, -2.80886889e-01,
+          1.81298566e+00, -2.09512901e+00,  2.60111511e-01,  8.43063235e-01,
+          2.20945859e+00, -1.18547332e+00,  1.47672796e+00,  3.33590364e+00,
+         -2.92077065e-01,  8.07725340e-02, -1.01349747e+00,  9.30176497e-01,
+         -3.36697876e-01,  1.52618635e+00, -6.62093580e-01, -4.24063206e-02,
+          2.60261208e-01, -2.04734111e+00,  1.41091156e+00, -9.85259712e-01,
+          3.58839178e+00, -2.01210946e-01, -8.82692635e-01, -9.60858613e-02,
+         -5.13311565e-01,  2.02291059e+00,  7.80956894e-02, -5.92864335e-01,
+         -6.13239646e-01,  1.43925643e+00, -3.84896755e-01, -4.52346951e-01,
+         -7.36313462e-01,  8.71528864e-01,  4.83760983e-01, -9.54005837e-01,
+          1.25693476e+00,  1.78812754e+00,  1.65511817e-01,  8.14098179e-01,
+         -3.25484097e-01,  4.12066698e-01, -3.54017138e-01, -1.01923037e+00,
+          2.87064338e+00,  4.72660810e-01, -2.96085691e+00,  7.72761181e-02,
+          6.49079859e-01,  1.81015730e-01, -9.82482076e-01,  3.10670346e-01,
+          7.07186878e-01,  6.51924551e-01, -7.54149318e-01,  4.94600534e-01,
+          1.39246833e+00,  6.51570857e-01,  6.81150317e-01, -7.67309904e-01,
+          1.26126432e+00, -1.44626665e+00, -2.63304979e-01,  1.05541563e+00,
+          8.71563971e-01,  3.13359141e-01, -4.66672987e-01,  8.92035007e-01,
+          7.09620595e-01,  1.51788974e+00,  2.78741568e-01, -7.32707083e-01,
+          4.60449338e-01, -1.64798999e+00,  6.55778885e-01, -2.15513825e-01,
+          2.18191996e-01,  2.17801109e-01,  1.31655538e+00, -6.47237822e-02,
+         -1.41394448e+00,  7.56928504e-01, -1.58998013e+00, -1.93426713e-01,
+          3.82033527e-01, -1.14337489e-01, -2.32150793e+00,  1.79714787e+00,
+         -3.00331682e-01,  1.22221196e+00, -1.20145297e+00, -2.24658251e-02,
+          7.72396997e-02, -1.56232551e-01,  4.00693387e-01, -1.81777132e+00,
+         -3.33133578e-01,  1.46574080e+00,  3.03896189e-01,  6.10566020e-01,
+          1.68221581e+00,  1.67767465e+00,  3.40515450e-02,  1.07923079e+00,
+          1.85124606e-01,  7.71321237e-01,  4.46126193e-01, -8.01494181e-01,
+          6.84733331e-01,  2.81091738e+00,  8.07298481e-01, -1.52068186e+00,
+          2.08570465e-01, -5.60703993e-01, -4.30248231e-01,  8.40121329e-01,
+          2.17731500e+00,  2.26651478e+00, -7.94445813e-01,  4.75257486e-01,
+          7.25711823e-01,  3.13898057e-01,  1.16560447e+00,  4.75197494e-01,
+         -1.51615119e+00,  1.63385868e+00, -8.64243150e-01,  1.78602266e+00,
+          1.30082405e+00,  3.82246315e-01, -9.29477215e-01,  3.55145872e-01,
+          5.00244856e-01,  2.83322901e-01,  1.14767745e-01, -6.64981067e-01,
+         -5.46770334e-01,  2.95079082e-01,  3.45784283e+00,  9.49268162e-01,
+          1.56064022e+00, -3.54641914e-01, -1.88014805e-01, -2.89182365e-01,
+         -1.00543630e+00,  3.76854897e+00, -5.96990943e-01,  1.70588851e-01,
+          5.77444792e-01,  8.05505753e-01,  4.57281733e+00, -4.25335616e-02,
+          4.39897358e-01,  5.82243025e-01,  7.99625576e-01,  3.48776031e+00,
+         -4.54860717e-01, -8.66277695e-01, -2.53542423e-01, -1.90401137e-01,
+          1.24581325e+00, -4.48000044e-01, -1.22507833e-01,  6.14332974e-01,
+         -2.04097223e+00, -3.19666505e-01,  1.20038939e+00,  1.71353614e+00,
+          1.37541854e+00,  8.45437586e-01, -1.82897121e-01,  1.69633865e+00,
+         -4.35264669e-02, -3.04192394e-01,  2.17714548e+00,  9.97018516e-01,
+         -1.41666687e+00, -3.65032285e-01, -3.09599429e-01,  5.54794073e-02,
+          5.13385892e-01, -1.21932089e+00,  6.50689721e-01,  1.30976295e+00,
+          6.17813826e-01, -1.07246196e+00, -6.03815556e-01,  1.19419885e+00,
+         -1.45969689e+00, -1.07936990e+00,  1.42703414e+00, -1.39560747e+00,
+          1.23875678e-01,  1.89803720e-01,  1.32760316e-01, -1.38257533e-01,
+          1.04425585e+00, -7.48664081e-01,  2.62297601e-01,  2.58277982e-01,
+          2.20354605e+00,  1.69106257e+00,  1.75718808e+00, -6.44365251e-01,
+          6.32335842e-01, -4.37777311e-01, -1.59645602e-01,  3.67448473e+00,
+          8.61295402e-01, -1.85730267e+00,  2.15829301e+00,  4.25209343e-01,
+         -2.84770274e+00, -7.22652555e-01, -7.90944338e-01,  5.33427119e-01,
+         -6.82249188e-01,  1.73812604e+00,  3.48125786e-01, -1.13730836e+00,
+         -1.59398067e+00, -1.23276937e+00, -1.56454968e+00, -5.11111319e-01,
+          9.36240256e-01,  1.99338585e-01, -3.10663462e-01,  2.79279612e-02,
+          1.22645962e+00, -3.05188686e-01, -1.73304713e+00,  8.84460881e-02,
+          1.95326865e+00,  1.41212618e+00, -2.77226716e-01,  5.91006935e-01,
+          4.68551755e-01,  1.02522030e-01,  8.08518708e-01,  1.12391758e+00,
+          2.49749273e-02,  2.06365061e+00,  3.00744116e-01,  5.14504075e-01,
+         -6.73361301e-01,  6.87589765e-01, -9.24695015e-01, -1.26773089e-01,
+          3.52496409e+00, -1.79435372e-01,  2.60994792e+00, -4.40918654e-01,
+          1.61146557e+00,  1.80635023e+00,  8.45393956e-01,  7.27212071e-01,
+         -8.48904252e-02, -8.08565140e-01,  5.54966569e-01,  1.12859404e+00,
+          6.42416573e+00,  5.67372847e+00,  1.68197668e+00, -1.32850826e-01,
+          1.45686746e-01,  3.01137656e-01, -5.31332456e-02,  1.13072908e+00,
+         -1.15182602e+00, -1.44492865e+00, -2.51777858e-01, -1.66045094e+00,
+          1.39508295e+00, -6.07053757e-01,  2.79627025e-01,  2.48411775e-01,
+          8.81852567e-01,  1.73596466e+00,  5.69104612e-01, -3.09880674e-01,
+         -2.21884155e+00,  8.25735211e-01, -4.42684710e-01, -1.28967786e+00,
+         -1.29794765e+00,  4.76010412e-01, -9.70079720e-01, -1.42925131e+00,
+         -1.77811682e+00, -2.28159285e+00, -1.39293432e+00, -6.20200753e-01,
+         -1.01984823e+00, -6.93325818e-01, -7.80144811e-01, -3.83614630e-01,
+         -1.04733741e+00, -8.15840185e-01, -1.77643195e-01, -2.31900796e-01,
+         -2.33438373e+00, -3.09493065e-01, -1.03312242e+00, -7.51952887e-01,
+          4.44824219e-01,  5.95110297e-01, -2.12750182e-01, -5.23008347e-01,
+         -7.72870719e-01,  2.92059574e-02, -7.20720217e-02, -9.45419073e-01,
+         -6.92637742e-01, -6.27771854e-01, -1.09381795e+00, -1.41185820e+00,
+         -1.27222466e+00, -1.13925505e+00, -1.08445263e+00, -1.24804521e+00,
+         -1.20845962e+00, -1.62248576e+00,  8.69166553e-01, -7.88919628e-01,
+          3.21004540e-01,  2.50762701e-03, -1.58091378e+00,  1.53193939e+00,
+         -1.07102931e+00, -1.19581747e+00,  2.20489359e+00,  7.49585152e-01,
+         -1.16780663e+00, -3.43094349e-01, -3.94153506e-01, -1.53491175e+00,
+          1.96143523e-01, -2.38361508e-01,  5.31994402e-01, -5.13521314e-01,
+         -6.37398005e-01,  6.79887176e-01, -5.63969254e-01, -2.12098986e-01,
+         -1.01498377e+00,  3.28904718e-01, -1.21130145e+00, -9.55239654e-01,
+         -1.21223116e+00, -1.93880606e+00, -1.62132764e+00, -1.09524786e+00,
+         -1.19689929e+00, -2.46728063e+00,  2.83215612e-01,  7.78449237e-01]],
+       device='cuda:0')
+Adv example prediction (first 2 examples and 2 restarts):
+ tensor([[[-7.34766722e-01,  1.55023479e+00, -8.92344236e-01, -1.05834258e+00,
+          -8.48348022e-01,  1.75530598e-01, -3.31457198e-01, -1.35626173e+00,
+          -1.16984606e+00, -5.33080101e-01, -2.07304567e-01,  3.89285177e-01,
+           3.07726026e-01, -1.26401052e-01,  5.30574799e-01,  3.95412624e-01,
+           2.08956320e-02, -6.18874311e-01, -4.76877600e-01, -2.21905261e-01,
+          -5.18095970e-01,  4.91564393e-01,  3.96659970e-01, -3.65044743e-01,
+           4.09947008e-01, -8.77278030e-01,  3.12176883e-01, -8.15396309e-01,
+          -1.19350159e+00,  6.97664738e-01, -1.37999308e+00,  5.01276791e-01,
+          -7.02010751e-01, -1.30329025e+00, -1.49372149e+00, -1.15348125e+00,
+           4.78957504e-01, -1.66633582e+00, -2.99439430e-01, -6.16755247e-01,
+           7.08374441e-01, -1.23959064e+00, -1.15583801e+00, -3.88706863e-01,
+          -2.72815555e-01, -5.82802474e-01,  9.48323190e-01, -3.15662742e-01,
+          -1.38186109e+00, -2.64148951e-01,  4.91572410e-01, -1.92722571e+00,
+          -2.93564409e-01, -3.57284248e-02, -9.91610765e-01, -2.38534510e-01,
+          -5.74998856e-01, -1.44228506e+00, -2.85725117e-01,  3.28133404e-01,
+          -3.45019460e-01, -7.66603172e-01, -1.05004549e+00,  2.38375872e-01,
+           3.37193131e-01, -7.69900441e-01, -8.17503631e-01, -5.49446225e-01,
+          -1.33766377e+00, -1.90338206e+00,  3.35864604e-01,  2.56668597e-01,
+           1.01964116e+00,  1.62196839e+00,  1.51789320e+00,  1.54438281e+00,
+           6.88707054e-01,  1.61325896e+00,  7.65868723e-01,  7.84325361e-01,
+           7.53058374e-01, -1.79065025e+00, -1.13356709e-02, -9.59093273e-01,
+          -8.71323198e-02, -4.11553025e-01, -1.03032339e+00,  1.59526765e-01,
+           4.70500350e-01, -5.96883118e-01, -3.70044261e-02, -5.69452643e-01,
+           4.36082780e-01,  3.96362871e-01,  6.46049201e-01, -4.61382687e-01,
+           8.61672759e-01, -1.14347053e+00, -6.52688220e-02, -5.15176713e-01,
+           5.32992721e-01, -1.11852038e+00, -1.86107290e+00,  3.34123284e-01,
+          -3.99199545e-01, -9.36233461e-01, -8.47768903e-01, -9.52896178e-01,
+          -8.16411912e-01, -1.36398292e+00, -4.86532927e-01,  1.92592275e+00,
+          -4.10006940e-01,  3.23141575e-01, -7.05192089e-02, -1.17655742e+00,
+          -1.07290614e+00,  1.03025854e-01, -1.35251367e+00, -1.85431409e+00,
+          -1.53057611e+00, -1.63419151e+00, -1.30585229e+00, -2.17374229e+00,
+          -1.34106517e+00, -1.59760320e+00,  5.92889547e-01, -2.00280473e-01,
+           8.89809251e-01,  4.34668928e-01, -6.79926574e-02, -3.07556003e-01,
+           7.52588868e-01,  1.68176815e-01,  1.13962919e-01, -7.76822716e-02,
+          -6.69106185e-01,  2.38058925e-01, -1.35406181e-01, -1.78562641e+00,
+          -1.99453771e+00, -5.86335957e-02, -6.30214214e-01, -9.15280879e-01,
+          -8.41861486e-01, -3.53530616e-01, -8.80758762e-01,  2.83496469e-01,
+          -3.97945046e-01, -1.78774282e-01, -9.75996315e-01,  5.32194853e-01,
+           1.23820081e-02,  5.82804441e-01,  4.08609271e-01, -2.76367396e-01,
+          -4.00787503e-01,  2.16241598e-01, -7.41326392e-01, -1.02660811e+00,
+          -4.83485520e-01, -5.19044399e-01, -1.70223802e-01, -3.94003600e-01,
+          -5.81417561e-01, -7.77042270e-01, -6.93921268e-01, -8.00875962e-01,
+          -1.24240465e-01, -2.50175714e-01, -6.62937105e-01, -4.96755600e-01,
+          -1.44380391e+00, -1.22171283e-01, -3.57491314e-01, -4.79762793e-01,
+          -1.40324533e+00, -5.65094292e-01, -4.88691181e-01, -1.37690592e+00,
+          -1.08607948e+00, -2.35665306e-01, -1.51284784e-03,  2.11869985e-01,
+           6.67717680e-02, -3.52886170e-01,  8.66903663e-02,  5.66079021e-01,
+          -1.96027711e-01, -2.53286868e-01, -2.53992915e-01,  8.72849584e-01,
+          -2.85880476e-01, -3.56616467e-01, -5.55814981e-01,  6.70721173e-01,
+          -3.57415855e-01, -5.53893030e-01, -1.06443489e+00,  4.91052061e-01,
+          -1.19797185e-01, -1.03570712e+00, -1.68295115e-01,  9.34029758e-01,
+           9.20231938e-02, -5.55500925e-01, -8.45712602e-01, -3.42589468e-01,
+          -5.63619852e-01, -7.40495503e-01, -1.41488969e+00, -4.62878674e-01,
+          -1.37108117e-01, -7.93714464e-01, -4.00665283e-01, -4.36790764e-01,
+          -2.04927623e-01, -1.81670263e-02, -8.74853432e-01, -4.80697542e-01,
+          -3.05992186e-01, -1.27585337e-01, -2.54818201e-02,  3.41384381e-01,
+           3.47236156e-01, -1.00754774e+00, -3.05586576e-01, -7.22315133e-01,
+          -7.13368654e-01,  6.84448063e-01, -3.94542426e-01,  2.48964757e-01,
+          -6.81285262e-01,  2.02319305e-03, -4.54256237e-01, -1.97872221e-01,
+          -6.58274531e-01, -7.31742606e-02, -6.55854225e-01,  2.40186751e-02,
+          -4.93091106e-01, -5.76264501e-01, -1.23773217e-01, -1.17069554e+00,
+          -3.79719794e-01,  1.15573153e-01, -8.56442511e-01, -1.74635015e-02,
+           4.22622979e-01,  6.20751858e-01,  2.23427042e-01, -1.01282537e+00,
+           7.61801064e-01, -5.44926710e-03,  8.57155144e-01, -8.73705685e-01,
+          -6.08759165e-01,  5.37020028e-01,  7.28529155e-01,  1.11326623e+00,
+           1.08850980e+00,  1.41627565e-01, -4.55045938e-01, -3.73874694e-01,
+          -2.99187362e-01,  7.25888669e-01, -4.93646301e-02, -3.13102156e-02,
+          -1.45406282e+00,  1.22996736e+00,  1.37612808e+00,  6.23412848e-01,
+           8.88648927e-01,  5.46625376e-01,  5.18600464e-01,  1.28464282e-01,
+           1.94592893e-01,  1.29825830e+00,  6.05759025e-01,  1.29764915e+00,
+           8.68998706e-01,  2.20108628e+00,  2.05360317e+00,  3.07712698e+00,
+           2.40077019e+00,  1.51336563e+00,  4.46310192e-02,  1.47670484e+00,
+           3.34682256e-01,  3.06530029e-01,  1.13635719e-01,  9.84514505e-02,
+           1.73806399e-01,  5.44664145e-01, -4.85193342e-01, -1.26306564e-01,
+           3.38901013e-01,  2.62731351e-02, -7.51987815e-01,  2.89839566e-01,
+          -1.40831292e+00,  1.06797181e-01, -2.51448065e-01, -4.12394524e-01,
+          -6.03436232e-01, -2.06943297e+00, -3.51286717e-02,  2.67089456e-02,
+           1.20749891e-01, -4.64773148e-01,  8.38843465e-01,  1.16638780e+00,
+          -1.61481410e-01,  1.24387991e+00,  8.24432075e-01,  4.14752752e-01,
+           2.49330979e-02, -1.12954235e+00,  1.16039455e+00,  8.05872679e-01,
+           4.06522900e-01, -1.67682815e+00, -1.10571086e+00, -9.11121607e-01,
+          -8.75007272e-01, -1.55230141e+00, -1.15995646e+00, -3.17737728e-01,
+          -1.65513825e+00, -1.58297575e+00,  2.49298047e-02,  7.57830560e-01,
+           1.98871839e+00,  1.33092314e-01, -4.24613684e-01,  2.20353723e-01,
+          -1.51295710e+00,  6.93650544e-01, -5.30842125e-01, -1.94920540e+00,
+          -7.14825571e-01, -6.14083588e-01, -1.00921500e+00, -1.46458387e+00,
+          -9.89962876e-01, -1.76075768e+00, -1.77801716e+00, -4.69594806e-01,
+          -2.59096169e+00, -1.59188879e+00, -1.74013007e+00, -1.23969781e+00,
+          -8.68893147e-01, -1.25042510e+00, -1.40321457e+00, -1.19740629e+00,
+           2.51847535e-01,  4.60529327e-01,  4.67337400e-01,  4.02176261e-01,
+          -1.88582420e-01,  4.06005114e-01, -4.55307066e-02, -9.63555157e-01,
+          -6.84532344e-01, -6.31231964e-02,  2.16252059e-01,  2.08365425e-01,
+           9.29488957e-01,  9.55345109e-04,  6.36189342e-01, -4.58024800e-01,
+          -3.24129671e-01,  5.00108063e-01,  6.95780814e-01, -1.03651553e-01,
+           4.88527209e-01,  7.05334842e-01,  1.18519819e+00, -1.75054953e-01,
+           8.23900461e-01,  1.96264118e-01,  5.98066092e-01,  7.38341734e-02,
+           3.54285300e-01, -7.59092331e-01, -1.00561702e+00, -6.00467622e-01,
+          -8.28278959e-01, -3.73053402e-01, -1.39737773e+00, -7.34147489e-01,
+          -5.64519048e-01, -1.96381474e+00, -9.68812764e-01,  1.71484984e-02,
+          -1.71535885e+00, -1.09820247e+00, -2.43036553e-01,  1.54197395e+00,
+           5.21592163e-02, -2.90363908e-01,  4.69346702e-01, -1.23030615e+00,
+          -1.62715167e-01,  7.15971410e-01, -7.60510862e-02, -3.25090736e-01,
+          -1.51908958e+00,  2.49984860e+00, -1.46999586e+00,  1.13119662e+00,
+           2.59737432e-01,  8.55643272e-01,  5.08029640e-01, -1.58822262e+00,
+           1.59969842e+00,  7.31322587e-01,  1.69032347e+00,  9.93783057e-01,
+           5.30569017e-01,  7.05919087e-01, -1.10844329e-01, -4.46138144e-01,
+          -2.70051867e-01, -8.54459763e-01,  1.22930431e+00, -9.23096538e-01,
+          -2.81857252e-01, -5.13876557e-01, -1.11405051e+00,  8.85826945e-02,
+           5.36530972e-01,  4.61519539e-01,  8.13740790e-01,  2.07112956e+00,
+          -7.66977847e-01, -3.26243162e-01,  1.58838248e+00,  4.62631583e-01,
+          -8.98612142e-02,  1.23253322e+00,  4.28035289e-01,  1.14364111e+00,
+          -8.34835291e-01, -4.52669442e-01,  2.25770211e+00, -3.26105654e-01,
+          -5.65032840e-01,  5.68263046e-02, -6.93162322e-01,  2.28196979e-01,
+          -1.71765476e-01,  8.40504825e-01, -1.04305637e+00, -6.68836594e-01,
+           3.01653951e-01,  1.54971850e+00, -9.38705921e-01,  4.53745723e-01,
+          -1.53180742e+00,  1.52926654e-01,  1.72510529e+00, -1.49870247e-01,
+          -1.88435435e-01,  1.36036956e+00, -1.99358553e-01, -2.09449530e+00,
+           8.70267749e-02, -1.63270310e-01,  1.70991576e+00, -8.73239338e-01,
+          -7.66643822e-01,  2.98973292e-01, -8.37005973e-01,  1.05775738e+00,
+          -4.80145723e-01, -8.53060365e-01,  1.32251993e-01, -9.54757512e-01,
+           2.15477943e+00,  5.67304969e-01,  2.66527474e-01, -7.67638922e-01,
+          -7.54690945e-01,  7.46913612e-01,  6.63682342e-01,  2.16587186e+00,
+          -9.85910416e-01, -6.87279403e-02, -2.92683274e-01, -5.87222576e-01,
+          -5.98654091e-01,  9.36332405e-01,  1.16830897e+00,  1.17151213e+00,
+           2.07047656e-01,  1.98421210e-01,  6.44992143e-02,  1.70471418e+00,
+          -2.08635831e+00,  9.04666305e-01, -6.84604764e-01,  8.01421583e-01,
+           4.36490864e-01,  5.12298234e-02, -1.83956957e+00,  8.56080592e-01,
+           1.43603790e+00, -2.33703709e+00, -1.03200066e+00, -9.52561855e-01,
+          -7.18210042e-02, -1.31851807e-01, -4.08451557e-01, -2.57168472e-01,
+          -1.07260561e+00,  4.17977542e-01, -2.28303462e-01, -4.01026130e-01,
+           1.10253051e-01,  4.57564205e-01, -1.76315188e+00,  7.50248805e-02,
+          -3.47445369e-01, -1.11181355e+00,  1.02827668e+00,  2.17983365e+00,
+          -1.31767198e-01, -2.87184298e-01,  2.00799537e+00,  1.07750475e+00,
+           7.90693223e-01, -3.63160282e-01,  2.67399955e+00, -1.60904860e+00,
+          -1.23885608e+00, -1.07583904e+00, -4.72132117e-01,  1.31728959e+00,
+           2.46735752e-01, -1.38197088e+00,  1.51853216e+00, -2.04712152e-04,
+          -1.24309874e+00,  1.09777153e+00,  3.79273355e-01, -2.20607853e+00,
+           1.50073338e+00,  1.83366406e+00, -4.99145061e-01, -8.69879842e-01,
+           1.37269318e+00,  1.64110315e+00,  1.15388587e-01, -7.52256691e-01,
+           3.81324911e+00,  1.55804026e+00,  4.92160916e-01,  1.55692473e-01,
+          -1.31920457e+00,  3.42697352e-02,  2.19152021e+00,  2.82017708e-01,
+           4.75807160e-01,  6.64524794e-01, -5.22548020e-01,  1.36311710e-01,
+           1.23255503e+00, -2.12975740e+00,  1.09943986e-01, -9.39490259e-01,
+           9.52621520e-01, -1.17982829e+00, -5.92530787e-01, -5.99124908e-01,
+          -1.57882702e+00,  7.57724822e-01,  9.83539820e-01,  1.27881289e+00,
+           4.58047926e-01, -1.00354993e+00, -2.28907347e+00, -7.65989125e-02,
+           5.60018837e-01,  1.20450151e+00, -5.78548789e-01,  8.93993378e-01,
+           7.76368022e-01,  7.41266072e-01,  1.39790010e+00,  3.54842806e+00,
+           2.22085953e-01,  4.14220184e-01,  5.26201546e-01, -1.64850748e+00,
+           1.07284176e+00, -6.39693856e-01,  1.77225697e+00,  7.42783129e-01,
+           1.46852386e+00,  2.37548709e-01,  1.49293745e+00, -1.89781463e+00,
+           1.19347823e+00,  1.71595049e+00,  8.37894917e-01, -4.15900834e-02,
+           8.93114388e-01, -1.06785357e+00,  8.83887827e-01,  6.57000244e-01,
+          -7.21926808e-01,  8.75458941e-02,  7.45820224e-01,  7.34078705e-01,
+           5.39042413e-01,  6.63830280e-01,  7.93361902e-01,  2.71620369e+00,
+           2.36345196e+00, -4.70338732e-01,  8.37164581e-01,  8.76152039e-01,
+          -4.26895499e-01, -1.44772029e+00,  1.36194301e+00,  1.43766508e-01,
+          -1.58218741e+00,  1.10691643e+00, -3.74811977e-01,  4.85280842e-01,
+           2.98904061e+00,  6.07472025e-02, -1.81989694e+00,  4.51801755e-02,
+           7.17175007e-01, -6.49292231e-01, -9.32222828e-02, -1.29440531e-01,
+          -1.65181613e+00,  2.94861078e-01, -2.27119640e-01, -2.33853906e-01,
+           1.75035119e+00, -2.11701703e+00,  3.52844298e-01,  8.52466881e-01,
+           2.24786592e+00, -1.18220067e+00,  1.51976728e+00,  3.43175864e+00,
+          -2.45198756e-01, -1.12435315e-03, -9.64704514e-01,  1.03026414e+00,
+          -3.17799598e-01,  1.54368412e+00, -6.38423264e-01, -2.61104126e-02,
+           2.73720413e-01, -2.01577902e+00,  1.44817805e+00, -9.96239483e-01,
+           3.66992140e+00, -2.00875044e-01, -9.30061519e-01, -5.01742475e-02,
+          -4.53381389e-01,  2.18838882e+00,  5.20217828e-02, -5.98804176e-01,
+          -5.83240509e-01,  1.53447795e+00, -3.95417154e-01, -4.73591834e-01,
+          -7.91047633e-01,  7.90417135e-01,  5.06011903e-01, -9.06265974e-01,
+           1.22399211e+00,  1.87091243e+00,  1.98319107e-01,  8.02791893e-01,
+          -3.83242011e-01,  3.98131371e-01, -4.06098843e-01, -9.34633613e-01,
+           2.94895196e+00,  4.75614280e-01, -3.01650786e+00,  9.52586979e-02,
+           6.74865305e-01,  8.05469006e-02, -9.95273709e-01,  3.19465727e-01,
+           7.10614443e-01,  7.61222064e-01, -7.33864188e-01,  4.71997172e-01,
+           1.43963397e+00,  6.56496644e-01,  6.47356510e-01, -7.50767231e-01,
+           1.28985560e+00, -1.43432164e+00, -1.87953234e-01,  1.11502123e+00,
+           8.57391834e-01,  4.32658195e-01, -4.40774739e-01,  9.11667466e-01,
+           6.96908295e-01,  1.57957816e+00,  2.46514872e-01, -8.14330995e-01,
+           5.09303987e-01, -1.64913189e+00,  6.65217280e-01, -2.17185467e-01,
+           1.92517579e-01,  3.62213105e-01,  1.31451511e+00, -7.66900927e-02,
+          -1.46510410e+00,  8.12227666e-01, -1.69121623e+00, -9.34153274e-02,
+           4.15397495e-01, -1.30653650e-01, -2.33754063e+00,  1.75334620e+00,
+          -2.53236294e-01,  1.20774162e+00, -1.15756822e+00,  8.63362402e-02,
+           1.04220331e-01, -1.72394231e-01,  4.16050702e-01, -1.82379627e+00,
+          -3.56052041e-01,  1.51863432e+00,  3.59461963e-01,  6.24104381e-01,
+           1.64115822e+00,  1.75248551e+00,  2.60378346e-02,  1.08726966e+00,
+           2.47716486e-01,  7.78005004e-01,  5.79925001e-01, -7.84705222e-01,
+           7.03006387e-01,  2.86212325e+00,  8.80162179e-01, -1.49350929e+00,
+           2.48083174e-01, -4.68492329e-01, -4.53531265e-01,  9.00125146e-01,
+           2.28684616e+00,  2.29926085e+00, -7.38033354e-01,  4.29637671e-01,
+           7.38781810e-01,  3.57893229e-01,  1.15390420e+00,  4.77969378e-01,
+          -1.50589168e+00,  1.63430750e+00, -8.58499050e-01,  1.82825112e+00,
+           1.26132643e+00,  4.34032440e-01, -9.02626753e-01,  4.46274579e-01,
+           5.39627552e-01,  2.55523354e-01,  1.44060776e-01, -6.65528953e-01,
+          -5.59861660e-01,  3.02802294e-01,  3.52094364e+00,  9.02348757e-01,
+           1.53200912e+00, -2.84468055e-01, -1.39682531e-01, -2.44572654e-01,
+          -9.77948725e-01,  3.81262016e+00, -5.58521628e-01,  2.30181769e-01,
+           5.83074570e-01,  8.79041672e-01,  4.77206898e+00, -1.02685571e-01,
+           4.50761437e-01,  6.87887609e-01,  7.36976624e-01,  3.61870193e+00,
+          -4.10059482e-01, -8.64315152e-01, -2.88763911e-01, -1.87947065e-01,
+           1.28372800e+00, -4.27118629e-01, -7.89163932e-02,  6.48927033e-01,
+          -2.00916815e+00, -2.91378021e-01,  1.23957658e+00,  1.81771004e+00,
+           1.38153875e+00,  8.01397979e-01, -2.37377346e-01,  1.74884713e+00,
+          -1.06710084e-02, -3.28014344e-01,  2.23317456e+00,  1.11493254e+00,
+          -1.38824761e+00, -3.92299265e-01, -3.04458499e-01,  8.23722929e-02,
+           5.94762862e-01, -1.23803759e+00,  6.09813452e-01,  1.40438116e+00,
+           6.69255793e-01, -1.02179098e+00, -5.65614939e-01,  1.23726821e+00,
+          -1.46108449e+00, -1.11772990e+00,  1.52330041e+00, -1.37604403e+00,
+           1.30574375e-01,  2.36108214e-01,  9.60650891e-02, -1.01033844e-01,
+           1.09650421e+00, -7.23102450e-01,  3.33028197e-01,  2.79170126e-01,
+           2.24353766e+00,  1.67228138e+00,  1.78576708e+00, -6.50996149e-01,
+           6.96818352e-01, -4.14202332e-01, -7.95349926e-02,  3.76902413e+00,
+           8.94696951e-01, -1.85885406e+00,  2.26913953e+00,  4.01368976e-01,
+          -2.94115663e+00, -7.12976575e-01, -7.59717405e-01,  5.92024088e-01,
+          -7.21909583e-01,  1.82298100e+00,  3.14651519e-01, -1.11377501e+00,
+          -1.61524355e+00, -1.21431875e+00, -1.52147865e+00, -4.76065218e-01,
+           1.02802360e+00,  2.53355384e-01, -2.85969675e-01, -2.64691748e-02,
+           1.23687875e+00, -2.41154611e-01, -1.72641861e+00,  8.30571055e-02,
+           2.04994798e+00,  1.47044921e+00, -2.68628478e-01,  6.72370493e-01,
+           5.02531111e-01,  1.38123617e-01,  8.63020658e-01,  1.15708959e+00,
+           1.25157937e-01,  2.08660555e+00,  3.71300876e-01,  5.84087372e-01,
+          -6.68233275e-01,  7.14801371e-01, -9.08377171e-01, -1.54816553e-01,
+           3.58301067e+00, -1.25448436e-01,  2.71113658e+00, -4.76880550e-01,
+           1.70261979e+00,  1.88907826e+00,  8.94176543e-01,  7.46689975e-01,
+          -7.35432059e-02, -9.09099221e-01,  5.02521634e-01,  1.22298980e+00,
+           6.52474880e+00,  5.84064150e+00,  1.67074490e+00, -1.13608211e-01,
+           2.03255981e-01,  3.08420300e-01, -6.60844445e-02,  1.15683925e+00,
+          -1.21518934e+00, -1.43981862e+00, -3.37416589e-01, -1.57741559e+00,
+           1.40025723e+00, -5.81960320e-01,  3.31337571e-01,  2.58599430e-01,
+           9.29241896e-01,  1.76472366e+00,  6.03695393e-01, -3.05130988e-01,
+          -2.22170925e+00,  8.02847981e-01, -5.10996759e-01, -1.30096543e+00,
+          -1.24797630e+00,  5.26665330e-01, -9.82968867e-01, -1.41685462e+00,
+          -1.79002678e+00, -2.28182459e+00, -1.38182080e+00, -5.94991326e-01,
+          -1.00609314e+00, -6.55815601e-01, -7.59723902e-01, -4.15351182e-01,
+          -1.10019791e+00, -8.64971936e-01, -1.85937062e-01, -2.63558924e-01,
+          -2.38241553e+00, -3.57348621e-01, -1.11068690e+00, -7.66761720e-01,
+           4.35137689e-01,  5.48394680e-01, -2.33156264e-01, -5.48210382e-01,
+          -8.61030757e-01,  3.07320375e-02, -5.07979468e-02, -9.31016207e-01,
+          -7.43015349e-01, -6.84309125e-01, -1.04827607e+00, -1.42963362e+00,
+          -1.31546438e+00, -1.10014415e+00, -1.10155523e+00, -1.21819985e+00,
+          -1.19804490e+00, -1.57550752e+00,  8.76757205e-01, -7.99196839e-01,
+           3.49361837e-01, -3.56646106e-02, -1.60802329e+00,  1.56864500e+00,
+          -1.11635518e+00, -1.14403903e+00,  2.19892573e+00,  6.98338449e-01,
+          -1.22598362e+00, -3.21240664e-01, -4.33772624e-01, -1.56541455e+00,
+           1.64738074e-01, -2.62008727e-01,  6.52727842e-01, -4.84788060e-01,
+          -6.63409293e-01,  6.38988137e-01, -6.42518759e-01, -2.10686922e-01,
+          -1.07960796e+00,  2.43405446e-01, -1.25569808e+00, -9.54826355e-01,
+          -1.22749448e+00, -2.01821113e+00, -1.72600639e+00, -1.12234235e+00,
+          -1.24220288e+00, -2.50684023e+00,  2.57932007e-01,  8.90717924e-01]]],
+       device='cuda:0')
+PGD attack margin (first 2 examples and 10 specs):
+ tensor([[[1.09008968]]], device='cuda:0')
+number of violation:  0
+Attack finished in 7.9836 seconds.
+PGD attack failed
+verified_status unknown
+verified_success False
+Total VNNLIB file length: 1, max property batch size: 1, total number of batches: 1
+
+Properties batch 0, size 1
+Remaining timeout: 1148.0079798698425
+Verifying property 0 with 1 instances.
+torch allclose failed: norm 8.889588571037166e-06
+Model: BoundedModule(
+  (/input-1): BoundInput(name=/input-1, inputs=[], perturbed=True)
+  (/33): BoundParams(name=/33, inputs=[], perturbed=False)
+  (/34): BoundParams(name=/34, inputs=[], perturbed=False)
+  (/35): BoundParams(name=/35, inputs=[], perturbed=False)
+  (/36): BoundParams(name=/36, inputs=[], perturbed=False)
+  (/37): BoundParams(name=/37, inputs=[], perturbed=False)
+  (/38): BoundParams(name=/38, inputs=[], perturbed=False)
+  (/39): BoundParams(name=/39, inputs=[], perturbed=False)
+  (/40): BoundParams(name=/40, inputs=[], perturbed=False)
+  (/41): BoundParams(name=/41, inputs=[], perturbed=False)
+  (/42): BoundParams(name=/42, inputs=[], perturbed=False)
+  (/43): BoundParams(name=/43, inputs=[], perturbed=False)
+  (/44): BoundParams(name=/44, inputs=[], perturbed=False)
+  (/45): BoundParams(name=/45, inputs=[], perturbed=False)
+  (/46): BoundParams(name=/46, inputs=[], perturbed=False)
+  (/47): BoundParams(name=/47, inputs=[], perturbed=False)
+  (/48): BoundParams(name=/48, inputs=[], perturbed=False)
+  (/49): BoundParams(name=/49, inputs=[], perturbed=False)
+  (/50): BoundParams(name=/50, inputs=[], perturbed=False)
+  (/51): BoundParams(name=/51, inputs=[], perturbed=False)
+  (/52): BoundParams(name=/52, inputs=[], perturbed=False)
+  (/53): BoundParams(name=/53, inputs=[], perturbed=False)
+  (/54): BoundParams(name=/54, inputs=[], perturbed=False)
+  (/55): BoundParams(name=/55, inputs=[], perturbed=False)
+  (/56): BoundParams(name=/56, inputs=[], perturbed=False)
+  (/57): BoundParams(name=/57, inputs=[], perturbed=False)
+  (/58): BoundParams(name=/58, inputs=[], perturbed=False)
+  (/59): BoundParams(name=/59, inputs=[], perturbed=False)
+  (/60): BoundParams(name=/60, inputs=[], perturbed=False)
+  (/61): BoundParams(name=/61, inputs=[], perturbed=False)
+  (/62): BoundParams(name=/62, inputs=[], perturbed=False)
+  (/63): BoundParams(name=/63, inputs=[], perturbed=False)
+  (/64): BoundParams(name=/64, inputs=[], perturbed=False)
+  (/input): BoundConv(name=/input, inputs=[/input-1, /33, /34], perturbed=True)
+  (/66): BoundRelu(name=/66, inputs=[/input], perturbed=True)
+  (/input-4): BoundConv(name=/input-4, inputs=[/66, /35, /36], perturbed=True)
+  (/68): BoundRelu(name=/68, inputs=[/input-4], perturbed=True)
+  (/input-12): BoundConv(name=/input-12, inputs=[/input-8/add_3_4, /37, /38], perturbed=True)
+  (/71): BoundRelu(name=/71, inputs=[/input-12], perturbed=True)
+  (/input-16): BoundConv(name=/input-16, inputs=[/71, /39, /40], perturbed=True)
+  (/73): BoundRelu(name=/73, inputs=[/input-16], perturbed=True)
+  (/input-24): BoundConv(name=/input-24, inputs=[/input-20/add_3_4, /41, /42], perturbed=True)
+  (/76): BoundRelu(name=/76, inputs=[/input-24], perturbed=True)
+  (/input-28): BoundConv(name=/input-28, inputs=[/76, /43, /44], perturbed=True)
+  (/78): BoundRelu(name=/78, inputs=[/input-28], perturbed=True)
+  (/input-32): BoundConv(name=/input-32, inputs=[/78, /45, /46], perturbed=True)
+  (/80): BoundRelu(name=/80, inputs=[/input-32], perturbed=True)
+  (/input-40): BoundConv(name=/input-40, inputs=[/input-36/add_3_4, /47, /48], perturbed=True)
+  (/83): BoundRelu(name=/83, inputs=[/input-40], perturbed=True)
+  (/input-44): BoundConv(name=/input-44, inputs=[/83, /49, /50], perturbed=True)
+  (/85): BoundRelu(name=/85, inputs=[/input-44], perturbed=True)
+  (/input-48): BoundConv(name=/input-48, inputs=[/85, /51, /52], perturbed=True)
+  (/87): BoundRelu(name=/87, inputs=[/input-48], perturbed=True)
+  (/input-56): BoundConv(name=/input-56, inputs=[/input-52/add_3_4, /53, /54], perturbed=True)
+  (/90): BoundRelu(name=/90, inputs=[/input-56], perturbed=True)
+  (/input-60): BoundConv(name=/input-60, inputs=[/90, /55, /56], perturbed=True)
+  (/92): BoundRelu(name=/92, inputs=[/input-60], perturbed=True)
+  (/input-64): BoundConv(name=/input-64, inputs=[/92, /57, /58], perturbed=True)
+  (/94): BoundRelu(name=/94, inputs=[/input-64], perturbed=True)
+  (/96): BoundFlatten(name=/96, inputs=[/95/add_3_4], perturbed=True)
+  (/input-68): BoundLinear(name=/input-68, inputs=[/96, /59, /60], perturbed=True)
+  (/98): BoundRelu(name=/98, inputs=[/input-68], perturbed=True)
+  (/99): BoundFlatten(name=/99, inputs=[/98], perturbed=True)
+  (/input-72): BoundLinear(name=/input-72, inputs=[/99, /61, /62], perturbed=True)
+  (/101): BoundRelu(name=/101, inputs=[/input-72], perturbed=True)
+  (/102): BoundFlatten(name=/102, inputs=[/101], perturbed=True)
+  (/103): BoundLinear(name=/103, inputs=[/102, /63, /64], perturbed=True)
+  (/input-8/conv_1): BoundConv(name=/input-8/conv_1, inputs=[/68, /input-8/conv_1_w], perturbed=True)
+  (/input-8/conv_1_relu): BoundRelu(name=/input-8/conv_1_relu, inputs=[/input-8/conv_1], perturbed=True)
+  (/input-8/conv_1_w): BoundParams(name=/input-8/conv_1_w, inputs=[], perturbed=False)
+  (/input-8/conv_2): BoundConv(name=/input-8/conv_2, inputs=[/68, /input-8/conv_2_w], perturbed=True)
+  (/input-8/conv_2_w): BoundParams(name=/input-8/conv_2_w, inputs=[], perturbed=False)
+  (/input-8/conv_3): BoundConv(name=/input-8/conv_3, inputs=[/input-8/add_1_2, /input-8/conv_3_w], perturbed=True)
+  (/input-8/conv_3_relu): BoundRelu(name=/input-8/conv_3_relu, inputs=[/input-8/conv_3], perturbed=True)
+  (/input-8/conv_3_w): BoundParams(name=/input-8/conv_3_w, inputs=[], perturbed=False)
+  (/input-8/conv_4): BoundConv(name=/input-8/conv_4, inputs=[/input-8/add_1_2, /input-8/conv_4_w], perturbed=True)
+  (/input-8/conv_4_w): BoundParams(name=/input-8/conv_4_w, inputs=[], perturbed=False)
+  (/input-8/add_1_2): BoundAdd(name=/input-8/add_1_2, inputs=[/input-8/conv_1_relu, /input-8/conv_2], perturbed=True)
+  (/input-8/add_3_4): BoundAdd(name=/input-8/add_3_4, inputs=[/input-8/conv_3_relu, /input-8/conv_4], perturbed=True)
+  (/input-20/conv_1): BoundConv(name=/input-20/conv_1, inputs=[/73, /input-20/conv_1_w], perturbed=True)
+  (/input-20/conv_1_relu): BoundRelu(name=/input-20/conv_1_relu, inputs=[/input-20/conv_1], perturbed=True)
+  (/input-20/conv_1_w): BoundParams(name=/input-20/conv_1_w, inputs=[], perturbed=False)
+  (/input-20/conv_2): BoundConv(name=/input-20/conv_2, inputs=[/73, /input-20/conv_2_w], perturbed=True)
+  (/input-20/conv_2_w): BoundParams(name=/input-20/conv_2_w, inputs=[], perturbed=False)
+  (/input-20/conv_3): BoundConv(name=/input-20/conv_3, inputs=[/input-20/add_1_2, /input-20/conv_3_w], perturbed=True)
+  (/input-20/conv_3_relu): BoundRelu(name=/input-20/conv_3_relu, inputs=[/input-20/conv_3], perturbed=True)
+  (/input-20/conv_3_w): BoundParams(name=/input-20/conv_3_w, inputs=[], perturbed=False)
+  (/input-20/conv_4): BoundConv(name=/input-20/conv_4, inputs=[/input-20/add_1_2, /input-20/conv_4_w], perturbed=True)
+  (/input-20/conv_4_w): BoundParams(name=/input-20/conv_4_w, inputs=[], perturbed=False)
+  (/input-20/add_1_2): BoundAdd(name=/input-20/add_1_2, inputs=[/input-20/conv_1_relu, /input-20/conv_2], perturbed=True)
+  (/input-20/add_3_4): BoundAdd(name=/input-20/add_3_4, inputs=[/input-20/conv_3_relu, /input-20/conv_4], perturbed=True)
+  (/input-36/conv_1): BoundConv(name=/input-36/conv_1, inputs=[/80, /input-36/conv_1_w], perturbed=True)
+  (/input-36/conv_1_relu): BoundRelu(name=/input-36/conv_1_relu, inputs=[/input-36/conv_1], perturbed=True)
+  (/input-36/conv_1_w): BoundParams(name=/input-36/conv_1_w, inputs=[], perturbed=False)
+  (/input-36/conv_2): BoundConv(name=/input-36/conv_2, inputs=[/80, /input-36/conv_2_w], perturbed=True)
+  (/input-36/conv_2_w): BoundParams(name=/input-36/conv_2_w, inputs=[], perturbed=False)
+  (/input-36/conv_3): BoundConv(name=/input-36/conv_3, inputs=[/input-36/add_1_2, /input-36/conv_3_w], perturbed=True)
+  (/input-36/conv_3_relu): BoundRelu(name=/input-36/conv_3_relu, inputs=[/input-36/conv_3], perturbed=True)
+  (/input-36/conv_3_w): BoundParams(name=/input-36/conv_3_w, inputs=[], perturbed=False)
+  (/input-36/conv_4): BoundConv(name=/input-36/conv_4, inputs=[/input-36/add_1_2, /input-36/conv_4_w], perturbed=True)
+  (/input-36/conv_4_w): BoundParams(name=/input-36/conv_4_w, inputs=[], perturbed=False)
+  (/input-36/add_1_2): BoundAdd(name=/input-36/add_1_2, inputs=[/input-36/conv_1_relu, /input-36/conv_2], perturbed=True)
+  (/input-36/add_3_4): BoundAdd(name=/input-36/add_3_4, inputs=[/input-36/conv_3_relu, /input-36/conv_4], perturbed=True)
+  (/input-52/conv_1): BoundConv(name=/input-52/conv_1, inputs=[/87, /input-52/conv_1_w], perturbed=True)
+  (/input-52/conv_1_relu): BoundRelu(name=/input-52/conv_1_relu, inputs=[/input-52/conv_1], perturbed=True)
+  (/input-52/conv_1_w): BoundParams(name=/input-52/conv_1_w, inputs=[], perturbed=False)
+  (/input-52/conv_2): BoundConv(name=/input-52/conv_2, inputs=[/87, /input-52/conv_2_w], perturbed=True)
+  (/input-52/conv_2_w): BoundParams(name=/input-52/conv_2_w, inputs=[], perturbed=False)
+  (/input-52/conv_3): BoundConv(name=/input-52/conv_3, inputs=[/input-52/add_1_2, /input-52/conv_3_w], perturbed=True)
+  (/input-52/conv_3_relu): BoundRelu(name=/input-52/conv_3_relu, inputs=[/input-52/conv_3], perturbed=True)
+  (/input-52/conv_3_w): BoundParams(name=/input-52/conv_3_w, inputs=[], perturbed=False)
+  (/input-52/conv_4): BoundConv(name=/input-52/conv_4, inputs=[/input-52/add_1_2, /input-52/conv_4_w], perturbed=True)
+  (/input-52/conv_4_w): BoundParams(name=/input-52/conv_4_w, inputs=[], perturbed=False)
+  (/input-52/add_1_2): BoundAdd(name=/input-52/add_1_2, inputs=[/input-52/conv_1_relu, /input-52/conv_2], perturbed=True)
+  (/input-52/add_3_4): BoundAdd(name=/input-52/add_3_4, inputs=[/input-52/conv_3_relu, /input-52/conv_4], perturbed=True)
+  (/95/conv_1): BoundConv(name=/95/conv_1, inputs=[/94, /95/conv_1_w], perturbed=True)
+  (/95/conv_1_relu): BoundRelu(name=/95/conv_1_relu, inputs=[/95/conv_1], perturbed=True)
+  (/95/conv_1_w): BoundParams(name=/95/conv_1_w, inputs=[], perturbed=False)
+  (/95/conv_2): BoundConv(name=/95/conv_2, inputs=[/94, /95/conv_2_w], perturbed=True)
+  (/95/conv_2_w): BoundParams(name=/95/conv_2_w, inputs=[], perturbed=False)
+  (/95/conv_3): BoundConv(name=/95/conv_3, inputs=[/95/add_1_2, /95/conv_3_w], perturbed=True)
+  (/95/conv_3_relu): BoundRelu(name=/95/conv_3_relu, inputs=[/95/conv_3], perturbed=True)
+  (/95/conv_3_w): BoundParams(name=/95/conv_3_w, inputs=[], perturbed=False)
+  (/95/conv_4): BoundConv(name=/95/conv_4, inputs=[/95/add_1_2, /95/conv_4_w], perturbed=True)
+  (/95/conv_4_w): BoundParams(name=/95/conv_4_w, inputs=[], perturbed=False)
+  (/95/add_1_2): BoundAdd(name=/95/add_1_2, inputs=[/95/conv_1_relu, /95/conv_2], perturbed=True)
+  (/95/add_3_4): BoundAdd(name=/95/add_3_4, inputs=[/95/conv_3_relu, /95/conv_4], perturbed=True)
+)
+Model prediction is: tensor([-7.04721153e-01,  1.57800317e+00, -8.99968863e-01, -1.02828538e+00,
+        -8.63162279e-01,  2.23108247e-01, -3.82568061e-01, -1.33011317e+00,
+        -1.16543627e+00, -4.91769284e-01, -9.79035720e-02,  4.29549396e-01,
+         3.47784936e-01, -9.34445709e-02,  5.99443197e-01,  4.59013492e-01,
+         9.38630700e-02, -5.87555885e-01, -4.34032470e-01, -2.02463090e-01,
+        -4.05444860e-01,  5.70941091e-01,  4.16263551e-01, -3.50111395e-01,
+         4.40220207e-01, -7.94847190e-01,  4.38384980e-01, -7.23462462e-01,
+        -1.12419283e+00,  7.33182013e-01, -1.28243577e+00,  5.54731429e-01,
+        -5.73262990e-01, -1.27733982e+00, -1.45518672e+00, -1.08975184e+00,
+         5.17316699e-01, -1.63531947e+00, -2.00889319e-01, -6.17736459e-01,
+         7.33565986e-01, -1.13008714e+00, -1.03290439e+00, -2.84778684e-01,
+        -1.98924035e-01, -5.43156803e-01,  9.56076443e-01, -2.38356918e-01,
+        -1.36771584e+00, -2.16540158e-01,  5.14205098e-01, -1.87263906e+00,
+        -2.17384443e-01,  4.48219329e-02, -9.31360900e-01, -2.29401276e-01,
+        -5.54129958e-01, -1.35810828e+00, -2.27783859e-01,  4.41128820e-01,
+        -3.08465868e-01, -7.25897670e-01, -9.69987869e-01,  3.37581992e-01,
+         4.00346398e-01, -7.07951248e-01, -7.43930161e-01, -5.27436495e-01,
+        -1.23369777e+00, -1.87196517e+00,  3.74814451e-01,  3.02529722e-01,
+         1.05569291e+00,  1.70246339e+00,  1.52412617e+00,  1.59515429e+00,
+         6.64436281e-01,  1.60431683e+00,  8.43834281e-01,  8.06042016e-01,
+         8.89006138e-01, -1.69512129e+00,  7.24699348e-02, -8.53331089e-01,
+        -8.25067312e-02, -3.78509283e-01, -9.53321040e-01,  1.34155452e-01,
+         4.85524148e-01, -6.23680174e-01,  1.52837904e-03, -4.74574059e-01,
+         5.42908907e-01,  4.35345054e-01,  6.90516055e-01, -2.82881826e-01,
+         8.90979052e-01, -1.08873916e+00,  9.04495865e-02, -4.73167956e-01,
+         5.98152876e-01, -1.06150913e+00, -1.83341610e+00,  4.53167200e-01,
+        -3.70910466e-01, -9.46719766e-01, -8.61680150e-01, -1.04841208e+00,
+        -8.93109381e-01, -1.39431715e+00, -4.31707650e-01,  2.02966666e+00,
+        -4.52922344e-01,  4.22466576e-01,  3.22967730e-02, -1.16431177e+00,
+        -1.00578821e+00,  1.17990792e-01, -1.35069132e+00, -1.80570805e+00,
+        -1.45684648e+00, -1.62027764e+00, -1.29891813e+00, -2.16801596e+00,
+        -1.33665085e+00, -1.58096516e+00,  6.45371258e-01, -1.75985470e-01,
+         1.05915058e+00,  4.98303652e-01, -1.74972154e-02, -2.34210402e-01,
+         7.68756628e-01,  2.66947359e-01,  1.77821770e-01,  4.89013456e-02,
+        -5.59516191e-01,  3.04790974e-01, -9.87101495e-02, -1.70647717e+00,
+        -1.91606092e+00,  3.19210850e-02, -5.08378804e-01, -8.22658181e-01,
+        -7.90043294e-01, -2.85818994e-01, -7.92908072e-01,  4.02144939e-01,
+        -3.30926090e-01, -1.20028928e-01, -9.67496753e-01,  4.85116035e-01,
+         2.05501989e-02,  4.79589939e-01,  3.35865676e-01, -3.46090972e-01,
+        -4.11389947e-01,  1.74636081e-01, -6.90001667e-01, -9.99422431e-01,
+        -5.07743716e-01, -5.49362898e-01, -1.98939577e-01, -3.88090342e-01,
+        -5.37417173e-01, -7.00789213e-01, -6.34224057e-01, -7.11446702e-01,
+        -7.79458657e-02, -2.74653077e-01, -6.85993314e-01, -4.95236158e-01,
+        -1.44392240e+00, -9.70529169e-02, -3.57990503e-01, -4.75721180e-01,
+        -1.41040659e+00, -5.64205945e-01, -5.25595069e-01, -1.34540141e+00,
+        -1.07730591e+00, -2.29950413e-01, -2.90964693e-02,  2.22052023e-01,
+         2.93427389e-02, -3.75971168e-01,  5.78009859e-02,  5.28331876e-01,
+        -1.68525517e-01, -2.66489863e-01, -2.47836813e-01,  8.26299906e-01,
+        -3.64363104e-01, -3.83036762e-01, -5.43175280e-01,  6.43908024e-01,
+        -4.08313543e-01, -5.59751391e-01, -1.06487203e+00,  4.35244203e-01,
+        -1.41652286e-01, -1.09354460e+00, -2.56486028e-01,  7.82513857e-01,
+        -3.83572280e-03, -5.21099865e-01, -7.46587098e-01, -3.73272985e-01,
+        -5.81943691e-01, -7.52596140e-01, -1.31798398e+00, -4.52813387e-01,
+        -1.61949888e-01, -7.96569943e-01, -3.65728736e-01, -4.54298079e-01,
+        -2.43376866e-01, -3.73053029e-02, -9.01205480e-01, -5.51685810e-01,
+        -2.73981690e-01, -8.14516693e-02, -4.92630489e-02,  3.47270340e-01,
+         3.77987802e-01, -9.64855194e-01, -3.61312866e-01, -6.89521849e-01,
+        -7.29890049e-01,  5.95804214e-01, -4.51699287e-01,  2.27384359e-01,
+        -6.86270714e-01, -2.64445990e-02, -4.36277300e-01, -1.77566528e-01,
+        -6.04482651e-01, -8.42677727e-02, -6.51493073e-01,  1.23494565e-02,
+        -4.48206067e-01, -4.89569992e-01, -1.13732010e-01, -1.16628885e+00,
+        -3.55328918e-01,  7.74713606e-02, -8.04366112e-01, -3.81778143e-02,
+         4.16079491e-01,  5.91816902e-01,  2.06862867e-01, -1.03826523e+00,
+         7.96830595e-01,  2.45293435e-02,  8.18243504e-01, -8.55174422e-01,
+        -5.78822553e-01,  4.49224800e-01,  6.53441548e-01,  1.04199815e+00,
+         1.04408455e+00,  1.16544969e-01, -3.93934190e-01, -4.06695008e-01,
+        -2.84003973e-01,  6.29000545e-01, -1.24363407e-01, -6.31683022e-02,
+        -1.39364016e+00,  1.29208171e+00,  1.36486781e+00,  6.81008816e-01,
+         9.58396673e-01,  6.17891669e-01,  6.05980933e-01,  2.19431445e-01,
+         2.26712003e-01,  1.35206103e+00,  6.53155506e-01,  1.29463673e+00,
+         8.99720430e-01,  2.15655446e+00,  2.00835133e+00,  2.99020338e+00,
+         2.34319735e+00,  1.49194944e+00,  5.83983585e-02,  1.44411147e+00,
+         3.94365609e-01,  3.38897079e-01,  1.78644180e-01,  1.32426679e-01,
+         1.89811081e-01,  5.93262732e-01, -4.62241679e-01, -9.56441313e-02,
+         3.03600878e-01,  5.62756099e-02, -6.83610797e-01,  3.19193274e-01,
+        -1.33734787e+00,  1.61318108e-01, -1.35254055e-01, -3.36808890e-01,
+        -5.20643413e-01, -2.00986147e+00,  2.40342431e-02,  1.31031901e-01,
+         1.96689755e-01, -4.34798807e-01,  8.72913003e-01,  1.18518949e+00,
+        -1.18205756e-01,  1.22484314e+00,  8.52320135e-01,  3.89842868e-01,
+         7.60374069e-02, -1.05049253e+00,  1.20312595e+00,  8.62651348e-01,
+         4.82264489e-01, -1.60862041e+00, -1.04760933e+00, -8.62680912e-01,
+        -8.72909546e-01, -1.51250565e+00, -1.06251371e+00, -3.48856717e-01,
+        -1.69358242e+00, -1.56736028e+00,  7.09048063e-02,  8.28634560e-01,
+         1.91157436e+00,  2.26822607e-02, -4.22314405e-01,  3.05525661e-01,
+        -1.48103285e+00,  7.57039011e-01, -5.66321075e-01, -1.87706339e+00,
+        -7.33825743e-01, -5.68414092e-01, -9.49214816e-01, -1.43358207e+00,
+        -9.61494565e-01, -1.71528983e+00, -1.72428906e+00, -4.41684216e-01,
+        -2.58744764e+00, -1.53615379e+00, -1.68473864e+00, -1.13897622e+00,
+        -7.88592577e-01, -1.15798855e+00, -1.37069654e+00, -1.20945525e+00,
+         2.87858576e-01,  5.33762336e-01,  4.93594855e-01,  3.76618087e-01,
+        -1.50093392e-01,  4.12328869e-01, -2.70219743e-02, -9.46053743e-01,
+        -6.50346279e-01, -3.11795734e-02,  2.63683736e-01,  2.56012529e-01,
+         9.51988459e-01,  7.56220520e-02,  6.85889125e-01, -3.78080904e-01,
+        -2.89025247e-01,  5.51979423e-01,  7.28686392e-01, -8.16386640e-02,
+         5.49737990e-01,  7.55046248e-01,  1.18736184e+00, -1.43985823e-01,
+         8.59876275e-01,  2.27501065e-01,  6.10827923e-01,  8.89123157e-02,
+         4.15813506e-01, -7.18172967e-01, -9.81215477e-01, -5.57539999e-01,
+        -8.53731453e-01, -2.96161205e-01, -1.32334554e+00, -7.24959254e-01,
+        -4.92709547e-01, -1.97268450e+00, -9.55013931e-01,  7.75487944e-02,
+        -1.75846636e+00, -1.12942517e+00, -2.41796061e-01,  1.49309576e+00,
+         1.49293207e-02, -3.72029662e-01,  4.02919918e-01, -1.19624829e+00,
+        -1.58117533e-01,  7.19022810e-01, -1.58585891e-01, -3.44380736e-01,
+        -1.48568189e+00,  2.45130301e+00, -1.44975948e+00,  1.01393664e+00,
+         1.83754385e-01,  8.95737648e-01,  4.20559585e-01, -1.62481356e+00,
+         1.62507391e+00,  6.95183575e-01,  1.73264050e+00,  9.53610718e-01,
+         4.79150206e-01,  6.99592292e-01, -1.17563635e-01, -4.74887490e-01,
+        -3.38699460e-01, -8.72873783e-01,  1.21694410e+00, -8.77290189e-01,
+        -2.63796389e-01, -4.85747188e-01, -1.11685705e+00, -9.61461850e-03,
+         5.54330409e-01,  4.73214507e-01,  6.89440310e-01,  1.98159695e+00,
+        -7.92777717e-01, -3.18701684e-01,  1.62866843e+00,  5.21350682e-01,
+        -9.17786956e-02,  1.22535586e+00,  3.87497723e-01,  1.05727541e+00,
+        -8.16729069e-01, -4.27912474e-01,  2.18137765e+00, -3.44063729e-01,
+        -5.82393765e-01,  7.29748458e-02, -6.48371756e-01,  2.64575750e-01,
+        -2.43287221e-01,  8.08291852e-01, -1.08206487e+00, -7.13075697e-01,
+         3.47806185e-01,  1.45380473e+00, -9.59825456e-01,  4.42605585e-01,
+        -1.53037655e+00,  1.11589037e-01,  1.74840939e+00, -1.80988252e-01,
+        -2.27451250e-01,  1.37949610e+00, -2.29417652e-01, -2.11753845e+00,
+         5.37879467e-02, -1.21738091e-01,  1.67725897e+00, -8.51699948e-01,
+        -7.24946856e-01,  3.58513117e-01, -9.09551203e-01,  1.01820278e+00,
+        -5.18096268e-01, -8.56983960e-01,  5.45317046e-02, -9.60937619e-01,
+         2.06892371e+00,  5.62798798e-01,  2.40518153e-01, -7.55085409e-01,
+        -7.37217903e-01,  6.94263399e-01,  6.75708234e-01,  2.10493708e+00,
+        -8.92449975e-01, -1.26194879e-01, -2.89311320e-01, -4.99825150e-01,
+        -6.46954477e-01,  9.45283353e-01,  1.19754314e+00,  1.11596274e+00,
+         1.30286634e-01,  1.34182841e-01, -4.66202199e-02,  1.74735200e+00,
+        -2.07883620e+00,  8.70015144e-01, -6.66192055e-01,  8.24582160e-01,
+         3.82631779e-01, -3.37770954e-03, -1.82924664e+00,  8.53886306e-01,
+         1.35060060e+00, -2.35077596e+00, -9.64301705e-01, -9.22291875e-01,
+        -3.43888998e-02, -1.52384549e-01, -4.27951843e-01, -3.38636667e-01,
+        -1.12488782e+00,  3.86088550e-01, -2.19249770e-01, -4.65256006e-01,
+         2.24634595e-02,  4.69329625e-01, -1.70066142e+00,  5.30873500e-02,
+        -3.59252036e-01, -1.14260232e+00,  9.42845702e-01,  2.09084439e+00,
+        -1.73778325e-01, -3.42399478e-01,  1.96138084e+00,  1.03390336e+00,
+         7.43820786e-01, -4.27842736e-01,  2.65395331e+00, -1.59233272e+00,
+        -1.23535120e+00, -1.03681004e+00, -5.55007398e-01,  1.21784914e+00,
+         3.25657666e-01, -1.38429010e+00,  1.49650335e+00, -5.24280220e-02,
+        -1.22228408e+00,  9.80605900e-01,  3.45293939e-01, -2.22257304e+00,
+         1.45406556e+00,  1.75780451e+00, -5.07622480e-01, -8.67578149e-01,
+         1.25365686e+00,  1.61127126e+00,  8.86358172e-02, -7.97016382e-01,
+         3.78652596e+00,  1.52429461e+00,  4.98417914e-01,  1.26158893e-01,
+        -1.32435048e+00, -2.70459503e-02,  2.12659526e+00,  2.71972358e-01,
+         3.89702111e-01,  5.81727982e-01, -5.33393264e-01,  1.68297321e-01,
+         1.12690997e+00, -2.14809823e+00,  7.07142502e-02, -9.41466630e-01,
+         9.50127065e-01, -1.17413700e+00, -5.20791113e-01, -6.39726043e-01,
+        -1.52834463e+00,  7.58089483e-01,  9.08927202e-01,  1.18773663e+00,
+         3.80077332e-01, -1.08313727e+00, -2.30705595e+00, -3.18914242e-02,
+         5.82781017e-01,  1.22269380e+00, -5.82518935e-01,  9.13526058e-01,
+         6.68138027e-01,  6.72509909e-01,  1.41459286e+00,  3.44878340e+00,
+         1.80205509e-01,  4.08713251e-01,  4.89061862e-01, -1.65677345e+00,
+         1.15653121e+00, -6.59896612e-01,  1.66961086e+00,  7.46612728e-01,
+         1.44795239e+00,  2.02512130e-01,  1.52555776e+00, -1.88929784e+00,
+         1.25205231e+00,  1.63736939e+00,  8.00641298e-01, -6.57547042e-02,
+         8.33906412e-01, -1.11796629e+00,  8.06707203e-01,  6.05057597e-01,
+        -6.86488628e-01,  4.68323343e-02,  6.49019182e-01,  7.33435512e-01,
+         5.62433183e-01,  5.90512455e-01,  8.19202363e-01,  2.61351967e+00,
+         2.25497246e+00, -4.50343579e-01,  8.16882610e-01,  9.86058354e-01,
+        -4.89764631e-01, -1.42280245e+00,  1.32343233e+00,  1.14127800e-01,
+        -1.58944678e+00,  1.12282825e+00, -3.54312807e-01,  5.12052715e-01,
+         2.89746976e+00,  1.15659654e-01, -1.81904471e+00,  7.60368109e-02,
+         6.89349949e-01, -6.82971358e-01, -1.10063620e-01, -1.53701216e-01,
+        -1.71462643e+00,  3.39011103e-01, -2.88795114e-01, -2.80886769e-01,
+         1.81298590e+00, -2.09512949e+00,  2.60111511e-01,  8.43063414e-01,
+         2.20945907e+00, -1.18547356e+00,  1.47672856e+00,  3.33590436e+00,
+        -2.92077243e-01,  8.07724968e-02, -1.01349747e+00,  9.30176616e-01,
+        -3.36697876e-01,  1.52618635e+00, -6.62093937e-01, -4.24062014e-02,
+         2.60261536e-01, -2.04734135e+00,  1.41091204e+00, -9.85259831e-01,
+         3.58839273e+00, -2.01210946e-01, -8.82692397e-01, -9.60855633e-02,
+        -5.13311505e-01,  2.02291036e+00,  7.80956298e-02, -5.92864275e-01,
+        -6.13239646e-01,  1.43925667e+00, -3.84896696e-01, -4.52346683e-01,
+        -7.36313403e-01,  8.71529162e-01,  4.83761281e-01, -9.54006255e-01,
+         1.25693452e+00,  1.78812826e+00,  1.65511638e-01,  8.14098418e-01,
+        -3.25483769e-01,  4.12066996e-01, -3.54016602e-01, -1.01922965e+00,
+         2.87064385e+00,  4.72660691e-01, -2.96085715e+00,  7.72760883e-02,
+         6.49079621e-01,  1.81015924e-01, -9.82482076e-01,  3.10670823e-01,
+         7.07186818e-01,  6.51924253e-01, -7.54149258e-01,  4.94600773e-01,
+         1.39246809e+00,  6.51570737e-01,  6.81150794e-01, -7.67309785e-01,
+         1.26126468e+00, -1.44626617e+00, -2.63304770e-01,  1.05541575e+00,
+         8.71564209e-01,  3.13358963e-01, -4.66672927e-01,  8.92035186e-01,
+         7.09620535e-01,  1.51789021e+00,  2.78741837e-01, -7.32707202e-01,
+         4.60449547e-01, -1.64798987e+00,  6.55779123e-01, -2.15513587e-01,
+         2.18192279e-01,  2.17800632e-01,  1.31655562e+00, -6.47236109e-02,
+        -1.41394448e+00,  7.56928444e-01, -1.58998013e+00, -1.93426326e-01,
+         3.82033348e-01, -1.14337176e-01, -2.32150817e+00,  1.79714811e+00,
+        -3.00331324e-01,  1.22221243e+00, -1.20145297e+00, -2.24658251e-02,
+         7.72402287e-02, -1.56232551e-01,  4.00693268e-01, -1.81777120e+00,
+        -3.33133310e-01,  1.46574068e+00,  3.03896666e-01,  6.10566616e-01,
+         1.68221593e+00,  1.67767537e+00,  3.40514034e-02,  1.07923114e+00,
+         1.85124427e-01,  7.71321177e-01,  4.46125984e-01, -8.01494420e-01,
+         6.84733629e-01,  2.81091785e+00,  8.07299137e-01, -1.52068162e+00,
+         2.08570629e-01, -5.60703874e-01, -4.30247903e-01,  8.40121686e-01,
+         2.17731500e+00,  2.26651502e+00, -7.94445455e-01,  4.75257725e-01,
+         7.25711942e-01,  3.13898623e-01,  1.16560507e+00,  4.75197613e-01,
+        -1.51615107e+00,  1.63385892e+00, -8.64243150e-01,  1.78602314e+00,
+         1.30082452e+00,  3.82246375e-01, -9.29477215e-01,  3.55145693e-01,
+         5.00245035e-01,  2.83323169e-01,  1.14768162e-01, -6.64980829e-01,
+        -5.46770215e-01,  2.95079261e-01,  3.45784330e+00,  9.49268281e-01,
+         1.56064034e+00, -3.54641646e-01, -1.88014448e-01, -2.89182454e-01,
+        -1.00543618e+00,  3.76854968e+00, -5.96990764e-01,  1.70588940e-01,
+         5.77444732e-01,  8.05505633e-01,  4.57281685e+00, -4.25337255e-02,
+         4.39897358e-01,  5.82242727e-01,  7.99625933e-01,  3.48776102e+00,
+        -4.54860479e-01, -8.66277695e-01, -2.53543139e-01, -1.90401673e-01,
+         1.24581349e+00, -4.47999805e-01, -1.22507878e-01,  6.14333212e-01,
+        -2.04097199e+00, -3.19666445e-01,  1.20038962e+00,  1.71353698e+00,
+         1.37541854e+00,  8.45437825e-01, -1.82897538e-01,  1.69633842e+00,
+        -4.35264744e-02, -3.04192215e-01,  2.17714596e+00,  9.97018993e-01,
+        -1.41666722e+00, -3.65032166e-01, -3.09599608e-01,  5.54798543e-02,
+         5.13385832e-01, -1.21932113e+00,  6.50690019e-01,  1.30976355e+00,
+         6.17813945e-01, -1.07246184e+00, -6.03815377e-01,  1.19419932e+00,
+        -1.45969689e+00, -1.07937014e+00,  1.42703450e+00, -1.39560735e+00,
+         1.23876095e-01,  1.89803943e-01,  1.32760584e-01, -1.38257116e-01,
+         1.04425585e+00, -7.48664021e-01,  2.62297332e-01,  2.58278012e-01,
+         2.20354629e+00,  1.69106293e+00,  1.75718856e+00, -6.44365609e-01,
+         6.32336199e-01, -4.37777042e-01, -1.59645736e-01,  3.67448473e+00,
+         8.61295462e-01, -1.85730231e+00,  2.15829372e+00,  4.25209343e-01,
+        -2.84770274e+00, -7.22652435e-01, -7.90943861e-01,  5.33427656e-01,
+        -6.82248592e-01,  1.73812640e+00,  3.48126143e-01, -1.13730848e+00,
+        -1.59398067e+00, -1.23276937e+00, -1.56454968e+00, -5.11111081e-01,
+         9.36240256e-01,  1.99338719e-01, -3.10663462e-01,  2.79276930e-02,
+         1.22645998e+00, -3.05188626e-01, -1.73304713e+00,  8.84464383e-02,
+         1.95326865e+00,  1.41212690e+00, -2.77226359e-01,  5.91007173e-01,
+         4.68552053e-01,  1.02522649e-01,  8.08518827e-01,  1.12391734e+00,
+         2.49753296e-02,  2.06365061e+00,  3.00744385e-01,  5.14504194e-01,
+        -6.73361123e-01,  6.87590361e-01, -9.24694598e-01, -1.26772836e-01,
+         3.52496457e+00, -1.79435372e-01,  2.60994840e+00, -4.40919042e-01,
+         1.61146581e+00,  1.80635023e+00,  8.45394015e-01,  7.27212250e-01,
+        -8.48900825e-02, -8.08564901e-01,  5.54966807e-01,  1.12859404e+00,
+         6.42416620e+00,  5.67372942e+00,  1.68197691e+00, -1.32850528e-01,
+         1.45687014e-01,  3.01137656e-01, -5.31331114e-02,  1.13072872e+00,
+        -1.15182579e+00, -1.44492865e+00, -2.51778096e-01, -1.66045070e+00,
+         1.39508295e+00, -6.07053936e-01,  2.79626966e-01,  2.48412013e-01,
+         8.81852865e-01,  1.73596478e+00,  5.69104671e-01, -3.09880763e-01,
+        -2.21884179e+00,  8.25735092e-01, -4.42684591e-01, -1.28967798e+00,
+        -1.29794765e+00,  4.76010382e-01, -9.70079482e-01, -1.42925119e+00,
+        -1.77811670e+00, -2.28159261e+00, -1.39293432e+00, -6.20200753e-01,
+        -1.01984811e+00, -6.93325698e-01, -7.80144930e-01, -3.83614838e-01,
+        -1.04733729e+00, -8.15840185e-01, -1.77643090e-01, -2.31901035e-01,
+        -2.33438373e+00, -3.09493273e-01, -1.03312290e+00, -7.51952589e-01,
+         4.44823951e-01,  5.95109940e-01, -2.12750107e-01, -5.23008406e-01,
+        -7.72870898e-01,  2.92058159e-02, -7.20718279e-02, -9.45419014e-01,
+        -6.92637622e-01, -6.27771735e-01, -1.09381795e+00, -1.41185808e+00,
+        -1.27222466e+00, -1.13925493e+00, -1.08445239e+00, -1.24804485e+00,
+        -1.20845938e+00, -1.62248576e+00,  8.69166791e-01, -7.88919151e-01,
+         3.21004659e-01,  2.50770897e-03, -1.58091426e+00,  1.53193915e+00,
+        -1.07102978e+00, -1.19581795e+00,  2.20489287e+00,  7.49584973e-01,
+        -1.16780686e+00, -3.43094707e-01, -3.94153535e-01, -1.53491211e+00,
+         1.96143165e-01, -2.38361567e-01,  5.31994462e-01, -5.13521373e-01,
+        -6.37398005e-01,  6.79887176e-01, -5.63969135e-01, -2.12099016e-01,
+        -1.01498377e+00,  3.28904241e-01, -1.21130145e+00, -9.55239713e-01,
+        -1.21223140e+00, -1.93880618e+00, -1.62132776e+00, -1.09524786e+00,
+        -1.19689953e+00, -2.46728086e+00,  2.83215523e-01,  7.78449357e-01],
+       device='cuda:0')
+Clean RHS: tensor([[1.23513603]], device='cuda:0')
+Split layers:
+Nonlinear functions:
+   BoundRelu(name=/66, inputs=[/input], perturbed=True)
+   BoundRelu(name=/68, inputs=[/input-4], perturbed=True)
+   BoundRelu(name=/71, inputs=[/input-12], perturbed=True)
+   BoundRelu(name=/73, inputs=[/input-16], perturbed=True)
+   BoundRelu(name=/76, inputs=[/input-24], perturbed=True)
+   BoundRelu(name=/78, inputs=[/input-28], perturbed=True)
+   BoundRelu(name=/80, inputs=[/input-32], perturbed=True)
+   BoundRelu(name=/83, inputs=[/input-40], perturbed=True)
+   BoundRelu(name=/85, inputs=[/input-44], perturbed=True)
+   BoundRelu(name=/87, inputs=[/input-48], perturbed=True)
+   BoundRelu(name=/90, inputs=[/input-56], perturbed=True)
+   BoundRelu(name=/92, inputs=[/input-60], perturbed=True)
+   BoundRelu(name=/94, inputs=[/input-64], perturbed=True)
+   BoundRelu(name=/98, inputs=[/input-68], perturbed=True)
+   BoundRelu(name=/101, inputs=[/input-72], perturbed=True)
+   BoundRelu(name=/input-8/conv_1_relu, inputs=[/input-8/conv_1], perturbed=True)
+   BoundRelu(name=/input-8/conv_3_relu, inputs=[/input-8/conv_3], perturbed=True)
+   BoundRelu(name=/input-20/conv_1_relu, inputs=[/input-20/conv_1], perturbed=True)
+   BoundRelu(name=/input-20/conv_3_relu, inputs=[/input-20/conv_3], perturbed=True)
+   BoundRelu(name=/input-36/conv_1_relu, inputs=[/input-36/conv_1], perturbed=True)
+   BoundRelu(name=/input-36/conv_3_relu, inputs=[/input-36/conv_3], perturbed=True)
+   BoundRelu(name=/input-52/conv_1_relu, inputs=[/input-52/conv_1], perturbed=True)
+   BoundRelu(name=/input-52/conv_3_relu, inputs=[/input-52/conv_3], perturbed=True)
+   BoundRelu(name=/95/conv_1_relu, inputs=[/95/conv_1], perturbed=True)
+   BoundRelu(name=/95/conv_3_relu, inputs=[/95/conv_3], perturbed=True)
+Batched CROWN: node BoundConv(name=/input-4, inputs=[/66, /35, /36], perturbed=True), unstable size 108073
+Batched CROWN: node BoundConv(name=/input-8/conv_1, inputs=[/68, /input-8/conv_1_w], perturbed=True), unstable size 170756
+Batched CROWN: node BoundConv(name=/input-8/conv_3, inputs=[/input-8/add_1_2, /input-8/conv_3_w], perturbed=True), unstable size 44612
+Batched CROWN: node BoundConv(name=/input-12, inputs=[/input-8/add_3_4, /37, /38], perturbed=True), unstable size 794786
+Batched CROWN: node BoundConv(name=/input-16, inputs=[/71, /39, /40], perturbed=True), unstable size 1597303
+Batched CROWN: node BoundConv(name=/input-20/conv_1, inputs=[/73, /input-20/conv_1_w], perturbed=True), unstable size 47708
+Batched CROWN: node BoundConv(name=/input-20/conv_3, inputs=[/input-20/add_1_2, /input-20/conv_3_w], perturbed=True), unstable size 23242
+Batched CROWN: node BoundConv(name=/input-24, inputs=[/input-20/add_3_4, /41, /42], perturbed=True), unstable size 441062
+Batched CROWN: node BoundConv(name=/input-28, inputs=[/76, /43, /44], perturbed=True), unstable size 800220
+Batched CROWN: node BoundConv(name=/input-32, inputs=[/78, /45, /46], perturbed=True), unstable size 418541
+Batched CROWN: node BoundConv(name=/input-36/conv_1, inputs=[/80, /input-36/conv_1_w], perturbed=True), unstable size 42285
+Batched CROWN: node BoundConv(name=/input-36/conv_3, inputs=[/input-36/add_1_2, /input-36/conv_3_w], perturbed=True), unstable size 28845
+Batched CROWN: node BoundConv(name=/input-40, inputs=[/input-36/add_3_4, /47, /48], perturbed=True), unstable size 384743
+Batched CROWN: node BoundConv(name=/input-44, inputs=[/83, /49, /50], perturbed=True), unstable size 384453
+Batched CROWN: node BoundConv(name=/input-48, inputs=[/85, /51, /52], perturbed=True), unstable size 397076
+Batched CROWN: node BoundConv(name=/input-52/conv_1, inputs=[/87, /input-52/conv_1_w], perturbed=True), unstable size 156414
+Batched CROWN: node BoundConv(name=/input-52/conv_3, inputs=[/input-52/add_1_2, /input-52/conv_3_w], perturbed=True), unstable size 81841
+Batched CROWN: node BoundConv(name=/input-56, inputs=[/input-52/add_3_4, /53, /54], perturbed=True), unstable size 100352
+Batched CROWN: node BoundConv(name=/input-60, inputs=[/90, /55, /56], perturbed=True), unstable size 100352
+Batched CROWN: node BoundConv(name=/input-64, inputs=[/92, /57, /58], perturbed=True), unstable size 100352
+Batched CROWN: node BoundConv(name=/95/conv_1, inputs=[/94, /95/conv_1_w], perturbed=True), unstable size 50176
+Batched CROWN: node BoundConv(name=/95/conv_3, inputs=[/95/add_1_2, /95/conv_3_w], perturbed=True), unstable size 25088
+Batched CROWN: node BoundLinear(name=/input-68, inputs=[/96, /59, /60], perturbed=True), unstable size 4096
+Batched CROWN: node BoundLinear(name=/input-72, inputs=[/99, /61, /62], perturbed=True), unstable size 4096
+initial crown bounds: tensor([[-4.17854310e+09]], device='cuda:0')
+Number of class (without rhs): 1 ; Worst class: (+ rhs) -4178543104.0
+Iteration 1
+Adv attack time: 1.4750s
+Batch size: 1
+Current pickout batch: 1, total pickout batch: 1
+Batched CROWN: node BoundConv(name=/input-4, inputs=[/66, /35, /36], perturbed=True), unstable size 108073
+Batched CROWN: node BoundConv(name=/input-8/conv_1, inputs=[/68, /input-8/conv_1_w], perturbed=True), unstable size 170756
+Batched CROWN: node BoundConv(name=/input-8/conv_3, inputs=[/input-8/add_1_2, /input-8/conv_3_w], perturbed=True), unstable size 44612
+Batched CROWN: node BoundConv(name=/input-12, inputs=[/input-8/add_3_4, /37, /38], perturbed=True), unstable size 794785
+Batched CROWN: node BoundConv(name=/input-16, inputs=[/71, /39, /40], perturbed=True), unstable size 1597302
+Batched CROWN: node BoundConv(name=/input-20/conv_1, inputs=[/73, /input-20/conv_1_w], perturbed=True), unstable size 47709
+Batched CROWN: node BoundConv(name=/input-20/conv_3, inputs=[/input-20/add_1_2, /input-20/conv_3_w], perturbed=True), unstable size 23242
+Batched CROWN: node BoundConv(name=/input-24, inputs=[/input-20/add_3_4, /41, /42], perturbed=True), unstable size 441062
+Batched CROWN: node BoundConv(name=/input-28, inputs=[/76, /43, /44], perturbed=True), unstable size 800220
+Batched CROWN: node BoundConv(name=/input-32, inputs=[/78, /45, /46], perturbed=True), unstable size 418541
+Batched CROWN: node BoundConv(name=/input-36/conv_1, inputs=[/80, /input-36/conv_1_w], perturbed=True), unstable size 42285
+Batched CROWN: node BoundConv(name=/input-36/conv_3, inputs=[/input-36/add_1_2, /input-36/conv_3_w], perturbed=True), unstable size 28845
+Batched CROWN: node BoundConv(name=/input-40, inputs=[/input-36/add_3_4, /47, /48], perturbed=True), unstable size 384743
+Batched CROWN: node BoundConv(name=/input-44, inputs=[/83, /49, /50], perturbed=True), unstable size 384453
+Batched CROWN: node BoundConv(name=/input-48, inputs=[/85, /51, /52], perturbed=True), unstable size 397076
+Batched CROWN: node BoundConv(name=/input-52/conv_1, inputs=[/87, /input-52/conv_1_w], perturbed=True), unstable size 156414
+Batched CROWN: node BoundConv(name=/input-52/conv_3, inputs=[/input-52/add_1_2, /input-52/conv_3_w], perturbed=True), unstable size 81841
+Batched CROWN: node BoundConv(name=/input-56, inputs=[/input-52/add_3_4, /53, /54], perturbed=True), unstable size 100352
