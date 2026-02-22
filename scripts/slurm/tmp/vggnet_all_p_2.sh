@@ -38,9 +38,6 @@ END_ID=500
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 conda activate "/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}"
 
-# Now strict mode is OK, but use ${VAR:-...} for possibly-unset env vars
-set -euo pipefail
-
 echo "----- SLURM_JOB_ID=${SLURM_JOB_ID:-<unset>}"
 echo "SLURM_JOB_NODELIST=${SLURM_JOB_NODELIST:-<unset>}"
 echo "SLURM_JOB_GPUS=${SLURM_JOB_GPUS:-<unset>}"
@@ -92,7 +89,6 @@ echo "====================================="
 # Run workers via srun (robust: no exported bash functions)
 # ---------------------------------------
 srun --ntasks="${SLURM_NTASKS}" --cpus-per-task="${SLURM_CPUS_PER_TASK}" /bin/bash -lc "
-set -euo pipefail
 
 rank=\"\${SLURM_PROCID}\"
 world=\"\${SLURM_NTASKS}\"

@@ -47,9 +47,6 @@ END_ID=250
 # ----------------------------
 conda activate "/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}"
 
-# Now strict mode is OK
-set -euo pipefail
-
 # ----------------------------
 # Basic allocation + env checks
 # ----------------------------
@@ -106,7 +103,6 @@ export TORCH_SHOW_CPP_STACKTRACES=1
 #   - Explicitly re-load cuda + conda inside the step (robust)
 # ---------------------------------------
 srun --ntasks="${SLURM_NTASKS}" --cpus-per-task="${SLURM_CPUS_PER_TASK}" /bin/bash -lc "
-set -euo pipefail
 
 # Modules + conda again inside step (prevents per-rank env weirdness)
 source /etc/profile || true

@@ -36,9 +36,6 @@ END_ID=1092
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 conda activate "/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}"
 
-# Now strict mode is OK
-set -euo pipefail
-
 echo "Host: $(hostname)"
 echo "Now (local): $(date)"
 echo "Now (UTC):   $(date -u)"
@@ -96,8 +93,6 @@ export HOME=\"\${HOME:-/home/z.dehghanipour}\"
 
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 conda activate \"/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}\"
-
-set -euo pipefail
 
 rank=\"\${SLURM_PROCID}\"
 world=\"\${SLURM_NTASKS}\"

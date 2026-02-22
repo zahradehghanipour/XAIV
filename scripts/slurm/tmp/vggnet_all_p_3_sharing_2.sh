@@ -45,9 +45,6 @@ END_ID=750
 # Activate env
 conda activate "/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}"
 
-# Now strict mode is OK
-set -euo pipefail
-
 # ----------------------------
 # Env + GPU checks
 # ----------------------------
@@ -108,8 +105,6 @@ module purge
 module load cuda/12.8
 source /shared/EL9/explorer/anaconda3/2024.06/etc/profile.d/conda.sh
 conda activate \"/home/z.dehghanipour/.conda/envs/${CONDA_ENV_NAME}\"
-
-set -euo pipefail
 
 rank=\"\${SLURM_PROCID}\"
 world=\"\${SLURM_NTASKS}\"
