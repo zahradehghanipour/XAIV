@@ -1,7 +1,4 @@
 instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
-902,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-903,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-904,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_global_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-905,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-906,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-907,onnx/vgg16-7.onnx,vnnlib/n02104029_kuvasz_global_k50176_eps_0.0002.vnnlib,1200,error,,,,,
+808,onnx/vgg16-7.onnx,vnnlib/n02098105_soft-coated_wheaten_terrier_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-136205952.0,3,4992.037986040115,5044.544143915176,0
+809,onnx/vgg16-7.onnx,vnnlib/n02098105_soft-coated_wheaten_terrier_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-2072.079345703125,3,3072.9797616004944,3119.1717472076416,0
+810,onnx/vgg16-7.onnx,vnnlib/n02098105_soft-coated_wheaten_terrier_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-201435.0625,3,3944.575743675232,3990.9951050281525,0

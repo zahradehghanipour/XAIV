@@ -130,3 +130,4 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 629,onnx/vgg16-7.onnx,vnnlib/n02002724_black_stork_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-4.845975875854492,3,2506.0308935642242,2549.0110952854156,0
 630,onnx/vgg16-7.onnx,vnnlib/n02002724_black_stork_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-786824768.0,3,5254.205929994583,5301.453830003738,0
 631,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-24003141632.0,3,4923.141783237457,4979.260601520538,0
+632,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.456244558095932,0,591.9373388290405,597.8421969413757,0

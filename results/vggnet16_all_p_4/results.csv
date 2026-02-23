@@ -63,3 +63,4 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 807,onnx/vgg16-7.onnx,vnnlib/n02098105_soft-coated_wheaten_terrier_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-181.8772430419922,3,2510.9182784557343,2556.7697746753693,0
 900,onnx/vgg16-7.onnx,vnnlib/n02102480_Sussex_spaniel_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,sat True,,,,46.072978019714355,0
 901,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-15231.91796875,3,3170.711609840393,3214.2936403751373,0
+902,onnx/vgg16-7.onnx,vnnlib/n02102973_Irish_water_spaniel_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,0.15158511698246002,0,655.2039754390717,678.530424118042,0

@@ -110,5 +110,3 @@ instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all
 359,onnx/vgg16-7.onnx,vnnlib/n01784675_centipede_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-0.15924422442913055,3,2183.20295381546,2229.5278420448303,0
 360,onnx/vgg16-7.onnx,vnnlib/n01784675_centipede_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,timeout False,-2344315.0,3,4353.28891992569,4400.722145795822,0
 361,onnx/vgg16-7.onnx,vnnlib/n01795545_black_grouse_global_k50176_eps_0.0002.vnnlib,1200,timeout False,-74275000.0,3,5021.609983682632,5067.491874694824,0
-362,onnx/vgg16-7.onnx,vnnlib/n01795545_black_grouse_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,unsat False,1.6247353553771973,0,716.4848086833954,765.3711738586426,0
-

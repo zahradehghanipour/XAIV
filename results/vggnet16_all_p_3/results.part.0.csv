@@ -1,11 +1,4 @@
 instance_id,onnx,vnnlib,timeout,result,lb_minus_rhs,domains_visited,bab_time,all_time,init_unstable
-632,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-633,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-634,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_global_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-635,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-636,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_nonmask_seg0_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-637,onnx/vgg16-7.onnx,vnnlib/n02007558_flamingo_global_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-638,onnx/vgg16-7.onnx,vnnlib/n02007558_flamingo_fix_mask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-639,onnx/vgg16-7.onnx,vnnlib/n02007558_flamingo_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,error,,,,,
-640,onnx/vgg16-7.onnx,vnnlib/n02007558_flamingo_global_k50176_eps_0.0003.vnnlib,1200,error,,,,,
-641,onnx/vgg16-7.onnx,vnnlib/n02007558_flamingo_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,error,,,,,
+633,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_nonmask_seg0_k50176_eps_0.0002.vnnlib,1200,timeout False,-22994350080.0,3,4896.021322011948,4948.6463487148285,0
+634,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_global_k50176_eps_0.0003.vnnlib,1200,timeout False,-680453799936.0,3,5520.043412685394,5575.897093057632,0
+635,onnx/vgg16-7.onnx,vnnlib/n02006656_spoonbill_fix_mask_seg0_k50176_eps_0.0003.vnnlib,1200,unsat False,0.45226532220840454,0,601.228189945221,639.2632944583893,0
