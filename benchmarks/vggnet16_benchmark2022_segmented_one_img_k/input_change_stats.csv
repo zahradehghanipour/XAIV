@@ -1,4 +1,0 @@
-image,model,tag,is_global,segment_index,eps,k,score,bbox,num_changed,num_fixed,total,percent_changed,pattern
-n01748264_Indian_cobra,vgg16-7,global,True,-1,0.0001,50176,,,150528,0,150528,100.0,random
-n01748264_Indian_cobra,vgg16-7,fix_mask,False,0,0.0001,50176,0.9479506015777588,"[4, 0, 220, 223]",19236,131292,150528,12.779017857142858,random
-n01748264_Indian_cobra,vgg16-7,fix_nonmask,False,0,0.0001,50176,0.9479506015777588,"[4, 0, 220, 223]",131292,19236,150528,87.22098214285714,random
