@@ -1,0 +1,389 @@
+# %%
+import logging
+import os
+import shutil
+import subprocess
+import tempfile
+from functools import lru_cache
+from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
+CACHE_ROOT = SCRIPT_DIR / ".cache"
+CACHE_ROOT.mkdir(parents=True, exist_ok=True)
+
+os.environ.setdefault("XDG_CACHE_HOME", str(CACHE_ROOT))
+os.environ.setdefault("MPLCONFIGDIR", str(CACHE_ROOT / "matplotlib"))
+Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
+
+if "__file__" in globals():
+    os.environ.setdefault("MPLBACKEND", "Agg")
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from matplotlib.ticker import LogFormatterMathtext, LogLocator, MaxNLocator
+
+logging.getLogger("fontTools.ttLib.tables._h_e_a_d").setLevel(logging.ERROR)
+
+FORCE_TEX = True
+BASE_FONT_SIZE = 16
+AXIS_LABEL_SIZE = 18
+AXIS_TITLE_SIZE = 18
+TICK_LABEL_SIZE = 14
+LEGEND_FONT_SIZE = 13
+DEFAULT_FIGSIZE = (8.4, 4.8)
+
+TIME_COL = "all_time"
+DEFAULT_TIMEOUT_S = 100.0
+RESULT_COLS = ["result", "status", "verified_status", "final_result", "verification_result"]
+
+CIFAR_CSV_PATH = (SCRIPT_DIR / "../../results/cifar100/cifar100_segmented.csv").resolve()
+IMAGENET_CSV_PATH = (SCRIPT_DIR / "../../results/vggnet16/ALL_vggnet.csv").resolve()
+
+SERIES_SPECS = [
+    {
+        "key": "global",
+        "label": r"$\alpha\beta$-CROWN",
+        "color": "#111111",
+        "linestyle": "-",
+        "marker": "o",
+        "markerfacecolor": "#111111",
+        "markeredgecolor": "#111111",
+    },
+    {
+        "key": "fix_nonmask",
+        "label": r"$\alpha\beta$-CROWN w/ CSI [object]",
+        "color": "#B22222",
+        "linestyle": "-",
+        "marker": "s",
+        "markerfacecolor": "white",
+        "markeredgecolor": "#B22222",
+    },
+    {
+        "key": "fix_mask",
+        "label": r"$\alpha\beta$-CROWN w/ CSI [background]",
+        "color": "#6A6A6A",
+        "linestyle": "-.",
+        "marker": "D",
+        "markerfacecolor": "white",
+        "markeredgecolor": "#111111",
+    },
+]
+
+MODE_SETTINGS = {
+    "safe": {
+        "count_label": "safe certificates",
+        "x_label": "Number of Safe Certificates",
+    },
+    "decided": {
+        "count_label": "decided results (safe + unsafe)",
+        "x_label": "Number of Decided Results",
+    },
+}
+
+
+def normalize_tag(value):
+    value = str(value).strip().lower()
+    return value.replace("fixnonmask", "fix_nonmask").replace("fixmask", "fix_mask")
+
+
+@lru_cache(maxsize=1)
+def latex_ready():
+    required_commands = ("latex", "dvipng")
+    if any(shutil.which(command) is None for command in required_commands):
+        return False
+
+    if shutil.which("kpsewhich") is not None:
+        latex_fmt = subprocess.run(
+            ["kpsewhich", "latex.fmt"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if latex_fmt.returncode != 0 or not latex_fmt.stdout.strip():
+            return False
+
+    latex_source = "\n".join([
+        r"\documentclass{article}",
+        r"\begin{document}",
+        r"lp",
+        r"\end{document}",
+    ])
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tex_path = Path(tmpdir) / "matplotlib_tex_probe.tex"
+        tex_path.write_text(latex_source, encoding="utf-8")
+        result = subprocess.run(
+            ["latex", "-interaction=nonstopmode", "--halt-on-error", tex_path.name],
+            cwd=tmpdir,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        return result.returncode == 0 and (Path(tmpdir) / "matplotlib_tex_probe.dvi").exists()
+
+
+def has_tex_package(package_name):
+    if shutil.which("kpsewhich") is None:
+        return False
+    return subprocess.run(
+        ["kpsewhich", f"{package_name}.sty"],
+        capture_output=True,
+        text=True,
+        check=False,
+    ).returncode == 0
+
+
+@lru_cache(maxsize=2)
+def configure_plot_style(force_tex=FORCE_TEX):
+    use_tex = force_tex and latex_ready()
+    preamble = r"\usepackage{fontawesome5}" if use_tex and has_tex_package("fontawesome5") else ""
+
+    if force_tex and not use_tex:
+        print(
+            "LaTeX was requested but the current environment cannot compile a minimal "
+            "TeX document. Falling back to Matplotlib serif text."
+        )
+
+    mpl.rcParams.update({
+        "text.usetex": use_tex,
+        "font.family": "serif",
+        "font.serif": [
+            "Times New Roman",
+            "Times",
+            "Nimbus Roman",
+            "STIXGeneral",
+            "DejaVu Serif",
+        ],
+        "mathtext.fontset": "cm",
+        "text.latex.preamble": preamble,
+        "font.size": BASE_FONT_SIZE,
+        "axes.labelsize": AXIS_LABEL_SIZE,
+        "axes.titlesize": AXIS_TITLE_SIZE,
+        "xtick.labelsize": TICK_LABEL_SIZE,
+        "ytick.labelsize": TICK_LABEL_SIZE,
+        "legend.fontsize": LEGEND_FONT_SIZE,
+        "axes.linewidth": 1.0,
+        "grid.linewidth": 0.6,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    })
+
+    return use_tex
+
+
+def canonical_outcome(series):
+    s = series.astype(str).str.strip().str.lower()
+    out = pd.Series("unknown", index=series.index, dtype="object")
+    out = out.mask(s.str.startswith("unsat") | s.str.contains(r"\bsafe\b", regex=True), "safe")
+    out = out.mask(s.str.startswith("sat") | s.str.contains(r"\bunsafe\b", regex=True), "unsafe")
+    out = out.mask(s.str.contains("timeout") | s.str.contains("unknown"), "unknown")
+    return out
+
+
+def outcome_mask(df, mode):
+    if mode not in MODE_SETTINGS:
+        raise ValueError(f"Unsupported mode: {mode}")
+
+    for col in RESULT_COLS:
+        if col in df.columns:
+            outcomes = canonical_outcome(df[col])
+            if mode == "safe":
+                return outcomes == "safe"
+            return outcomes != "unknown"
+
+    return pd.Series(mode == "decided", index=df.index, dtype=bool)
+
+
+def resolve_timeout_s(df, fallback=DEFAULT_TIMEOUT_S):
+    if "timeout" not in df.columns:
+        return float(fallback)
+
+    timeout_values = pd.to_numeric(df["timeout"], errors="coerce").dropna()
+    if timeout_values.empty:
+        return float(fallback)
+
+    return float(timeout_values.max())
+
+
+def cactus_xy(times, timeout_s):
+    times = np.asarray(times, dtype=float)
+    if times.size == 0:
+        return np.array([]), np.array([])
+    times = np.clip(times, 1e-3, timeout_s)
+    times = np.sort(times)
+    x = np.arange(1, len(times) + 1)
+    return x, times
+
+
+def build_series_groups(df):
+    return {
+        "global": df[(df["tag_norm"] == "global") | (df["is_global"] == 1)].copy(),
+        "fix_nonmask": df[df["tag_norm"] == "fix_nonmask"].copy(),
+        "fix_mask": df[df["tag_norm"] == "fix_mask"].copy(),
+    }
+
+
+def load_times(csv_path, mode="safe", k_value=None):
+    df = pd.read_csv(csv_path).copy()
+    df["tag_norm"] = df["tag"].apply(normalize_tag)
+
+    if "is_global" in df.columns:
+        df["is_global"] = pd.to_numeric(df["is_global"], errors="coerce").fillna(0)
+    else:
+        df["is_global"] = 0
+
+    if k_value is not None and "k" in df.columns:
+        df["k_numeric"] = pd.to_numeric(df["k"], errors="coerce")
+        df = df[df["k_numeric"] == float(k_value)].copy()
+
+    timeout_s = resolve_timeout_s(df)
+    df = df[outcome_mask(df, mode)].copy()
+
+    times_by_series = {}
+    for key, group in build_series_groups(df).items():
+        times_by_series[key] = pd.to_numeric(group[TIME_COL], errors="coerce").dropna().to_numpy()
+
+    return times_by_series, timeout_s
+
+
+def positive_time_floor(times_by_series):
+    positive_mins = []
+    for values in times_by_series.values():
+        values = np.asarray(values, dtype=float)
+        values = values[values > 0]
+        if values.size:
+            positive_mins.append(values.min())
+
+    if not positive_mins:
+        return 1e-3
+
+    return max(1e-3, min(positive_mins) * 0.8)
+
+
+def plot_performance(csv_path, output_path, dataset_label, mode="safe", k_value=None, timeout_s=None, figsize=DEFAULT_FIGSIZE):
+    if mode not in MODE_SETTINGS:
+        raise ValueError(f"Unsupported mode: {mode}")
+
+    configure_plot_style()
+    times_by_series, inferred_timeout_s = load_times(csv_path, mode=mode, k_value=k_value)
+    timeout_s = inferred_timeout_s if timeout_s is None else float(timeout_s)
+
+    mode_settings = MODE_SETTINGS[mode]
+    max_count = max(max((len(values) for values in times_by_series.values()), default=0), 2)
+
+    print(dataset_label)
+    for spec in SERIES_SPECS:
+        values = np.asarray(times_by_series[spec["key"]], dtype=float)
+        count = len(values)
+        median_time = np.median(values) if count else np.nan
+        print(
+            f"{spec['label']} {mode_settings['count_label']}: {count}"
+            + (f", median time = {median_time:.2f} s" if count else "")
+        )
+
+    fig, ax = plt.subplots(figsize=figsize, dpi=300)
+
+    for spec in SERIES_SPECS:
+        x, y = cactus_xy(times_by_series[spec["key"]], timeout_s)
+        if len(y) == 0:
+            continue
+
+        marker_stride = max(len(y) // 8, 1)
+        ax.plot(
+            x,
+            y,
+            drawstyle="steps-post",
+            color=spec["color"],
+            linestyle=spec["linestyle"],
+            linewidth=2.6,
+            marker=spec["marker"],
+            markersize=5.8,
+            markerfacecolor=spec["markerfacecolor"],
+            markeredgecolor=spec["markeredgecolor"],
+            markeredgewidth=1.1,
+            markevery=marker_stride,
+            label=f"{spec['label']} ({len(y)})",
+            zorder=4,
+        )
+
+    ax.axhline(timeout_s, color="#999999", linewidth=1.0, linestyle="--", alpha=0.85, zorder=2)
+    ax.text(
+        0.99,
+        timeout_s,
+        f" timeout = {int(timeout_s)} s ",
+        transform=ax.get_yaxis_transform(),
+        ha="right",
+        va="bottom",
+    )
+
+    ax.set_yscale("log")
+    ax.yaxis.set_major_locator(LogLocator(base=10))
+    ax.yaxis.set_major_formatter(LogFormatterMathtext())
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.set_xlabel(mode_settings["x_label"])
+    ax.set_ylabel("Verification Time (s)")
+    ax.set_xlim(1, max_count)
+    ax.set_ylim(positive_time_floor(times_by_series), timeout_s * 1.15)
+    ax.set_axisbelow(True)
+    ax.grid(axis="y", linestyle="--", alpha=0.55)
+    ax.spines["top"].set_visible(True)
+    ax.spines["right"].set_visible(True)
+    ax.legend(
+        frameon=False,
+        ncol=3,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.17),
+        handlelength=2.4,
+        columnspacing=1.4,
+    )
+
+    fig.tight_layout()
+    fig.savefig(output_path, bbox_inches="tight")
+    if "agg" in mpl.get_backend().lower():
+        plt.close(fig)
+    else:
+        plt.show()
+
+    print(f"Saved: {output_path}")
+
+
+# %%
+plot_performance(
+    csv_path=CIFAR_CSV_PATH,
+    output_path=SCRIPT_DIR / "cifar100_cactus_three_way_safe.pdf",
+    dataset_label="CIFAR-100 (k=1024, safe only)",
+    mode="safe",
+    k_value=1024,
+)
+
+
+# %%
+plot_performance(
+    csv_path=CIFAR_CSV_PATH,
+    output_path=SCRIPT_DIR / "cifar100_cactus_three_way_decided.pdf",
+    dataset_label="CIFAR-100 (k=1024, safe + unsafe)",
+    mode="decided",
+    k_value=1024,
+)
+
+
+# %%
+plot_performance(
+    csv_path=IMAGENET_CSV_PATH,
+    output_path=SCRIPT_DIR / "imagenet_cactus_three_way_k50176_safe.pdf",
+    dataset_label="ImageNet (k=50176, safe only)",
+    mode="safe",
+    k_value=50176,
+)
+
+
+# %%
+plot_performance(
+    csv_path=IMAGENET_CSV_PATH,
+    output_path=SCRIPT_DIR / "imagenet_cactus_three_way_k50176_decided.pdf",
+    dataset_label="ImageNet (k=50176, safe + unsafe)",
+    mode="decided",
+    k_value=50176,
+)

@@ -447,6 +447,73 @@ def save_preprocess_debug_vis(
     plt.savefig(out_dir / f"{prefix}_after_overlay.png", dpi=200)
     plt.close()
 
+def compute_top1_score(logits_flat: np.ndarray, top1_label: int) -> float:
+    """
+    Convert logits into a numerically stable top-1 probability.
+    """
+    logits_1d = np.asarray(logits_flat, dtype=np.float64).reshape(-1)
+    logits_shifted = logits_1d - np.max(logits_1d)
+    exp_logits = np.exp(logits_shifted)
+    denom = float(exp_logits.sum())
+    if denom <= 0.0:
+        return 0.0
+    return float(exp_logits[int(top1_label)] / denom)
+
+def save_property_mask_debug(
+    debug_dir: Path,
+    property_name: str,
+    property_mask: np.ndarray,
+    property_debug_rows: List[Dict],
+    *,
+    image: str,
+    model: str,
+    tag: str,
+    is_global: bool,
+    segment_index: int,
+    eps: float,
+    k: Optional[int],
+    top1_label: int,
+    top1_score: float,
+    segment_score: Optional[float],
+    bbox: Optional[Iterable[int]],
+) -> None:
+    """
+    Persist the exact post-resize/post-crop spatial mask used for one property.
+    """
+    mask_dir = ensure_dir(debug_dir / "property_masks")
+    mask_filename = f"{property_name}.npz"
+    mask_path = mask_dir / mask_filename
+
+    mask_np = np.asarray(property_mask, dtype=np.uint8)
+    np.savez_compressed(mask_path, mask=mask_np)
+
+    mask_true_pixels = int(mask_np.sum())
+    mask_total_pixels = int(mask_np.size)
+    property_debug_rows.append(
+        {
+            "image": image,
+            "model": model,
+            "property": property_name,
+            "tag": tag,
+            "is_global": is_global,
+            "segment_index": segment_index,
+            "eps": eps,
+            "k": k,
+            "top1_label": top1_label,
+            "top1_score": top1_score,
+            "segment_score": segment_score,
+            "bbox": list(bbox) if bbox is not None else None,
+            "mask_path": str(Path("property_masks") / mask_filename),
+            "mask_height": int(mask_np.shape[0]),
+            "mask_width": int(mask_np.shape[1]),
+            "mask_true_pixels": mask_true_pixels,
+            "mask_total_pixels": mask_total_pixels,
+            "mask_true_fraction": (
+                float(mask_true_pixels / mask_total_pixels) if mask_total_pixels else 0.0
+            ),
+        }
+    )
+
 def process_single_image(
     img_path: Path,
     predictor: SAM2ImagePredictor,
@@ -460,6 +527,7 @@ def process_single_image(
     vnnlib_dir: Optional[Path] = None,
     debug_dir: Optional[Path] = None,
     stats_rows: Optional[List[Dict]] = None,
+    property_debug_rows: Optional[List[Dict]] = None,
     vnn_spec_type: str = "targeted",
 ) -> List[Tuple[str, str, int]]:
     """
@@ -520,6 +588,7 @@ def process_single_image(
     if top1_label != label:
         print(f"[WARN] Top-1 from logits ({top1_label}) != label ({label}); using label as top-1.")
         top1_label = label
+    top1_score = compute_top1_score(logits_flat, top1_label)
 
     # --- Segmentation input (unnormalized [0,1], HWC) ---
     image_np_hwc = preprocess_for_seg(image)  # HWC float32 in [0,1]
@@ -581,13 +650,14 @@ def process_single_image(
 
         # Global: all pixels eligible (or pixel-budgeted)
         for k in pixel_counts:
-            lb_flat, ub_flat = bounds_for_segment(
+            lb_flat, ub_flat, property_mask = bounds_for_segment(
                 image_np=image_np_hwc,
                 eps=eps,
                 mask=None,
                 max_pixels=k,
                 select="random",
                 seed=seed,
+                return_mask=True,
             )
             if dataset_type == "cifar100":
                 lb_flat, ub_flat = normalize_bounds_hwc(
@@ -630,6 +700,24 @@ def process_single_image(
                     },
                 )
                 stats_rows.append(row)
+            if seg_cfg["vis"] and property_debug_rows is not None and debug_dir is not None:
+                save_property_mask_debug(
+                    debug_dir=debug_dir,
+                    property_name=Path(vnn_name).stem,
+                    property_mask=property_mask,
+                    property_debug_rows=property_debug_rows,
+                    image=img_basename,
+                    model=model_tag,
+                    tag="global",
+                    is_global=True,
+                    segment_index=-1,
+                    eps=eps,
+                    k=k,
+                    top1_label=top1_label,
+                    top1_score=top1_score,
+                    segment_score=None,
+                    bbox=None,
+                )
 
         # Per-segment masks: fix_mask / fix_nonmask logic
         for sidx, seg in enumerate(segments):
@@ -648,13 +736,14 @@ def process_single_image(
                     # Optional: ratio-budgeted selection concentrated/random
                     # If you want the ratio split: use your make_ratio_pixel_selection_mask
                     # Here we keep your current behavior: bounds_for_segment can budget within mask.
-                    lb_flat, ub_flat = bounds_for_segment(
+                    lb_flat, ub_flat, property_mask = bounds_for_segment(
                         image_np=image_np_hwc,
                         eps=eps,
                         mask=mask,
                         max_pixels=k,
                         select="random",
                         seed=seed,
+                        return_mask=True,
                     )
                     if dataset_type == "cifar100":
                         lb_flat, ub_flat = normalize_bounds_hwc(
@@ -697,6 +786,24 @@ def process_single_image(
                             },
                         )
                         stats_rows.append(row)
+                    if seg_cfg["vis"] and property_debug_rows is not None and debug_dir is not None:
+                        save_property_mask_debug(
+                            debug_dir=debug_dir,
+                            property_name=Path(vnn_name).stem,
+                            property_mask=property_mask,
+                            property_debug_rows=property_debug_rows,
+                            image=img_basename,
+                            model=model_tag,
+                            tag=tag,
+                            is_global=False,
+                            segment_index=sidx,
+                            eps=eps,
+                            k=k,
+                            top1_label=top1_label,
+                            top1_score=top1_score,
+                            segment_score=score,
+                            bbox=bbox,
+                        )
 
     return csv_rows
 
@@ -762,6 +869,8 @@ def main():
     debug_vis_dir = ensure_dir(out_root / "debug_vis")
     stats_csv_path = out_root / "input_change_stats.csv"
     change_stats_rows: List[Dict] = []
+    property_masks_csv_path = debug_vis_dir / "property_masks.csv"
+    property_debug_rows: Optional[List[Dict]] = [] if cfg["segmentation"].get("vis", False) else None
 
      # -----------------------------
     # Dataset (type-aware)
@@ -896,6 +1005,7 @@ def main():
             vnnlib_dir=vnnlib_dir,
             debug_dir=debug_vis_dir,
             stats_rows=change_stats_rows,
+            property_debug_rows=property_debug_rows,
             vnn_spec_type=vnn_spec_type,
         )
         all_rows.extend(rows)
@@ -935,6 +1045,38 @@ def main():
                 writer.writerow(row)
     else:
         print("[CSV] No change-stats rows collected, not writing stats CSV.")
+
+    if property_debug_rows:
+        fieldnames = [
+            "image",
+            "model",
+            "property",
+            "tag",
+            "is_global",
+            "segment_index",
+            "eps",
+            "k",
+            "top1_label",
+            "top1_score",
+            "segment_score",
+            "bbox",
+            "mask_path",
+            "mask_height",
+            "mask_width",
+            "mask_true_pixels",
+            "mask_total_pixels",
+            "mask_true_fraction",
+        ]
+        print(f"[CSV] Writing {len(property_debug_rows)} rows to {property_masks_csv_path}")
+        with property_masks_csv_path.open("w", newline="") as f_debug:
+            writer = csv.DictWriter(f_debug, fieldnames=fieldnames)
+            writer.writeheader()
+            for row in property_debug_rows:
+                for key in fieldnames:
+                    row.setdefault(key, None)
+                writer.writerow(row)
+    elif cfg["segmentation"].get("vis", False):
+        print("[CSV] No property-mask debug rows collected, not writing property mask CSV.")
 
     print("\n[DONE] Pipeline finished.")
 

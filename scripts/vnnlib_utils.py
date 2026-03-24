@@ -118,7 +118,8 @@ def bounds_for_segment(
     max_pixels: Optional[int] = None,
     select: str = "random",
     seed: int = 0,
-) -> Tuple[np.ndarray, np.ndarray]:
+    return_mask: bool = False,
+) -> Tuple[np.ndarray, ...]:
     """Create (lb, ub) bounds with an optional *pixel budget*.
 
     Semantics:
@@ -130,6 +131,8 @@ def bounds_for_segment(
     Notes:
       - ``image_np`` must be H×W×C in [0,1] (unnormalized).
       - ``select`` currently supports: "random".
+      - If ``return_mask`` is True, also returns the final spatial mask after any
+        budgeting/subsampling. This is the exact mask used to build the bounds.
     """
 
     img = np.asarray(image_np, dtype=np.float32)
@@ -163,6 +166,8 @@ def bounds_for_segment(
     eps_tensor = np.where(mask_bool[:, :, None], float(eps), 0.0).astype(np.float32)
     lb = img - eps_tensor
     ub = img + eps_tensor
+    if return_mask:
+        return lb.reshape(-1), ub.reshape(-1), mask_bool.copy()
     return lb.reshape(-1), ub.reshape(-1)
 
 from pathlib import Path

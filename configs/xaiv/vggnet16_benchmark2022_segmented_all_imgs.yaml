@@ -13,10 +13,10 @@ segmentation:
   score_threshold: 0.0
   max_segments: 1
 
-  vis: False  
+  vis: True  
 
 verification:
-  epsilon: [0.0002, 0.0003] 
+  epsilon: [0.0001] 
   dilation_radius: 0
   num_classes: 1000     # ImageNet-1k
 
@@ -29,7 +29,9 @@ onnx:
   target_name: "vgg16-7.onnx"
 
 output:
-  benchmark_dir: "/projects/air/dlverifier"
+  # benchmark_dir: "/projects/air/dlverifier"
+  benchmark_dir: "benchmarks/vggnet16_benchmark2022_segmented_all_imgs/"
+
   timeout: 1200
 
 run:
