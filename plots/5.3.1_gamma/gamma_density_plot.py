@@ -286,7 +286,7 @@ def plot_gamma_density(
             zorder=4,
         )
 
-    ax.axvline(0.0, color="#999999", linewidth=1.0, linestyle="--", alpha=0.85, zorder=3)
+    ax.axvline(0.0, color="#999999", linewidth=2.6, linestyle="--", alpha=0.95, zorder=3)
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     ax.set_axisbelow(True)
