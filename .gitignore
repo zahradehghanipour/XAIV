@@ -5,6 +5,7 @@ __pycache__/
 
 # macOS junk
 .DS_Store
+analysis/imagenet_mask_vis/imagenet_mask_vis.ipynb
 
 # Generated debug visuals
 **/debug_vis/
