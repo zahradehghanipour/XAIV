@@ -16,6 +16,13 @@ analysis/imagenet_mask_vis/imagenet_mask_vis.ipynb
 # Generated outputs
 **/instances.csv
 
+.cache
+.ipython
+.jupyter
+.local
+.mpl-cache
+.vscode
+
 # Generated artifacts
 results/**/logs/
 onnx/
