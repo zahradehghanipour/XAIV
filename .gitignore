@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 *.pyo
+*.png
 
 # macOS junk
 .DS_Store
