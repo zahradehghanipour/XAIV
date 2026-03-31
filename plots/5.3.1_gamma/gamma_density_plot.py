@@ -242,7 +242,7 @@ def compute_x_grid(series_values, pad_ratio=0.08, n_points=500):
 def plot_gamma_density(
     series_values,
     out_pdf,
-    x_label=r"$\Gamma$",
+    x_label=r"$\hat{\Gamma}$",
     y_label="Density",
     figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
@@ -282,7 +282,7 @@ def plot_gamma_density(
             markeredgecolor=style["markeredgecolor"],
             markeredgewidth=1.0,
             markevery=marker_stride,
-            label=f"{label} ({len(values)})",
+            label=label,
             zorder=4,
         )
 
@@ -316,7 +316,7 @@ def plot_gamma_density_from_csv(
     out_pdf,
     merge_models=False,
     merged_label=None,
-    x_label=r"$\Gamma$",
+    x_label=r"$\hat{\Gamma}$",
     y_label="Density",
     figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
