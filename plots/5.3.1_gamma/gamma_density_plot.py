@@ -24,9 +24,10 @@ FORCE_TEX = True
 BASE_FONT_SIZE = 16
 AXIS_LABEL_SIZE = 18
 AXIS_TITLE_SIZE = 18
-TICK_LABEL_SIZE = 14
+TICK_LABEL_SIZE = 16
 LEGEND_FONT_SIZE = 13
 DEFAULT_FIGSIZE = (8.4, 4.8)
+COMPARISON_FIGSIZE = (13.2, 4.4)
 DEFAULT_BINS = 22
 GAMMA_COL = "Gamma"
 MODEL_COL = "model"
@@ -239,22 +240,26 @@ def compute_x_grid(series_values, pad_ratio=0.08, n_points=500):
     return np.linspace(x_min - pad, x_max + pad, n_points)
 
 
-def plot_gamma_density(
+def draw_gamma_density(
+    ax,
     series_values,
-    out_pdf,
     x_label=r"$\hat{\Gamma}$",
     y_label="Density",
-    figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
+    title=None,
+    show_legend=None,
+    legend_kwargs=None,
 ):
-    configure_plot_style()
-
     series_values = [(label, np.asarray(values, dtype=float)) for label, values in series_values if len(values) > 0]
     if not series_values:
         raise ValueError("No defined gamma values available to plot.")
 
+    if title is None and len(series_values) == 1:
+        title = series_values[0][0]
+    if show_legend is None:
+        show_legend = len(series_values) > 1
+
     x_grid = compute_x_grid(series_values)
-    fig, ax = plt.subplots(figsize=figsize, dpi=300)
 
     for index, (label, values) in enumerate(series_values):
         style = SERIES_STYLES[index % len(SERIES_STYLES)]
@@ -293,15 +298,41 @@ def plot_gamma_density(
     ax.grid(axis="y", linestyle="--", alpha=0.55)
     ax.spines["top"].set_visible(True)
     ax.spines["right"].set_visible(True)
+    if title:
+        ax.set_title(title, fontsize=AXIS_TITLE_SIZE, pad=10)
+    if show_legend:
+        legend_kwargs = legend_kwargs or {
+            "loc": "upper left",
+            "ncol": 1,
+            "bbox_to_anchor": (0.02, 0.98),
+            "handlelength": 2.4,
+            "borderaxespad": 0.0,
+        }
+        ax.legend(frameon=False, columnspacing=1.4, **legend_kwargs)
 
-    legend_columns = min(len(series_values), 3)
-    ax.legend(
-        frameon=False,
-        ncol=legend_columns,
-        loc="upper center",
-        bbox_to_anchor=(0.5, 1.17),
-        handlelength=2.4,
-        columnspacing=1.4,
+
+def plot_gamma_density(
+    series_values,
+    out_pdf,
+    x_label=r"$\hat{\Gamma}$",
+    y_label="Density",
+    figsize=DEFAULT_FIGSIZE,
+    bins=DEFAULT_BINS,
+    title=None,
+    show_legend=None,
+    legend_kwargs=None,
+):
+    configure_plot_style()
+    fig, ax = plt.subplots(figsize=figsize, dpi=300)
+    draw_gamma_density(
+        ax=ax,
+        series_values=series_values,
+        x_label=x_label,
+        y_label=y_label,
+        bins=bins,
+        title=title,
+        show_legend=show_legend,
+        legend_kwargs=legend_kwargs,
     )
 
     fig.tight_layout()
@@ -320,6 +351,9 @@ def plot_gamma_density_from_csv(
     y_label="Density",
     figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
+    title=None,
+    show_legend=None,
+    legend_kwargs=None,
 ):
     df = load_gamma_data(csv_path)
     series_values = build_series(df, merge_models=merge_models, merged_label=merged_label)
@@ -330,5 +364,52 @@ def plot_gamma_density_from_csv(
         y_label=y_label,
         figsize=figsize,
         bins=bins,
+        title=title,
+        show_legend=show_legend,
+        legend_kwargs=legend_kwargs,
     )
     return df
+
+
+def plot_gamma_density_comparison_from_csv(
+    cifar_csv_path,
+    imagenet_csv_path,
+    out_pdf,
+    cifar_label="CIFAR-100",
+    imagenet_label="ImageNet",
+    x_label=r"$\hat{\Gamma}$",
+    y_label="Density",
+    figsize=COMPARISON_FIGSIZE,
+    bins=DEFAULT_BINS,
+):
+    configure_plot_style()
+
+    cifar_df = load_gamma_data(cifar_csv_path)
+    imagenet_df = load_gamma_data(imagenet_csv_path)
+
+    fig, axes = plt.subplots(1, 2, figsize=figsize, dpi=300)
+    draw_gamma_density(
+        ax=axes[0],
+        series_values=build_series(cifar_df, merge_models=True, merged_label=cifar_label),
+        x_label=x_label,
+        y_label=y_label,
+        bins=bins,
+        title=cifar_label,
+        show_legend=False,
+    )
+    draw_gamma_density(
+        ax=axes[1],
+        series_values=build_series(imagenet_df, merge_models=True, merged_label=imagenet_label),
+        x_label=x_label,
+        y_label=y_label,
+        bins=bins,
+        title=imagenet_label,
+        show_legend=False,
+    )
+
+    fig.tight_layout()
+    fig.savefig(out_pdf, bbox_inches="tight")
+    show_or_close(fig)
+
+    print(f"Saved: {out_pdf}")
+    return cifar_df, imagenet_df
