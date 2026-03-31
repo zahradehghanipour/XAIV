@@ -29,6 +29,9 @@ LEGEND_FONT_SIZE = 13
 DEFAULT_FIGSIZE = (8.4, 4.8)
 COMPARISON_FIGSIZE = (13.2, 4.4)
 DEFAULT_BINS = 22
+HIST_BAR_COLOR = "#CFCFCF"
+HIST_BAR_EDGE = "#B0B0B0"
+HIST_BAR_ALPHA = 0.65
 GAMMA_COL = "Gamma"
 MODEL_COL = "model"
 DEFINED_COL = "Gamma_defined"
@@ -64,7 +67,6 @@ try:
 except ImportError:
     gaussian_kde = None
     SCIPY_AVAILABLE = False
-
 
 @lru_cache(maxsize=1)
 def latex_ready():
@@ -217,12 +219,22 @@ def build_series(df, merge_models=False, merged_label=None, model_col=MODEL_COL,
     ]
 
 
-def density_curve(values, x_grid, bins=DEFAULT_BINS):
+def compute_histogram_bins(series_values, bins=DEFAULT_BINS):
+    all_values = np.concatenate([values for _, values in series_values if len(values) > 0])
+    x_min = float(np.min(all_values))
+    x_max = float(np.max(all_values))
+    if np.isclose(x_min, x_max):
+        pad = 0.5 if np.isclose(x_min, 0.0) else 0.1 * abs(x_min)
+        return np.array([x_min - pad, x_max + pad], dtype=float)
+    return np.histogram_bin_edges(all_values, bins=bins)
+
+
+def density_curve(values, x_grid, bins):
     values = np.asarray(values, dtype=float)
     if values.size == 0:
         return np.array([]), np.array([])
 
-    if SCIPY_AVAILABLE and values.size >= 2 and np.std(values) > 0:
+    if SCIPY_AVAILABLE and values.size >= 2 and not np.isclose(np.std(values), 0.0):
         kde = gaussian_kde(values)
         return x_grid, kde(x_grid)
 
@@ -231,20 +243,11 @@ def density_curve(values, x_grid, bins=DEFAULT_BINS):
     return centers, hist_y
 
 
-def compute_x_grid(series_values, pad_ratio=0.08, n_points=500):
-    all_values = np.concatenate([values for _, values in series_values if len(values) > 0])
-    x_min = float(np.min(all_values))
-    x_max = float(np.max(all_values))
-    span = x_max - x_min
-    pad = pad_ratio * span if span > 0 else 0.5
-    return np.linspace(x_min - pad, x_max + pad, n_points)
-
-
 def draw_gamma_density(
     ax,
     series_values,
     x_label=r"$\hat{\Gamma}$",
-    y_label="Density",
+    y_label="Probability density",
     bins=DEFAULT_BINS,
     title=None,
     show_legend=None,
@@ -259,34 +262,28 @@ def draw_gamma_density(
     if show_legend is None:
         show_legend = len(series_values) > 1
 
-    x_grid = compute_x_grid(series_values)
+    bin_edges = compute_histogram_bins(series_values, bins=bins)
+    x_grid = np.linspace(bin_edges[0], bin_edges[-1], 500)
 
     for index, (label, values) in enumerate(series_values):
         style = SERIES_STYLES[index % len(SERIES_STYLES)]
         ax.hist(
             values,
-            bins=bins,
+            bins=bin_edges,
             density=True,
-            color=style["color"],
-            edgecolor="black",
+            color=HIST_BAR_COLOR,
+            edgecolor=HIST_BAR_EDGE,
             linewidth=0.8,
-            alpha=0.16,
-            zorder=2,
+            alpha=HIST_BAR_ALPHA,
+            zorder=1,
         )
-        x_curve, y_curve = density_curve(values, x_grid, bins=bins)
-        marker_stride = max(len(x_curve) // 10, 1) if len(x_curve) else 1
+        x_curve, y_curve = density_curve(values, x_grid, bins=bin_edges)
         ax.plot(
             x_curve,
             y_curve,
             color=style["color"],
             linestyle=style["linestyle"],
-            linewidth=2.6,
-            marker=style["marker"],
-            markersize=5.4,
-            markerfacecolor=style["markerfacecolor"],
-            markeredgecolor=style["markeredgecolor"],
-            markeredgewidth=1.0,
-            markevery=marker_stride,
+            linewidth=2.8,
             label=label,
             zorder=4,
         )
@@ -315,7 +312,7 @@ def plot_gamma_density(
     series_values,
     out_pdf,
     x_label=r"$\hat{\Gamma}$",
-    y_label="Density",
+    y_label="Probability density",
     figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
     title=None,
@@ -348,7 +345,7 @@ def plot_gamma_density_from_csv(
     merge_models=False,
     merged_label=None,
     x_label=r"$\hat{\Gamma}$",
-    y_label="Density",
+    y_label="Probability density",
     figsize=DEFAULT_FIGSIZE,
     bins=DEFAULT_BINS,
     title=None,
@@ -378,7 +375,7 @@ def plot_gamma_density_comparison_from_csv(
     cifar_label="CIFAR-100",
     imagenet_label="ImageNet",
     x_label=r"$\hat{\Gamma}$",
-    y_label="Density",
+    y_label="Probability density",
     figsize=COMPARISON_FIGSIZE,
     bins=DEFAULT_BINS,
 ):
