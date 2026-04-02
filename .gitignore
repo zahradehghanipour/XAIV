@@ -14,6 +14,9 @@ analysis/imagenet_mask_vis/imagenet_mask_vis.ipynb
 *_score_*.png
 *_original.png
 
+plots/
+analysis/
+
 # Generated outputs
 **/instances.csv
 
